@@ -1,0 +1,10 @@
+1. Create a branch for the component you’re working on.
+2. Clone the branch from our remote repo onto your computer.
+Open Git Bash in the appropriate folder.
+Use command: git clone --single-branch --branch <branch_name> <repo_url>
+3. Add your changes to the staging area
+git add .
+4. Commit the changes from the staging area
+git commit -m “Comment here”
+5. Push the changes to the branch you created earlier
+git push origin <branch_name>
