@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlankMonoGameProject
 {
-    class TEST_CLASS
+    class TEST1_CLASS
     {
     }
 }
