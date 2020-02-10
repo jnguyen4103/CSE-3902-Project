@@ -55,8 +55,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuitCommand.cs" />
-    <Compile Include="Test_Class_1a.cs" />
-    <Compile Include="Test_Class_2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
