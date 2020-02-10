@@ -1,10 +1,23 @@
 1. Create a branch for the component you’re working on.
+
 2. Clone the branch from our remote repo onto your computer.
-Open Git Bash in the appropriate folder.
+Open Git Bash in the folder you want to store the branch to. This will be known as your  local branch.
 Use command: git clone --single-branch --branch <branch_name> <repo_url>
-3. Add your changes to the staging area
+
+3. Code, Test, Rinse, and Repeat.
+
+4. Open Git Bash in the folder that was cloned from the remote repository. This is known as the remote tracking branch.
+
+5. When you’re happy with your code and everything is working, add your changes to the staging area
 git add .
-4. Commit the changes from the staging area
+
+6. Commit the changes from the staging area
 git commit -m “Comment here”
-5. Push the changes to the branch you created earlier
-git push origin <branch_name>
+
+7. If two people are working on the same branch and there is a change to that branch, it is best practice to pull the new changes to your local repo before pushing your own changes to prevent conflicts. 
+git pull <repo_url> <branch_name>
+
+8. When you do the above, you might get some merge conflicts. Set up visual studio as a merge tool in order to resolve these conflicts. 
+
+9. Once these conflicts are resolved, you are ready to push the changes to that branch.
+git push
