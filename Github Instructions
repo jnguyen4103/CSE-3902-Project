@@ -18,6 +18,8 @@ git commit -m “Comment here”
 git pull <repo_url> <branch_name>
 
 8. When you do the above, you might get some merge conflicts. Set up visual studio as a merge tool in order to resolve these conflicts. 
+  8a. If for some reason you decide that you didn't want to pull some changes, you can use the git reflog command to show your commit history   on a local branch.
+  8b. After you find the commit address you want (the string of numbers and letters before each commit), use git reset --hard <commit_address> to revert your local changes.
 
 9. Once these conflicts are resolved, you are ready to push the changes to that branch.
 git push
