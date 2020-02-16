@@ -4,11 +4,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Sprint02
 {
-    class ChangeNPC : ICommand
+    class IncrementNPC : ICommand
     {
         private readonly Game1 monoProcess;
         public int monsterPosition;
-        public ChangeNPC(Game1 monoInstance, int position)
+        public IncrementNPC(Game1 monoInstance, int position)
         {
             monoProcess = monoInstance;
             monsterPosition = position;
@@ -17,7 +17,7 @@ namespace Sprint02
 
         public void Execute() 
         {
-            if (monsterPosition > 3)
+            if (monsterPosition == 4)
             {
                 monsterPosition = 0;
             }

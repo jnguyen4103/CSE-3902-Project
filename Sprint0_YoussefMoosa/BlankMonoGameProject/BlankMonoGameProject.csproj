@@ -38,7 +38,24 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands\ChangeNPC.cs" />
+    <Compile Include="Commands\DecrementNPC.cs" />
+    <Compile Include="Commands\DecrementItem.cs" />
+    <Compile Include="Commands\IncrementItem.cs" />
+    <Compile Include="Commands\IncrementNPC.cs" />
+    <Compile Include="Items\BlueRupee.cs" />
+    <Compile Include="Items\Bomb.cs" />
+    <Compile Include="Items\Boomerang.cs" />
+    <Compile Include="Items\Bow.cs" />
+    <Compile Include="Items\Clock.cs" />
+    <Compile Include="Items\Compass.cs" />
+    <Compile Include="Items\HeartContainer.cs" />
+    <Compile Include="Items\Key.cs" />
+    <Compile Include="Items\ItemFactory.cs" />
+    <Compile Include="Items\LionKey.cs" />
+    <Compile Include="Items\Map.cs" />
+    <Compile Include="Items\RedHeart.cs" />
+    <Compile Include="Items\YellowRupee.cs" />
+    <Compile Include="Items\YellowTriforce.cs" />
     <Compile Include="NPC\Aquamentus.cs" />
     <Compile Include="NPC\Fairy.cs" />
     <Compile Include="NPC\Geese.cs" />
