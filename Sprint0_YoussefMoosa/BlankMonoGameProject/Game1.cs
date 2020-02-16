@@ -15,7 +15,7 @@ namespace Sprint02
         public ISprite LinkSprite { get; set; }
         public NPC Monster { get; set; }
         public NPC[] MonsterList = new NPC[5];
-        int currentMonsterPosition = 0;
+        public int currentMonsterPosition = 0;
         public ItemFactory Item { get; set; }
         public ItemFactory[] ItemList = new ItemFactory[13];
         public int currentItemPosition = 0;
@@ -50,10 +50,10 @@ namespace Sprint02
             // TODO: Add your initialization logic here
 
 
-            keyboardCommands[0] = new IncrementNPC(this, currentMonsterPosition);
-            keyboardCommands[1] = new DecrementNPC(this, currentMonsterPosition);
-            keyboardCommands[2] = new IncrementItem(this, currentItemPosition);
-            keyboardCommands[3] = new DecrementItem(this, currentItemPosition);
+            keyboardCommands[0] = new IncrementNPC(this);
+            keyboardCommands[1] = new DecrementNPC(this);
+            keyboardCommands[2] = new IncrementItem(this);
+            keyboardCommands[3] = new DecrementItem(this);
 
             keyboardController = new KeyboardController(keyboardKeys, keyboardCommands);
 
@@ -75,7 +75,7 @@ namespace Sprint02
             MonsterList[0] = new Stalfos(new StalfosSprite(Content.Load<Texture2D>("StalfosDefault"), spawnPosition, screenDimensions, spriteBatch));
             MonsterList[1] = new Gel(new GelSprite(Content.Load<Texture2D>("GelDefault"), spawnPosition, screenDimensions, spriteBatch));
             MonsterList[2] = new Geese(new GeeseSprite(Content.Load<Texture2D>("GeeseDefault"), spawnPosition, screenDimensions, spriteBatch));
-            MonsterList[3] = new Aquamentus(new AquamentusSprite(Content.Load<Texture2D>("AquamentusWalking"), spawnPosition, screenDimensions, spriteBatch));
+            MonsterList[3] = new Aquamentus(new AquamentusSprite(Content.Load<Texture2D>("AquamentusDefault"), spawnPosition, screenDimensions, spriteBatch));
             MonsterList[4] = new Fairy(new FairySprite(Content.Load<Texture2D>("FairyDefault"), spawnPosition, screenDimensions, spriteBatch));
             ItemList[0] = new RedHeart(Content.Load<Texture2D>("RedHeart"), itemSpawnPosition, spriteBatch);
             ItemList[1] = new HeartContainer(Content.Load<Texture2D>("HeartContainer"), itemSpawnPosition, spriteBatch);

@@ -7,25 +7,22 @@ namespace Sprint02
     class DecrementNPC : ICommand
     {
         private readonly Game1 monoProcess;
-        public int monsterPosition;
-        public DecrementNPC(Game1 monoInstance, int position)
+        public DecrementNPC(Game1 monoInstance)
         { 
             monoProcess = monoInstance;
-            monsterPosition = position;
-            
         }
 
         public void Execute() 
         {
-            if (monsterPosition == 0)
+            if (monoProcess.currentMonsterPosition == 0)
             {
-                monsterPosition = 4;
+                monoProcess.currentMonsterPosition = 4;
             }
             else
             {
-                monsterPosition--;
+                monoProcess.currentMonsterPosition--;
             }
-            monoProcess.Monster = monoProcess.MonsterList[monsterPosition];
+            monoProcess.Monster = monoProcess.MonsterList[monoProcess.currentMonsterPosition];
             monoProcess.Monster.Sprite.UpdatePosition(monoProcess.spawnPosition);
         }
     }

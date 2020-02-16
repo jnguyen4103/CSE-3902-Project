@@ -10,7 +10,8 @@ namespace Sprint02
     public interface ISprite
     {
         void DrawSprite();
-        void MoveToPosition(Vector2 newPosition);
+        bool MoveToPosition(Vector2 newPosition);
         void UpdatePosition(Vector2 newPosition);
+        void UpdateSpriteFrames(int newAtlasColumn);
     }
 }

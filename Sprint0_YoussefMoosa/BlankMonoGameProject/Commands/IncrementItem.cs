@@ -7,25 +7,22 @@ namespace Sprint02
     class IncrementItem : ICommand
     {
         private readonly Game1 monoProcess;
-        public int itemPosition;
-        public IncrementItem(Game1 monoInstance, int position)
+        public IncrementItem(Game1 monoInstance)
         {
-            monoProcess = monoInstance;
-            itemPosition = position;
-            
+            monoProcess = monoInstance;            
         }
 
         public void Execute() 
         {
-            if (itemPosition == 12)
+            if (monoProcess.currentItemPosition == 12)
             {
-                itemPosition = 0;
+                monoProcess.currentItemPosition = 0;
             }
             else
             {
-                itemPosition++;
+                monoProcess.currentItemPosition++;
             }
-            monoProcess.Item = monoProcess.ItemList[itemPosition];
+            monoProcess.Item = monoProcess.ItemList[monoProcess.currentItemPosition];
         }
     }
 }

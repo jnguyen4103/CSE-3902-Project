@@ -77,7 +77,8 @@ namespace Sprint02
     public class StalfosSM : INPCStateMachine
     {
         NPC self;
-        int randomCounter = 0;
+        Random random = new Random();
+        bool isAtTargetLocation = true;
 
         public StalfosSM(NPC Stalfos)
         {
@@ -87,27 +88,22 @@ namespace Sprint02
 
         public void PatrolState()
         {
-            randomCounter++;
-            if(randomCounter == 20)
+            if (isAtTargetLocation)
             {
-                Random random = new Random();
-                int randomDirection = random.Next(1, 3);
-                int randomDistance = random.Next(-5, 5);
-                switch (randomDirection)
+                int randDirection = random.Next(0, 2);
+                int randDistance = random.Next(0, 100) - 50;
+                switch (randDirection)
                 {
                     case (1):
-                        self.Sprite.MoveToPosition( new Vector2(0, randomDistance));
+                        self.Sprite.MoveToPosition(new Vector2(0, randDistance));
                         break;
                     case (2):
-                        self.Sprite.MoveToPosition(new Vector2(randomDistance, 0));
+                        self.Sprite.MoveToPosition(new Vector2(randDistance, 0));
                         break;
                     default:
                         break;
                 }
-                randomCounter = 0;
             }
- 
-
         }
 
 

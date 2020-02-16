@@ -64,5 +64,10 @@ namespace Sprint02
         {
             throw new System.NotImplementedException();
         }
+
+        public void UpdateSpriteFrames(int newAtlasColumn)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

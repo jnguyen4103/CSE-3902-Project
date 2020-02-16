@@ -14,8 +14,7 @@ namespace Sprint02
         double frameCounter = 0;
         private int currentFrame = 0;
         private readonly int framesTotal = 2;
-        private readonly int atlasRows = 2;
-        private readonly int atlasColumns = 1;
+        private int currentAtlasColumn = 1;
         private readonly Vector2 screen;
         private Vector2 targetPosition;
         public Vector2 position;
@@ -37,6 +36,11 @@ namespace Sprint02
             targetPosition.X = position.X + newPosition.X;
             targetPosition.Y = position.Y + newPosition.Y;
 
+        }
+
+        public void UpdateSpriteFrames(int newAtlasColumn)
+        {
+            currentAtlasColumn = newAtlasColumn;
         }
 
         public void UpdatePosition(Vector2 newPosition)
@@ -92,8 +96,8 @@ namespace Sprint02
         {
             int frameWidth = 8;
             int frameHeight = 8;
-            int row = currentFrame / atlasColumns;
-            int column = currentFrame % atlasColumns;
+            int row = currentFrame / currentAtlasColumn;
+            int column = currentFrame % currentAtlasColumn;
 
             this.Move();
             this.Animate();

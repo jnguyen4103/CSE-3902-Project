@@ -12,15 +12,13 @@ namespace Sprint02
         public Aquamentus(AquamentusSprite sprite)
         {
             state = State.Patrolling;
-            this.Sprite = sprite;
             Sprite = sprite;
             hitpoints = 1;
             maxHP = 1;
-            attackDamage = 0;
+            attackDamage = 1;
             contactDamage = 1;
             StateMachine = new AquamentusSM(this);
         }
-
         protected override void Idle()
         {
             state = State.Idle;
@@ -68,8 +66,8 @@ namespace Sprint02
 
         public override void Draw()
         {
-            this.Update();
             Sprite.DrawSprite();
+            this.Update();
         }
 
     }
@@ -77,7 +75,14 @@ namespace Sprint02
     public class AquamentusSM : INPCStateMachine
     {
         NPC self;
-        int randomCounter = 0;
+        Random random = new Random();
+        // Keeps track of which location the NPC is going to
+        Vector2 goToLocation;
+        // Keeps track of whether the NPC is at that location or not
+        bool isAtTargetLocation = true;
+
+        //
+        int attackCounter = 0;
 
         public AquamentusSM(NPC Aquamentus)
         {
@@ -87,35 +92,41 @@ namespace Sprint02
 
         public void PatrolState()
         {
-            randomCounter++;
-            if (randomCounter == 20)
+            if (isAtTargetLocation)
             {
-                Random random = new Random();
-                int randomDirection = random.Next(1, 3);
-                int randomDistance = random.Next(-5, 5);
-                switch (randomDirection)
+                int randDirection = random.Next(0, 2);
+                int randDistance = random.Next(0, 100) - 50;
+                switch (randDirection)
                 {
                     case (1):
-                        self.Sprite.MoveToPosition(new Vector2(0, randomDistance));
+                        goToLocation = new Vector2(0, randDistance);
                         break;
                     case (2):
-                        self.Sprite.MoveToPosition(new Vector2(randomDistance, 0));
+                        goToLocation = new Vector2(randDistance, 0);
                         break;
                     default:
                         break;
                 }
-                randomCounter = 0;
+                self.Sprite.MoveToPosition(goToLocation);
+                isAtTargetLocation = self.Sprite.MoveToPosition(goToLocation);
             }
-
-
         }
 
 
         public void AttackState()
         {
+            attackCounter++;
+            if(attackCounter > 200)
+            {
+                self.state = NPC.State.Patrolling;
+                self.Sprite.UpdateSpriteFrames(2);
+            } else if (attackCounter == 200)
+            {
+                // Activate FIREBALL
+            }
+            
 
         }
-
         public void DeadState()
         {
             // Turn off visibility in sprite

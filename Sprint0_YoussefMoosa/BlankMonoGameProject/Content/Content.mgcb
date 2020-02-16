@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin ../Sprite Atlas/Effects/AquamentusFireball.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../Sprite Atlas/Effects/AquamentusFireball.png;AquamentusFireball.png
+
 #begin ../Sprite Atlas/Items/BlueRupee.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -235,6 +247,30 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Credits.spritefont;Credits
+
+#begin F:/Storage/Users/Stephen/Downloads/3902 Sprites/Monsters/AquamentusAttacking.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:F:/Storage/Users/Stephen/Downloads/3902 Sprites/Monsters/AquamentusAttacking.png;AquamentusAttacking.png
+
+#begin F:/Storage/Users/Stephen/Downloads/3902 Sprites/Monsters/AquamentusDefault.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:F:/Storage/Users/Stephen/Downloads/3902 Sprites/Monsters/AquamentusDefault.png;AquamentusDefault.png
 
 #begin LinkSpritesheet.png
 /importer:TextureImporter

@@ -7,25 +7,22 @@ namespace Sprint02
     class DecrementItem : ICommand
     {
         private readonly Game1 monoProcess;
-        public int itemPosition;
-        public DecrementItem(Game1 monoInstance, int position)
+        public DecrementItem(Game1 monoInstance)
         {
             monoProcess = monoInstance;
-            itemPosition = position;
-            
         }
 
         public void Execute() 
         {
-            if (itemPosition == 0)
+            if (monoProcess.currentItemPosition == 0)
             {
-                itemPosition = 12;
+                monoProcess.currentItemPosition = 12;
             }
             else
             {
-                itemPosition--;
+                monoProcess.currentItemPosition--;
             }
-            monoProcess.Item = monoProcess.ItemList[itemPosition];
+            monoProcess.Item = monoProcess.ItemList[monoProcess.currentItemPosition];
         }
     }
 }

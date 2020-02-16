@@ -7,26 +7,23 @@ namespace Sprint02
     class IncrementNPC : ICommand
     {
         private readonly Game1 monoProcess;
-        public int monsterPosition;
-        public IncrementNPC(Game1 monoInstance, int position)
+        public IncrementNPC(Game1 monoInstance)
         {
-            monoProcess = monoInstance;
-            monsterPosition = position;
-            
+            monoProcess = monoInstance;        
         }
 
         public void Execute() 
         {
-            if (monsterPosition == 4)
+            if (monoProcess.currentMonsterPosition == 4)
             {
-                monsterPosition = 0;
+                monoProcess.currentMonsterPosition = 0;
             }
             else
             {
-                monsterPosition++;
+                monoProcess.currentMonsterPosition++;
             }
-            monoProcess.Monster = monoProcess.MonsterList[monsterPosition];
-            monoProcess.Monster.Sprite.UpdatePosition(monoProcess.spawnPosition);
+            monoProcess.MonsterList[monoProcess.currentMonsterPosition].Sprite.UpdatePosition(monoProcess.spawnPosition);
+            monoProcess.Monster = monoProcess.MonsterList[monoProcess.currentMonsterPosition];
         }
     }
 }

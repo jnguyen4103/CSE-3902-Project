@@ -10,15 +10,21 @@ namespace Sprint02
 {
     public class StalfosSprite : ISprite
     {
+        // Variables for keeping track of which frame is drawn
+        double frameCounter = 0;                // Controls speed in which frames change
+        private int currentFrame = 0;           // The currrent frame being drawn
+        private int currentAttackFrame = 0;     // Only important for monsters that idle when attacking
+        private int currentAtlasColumn = 2;     // Controls which column of frames will be drawn
+        private readonly int framesTotal = 2;   // Max number of frames for walking and attacking
+
+        // Variables for keeping track of Sprite's position on the screen
+        private Vector2 targetPosition;         // Position NPC is trying to move to
+        public Vector2 position;                // Current position of NPC
+        private readonly Vector2 screen;        // Screen boundaries
+        private Vector2 speed;
+
+        // Variables required for drwaing the Sprite
         public Texture2D spriteTexture;
-        double frameCounter = 0;
-        private int currentFrame = 0;
-        private readonly int framesTotal = 2;
-        private readonly int atlasRows = 2;
-        private readonly int atlasColumns = 1;
-        private readonly Vector2 screen;
-        private Vector2 targetPosition;
-        public Vector2 position;
         private readonly SpriteBatch batch;
 
         public StalfosSprite(Texture2D texture,
@@ -30,6 +36,8 @@ namespace Sprint02
             this.position.Y = spawn.Y;
             this.screen = screenDim;
             this.batch = spriteBatch;
+            this.speed.X = 0.25f;
+            this.speed.Y = 0.25f;
         }
 
         public void MoveToPosition(Vector2 newPosition)
@@ -37,6 +45,11 @@ namespace Sprint02
             targetPosition.X = position.X +  newPosition.X;
             targetPosition.Y = position.Y + newPosition.Y;
 
+        }
+
+        public void UpdateSpriteFrames(int newAtlasColumn)
+        {
+            currentAtlasColumn = newAtlasColumn;
         }
 
         public void UpdatePosition(Vector2 newPosition)
@@ -48,27 +61,26 @@ namespace Sprint02
         {
             if (position.X != targetPosition.X)
             {
-                if(position.X > targetPosition.X)
+                if (position.X > targetPosition.X)
                 {
-                    position.X--;
-                } else
-                {
-                    position.X++;
+                    position.X -= speed.X;
                 }
-            } else if (position.Y != targetPosition.Y)
+                else if (position.X < targetPosition.X)
+                {
+                    position.X += speed.X;
+                }
+            }
+            else if (position.Y != targetPosition.Y)
             {
                 if (position.Y > targetPosition.Y)
                 {
-                    position.Y--;
+                    position.Y -= speed.Y;
                 }
-                else
+                else if (position.Y < targetPosition.Y)
                 {
-                    position.Y++;
+                    position.Y += speed.Y;
                 }
             }
-
-            position.X++;
-
         }
 
         private void Animate()
@@ -90,8 +102,8 @@ namespace Sprint02
         {
             int frameWidth = 15;
             int frameHeight = 16;
-            int row = currentFrame / atlasColumns;
-            int column = currentFrame % atlasColumns;
+            int row = currentFrame / currentAtlasColumn;
+            int column = currentFrame % currentAtlasColumn;
 
             this.Move();
             this.Animate();

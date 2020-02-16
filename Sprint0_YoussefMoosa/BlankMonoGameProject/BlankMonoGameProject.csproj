@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <Content Include="Sprite Atlas\Effects\AquamentusFireball.png" />
     <Content Include="Sprite Atlas\Items\BlueRupee.png" />
     <Content Include="Sprite Atlas\Items\Bomb.png" />
     <Content Include="Sprite Atlas\Items\Boomerang.png" />
