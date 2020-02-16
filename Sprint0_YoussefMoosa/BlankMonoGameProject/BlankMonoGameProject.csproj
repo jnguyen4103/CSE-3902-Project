@@ -38,27 +38,31 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ChangeSpriteToAnimateCommand.cs" />
-    <Compile Include="ChangeSpriteToFullCommand.cs" />
-    <Compile Include="ChangeSpriteToMoveCommand.cs" />
-    <Compile Include="ChangeSpriteToStaticCommand.cs" />
-    <Compile Include="Stalfos.cs" />
-    <Compile Include="NPC.cs" />
-    <Compile Include="INPCStateMachine.cs" />
+    <Compile Include="Commands\ChangeNPC.cs" />
+    <Compile Include="NPC\Aquamentus.cs" />
+    <Compile Include="NPC\Fairy.cs" />
+    <Compile Include="NPC\Geese.cs" />
+    <Compile Include="NPC\Gel.cs" />
+    <Compile Include="NPC\Stalfos.cs" />
+    <Compile Include="NPC\NPC.cs" />
+    <Compile Include="NPC\INPCStateMachine.cs" />
     <Compile Include="FullSprite.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="IController.cs" />
-    <Compile Include="ISprite.cs" />
-    <Compile Include="KeyboardController.cs" />
-    <Compile Include="MouseController.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Controller\IController.cs" />
+    <Compile Include="Sprites\AquamentusSprite.cs" />
+    <Compile Include="Sprites\FairySprite.cs" />
+    <Compile Include="Sprites\GeeseSprite.cs" />
+    <Compile Include="Sprites\GelSprite.cs" />
+    <Compile Include="Sprites\ISprite.cs" />
+    <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="NoAnimSprite.cs" />
     <Compile Include="NoMoveNoAnimSprite.cs" />
     <Compile Include="NoMoveSprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuitCommand.cs" />
-    <Compile Include="StalfosSprite.cs" />
+    <Compile Include="Commands\QuitCommand.cs" />
+    <Compile Include="Sprites\StalfosSprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -71,9 +75,11 @@
     <Content Include="Icon.ico" />
     <Content Include="Sprite Atlas\Items\BlueRupee.png" />
     <Content Include="Sprite Atlas\Items\Bomb.png" />
+    <Content Include="Sprite Atlas\Items\Boomerang.png" />
     <Content Include="Sprite Atlas\Items\Bow.png" />
     <Content Include="Sprite Atlas\Items\Clock.png" />
     <Content Include="Sprite Atlas\Items\Compass.png" />
+    <Content Include="Sprite Atlas\Items\HeartContainer.png" />
     <Content Include="Sprite Atlas\Items\Key.png" />
     <Content Include="Sprite Atlas\Items\LionKey.png" />
     <Content Include="Sprite Atlas\Items\Map.png" />
@@ -88,10 +94,12 @@
     <Content Include="Sprite Atlas\Link\LinkUseItemRight.png" />
     <Content Include="Sprite Atlas\Link\LinkWalkingDown.png" />
     <Content Include="Sprite Atlas\Link\LinkWalkingLeft.png" />
+    <Content Include="Sprite Atlas\Link\LinkWalkingRight.png" />
     <Content Include="Sprite Atlas\Link\LinkWalkingUp.png" />
     <Content Include="Sprite Atlas\Monsters\AquamentusAttacking.png" />
     <Content Include="Sprite Atlas\Monsters\AquamentusWalking.png" />
     <Content Include="Sprite Atlas\Monsters\BladeTrap.png" />
+    <Content Include="Sprite Atlas\Monsters\FairyDefault.png" />
     <Content Include="Sprite Atlas\Monsters\GeeseDefault.png" />
     <Content Include="Sprite Atlas\Monsters\GelDefault.png" />
     <Content Include="Sprite Atlas\Monsters\GoriyasWalkingDown.png" />

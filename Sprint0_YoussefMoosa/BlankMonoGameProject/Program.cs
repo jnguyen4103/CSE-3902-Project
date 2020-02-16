@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sprint0_YoussefMoosa
+namespace Sprint02
 {
 #if WINDOWS || LINUX
     /// <summary>

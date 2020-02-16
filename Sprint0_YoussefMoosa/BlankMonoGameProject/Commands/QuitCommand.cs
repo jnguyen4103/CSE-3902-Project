@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Sprint0_YoussefMoosa
+namespace Sprint02
 {
     class QuitCommand : ICommand
     {

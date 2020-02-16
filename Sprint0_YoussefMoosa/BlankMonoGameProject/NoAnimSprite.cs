@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Sprint0_YoussefMoosa
+namespace Sprint02
 {
     class NoAnimSprite : ISprite
     {
@@ -50,5 +50,19 @@ namespace Sprint0_YoussefMoosa
             batch.End();
         }
 
+        public void UpdatePositon(Vector2 newPosition)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void MoveToPosition(Vector2 newPosition)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdatePosition(Vector2 newPosition)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -2,14 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-/*
- * Sources:
- * 
- * RB Whitaker's wiki (Monogame text): http://rbwhitaker.wikidot.com/monogame-drawing-text-with-spritefonts
- * CSE 3902 Sprint 0 page:             http://web.cse.ohio-state.edu/~boggus.2/3902/sprint0.html
- */
-
-namespace Sprint0_YoussefMoosa
+namespace Sprint02
 {
     /// <summary>
     /// This is the main type for your game.
@@ -18,42 +11,28 @@ namespace Sprint0_YoussefMoosa
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D linkSpriteSheet;
-        SpriteFont font;
+        //Texture2D linkSpriteSheet;
         public ISprite LinkSprite { get; set; }
+        public NPC Monster { get; set; }
+        public NPC[] MonsterList = new NPC[5];
+        int currentMonsterPosition = 0;
 
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Escape };
-        private ICommand[] keyboardCommands = new ICommand[5];
+        private Keys[] keyboardKeys = { Keys.O };
+        private ICommand[] keyboardCommands = new ICommand[1];
         private KeyboardController keyboardController;
 
-        private Rectangle[] screenSections = new Rectangle[]
-        {
-            new Rectangle(0, 0, 400, 240), new Rectangle(400, 0, 400, 240),
-            new Rectangle(0, 240, 400, 240), new Rectangle(400, 240, 400, 240)
-        };
+        public readonly Vector2 spawnPosition = new Vector2(400, 240);
 
-        private ICommand[] lmbCommands = new ICommand[4];
-        private ICommand[] rmbCommands = new ICommand[4];
+        public Vector2 screenDimensions = new Vector2(800.0f, 480.0f);
 
-        private MouseController mouseController;
-
-        private Rectangle[] spritesheetAnimation = new Rectangle[]
-        {
-            new Rectangle(34, 10, 16, 16), new Rectangle(50, 10, 16, 16)
-        };
-        private int animationTime = 15;
-
-        private Rectangle initialDest = new Rectangle(64, 64, 128, 128);
-
-        private Vector2 screenDimensions = new Vector2(800.0f, 480.0f);
-
-        private Vector2 spriteMoveVertVelocity = new Vector2(0.0f, 10.0f);
-        private Vector2 spriteMoveHorzVelocity = new Vector2(10.0f, 0.0f);
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            IsMouseVisible = true;
+
+
         }
 
         /// <summary>
@@ -67,6 +46,8 @@ namespace Sprint0_YoussefMoosa
             // TODO: Add your initialization logic here
 
 
+            keyboardCommands[0] = new ChangeNPC(this, currentMonsterPosition);
+            keyboardController = new KeyboardController(keyboardKeys, keyboardCommands);
 
             base.Initialize();
         }
@@ -81,34 +62,17 @@ namespace Sprint0_YoussefMoosa
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            linkSpriteSheet = this.Content.Load<Texture2D>("LinkSpritesheet");
-            font = this.Content.Load<SpriteFont>("Credits");
+            
+            //linkSpriteSheet = this.Content.Load<Texture2D>("LinkSpritesheet");
+            MonsterList[0] = new Stalfos(new StalfosSprite(Content.Load<Texture2D>("StalfosDefault"), spawnPosition, screenDimensions, spriteBatch));
+            MonsterList[1] = new Gel(new GelSprite(Content.Load<Texture2D>("GelDefault"), spawnPosition, screenDimensions, spriteBatch));
+            MonsterList[2] = new Geese(new GeeseSprite(Content.Load<Texture2D>("GeeseDefault"), spawnPosition, screenDimensions, spriteBatch));
+            MonsterList[3] = new Aquamentus(new AquamentusSprite(Content.Load<Texture2D>("AquamentusWalking"), spawnPosition, screenDimensions, spriteBatch));
+            MonsterList[4] = new Fairy(new FairySprite(Content.Load<Texture2D>("FairyDefault"), spawnPosition, screenDimensions, spriteBatch));
 
-            keyboardCommands[0] = new ChangeSpriteToStaticCommand(this, linkSpriteSheet, spritesheetAnimation[0],
-                initialDest, spriteBatch
-                );
-            keyboardCommands[1] = new ChangeSpriteToAnimateCommand
-                (this, linkSpriteSheet, spritesheetAnimation, initialDest, animationTime, spriteBatch);
-            keyboardCommands[2] = new ChangeSpriteToMoveCommand
-                (this, linkSpriteSheet, spritesheetAnimation[0], initialDest, spriteMoveVertVelocity, screenDimensions, spriteBatch);
-            keyboardCommands[3] = new ChangeSpriteToFullCommand(this, linkSpriteSheet, spritesheetAnimation, initialDest, spriteMoveHorzVelocity, screenDimensions, spriteBatch, animationTime);
-            keyboardCommands[4] = new QuitCommand(this);
 
-            for (int i = 0; i < lmbCommands.Length; i++)
-            {
-                lmbCommands[i] = keyboardCommands[i];
-                rmbCommands[i] = keyboardCommands[4];
-            }
 
-            keyboardController = new KeyboardController(keyboardKeys, keyboardCommands);
-            mouseController = new MouseController(screenSections, lmbCommands, rmbCommands);
-
-            LinkSprite = new NoMoveNoAnimSprite(
-                linkSpriteSheet,
-                spritesheetAnimation[0],
-                initialDest,
-                spriteBatch
-            );
+            Monster = MonsterList[0];
 
         }
 
@@ -131,7 +95,6 @@ namespace Sprint0_YoussefMoosa
 
 
             // TODO: Add your update logic here
-            mouseController.Update();
             keyboardController.Update();
             base.Update(gameTime);
         }
@@ -145,12 +108,11 @@ namespace Sprint0_YoussefMoosa
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            LinkSprite.DrawSprite();
+            //LinkSprite.DrawSprite();
 
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, "Credits:", new Vector2(20.0f, 300.0f), Color.Black);
-            spriteBatch.DrawString(font, "Program made by: Youssef Moosa", new Vector2(20.0f, 330.0f), Color.Black);
-            spriteBatch.DrawString(font, "Sprites from: https://www.spriters-resource.com/nes/legendofzelda/sheet/8366/", new Vector2(20.0f, 360.0f), Color.Black);
+            Monster.Draw();
+
             spriteBatch.End();
 
             base.Draw(gameTime);

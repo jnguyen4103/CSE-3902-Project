@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0_YoussefMoosa
+namespace Sprint02
 {
-    public interface IController
+    public interface ICommand
     {
-        void Update();
+        void Execute();
     }
 }
