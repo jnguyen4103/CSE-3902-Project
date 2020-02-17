@@ -21,51 +21,6 @@ namespace Sprint02
             StateMachine = new GelSM(this);
         }
 
-        protected override void Idle()
-        {
-            state = State.Idle;
-        }
-        protected override void Patrol()
-        {
-            state = State.Patrolling;
-        }
-
-        protected override void NPCAttack()
-        {
-            // Depends if enemy attacks via contact or projectile
-            state = State.Attacking;
-        }
-
-        protected override void KillNPC()
-        {
-            state = State.Dead;
-        }
-        protected override void Update()
-        {
-            switch (this.state)
-            {
-                case (State.Idle):
-                    StateMachine.IdleState();
-                    break;
-                case (State.Patrolling):
-                    StateMachine.PatrolState();
-                    break;
-                case (State.Dead):
-                    StateMachine.DeadState();
-                    break;
-                case (State.Attacking):
-                    StateMachine.AttackState();
-                    break;
-                case (State.TakeDamage):
-                    StateMachine.TakeDamageState();
-                    break;
-                default:
-                    state = State.Patrolling;
-                    break;
-            }
-
-        }
-
         public override void Draw()
         {
             this.Update();
@@ -77,7 +32,9 @@ namespace Sprint02
     public class GelSM : INPCStateMachine
     {
         NPC self;
-        int randomCounter = 0;
+        Random random = new Random();
+        bool isPathing = false;
+        Vector2 positionPathingTo;
 
         public GelSM(NPC Gel)
         {
@@ -87,48 +44,36 @@ namespace Sprint02
 
         public void PatrolState()
         {
-            randomCounter++;
-            if (randomCounter == 20)
+            if (!isPathing)
             {
-                Random random = new Random();
-                int randomDirection = random.Next(1, 3);
-                int randomDistance = random.Next(-5, 5);
-                switch (randomDirection)
-                {
-                    case (1):
-                        self.Sprite.MoveToPosition(new Vector2(0, randomDistance));
-                        break;
-                    case (2):
-                        self.Sprite.MoveToPosition(new Vector2(randomDistance, 0));
-                        break;
-                    default:
-                        break;
-                }
-                randomCounter = 0;
+                self.Sprite.PathToPosition(positionPathingTo);
+                isPathing = true;
             }
-
-
+            else if (self.Sprite.AtTargetLocation())
+            {
+                self.Idle();
+            }
         }
 
 
         public void AttackState()
         {
-
+            // There is no attack state for this NPC
+            // If we want more advanced actions then implement later on
         }
 
         public void DeadState()
         {
             // Turn off visibility in sprite
 
-
-
         }
 
         public void IdleState()
         {
-            // If clock is triggered then maintain idle state
-            // Else switch to patrolling state
-            self.state = NPC.State.Patrolling;
+            // Doesn't attack so just switches back to patrolling
+            // Can use this method if we want NPC to idle after each burst of movement
+            isPathing = false;
+            self.Patrol();
 
         }
 
@@ -138,6 +83,23 @@ namespace Sprint02
             self.hitpoints--;
 
         }
-
+        public void generateRandomPosition()
+        {
+            int randDirection = random.Next(1, 3);
+            int randDistance = random.Next(0, 100) - 50;
+            switch (randDirection)
+            {
+                case (1):
+                    positionPathingTo = new Vector2(0, randDistance);
+                    break;
+                case (2):
+                    positionPathingTo = new Vector2(randDistance, 0);
+                    break;
+                default:
+                    positionPathingTo = self.Sprite.getLocation();
+                    isPathing = false;
+                    break;
+            }
+        }
     }
 }

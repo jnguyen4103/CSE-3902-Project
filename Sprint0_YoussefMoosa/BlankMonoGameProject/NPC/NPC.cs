@@ -10,7 +10,7 @@ namespace Sprint02
 {
     public abstract class NPC
     {
-        public ISprite Sprite;
+        public NPCSprite Sprite;
         public INPCStateMachine StateMachine;
         public enum State
         {
@@ -27,12 +27,55 @@ namespace Sprint02
         public int attackDamage;
         public int contactDamage;
 
-        protected abstract void Idle();
-        protected abstract void Patrol();
-        protected abstract void NPCAttack();
-        protected abstract void KillNPC();
-        protected abstract void Update();
         public abstract void Draw();
 
+
+        public void Idle()
+        {
+            state = State.Idle;
+        }
+        public void Patrol()
+        {
+            StateMachine.generateRandomPosition();
+            state = State.Patrolling;
+        }
+
+        public void NPCAttack()
+        {
+            state = State.Attacking;
+        }
+
+        public void KillNPC()
+        {
+            state = State.Dead;
+        }
+
+        protected void Update()
+        {
+            switch (this.state)
+            {
+                case (State.Idle):
+                    StateMachine.IdleState();
+                    break;
+                case (State.Patrolling):
+                    StateMachine.PatrolState();
+                    break;
+                case (State.Dead):
+                    StateMachine.DeadState();
+                    break;
+                case (State.Attacking):
+                    StateMachine.AttackState();
+                    break;
+                case (State.TakeDamage):
+                    StateMachine.TakeDamageState();
+                    break;
+                default:
+                    state = State.Idle;
+                    break;
+            }
+
+        }
+
     }
+
 }

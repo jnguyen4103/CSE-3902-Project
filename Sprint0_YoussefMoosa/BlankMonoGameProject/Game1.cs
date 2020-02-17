@@ -12,7 +12,7 @@ namespace Sprint02
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         //Texture2D linkSpriteSheet;
-        public ISprite LinkSprite { get; set; }
+        //public ISprite LinkSprite { get; set; }
         public NPC Monster { get; set; }
         public NPC[] MonsterList = new NPC[5];
         public int currentMonsterPosition = 0;

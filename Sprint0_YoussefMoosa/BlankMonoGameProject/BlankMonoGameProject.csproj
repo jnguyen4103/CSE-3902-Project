@@ -63,7 +63,6 @@
     <Compile Include="NPC\Stalfos.cs" />
     <Compile Include="NPC\NPC.cs" />
     <Compile Include="NPC\INPCStateMachine.cs" />
-    <Compile Include="FullSprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Controller\IController.cs" />
@@ -71,11 +70,8 @@
     <Compile Include="Sprites\FairySprite.cs" />
     <Compile Include="Sprites\GeeseSprite.cs" />
     <Compile Include="Sprites\GelSprite.cs" />
-    <Compile Include="Sprites\ISprite.cs" />
+    <Compile Include="Sprites\NPCSprite.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
-    <Compile Include="NoAnimSprite.cs" />
-    <Compile Include="NoMoveNoAnimSprite.cs" />
-    <Compile Include="NoMoveSprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\QuitCommand.cs" />

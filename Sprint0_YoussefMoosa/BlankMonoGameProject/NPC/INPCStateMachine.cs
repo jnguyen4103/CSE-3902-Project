@@ -13,6 +13,8 @@ namespace Sprint02
         void AttackState();
         void TakeDamageState();
         void DeadState();
+
+        void generateRandomPosition();
     }
  
 }

@@ -19,50 +19,6 @@ namespace Sprint02
             contactDamage = 1;
             StateMachine = new AquamentusSM(this);
         }
-        protected override void Idle()
-        {
-            state = State.Idle;
-        }
-        protected override void Patrol()
-        {
-            state = State.Patrolling;
-        }
-
-        protected override void NPCAttack()
-        {
-            // Depends if enemy attacks via contact or projectile
-            state = State.Attacking;
-        }
-
-        protected override void KillNPC()
-        {
-            state = State.Dead;
-        }
-        protected override void Update()
-        {
-            switch (this.state)
-            {
-                case (State.Idle):
-                    StateMachine.IdleState();
-                    break;
-                case (State.Patrolling):
-                    StateMachine.PatrolState();
-                    break;
-                case (State.Dead):
-                    StateMachine.DeadState();
-                    break;
-                case (State.Attacking):
-                    StateMachine.AttackState();
-                    break;
-                case (State.TakeDamage):
-                    StateMachine.TakeDamageState();
-                    break;
-                default:
-                    state = State.Patrolling;
-                    break;
-            }
-
-        }
 
         public override void Draw()
         {
@@ -76,12 +32,9 @@ namespace Sprint02
     {
         NPC self;
         Random random = new Random();
-        // Keeps track of which location the NPC is going to
-        Vector2 goToLocation;
-        // Keeps track of whether the NPC is at that location or not
-        bool isAtTargetLocation = true;
-
-        //
+        Vector2 positionPathingTo;
+        bool isPathing = false;
+        bool isAttacking = false;
         int attackCounter = 0;
 
         public AquamentusSM(NPC Aquamentus)
@@ -89,26 +42,16 @@ namespace Sprint02
             self = Aquamentus;
         }
 
-
         public void PatrolState()
         {
-            if (isAtTargetLocation)
+            if (!isPathing)
             {
-                int randDirection = random.Next(0, 2);
-                int randDistance = random.Next(0, 100) - 50;
-                switch (randDirection)
-                {
-                    case (1):
-                        goToLocation = new Vector2(0, randDistance);
-                        break;
-                    case (2):
-                        goToLocation = new Vector2(randDistance, 0);
-                        break;
-                    default:
-                        break;
-                }
-                self.Sprite.MoveToPosition(goToLocation);
-                isAtTargetLocation = self.Sprite.MoveToPosition(goToLocation);
+                self.Sprite.PathToPosition(positionPathingTo);
+                isPathing = true;
+            }
+            else if (self.Sprite.AtTargetLocation())
+            {
+                self.Idle();
             }
         }
 
@@ -116,31 +59,40 @@ namespace Sprint02
         public void AttackState()
         {
             attackCounter++;
-            if(attackCounter > 200)
+            if(!isAttacking)
             {
-                self.state = NPC.State.Patrolling;
+                self.Sprite.UpdateSpriteFrames(1);
+                isAttacking = true;
+            } else if (attackCounter >= 65)
+            {
+                // Use Fireball
+                attackCounter = 0;
                 self.Sprite.UpdateSpriteFrames(2);
-            } else if (attackCounter == 200)
-            {
-                // Activate FIREBALL
+                self.Idle();
             }
-            
-
         }
+
         public void DeadState()
         {
             // Turn off visibility in sprite
-
-
 
         }
 
         public void IdleState()
         {
-            // If clock is triggered then maintain idle state
-            // Else switch to patrolling state
-            self.state = NPC.State.Patrolling;
-
+            // Doesn't attack so just switches back to patrolling
+            // Can use this method if we want NPC to idle after each burst of movement
+            isPathing = false;
+            isAttacking = false;
+            attackCounter++;
+            if (attackCounter == 3)
+            {
+                self.NPCAttack();
+            }
+            else
+            {
+                self.Patrol();
+            }
         }
 
         public void TakeDamageState()
@@ -149,6 +101,23 @@ namespace Sprint02
             self.hitpoints--;
 
         }
-
+        public void generateRandomPosition()
+        {
+            int randDirection = random.Next(1, 3);
+            int randDistance = random.Next(0, 100) - 50;
+            switch (randDirection)
+            {
+                case (1):
+                    positionPathingTo = new Vector2(0, randDistance);
+                    break;
+                case (2):
+                    positionPathingTo = new Vector2(randDistance, 0);
+                    break;
+                default:
+                    positionPathingTo = self.Sprite.getLocation();
+                    isPathing = false;
+                    break;
+            }
+        }
     }
 }

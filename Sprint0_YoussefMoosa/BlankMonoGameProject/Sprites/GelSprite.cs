@@ -8,17 +8,11 @@ using System.Threading.Tasks;
 
 namespace Sprint02
 {
-    public class GelSprite : ISprite
+    public class GelSprite : NPCSprite
     {
-        public Texture2D spriteTexture;
-        double frameCounter = 0;
-        private int currentFrame = 0;
-        private readonly int framesTotal = 2;
-        private int currentAtlasColumn = 1;
-        private readonly Vector2 screen;
-        private Vector2 targetPosition;
-        public Vector2 position;
-        private readonly SpriteBatch batch;
+        // Variables for keeping track of which frame is drawn
+        double frameCounter = 0;                // Controls speed in which frames change
+        private int currentFrame = 0;           // The currrent frame being drawn
 
         public GelSprite(Texture2D texture,
            Vector2 spawn, Vector2 screenDim, SpriteBatch spriteBatch)
@@ -28,25 +22,12 @@ namespace Sprint02
             this.position.X = spawn.X;
             this.position.Y = spawn.Y;
             this.screen = screenDim;
-            this.batch = spriteBatch;
+            this.currentAtlasColumn = 1;
+            this.speed.X = 0.25f;
+            this.speed.Y = 0.25f;
         }
 
-        public void MoveToPosition(Vector2 newPosition)
-        {
-            targetPosition.X = position.X + newPosition.X;
-            targetPosition.Y = position.Y + newPosition.Y;
 
-        }
-
-        public void UpdateSpriteFrames(int newAtlasColumn)
-        {
-            currentAtlasColumn = newAtlasColumn;
-        }
-
-        public void UpdatePosition(Vector2 newPosition)
-        {
-            position = newPosition;
-        }
 
         private void Move()
         {
@@ -54,27 +35,24 @@ namespace Sprint02
             {
                 if (position.X > targetPosition.X)
                 {
-                    position.X--;
+                    position.X -= speed.X;
                 }
-                else
+                else if (position.X < targetPosition.X)
                 {
-                    position.X++;
+                    position.X += speed.X;
                 }
             }
             else if (position.Y != targetPosition.Y)
             {
                 if (position.Y > targetPosition.Y)
                 {
-                    position.Y--;
+                    position.Y -= speed.Y;
                 }
-                else
+                else if (position.Y < targetPosition.Y)
                 {
-                    position.Y++;
+                    position.Y += speed.Y;
                 }
             }
-
-            position.X++;
-
         }
 
         private void Animate()
@@ -83,7 +61,7 @@ namespace Sprint02
             if (frameCounter >= 1)
             {
                 currentFrame++;
-                if (framesTotal == currentFrame)
+                if (currentFrame == framesTotal)
                 {
                     currentFrame = 0;
                 }
@@ -92,7 +70,7 @@ namespace Sprint02
 
         }
 
-        public void DrawSprite()
+        public override void DrawSprite()
         {
             int frameWidth = 8;
             int frameHeight = 8;
