@@ -42,6 +42,7 @@
     <Compile Include="Commands\DecrementItem.cs" />
     <Compile Include="Commands\IncrementItem.cs" />
     <Compile Include="Commands\IncrementNPC.cs" />
+    <Compile Include="Effects\BoomerangEffect.cs" />
     <Compile Include="Effects\FireballEffect.cs" />
     <Compile Include="Effects\IEffect.cs" />
     <Compile Include="Effects\ISprite.cs" />
@@ -59,8 +60,11 @@
     <Compile Include="Items\RedHeart.cs" />
     <Compile Include="Items\YellowRupee.cs" />
     <Compile Include="Items\YellowTriforce.cs" />
+    <Compile Include="NPC\Goriyas.cs" />
     <Compile Include="NPC\Aquamentus.cs" />
     <Compile Include="NPC\Fairy.cs" />
+    <Compile Include="Sprites\BoomerangSprite.cs" />
+    <Compile Include="Sprites\GoriyasSprite.cs" />
     <Compile Include="Sprites\FireballSprite.cs" />
     <Compile Include="NPC\Geese.cs" />
     <Compile Include="NPC\Gel.cs" />
@@ -91,6 +95,7 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <Content Include="Sprite Atlas\Effects\AquamentusFireball.png" />
+    <Content Include="Sprite Atlas\Effects\BoomerangEffect.png" />
     <Content Include="Sprite Atlas\Items\BlueRupee.png" />
     <Content Include="Sprite Atlas\Items\Bomb.png" />
     <Content Include="Sprite Atlas\Items\Boomerang.png" />
@@ -120,6 +125,7 @@
     <Content Include="Sprite Atlas\Monsters\FairyDefault.png" />
     <Content Include="Sprite Atlas\Monsters\GeeseDefault.png" />
     <Content Include="Sprite Atlas\Monsters\GelDefault.png" />
+    <Content Include="Sprite Atlas\Monsters\GoriyasDefault.png" />
     <Content Include="Sprite Atlas\Monsters\GoriyasWalkingDown.png" />
     <Content Include="Sprite Atlas\Monsters\GoriyasWalkingLeft.png" />
     <Content Include="Sprite Atlas\Monsters\GoriyasWalkingRight.png" />

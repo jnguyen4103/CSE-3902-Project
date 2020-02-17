@@ -16,7 +16,7 @@ namespace Sprint02
         {
             if (monoProcess.currentMonsterPosition == 0)
             {
-                monoProcess.currentMonsterPosition = 4;
+                monoProcess.currentMonsterPosition = 5;
             }
             else
             {

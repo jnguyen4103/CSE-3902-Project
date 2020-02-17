@@ -14,7 +14,7 @@ namespace Sprint02
 
         public void Execute() 
         {
-            if (monoProcess.currentMonsterPosition == 4)
+            if (monoProcess.currentMonsterPosition == 5)
             {
                 monoProcess.currentMonsterPosition = 0;
             }

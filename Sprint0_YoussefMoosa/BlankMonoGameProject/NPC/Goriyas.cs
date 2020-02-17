@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Sprint02
 {
-    public class Aquamentus : NPC
+    public class Goriyas : NPC
     {
-        public Aquamentus(AquamentusSprite sprite, IEffect _attackEffect)
+        public Goriyas(GoriyasSprite sprite, IEffect _attackEffect)
         {
             state = State.Patrolling;
             Sprite = sprite;
@@ -17,7 +17,7 @@ namespace Sprint02
             maxHP = 1;
             attackDamage = 1;
             contactDamage = 1;
-            StateMachine = new AquamentusSM(this, _attackEffect);
+            StateMachine = new GoriyasSM(this, _attackEffect);
         }
 
         public override void Draw()
@@ -28,19 +28,21 @@ namespace Sprint02
 
     }
 
-    public class AquamentusSM : INPCStateMachine
+    public class GoriyasSM: INPCStateMachine
     {
-        Aquamentus self;
+        Goriyas self;
         Random random = new Random();
         IEffect AttackEffect;
         Vector2 positionPathingTo;
         bool isPathing = false;
         bool isAttacking = false;
         int attackCounter = 0;
+        int xPositionalDirection = 0; // -1 for left, 1 for right, 0 neither
+        int yPositionalDirection = 0; // -1 for down, 1 for up, 0 neither
 
-        public AquamentusSM(Aquamentus aquamentus, IEffect _attackEffect)
+        public GoriyasSM(Goriyas goriyas, IEffect _attackEffect)
         {
-            self = aquamentus;
+            self = goriyas;
             AttackEffect = _attackEffect;
         }
 
@@ -63,14 +65,15 @@ namespace Sprint02
             attackCounter++;
             if(!isAttacking)
             {
-                self.Sprite.UpdateSpriteFrames(1);
                 isAttacking = true;
-            } else if (attackCounter >= 65)
+            } else if (attackCounter == 65)
             {
-                // Use Fireball
-                AttackEffect.createEffectSprite(self.Sprite.getLocation(), 0, 0);
+                // Use Boomerang
+                AttackEffect.createEffectSprite(self.Sprite.getLocation(), xPositionalDirection, yPositionalDirection);
+            }
+            if (attackCounter >= 95)
+            {
                 attackCounter = 0;
-                self.Sprite.UpdateSpriteFrames(2);
                 self.Idle();
             }
         }
@@ -88,7 +91,7 @@ namespace Sprint02
             isPathing = false;
             isAttacking = false;
             attackCounter++;
-            if (attackCounter == 3)
+            if (attackCounter == 6)
             {
                 self.NPCAttack();
             }
@@ -106,15 +109,43 @@ namespace Sprint02
         }
         public void generateRandomPosition()
         {
-            int randDirection = random.Next(1, 3);
-            int randDistance = random.Next(0, 100) - 50;
+            /* 1 is Down
+             * 2 is Up
+             * 3 is Right
+             * 4 is Left
+             */
+            int randDirection = random.Next(1, 4);
+            int randDistance = random.Next(0, 50);
             switch (randDirection)
             {
                 case (1):
-                    positionPathingTo = new Vector2(0, randDistance);
+                    positionPathingTo = new Vector2(0, -1*randDistance);
+                    this.self.Sprite.UpdateSpriteFrames(randDirection);
+                    xPositionalDirection = 0;
+                    yPositionalDirection = -1;
+
                     break;
                 case (2):
+                    positionPathingTo = new Vector2(0, randDistance);
+                    this.self.Sprite.UpdateSpriteFrames(randDirection-2);
+                    xPositionalDirection = 0;
+                    yPositionalDirection = 1;
+
+                    break;
+                case (3):
+                    positionPathingTo = new Vector2(-1*randDistance, 0);
+                    this.self.Sprite.UpdateSpriteFrames(randDirection);
+                    xPositionalDirection = 1;
+                    yPositionalDirection = 0;
+
+                    break;
+                case (4):
                     positionPathingTo = new Vector2(randDistance, 0);
+                    this.self.Sprite.UpdateSpriteFrames(randDirection-2);
+                    xPositionalDirection = -1;
+                    yPositionalDirection = 0;
+
+
                     break;
                 default:
                     positionPathingTo = self.Sprite.getLocation();
