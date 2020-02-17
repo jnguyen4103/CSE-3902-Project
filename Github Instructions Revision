@@ -1,0 +1,37 @@
+1. Create a branch for the component you’re working on.
+
+2. Clone the branch from our remote repo onto your computer.
+Open Git Bash in the folder you want to store the branch to. This will be known as your  local branch.
+Use command: git clone --single-branch --branch <branch_name> <repo_url>
+
+3. Code, Test, Rinse, and Repeat.
+
+4. Open Git Bash in the folder that was cloned from the remote repository. This is known as the remote tracking branch.
+
+5. When you’re happy with your code and everything is working, add your changes to the staging area
+git add .
+
+Alternatively, if you know exactly what code you created or code you changed,
+You can specify that file which contains the code and add that. Example,
+to add 'Github Instruction Revisions' from your current directory, type
+
+git add './Github Instruction Revisions'
+
+Note that the pathname is the same as its UNIX counterpart,
+so think stdlinux if you're stuck on how this works.
+
+This can avoid a lot of conflicts when it comes to pushing and pulling
+code. It also solves the problem of accidentally changing VSCode settings.
+
+6. Commit the changes from the staging area
+git commit -m “Comment here”
+
+7. If two people are working on the same branch and there is a change to that branch, it is best practice to pull the new changes to your local repo before pushing your own changes to prevent conflicts. 
+git pull <repo_url> <branch_name>
+
+8. When you do the above, you might get some merge conflicts. Set up visual studio as a merge tool in order to resolve these conflicts. 
+  8a. If for some reason you decide that you didn't want to pull some changes, you can use the git reflog command to show your commit history   on a local branch.
+  8b. After you find the commit address you want (the string of numbers and letters before each commit), use git reset --hard <commit_address> to revert your local changes.
+
+9. Once these conflicts are resolved, you are ready to push the changes to that branch.
+git push
