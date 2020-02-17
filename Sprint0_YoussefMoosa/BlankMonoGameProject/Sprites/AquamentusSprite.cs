@@ -13,7 +13,6 @@ namespace Sprint02
         // Variables for keeping track of which frame is drawn
         double frameCounter = 0;                // Controls speed in which frames change
         private int currentFrame = 0;           // The currrent frame being drawn
-        private int currentAttackFrame = 0;     // Only important for monsters that idle when attacking
 
         public AquamentusSprite(Texture2D texture, Vector2 spawn, Vector2 screenDim, SpriteBatch spriteBatch)
         {

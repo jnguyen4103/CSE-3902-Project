@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Sprint02
 {
@@ -19,6 +20,8 @@ namespace Sprint02
         public ItemFactory Item { get; set; }
         public ItemFactory[] ItemList = new ItemFactory[13];
         public int currentItemPosition = 0;
+
+        public List<ISprite> EffectsList = new List<ISprite>();
 
         private Keys[] keyboardKeys = { Keys.O, Keys.P, Keys.U, Keys.I };
         private ICommand[] keyboardCommands = new ICommand[4];
@@ -68,14 +71,12 @@ namespace Sprint02
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
             
             //linkSpriteSheet = this.Content.Load<Texture2D>("LinkSpritesheet");
             MonsterList[0] = new Stalfos(new StalfosSprite(Content.Load<Texture2D>("StalfosDefault"), spawnPosition, screenDimensions, spriteBatch));
             MonsterList[1] = new Gel(new GelSprite(Content.Load<Texture2D>("GelDefault"), spawnPosition, screenDimensions, spriteBatch));
             MonsterList[2] = new Geese(new GeeseSprite(Content.Load<Texture2D>("GeeseDefault"), spawnPosition, screenDimensions, spriteBatch));
-            MonsterList[3] = new Aquamentus(new AquamentusSprite(Content.Load<Texture2D>("AquamentusDefault"), spawnPosition, screenDimensions, spriteBatch));
+            MonsterList[3] = new Aquamentus(new AquamentusSprite(Content.Load<Texture2D>("AquamentusDefault"), spawnPosition, screenDimensions, spriteBatch), new FireballEffect(Content.Load<Texture2D>("AquamentusFireball"), spriteBatch, this));
             MonsterList[4] = new Fairy(new FairySprite(Content.Load<Texture2D>("FairyDefault"), spawnPosition, screenDimensions, spriteBatch));
             ItemList[0] = new RedHeart(Content.Load<Texture2D>("RedHeart"), itemSpawnPosition, spriteBatch);
             ItemList[1] = new HeartContainer(Content.Load<Texture2D>("HeartContainer"), itemSpawnPosition, spriteBatch);
@@ -90,9 +91,6 @@ namespace Sprint02
             ItemList[10] = new Boomerang(Content.Load<Texture2D>("Boomerang"), itemSpawnPosition, spriteBatch);
             ItemList[11] = new Key(Content.Load<Texture2D>("Key"), itemSpawnPosition, spriteBatch);
             ItemList[12] = new LionKey(Content.Load<Texture2D>("LionKey"), itemSpawnPosition, spriteBatch);
-
-
-
             Monster = MonsterList[0];
             Item = ItemList[0];
 
@@ -135,6 +133,11 @@ namespace Sprint02
             spriteBatch.Begin();
             Monster.Draw();
             Item.DrawItem();
+
+            foreach (ISprite effect in EffectsList)
+            {
+                effect.DrawSprite();
+            }
 
             spriteBatch.End();
 

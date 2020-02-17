@@ -32,7 +32,6 @@ namespace Sprint02
     public class FairySM : INPCStateMachine
     {
         NPC self;
-        int randomCounter = 0;
         Random random = new Random();
         bool isPathing = false;
         Vector2 positionPathingTo;

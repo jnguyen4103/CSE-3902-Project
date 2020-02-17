@@ -1,89 +1,69 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Sprint02
 {
-
-    public class FireballSprite : ISprite
+    class FireballSprite : ISprite
     {
-        private Texture2D texture;
-        private readonly SpriteBatch spriteBatch;
-        private const int NumColumns = 4;
-        private const int FireballWidth = 8;
-        private const int FireballHeight = 10;
+        int currentFrame = 0;
+        double frameCounter = 0;
+        int currentAtlasColumn = 1;
+        int totalFrames = 4;
 
-        private Rectangle toDraw = new Rectangle(0, 0, FireballWidth, FireballHeight);
-
-        private const int FrameTime = 10;
-        private int frameTimer = FrameTime;
-        private int column = 0;
-
-        Vector2 newPosition;
-        private readonly Vector2 speed = new Vector2(0.5f, 0.5f);
-        private Vector2 position;
-        private Vector2 newPostion;
-        private readonly Vector2 screemDim;
-
-        public FireballSprite(Texture2D texture, SpriteBatch batch, Vector2 spawn)
+        Texture2D spriteTexture;
+        SpriteBatch spriteBatch;
+        Vector2 position;
+        int xDirection;
+        int yDirection;
+        public FireballSprite(Texture2D texture, SpriteBatch batch, Vector2 spawnPosition, int xDir, int yDir)
         {
-            this.texture = texture;
-            this.spriteBatch = batch;
-            position = newPosition = spawn;
+            spriteTexture = texture;
+            spriteBatch = batch;
+            position = spawnPosition;
+            xDirection = xDir;
+            yDirection = yDir;
+
+        }
+
+        private void Move()
+        {
+            position.X += xDirection;
+            position.Y += yDirection;
+        }
+
+
+        public void Animate()
+        {
+            frameCounter += 0.5;
+            if (frameCounter >= 1)
+            {
+                currentFrame++;
+                if (totalFrames == currentFrame)
+                {
+                    currentFrame = 0;
+                }
+                frameCounter = 0;
+            }
         }
 
         public void DrawSprite()
         {
-            /* Animate */
-            frameTimer--;
-            if (frameTimer <= 0)
-            {
-                column++;
-                if (column >= NumColumns)
-                {
-                    column = 0;
-                }
-                toDraw.Y = column * FireballHeight;
-                frameTimer = FrameTime;
-            }
+            int frameWidth = 8;
+            int frameHeight = 10;
+            int row = currentFrame / currentAtlasColumn;
+            int column = currentFrame % currentAtlasColumn;
 
-            /* Move */
-            if (position.X > newPosition.X)
-            {
-                position.X -= speed.X;
-            }
-            else if (position.X < newPosition.X)
-            {
-                position.X += speed.X;
-            }
+            this.Move();
+            this.Animate();
 
-            if (position.Y > newPosition.Y)
-            {
-                position.Y -= speed.Y;
-            }
-            else if (position.Y < newPosition.Y)
-            {
-                position.Y += speed.Y;
-            }
-
-            spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, FireballWidth, FireballHeight), toDraw, Color.White);
+            Rectangle srcRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
+            Rectangle destRectangle = new Rectangle((int)position.X, (int)position.Y, frameWidth, frameHeight);
+            spriteBatch.Draw(spriteTexture, destRectangle, srcRectangle, Color.White);
         }
-
-        public void MoveToPosition(Vector2 newPosition)
-        {
-            this.newPosition = this.position + newPosition;
-            
-        }
-
-        public void UpdateSpriteFrames(int newAtlas) 
-        { 
-            /* Only one column of animation. */
-        }
-
-        public void UpdatePosition(Vector2 newPosition)
-        {
-            this.newPosition = newPosition;
-        }
-
     }
-
 }

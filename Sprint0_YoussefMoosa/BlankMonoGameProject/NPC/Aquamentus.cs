@@ -9,7 +9,7 @@ namespace Sprint02
 {
     public class Aquamentus : NPC
     {
-        public Aquamentus(AquamentusSprite sprite)
+        public Aquamentus(AquamentusSprite sprite, IEffect _attackEffect)
         {
             state = State.Patrolling;
             Sprite = sprite;
@@ -17,7 +17,7 @@ namespace Sprint02
             maxHP = 1;
             attackDamage = 1;
             contactDamage = 1;
-            StateMachine = new AquamentusSM(this);
+            StateMachine = new AquamentusSM(this, _attackEffect);
         }
 
         public override void Draw()
@@ -30,16 +30,18 @@ namespace Sprint02
 
     public class AquamentusSM : INPCStateMachine
     {
-        NPC self;
+        Aquamentus self;
         Random random = new Random();
+        IEffect AttackEffect;
         Vector2 positionPathingTo;
         bool isPathing = false;
         bool isAttacking = false;
         int attackCounter = 0;
 
-        public AquamentusSM(NPC Aquamentus)
+        public AquamentusSM(Aquamentus aquamentus, IEffect _attackEffect)
         {
-            self = Aquamentus;
+            self = aquamentus;
+            AttackEffect = _attackEffect;
         }
 
         public void PatrolState()
@@ -66,6 +68,7 @@ namespace Sprint02
             } else if (attackCounter >= 65)
             {
                 // Use Fireball
+                AttackEffect.createEffectSprite(self.Sprite.getLocation());
                 attackCounter = 0;
                 self.Sprite.UpdateSpriteFrames(2);
                 self.Idle();

@@ -5,23 +5,23 @@ namespace Sprint02
 {
     public class FireballEffect : IEffect
     {
-        private Vector2 position;
-        private readonly Vector2 velocity;
-        private ISprite fireballSprite;
-        int vertDirection;
+        private Texture2D effectTexture;
+        private Game1 monoProcess;
+        private readonly SpriteBatch spriteBatch;
 
-        public const int UpDirection = -1;
-        public const int ForwardDirection = 0;
-        public const int DownDirection = 1;
-
-        public FireballEffect(SpriteBatch batch, Texture2D texture, Vector2 initialPos) 
+        public FireballEffect(Texture2D texture, SpriteBatch batch, Game1 monoInstance)
         {
-            position = initialPos;
-            fireballSprite = new FireballSprite(texture, batch, initialPos);
+            effectTexture = texture;
+            spriteBatch = batch;
+            monoProcess = monoInstance;
         }
 
-        public void Update()
+        public void createEffectSprite(Vector2 position)
         {
+            monoProcess.EffectsList.Add(new FireballSprite(effectTexture, spriteBatch, position,  -1, 0));
+            monoProcess.EffectsList.Add(new FireballSprite(effectTexture, spriteBatch, position, -1, -1));
+            monoProcess.EffectsList.Add(new FireballSprite(effectTexture, spriteBatch, position, -1, 1));
+
         }
     }
 }

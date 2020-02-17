@@ -1,8 +1,10 @@
 ﻿
+using Microsoft.Xna.Framework;
+
 namespace Sprint02
 {
     public interface IEffect
     {
-        void Update();    
+        void createEffectSprite(Vector2 position);
     }
 }

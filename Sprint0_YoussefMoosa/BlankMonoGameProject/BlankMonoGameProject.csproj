@@ -42,6 +42,9 @@
     <Compile Include="Commands\DecrementItem.cs" />
     <Compile Include="Commands\IncrementItem.cs" />
     <Compile Include="Commands\IncrementNPC.cs" />
+    <Compile Include="Effects\FireballEffect.cs" />
+    <Compile Include="Effects\IEffect.cs" />
+    <Compile Include="Effects\ISprite.cs" />
     <Compile Include="Items\BlueRupee.cs" />
     <Compile Include="Items\Bomb.cs" />
     <Compile Include="Items\Boomerang.cs" />
@@ -58,6 +61,7 @@
     <Compile Include="Items\YellowTriforce.cs" />
     <Compile Include="NPC\Aquamentus.cs" />
     <Compile Include="NPC\Fairy.cs" />
+    <Compile Include="Sprites\FireballSprite.cs" />
     <Compile Include="NPC\Geese.cs" />
     <Compile Include="NPC\Gel.cs" />
     <Compile Include="NPC\Stalfos.cs" />
