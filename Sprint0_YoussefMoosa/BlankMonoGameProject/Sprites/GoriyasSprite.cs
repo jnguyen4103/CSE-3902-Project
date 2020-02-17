@@ -72,7 +72,6 @@ namespace Sprint02
                 }
                 frameCounter = 0;
             }
-
         }
 
         public override void DrawSprite()

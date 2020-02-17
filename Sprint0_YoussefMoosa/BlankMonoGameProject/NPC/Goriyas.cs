@@ -114,7 +114,7 @@ namespace Sprint02
              * 3 is Right
              * 4 is Left
              */
-            int randDirection = random.Next(1, 4);
+            int randDirection = random.Next(1, 5);
             int randDistance = random.Next(0, 50);
             switch (randDirection)
             {
@@ -135,14 +135,14 @@ namespace Sprint02
                 case (3):
                     positionPathingTo = new Vector2(-1*randDistance, 0);
                     this.self.Sprite.UpdateSpriteFrames(randDirection);
-                    xPositionalDirection = 1;
+                    xPositionalDirection = -1;
                     yPositionalDirection = 0;
 
                     break;
                 case (4):
                     positionPathingTo = new Vector2(randDistance, 0);
                     this.self.Sprite.UpdateSpriteFrames(randDirection-2);
-                    xPositionalDirection = -1;
+                    xPositionalDirection = 1;
                     yPositionalDirection = 0;
 
 

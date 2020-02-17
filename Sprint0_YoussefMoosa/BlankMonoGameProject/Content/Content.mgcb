@@ -193,6 +193,18 @@
 /processorParam:TextureFormat=Color
 /build:../Sprite Atlas/Items/YellowTriforce.png;YellowTriforce.png
 
+#begin ../Sprite Atlas/Link/LinkWalkingDefault.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../Sprite Atlas/Link/LinkWalkingDefault.png;LinkWalkingDefault.png
+
 #begin ../Sprite Atlas/Monsters/FairyDefault.png
 /importer:TextureImporter
 /processor:TextureProcessor

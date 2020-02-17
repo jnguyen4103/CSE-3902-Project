@@ -14,6 +14,10 @@ namespace Sprint02
         SpriteBatch spriteBatch;
         //Texture2D linkSpriteSheet;
         //public ISprite LinkSprite { get; set; }
+        public Link Link;
+        public LinkSprite SpriteLink;
+
+
         public NPC Monster { get; set; }
         public NPC[] MonsterList = new NPC[6];
         public int currentMonsterPosition = 0;
@@ -22,13 +26,15 @@ namespace Sprint02
         public int currentItemPosition = 0;
 
         public List<ISprite> EffectsList = new List<ISprite>();
+        public IEffect[] LinkSecondaries = new IEffect[1];
 
-        private Keys[] keyboardKeys = { Keys.O, Keys.P, Keys.U, Keys.I };
-        private ICommand[] keyboardCommands = new ICommand[4];
+        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1 };
+        private ICommand[] keyboardCommands = new ICommand[10];
         private KeyboardController keyboardController;
 
         public readonly Vector2 itemSpawnPosition = new Vector2(100, 240);
         public readonly Vector2 spawnPosition = new Vector2(400, 240);
+        public readonly Vector2 LinkSpawn = new Vector2(600f, 100f);
 
         public Vector2 screenDimensions = new Vector2(800.0f, 480.0f);
 
@@ -53,10 +59,17 @@ namespace Sprint02
             // TODO: Add your initialization logic here
 
 
-            keyboardCommands[0] = new IncrementNPC(this);
-            keyboardCommands[1] = new DecrementNPC(this);
-            keyboardCommands[2] = new IncrementItem(this);
-            keyboardCommands[3] = new DecrementItem(this);
+            keyboardCommands[0] = new LinkWalkUp(this);
+            keyboardCommands[1] = new LinkWalkDown(this);
+            keyboardCommands[2] = new LinkWalkLeft(this);
+            keyboardCommands[3] = new LinkWalkRight(this);
+            keyboardCommands[4] = new IncrementNPC(this);
+            keyboardCommands[5] = new DecrementNPC(this);
+            keyboardCommands[6] = new IncrementItem(this);
+            keyboardCommands[7] = new DecrementItem(this);
+            keyboardCommands[8] = new QuitCommand(this);
+            keyboardCommands[9] = new LinkUseBoomerang(this);
+
 
             keyboardController = new KeyboardController(keyboardKeys, keyboardCommands);
 
@@ -71,7 +84,13 @@ namespace Sprint02
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
+            SpriteLink = new LinkSprite(Content.Load<Texture2D>("LinkWalkingDefault"), LinkSpawn, spriteBatch);
+            LinkSecondaries[0] = new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this);
+            Link = new Link(SpriteLink, LinkSecondaries);
+
+
+
             //linkSpriteSheet = this.Content.Load<Texture2D>("LinkSpritesheet");
             MonsterList[0] = new Stalfos(new StalfosSprite(Content.Load<Texture2D>("StalfosDefault"), spawnPosition, screenDimensions, spriteBatch));
             MonsterList[1] = new Gel(new GelSprite(Content.Load<Texture2D>("GelDefault"), spawnPosition, screenDimensions, spriteBatch));
@@ -135,6 +154,7 @@ namespace Sprint02
             spriteBatch.Begin();
             Monster.Draw();
             Item.DrawItem();
+            Link.Draw();
 
             foreach (ISprite effect in EffectsList)
             {

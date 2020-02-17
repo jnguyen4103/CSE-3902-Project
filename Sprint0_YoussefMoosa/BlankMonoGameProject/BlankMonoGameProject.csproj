@@ -42,6 +42,11 @@
     <Compile Include="Commands\DecrementItem.cs" />
     <Compile Include="Commands\IncrementItem.cs" />
     <Compile Include="Commands\IncrementNPC.cs" />
+    <Compile Include="Commands\LinkUseBoomerang.cs" />
+    <Compile Include="Commands\LinkWalkRight.cs" />
+    <Compile Include="Commands\LinkWalkDown.cs" />
+    <Compile Include="Commands\LinkWalkLeft.cs" />
+    <Compile Include="Commands\LinkWalkUp.cs" />
     <Compile Include="Effects\BoomerangEffect.cs" />
     <Compile Include="Effects\FireballEffect.cs" />
     <Compile Include="Effects\IEffect.cs" />
@@ -60,6 +65,12 @@
     <Compile Include="Items\RedHeart.cs" />
     <Compile Include="Items\YellowRupee.cs" />
     <Compile Include="Items\YellowTriforce.cs" />
+    <Compile Include="Link\ILink.cs" />
+    <Compile Include="Link\Link.cs" />
+    <Compile Include="Link\LinkSprite.cs" />
+    <Compile Include="Link\LinkStateMachine.cs" />
+    <Compile Include="Link\oldLink.cs" />
+    <Compile Include="Link\oldLinkSM.cs" />
     <Compile Include="NPC\Goriyas.cs" />
     <Compile Include="NPC\Aquamentus.cs" />
     <Compile Include="NPC\Fairy.cs" />
@@ -115,6 +126,7 @@
     <Content Include="Sprite Atlas\Link\LinkUseItemDown.png" />
     <Content Include="Sprite Atlas\Link\LinkUseItemLeft.png" />
     <Content Include="Sprite Atlas\Link\LinkUseItemRight.png" />
+    <Content Include="Sprite Atlas\Link\LinkWalkingDefault.png" />
     <Content Include="Sprite Atlas\Link\LinkWalkingDown.png" />
     <Content Include="Sprite Atlas\Link\LinkWalkingLeft.png" />
     <Content Include="Sprite Atlas\Link\LinkWalkingRight.png" />

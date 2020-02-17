@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint02
 {
-    class BoomerangeSprite : ISprite
+    class BoomerangSprite : ISprite
     {
         int currentFrame = 0;
         double frameCounter = 0;
@@ -20,7 +20,7 @@ namespace Sprint02
         Vector2 position;
         int xDirection;
         int yDirection;
-        public BoomerangeSprite(Texture2D texture, SpriteBatch batch, Vector2 spawnPosition, int xDir, int yDir)
+        public BoomerangSprite(Texture2D texture, SpriteBatch batch, Vector2 spawnPosition, int xDir, int yDir)
         {
             spriteTexture = texture;
             spriteBatch = batch;

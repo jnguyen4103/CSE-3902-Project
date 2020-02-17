@@ -19,7 +19,7 @@ namespace Sprint02
         public void createEffectSprite(Vector2 position, int xDir, int yDir)
         {
 
-            monoProcess.EffectsList.Add(new FireballSprite(effectTexture, spriteBatch, position, xDir, yDir));
+            monoProcess.EffectsList.Add(new BoomerangSprite(effectTexture, spriteBatch, position, xDir, yDir));
 
         }
     }
