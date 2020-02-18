@@ -9,6 +9,7 @@ namespace Sprint02
 {
     public interface ILink
     {
+        // Allows for public access of Link's state machine and sprite for his decorators
         LinkStateMachine StateMachine { get; set; }
         LinkSprite SpriteLink { get; set; }
         void Update();

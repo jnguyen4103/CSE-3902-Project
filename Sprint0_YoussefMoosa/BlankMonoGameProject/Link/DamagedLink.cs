@@ -53,6 +53,8 @@ namespace Sprint02
 
         public void Update()
         {
+            // After 180 frames remove damage decorator
+            // and set Link to idle
             DamageTimer++;
             if(DamageTimer > 180)
             {

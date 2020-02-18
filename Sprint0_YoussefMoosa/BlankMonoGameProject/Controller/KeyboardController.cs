@@ -36,6 +36,11 @@ namespace Sprint02
             if (keyState.IsKeyUp(Keys.D1)) { secondaryTriggered = false; }
             if (keyState.IsKeyUp(Keys.Z)) { linkAttackTriggered = false; }
             if (keyState.IsKeyUp(Keys.E)) { linkDamagedTriggered = false; }
+            
+            // If Link attacks he won't be able to attack until 60 frames have passed
+            // If Link is damaged he won't be able to move and attack until 180 frames have
+            // passed
+
 
             if (attackTimer < 60)
             {
@@ -45,6 +50,10 @@ namespace Sprint02
             {
                 damageTimer++;
             }
+
+            // Legend of Zelda prioritizes veritcal movement over horizontal so horizontal movement
+            // is ignored if the W and S keys are pressed
+            // There are flags coded in so a command will only activate once on a key press
 
             foreach (Keys k in pressed)
             {

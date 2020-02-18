@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sprint02
 {
+    // Enemies have basic behavior
+    // Patrolling - Randomly moving around
+    // Attacking - Using attacks and/or chasing Link
+    // Dead - Got rekt by Link
+    // TakeDamage - Got injured
     public interface INPCStateMachine
     {
         void IdleState();

@@ -29,7 +29,8 @@ namespace Sprint02
 
         public override void UpdateSpriteFrames(int newAtlasColumn)
         {
-            // Changes either the attacking or walkin frames are going to be drawn
+            // Changes either the attacking or walking frames are going to be drawn
+            // Also allows for directional change
             currentAtlasColumn = newAtlasColumn;
         }
 
@@ -62,6 +63,7 @@ namespace Sprint02
 
         private void Animate()
         {
+            // NPC moves slower
             frameCounter += 0.075;
             if (frameCounter >= 1)
             {

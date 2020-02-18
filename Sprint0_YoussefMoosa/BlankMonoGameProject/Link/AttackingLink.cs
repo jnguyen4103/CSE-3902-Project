@@ -15,6 +15,7 @@ namespace Sprint02
         public LinkStateMachine LinkSM;
         public Link decoratedLink;
         public Game1 monoProcess;
+        // Attack timer so the decorator is removed after certain amount of frames
         int AttackTimer = 0;
 
 
@@ -42,6 +43,8 @@ namespace Sprint02
 
         public void TakeDamage()
         {
+            // You can be damaged while attacking
+            // So it removes the attacking decorator and adds the damaged one
             RemoveDecorator();
             monoProcess.Link.StateMachine.DamagedState();
         }
@@ -54,6 +57,7 @@ namespace Sprint02
 
         public void Update()
         {
+            // Leaves the attack animation after 10 frames
             AttackTimer++;
             if(AttackTimer == 10)
             {

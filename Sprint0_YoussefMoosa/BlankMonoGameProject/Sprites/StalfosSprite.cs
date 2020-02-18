@@ -33,6 +33,8 @@ namespace Sprint02
 
         private void Move()
         {
+            // If NPC Sprite is not at target x or y location
+            // then each frame it will move closer to it by a set amount of speed
             if (position.X != targetPosition.X)
             {
                 if (position.X > targetPosition.X)
@@ -59,6 +61,7 @@ namespace Sprint02
 
         private void Animate()
         {
+            // Animates the basic walking frames of the NPC Sprite
             frameCounter += 0.1;
             if (frameCounter >= 1)
             {
@@ -74,6 +77,7 @@ namespace Sprint02
 
         public override void DrawSprite()
         {
+            // Size of NPC animation frame
             int frameWidth = 15;
             int frameHeight = 16;
             int row = currentFrame / currentAtlasColumn;

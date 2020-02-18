@@ -62,15 +62,18 @@ namespace Sprint02
 
         public void AttackState()
         {
+            // After a specific amount of times the NPC paths, it'll switch to attacking state
+            // then revert back to randomly pathing
             attackCounter++;
             if(!isAttacking)
             {
                 isAttacking = true;
             } else if (attackCounter == 65)
             {
-                // Use Boomerang
+                // Use Boomerang at given location and fire in direction NPC is facing
                 AttackEffect.createEffectSprite(self.Sprite.getLocation(), xPositionalDirection, yPositionalDirection);
             }
+            // NPC will pause for 30 frames after attacking prior to changing states
             if (attackCounter >= 95)
             {
                 attackCounter = 0;
@@ -114,6 +117,10 @@ namespace Sprint02
              * 3 is Right
              * 4 is Left
              */
+
+            // Generates random distance, this is more
+            // involved than other NPCS since this one
+            // has directional sprite movement
             int randDirection = random.Next(1, 5);
             int randDistance = random.Next(0, 50);
             switch (randDirection)

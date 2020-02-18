@@ -10,6 +10,7 @@ namespace Sprint02
 {
     public abstract class ItemFactory
     {
+        // Keeps track of basic info about items
         protected Texture2D itemTexture;
         protected Vector2 itemLocation;
         protected SpriteBatch spriteBatch;

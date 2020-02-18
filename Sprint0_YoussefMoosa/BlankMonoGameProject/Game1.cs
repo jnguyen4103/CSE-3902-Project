@@ -12,43 +12,63 @@ namespace Sprint02
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        //Texture2D linkSpriteSheet;
-        //public ISprite LinkSprite { get; set; }
+
+        // Link Object & Sprite
         public ILink Link;
         public LinkSprite SpriteLink;
 
         /* Link SpriteSheet Breakdown
          * Each element in the array is a rectangle which covers
          * all the frame for one type of sprite animation
-         * Index 0 : Walking Up
-         * Index 1: Walking Down
-         * Index 2: Walking Right
-         * Index 3: Walking Left
-         * Index 4: Hurt Walking Up
-         * Index 5: Hurt Walking Down
-         * Index 6: Hurt Walking Right
-         * Index 7: Hurt Walking Left
-         * Index 8: Attacking Up (Needs flipped)
-         * Index 9: Attacking Down
-         * Index 10: Attacking Right (Needs flipped for left attacking)
+         * Element 0 : Walking Up
+         * Element 1: Walking Down
+         * Element 2: Walking Right
+         * Element 3: Walking Left
+         * Element 4: Hurt Walking Up
+         * Element 5: Hurt Walking Down
+         * Element 6: Hurt Walking Right
+         * Element 7: Hurt Walking Left
+         * Element 8: Attacking Up (Needs flipped)
+         * Element 9: Attacking Down
+         * Element 10: Attacking Right (Needs flipped for left attacking)
          */
         public Rectangle[] LinkAnimationFrames = new Rectangle[11];
 
 
+        // Monster is the current NPC displayed
         public NPC Monster { get; set; }
+
+        /* MonsterList has a list of all the monsters so Monster can just be swapped for a NPC on the list
+         * Element 0: Stalfos
+         * Element 1: Geese
+         * Element 2: Gel
+         * Element 3: Aquamentus
+         * Element 4: Fairy
+         * Element 5: Goriyas
+         */
         public NPC[] MonsterList = new NPC[6];
         public int currentMonsterPosition = 0;
+
+
+        // ItemList keeps track of all the items and allows the command to just swap which item is displayed
         public ItemFactory Item { get; set; }
         public ItemFactory[] ItemList = new ItemFactory[13];
         public int currentItemPosition = 0;
 
+        /* Each effect (items used or NPC projectile attacks) have an effect which spawns the sprite.
+         * The sprite is loaded into an effects List which then is drawn in the Draw() method
+         * Whenever an effect is created, a new sprite is added to the EffectsList
+         */
         public List<ISprite> EffectsList = new List<ISprite>();
+
+        // A list of all the secondary weapons Link can use (only boomerang is implemented)
         public IEffect[] LinkSecondaries = new IEffect[1];
 
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1, Keys.R, Keys.Z, Keys.E };
         private ICommand[] keyboardCommands = new ICommand[13];
         private KeyboardController keyboardController;
 
+        // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
         public readonly Vector2 itemSpawnPosition = new Vector2(100, 240);
         public readonly Vector2 spawnPosition = new Vector2(400, 240);
         public readonly Vector2 LinkSpawn = new Vector2(600f, 100f);
@@ -75,7 +95,7 @@ namespace Sprint02
         {
             // TODO: Add your initialization logic here
 
-
+            // Adding all of the commands into the keyboard controller
             keyboardCommands[0] = new LinkWalkUp(this);
             keyboardCommands[1] = new LinkWalkDown(this);
             keyboardCommands[2] = new LinkWalkLeft(this);
@@ -90,7 +110,7 @@ namespace Sprint02
             keyboardCommands[11] = new LinkAttack(this);
             keyboardCommands[12] = new DamageLink(this);
 
-
+            // Setting all of the elements in the Animation array to their proper locations on Link's sprite sheet
             // ILink Link will use these
             LinkAnimationFrames[0] = new Rectangle(0, 0, 16, 32);
             LinkAnimationFrames[1] = new Rectangle(16, 0, 16, 32);
@@ -122,13 +142,14 @@ namespace Sprint02
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // Creating Link and loading in his effects so he can use them when the command is called
             SpriteLink = new LinkSprite(Content.Load<Texture2D>("LinkSpriteSheet"), LinkSpawn, spriteBatch, LinkAnimationFrames);
             LinkSecondaries[0] = new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this);
             Link = new Link(SpriteLink, LinkSecondaries, this);
 
 
 
-            //linkSpriteSheet = this.Content.Load<Texture2D>("LinkSpritesheet");
+            // Loading in the monster list
             MonsterList[0] = new Stalfos(new StalfosSprite(Content.Load<Texture2D>("StalfosDefault"), spawnPosition, screenDimensions, spriteBatch));
             MonsterList[1] = new Gel(new GelSprite(Content.Load<Texture2D>("GelDefault"), spawnPosition, screenDimensions, spriteBatch));
             MonsterList[2] = new Geese(new GeeseSprite(Content.Load<Texture2D>("GeeseDefault"), spawnPosition, screenDimensions, spriteBatch));
@@ -136,6 +157,7 @@ namespace Sprint02
             MonsterList[4] = new Fairy(new FairySprite(Content.Load<Texture2D>("FairyDefault"), spawnPosition, screenDimensions, spriteBatch));
             MonsterList[5] = new Goriyas(new GoriyasSprite(Content.Load<Texture2D>("GoriyasDefault"), spawnPosition, screenDimensions, spriteBatch), new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this));
 
+            // Loading in the items list
             ItemList[0] = new RedHeart(Content.Load<Texture2D>("RedHeart"), itemSpawnPosition, spriteBatch);
             ItemList[1] = new HeartContainer(Content.Load<Texture2D>("HeartContainer"), itemSpawnPosition, spriteBatch);
             ItemList[2] = new Bomb(Content.Load<Texture2D>("Bomb"), itemSpawnPosition, spriteBatch);
@@ -149,6 +171,8 @@ namespace Sprint02
             ItemList[10] = new Boomerang(Content.Load<Texture2D>("Boomerang"), itemSpawnPosition, spriteBatch);
             ItemList[11] = new Key(Content.Load<Texture2D>("Key"), itemSpawnPosition, spriteBatch);
             ItemList[12] = new LionKey(Content.Load<Texture2D>("LionKey"), itemSpawnPosition, spriteBatch);
+
+            // Defining the first monster and item so they can be drawn later on
             Monster = MonsterList[0];
             Item = ItemList[0];
 
@@ -185,8 +209,6 @@ namespace Sprint02
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-            //LinkSprite.DrawSprite();
 
             spriteBatch.Begin();
             Monster.Draw();
