@@ -1,0 +1,14 @@
+Sprint02 Reflection 
+Author: John Nguyen
+
+This Sprint revealed a major weakness with our team and that was communication. I will first give credit where credit is due and say that
+Stephen Hogg did the majority of the work for Sprint2. This is not to say that every other member on the team was lazy because we had all 
+implemented our part but because commits weren't being made to GitHub, there was no way to tell whether or not work was being done. For example
+my job was to implement items and the ability to scroll through them and I did exactly that but then later found out that Stephen had
+already done it also because I haven't committed to my own branch yet. 
+
+This Sprint also revealed that we must be more organized as a team for future sprints. We have decided that before this next Sprint, we will sit
+down and plan out a skeleton for everything that will be required in Sprint3 instead of just assigning "tasks" to people based on the 
+Sprint requirement. This will allow everyone to know exactly what to work on and we can hopefully avoid stepping on each other's toes. Stephen
+should not be the only one doing work for this class because it is a team effort after all. We're all here to learn and improve as
+programmers.
