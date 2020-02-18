@@ -84,6 +84,7 @@ namespace Sprint02
 
         public void AttackState()
         {
+            Link.State = Link.LinkState.Attacking;
             switch (Link.Direction)
             {
                 case (Link.LinkDirection.Down):

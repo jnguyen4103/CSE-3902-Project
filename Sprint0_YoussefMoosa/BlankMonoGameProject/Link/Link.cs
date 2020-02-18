@@ -73,6 +73,7 @@ namespace Sprint02
 
         public void Update()
         {
+
             switch (State)
             {
                 case (LinkState.Idle):
@@ -83,6 +84,7 @@ namespace Sprint02
                     break;
                 case (LinkState.Attacking):
                     LinkSM.AttackState();
+                    State = LinkState.Idle;
                     break;
                 case (LinkState.UsingItem):
                     LinkSM.UsingItemState();

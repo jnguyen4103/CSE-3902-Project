@@ -16,7 +16,8 @@ namespace Sprint02
         Vector2 lastFrameSize;
         SpriteBatch batch;
         Texture2D LinkTexture;
-        bool isMoving = false;
+        public bool isMoving = false;
+        public bool isAttacking = false;
         float angle = 0f;
         int currentRow = 0;
 
@@ -25,8 +26,8 @@ namespace Sprint02
         int frameHeight = 16;
 
         // Default drawing height and width
-        int drawWidth = 16;
-        int drawHeight = 16;
+        public int drawWidth = 16;
+        public int drawHeight = 16;
         double frameCounter = 0;
         int rowsTotal = 2;
         int currentFrameColumn = 1;
@@ -58,6 +59,7 @@ namespace Sprint02
                 if (rowsTotal == currentRow)
                 {
                     currentRow = 0;
+                    isAttacking = false;
                 }
                 frameCounter = 0;
             }
@@ -72,30 +74,37 @@ namespace Sprint02
 
             if((newFrame.X / 16) == 8 || (newFrame.X / 16) == 9)
             {
-                Console.WriteLine("Vertical Attack");
                 animationCounter = 3;
+                isAttacking = true;
+                currentRow = 0;
                 lastFrameSize = new Vector2(16, 28);
             }
             else if ((newFrame.X / 16) == 10)
             {
-                Console.WriteLine("Horiziontal Attack");
                 animationCounter = 3;
+                isAttacking = true;
+                currentRow = 0;
                 lastFrameSize = new Vector2(28, 16);
             } else
             {
                 animationCounter = 1;
+                isAttacking = false;
                 lastFrameSize = new Vector2(16, 16);
             }
         }
 
         public void DrawSprite()
         {
+            drawWidth = 16;
+            drawHeight = 16;
 
-            if (currentRow > 0)
+            if (currentRow > 0 && isAttacking)
             {
                 drawWidth = (int)lastFrameSize.X;
                 drawHeight = (int)lastFrameSize.Y;
             }
+
+            if (isAttacking) { Animate(); }
 
             Rectangle srcRectangle = new Rectangle(frameWidth * currentFrameColumn, frameHeight * currentRow, drawWidth, drawHeight);
             Rectangle destRectangle = new Rectangle((int)position.X, (int)position.Y, drawWidth, drawHeight);

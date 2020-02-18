@@ -55,7 +55,7 @@ namespace Sprint02
         public void Update()
         {
             AttackTimer++;
-            if(AttackTimer > 14)
+            if(AttackTimer == 10)
             {
                 AttackTimer = 0;
                 RemoveDecorator();
