@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,16 +89,16 @@ namespace Sprint02
             switch (Link.Direction)
             {
                 case (Link.LinkDirection.Down):
-                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[9], false, 0);
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[9], false, new SpriteEffects());
                     break;
                 case (Link.LinkDirection.Up):
-                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[8], false, 0);
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[8], false, SpriteEffects.FlipVertically);
                     break;
                 case (Link.LinkDirection.Left):
-                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[10], false, 0);
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[10], false, SpriteEffects.FlipHorizontally);
                     break;
                 case (Link.LinkDirection.Right):
-                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[10], false, 0);
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[10], false, new SpriteEffects());
                     break;
                 default:
                     break;

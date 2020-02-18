@@ -11,6 +11,7 @@ namespace Sprint02
         private bool itemSwapTriggered = false;
         private bool secondaryTriggered = false;
         private bool linkAttackTriggered = false;
+        private int attackTimer = 60;
 
         public KeyboardController(Keys[] keys, ICommand[] commands) 
         {
@@ -32,7 +33,10 @@ namespace Sprint02
             if (keyState.IsKeyUp(Keys.D1)) { secondaryTriggered = false; }
             if (keyState.IsKeyUp(Keys.Z)) { linkAttackTriggered = false; }
 
-
+            if (attackTimer < 60)
+            {
+                attackTimer++;
+            }
 
             foreach (Keys k in pressed)
             {
@@ -57,8 +61,9 @@ namespace Sprint02
                         secondaryTriggered = true;
                     }
 
-                    if (!linkAttackTriggered & k == Keys.Z)
+                    if (!linkAttackTriggered & k == Keys.Z & attackTimer == 60)
                     {
+                        attackTimer = 0;
                         keyMappings[k].Execute();
                         linkAttackTriggered = true;
                     }

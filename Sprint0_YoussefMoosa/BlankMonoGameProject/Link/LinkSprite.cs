@@ -18,7 +18,7 @@ namespace Sprint02
         Texture2D LinkTexture;
         public bool isMoving = false;
         public bool isAttacking = false;
-        float angle = 0f;
+        SpriteEffects SpriteEffect;
         int currentRow = 0;
 
         // Default sprite frame height and width
@@ -65,12 +65,12 @@ namespace Sprint02
             }
         }
 
-        public void UpdateLinkAnimationFrames(Rectangle newFrame, bool moving, float rotation)
+        public void UpdateLinkAnimationFrames(Rectangle newFrame, bool moving, SpriteEffects spriteEffect)
         {
             currentFrameColumn = (newFrame.X/16);
             currentAnimationFrame = newFrame;
             isMoving = moving;
-            angle = rotation;
+            SpriteEffect = spriteEffect;
 
             if((newFrame.X / 16) == 8 || (newFrame.X / 16) == 9)
             {
@@ -95,8 +95,11 @@ namespace Sprint02
 
         public void DrawSprite()
         {
+            Vector2 origin = new Vector2(0, 0);
             drawWidth = 16;
             drawHeight = 16;
+
+
 
             if (currentRow > 0 && isAttacking)
             {
@@ -104,11 +107,18 @@ namespace Sprint02
                 drawHeight = (int)lastFrameSize.Y;
             }
 
+            // If a Sprite Effect exists change the origin of the Link Sprite
+            if (!SpriteEffect.Equals(new SpriteEffects()))
+            {
+                origin.X = drawWidth - frameWidth;
+                origin.Y = drawHeight - frameHeight;
+            }
+
             if (isAttacking) { Animate(); }
 
             Rectangle srcRectangle = new Rectangle(frameWidth * currentFrameColumn, frameHeight * currentRow, drawWidth, drawHeight);
             Rectangle destRectangle = new Rectangle((int)position.X, (int)position.Y, drawWidth, drawHeight);
-            batch.Draw(LinkTexture, destRectangle, srcRectangle, Color.White);
+            batch.Draw(LinkTexture, destRectangle, srcRectangle, Color.White, 0.0f, origin, SpriteEffect, 0.0f);
         }
 
     }
