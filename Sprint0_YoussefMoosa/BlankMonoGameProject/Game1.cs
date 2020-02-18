@@ -14,8 +14,25 @@ namespace Sprint02
         SpriteBatch spriteBatch;
         //Texture2D linkSpriteSheet;
         //public ISprite LinkSprite { get; set; }
-        public Link Link;
+        public ILink Link;
         public LinkSprite SpriteLink;
+
+        /* Link SpriteSheet Breakdown
+         * Each element in the array is a rectangle which covers
+         * all the frame for one type of sprite animation
+         * Index 0 : Walking Up
+         * Index 1: Walking Down
+         * Index 2: Walking Right
+         * Index 3: Walking Left
+         * Index 4: Hurt Walking Up
+         * Index 5: Hurt Walking Down
+         * Index 6: Hurt Walking Right
+         * Index 7: Hurt Walking Left
+         * Index 8: Attacking Up (Needs flipped)
+         * Index 9: Attacking Down
+         * Index 10: Attacking Right (Needs flipped for left attacking)
+         */
+        public Rectangle[] LinkAnimationFrames = new Rectangle[11];
 
 
         public NPC Monster { get; set; }
@@ -28,8 +45,8 @@ namespace Sprint02
         public List<ISprite> EffectsList = new List<ISprite>();
         public IEffect[] LinkSecondaries = new IEffect[1];
 
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1 };
-        private ICommand[] keyboardCommands = new ICommand[10];
+        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1, Keys.R, Keys.Z };
+        private ICommand[] keyboardCommands = new ICommand[12];
         private KeyboardController keyboardController;
 
         public readonly Vector2 itemSpawnPosition = new Vector2(100, 240);
@@ -69,7 +86,26 @@ namespace Sprint02
             keyboardCommands[7] = new DecrementItem(this);
             keyboardCommands[8] = new QuitCommand(this);
             keyboardCommands[9] = new LinkUseBoomerang(this);
+            keyboardCommands[10] = new ResetCommand(this);
+            keyboardCommands[11] = new LinkAttack(this);
 
+
+            // ILink Link will use these
+            LinkAnimationFrames[0] = new Rectangle(0, 0, 16, 32);
+            LinkAnimationFrames[1] = new Rectangle(16, 0, 16, 32);
+            LinkAnimationFrames[2] = new Rectangle(32, 0, 16, 32);
+            LinkAnimationFrames[3] = new Rectangle(48, 0, 16, 32);
+
+            // ILink DamagedLink will use these
+            LinkAnimationFrames[4] = new Rectangle(64, 0, 16, 32);
+            LinkAnimationFrames[5] = new Rectangle(80, 0, 16, 32);
+            LinkAnimationFrames[6] = new Rectangle(96, 0, 16, 32);
+            LinkAnimationFrames[7] = new Rectangle(112, 0, 16, 32);
+
+            // ILink AttackingLink will use these
+            LinkAnimationFrames[8] = new Rectangle(128, 0, 16, 44);
+            LinkAnimationFrames[9] = new Rectangle(144, 0, 16, 44);
+            LinkAnimationFrames[10] = new Rectangle(160, 0, 28, 32);
 
             keyboardController = new KeyboardController(keyboardKeys, keyboardCommands);
 
@@ -85,9 +121,9 @@ namespace Sprint02
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            SpriteLink = new LinkSprite(Content.Load<Texture2D>("LinkWalkingDefault"), LinkSpawn, spriteBatch);
+            SpriteLink = new LinkSprite(Content.Load<Texture2D>("LinkSpriteSheet"), LinkSpawn, spriteBatch, LinkAnimationFrames);
             LinkSecondaries[0] = new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this);
-            Link = new Link(SpriteLink, LinkSecondaries);
+            Link = new Link(SpriteLink, LinkSecondaries, this);
 
 
 

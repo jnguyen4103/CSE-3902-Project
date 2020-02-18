@@ -27,27 +27,42 @@ namespace Sprint02
             Right
         }
 
+        public LinkSprite Sprite;
+        public LinkStateMachine LinkSM;
+        public Game1 monoProcess;
         public IEffect[] Secondaries;
         public LinkState State = LinkState.Idle;
         public LinkDirection Direction = LinkDirection.Down;
-        public LinkSprite SpriteLink;
-        public LinkStateMachine StateMachine;
         public int hitpoints;
         public int maxHP = 3;
 
+        LinkStateMachine ILink.StateMachine
+        {
+            get { return LinkSM; }
+            set { }
+        }
 
-        public Link(LinkSprite sprite, IEffect[] _secondaries)
+        public LinkSprite SpriteLink
+        {
+            get { return Sprite; }
+            set { }
+        }
+
+
+
+        public Link(LinkSprite sprite, IEffect[] _secondaries, Game1 monoInstance)
         {
             Secondaries = _secondaries;
-            SpriteLink = sprite;
+            monoProcess = monoInstance;
+            Sprite = sprite;
             hitpoints = 3;
             State = LinkState.Idle;
-            StateMachine = new LinkStateMachine(this);
+            LinkSM = new LinkStateMachine(this);
         }
 
         public void TakeDamage()
         {
-            throw new NotImplementedException();
+            LinkSM.DamagedState();
         }
 
         public void Draw()
@@ -61,16 +76,16 @@ namespace Sprint02
             switch (State)
             {
                 case (LinkState.Idle):
-                    StateMachine.IdleState();
+                    LinkSM.IdleState();
                     break;
                 case (LinkState.Damaged):
-                    StateMachine.DamagedState();
+                    LinkSM.DamagedState();
                     break;
                 case (LinkState.Attacking):
-                    StateMachine.AttackState();
+                    LinkSM.AttackState();
                     break;
                 case (LinkState.UsingItem):
-                    StateMachine.UsingItemState();
+                    LinkSM.UsingItemState();
                     break;
                 default:
                     State = LinkState.Idle;

@@ -11,16 +11,32 @@ namespace Sprint02
     public class LinkSprite
     {
         public Vector2 position;
+        public Rectangle[] AnimationFrames;
+        public Rectangle currentAnimationFrame;
+        Vector2 lastFrameSize;
         SpriteBatch batch;
         Texture2D LinkTexture;
-        int currentFrame = 0;
-        double frameCounter = 0;
-        int framesTotal = 2;
-        int currentAtlasColumn = 1;
+        bool isMoving = false;
+        float angle = 0f;
+        int currentRow = 0;
 
-        public LinkSprite(Texture2D texture, Vector2 spawn, SpriteBatch spriteBatch)
+        // Default sprite frame height and width
+        int frameWidth = 16;
+        int frameHeight = 16;
+
+        // Default drawing height and width
+        int drawWidth = 16;
+        int drawHeight = 16;
+        double frameCounter = 0;
+        int rowsTotal = 2;
+        int currentFrameColumn = 1;
+        double animationCounter = 1;
+
+        public LinkSprite(Texture2D texture, Vector2 spawn, SpriteBatch spriteBatch, Rectangle[] animationFrames)
         {
             LinkTexture = texture;
+            AnimationFrames = animationFrames;
+            currentAnimationFrame = animationFrames[1];
             position = spawn;
             batch = spriteBatch;
         }
@@ -35,34 +51,54 @@ namespace Sprint02
 
         public void Animate()
         {
-            frameCounter += 0.15;
-            if (frameCounter >= 1)
+            frameCounter += 0.2;
+            if (frameCounter >= animationCounter)
             {
-                currentFrame++;
-                if (framesTotal == currentFrame)
+                currentRow++;
+                if (rowsTotal == currentRow)
                 {
-                    currentFrame = 0;
+                    currentRow = 0;
                 }
                 frameCounter = 0;
             }
         }
 
-        public void updateLinkDirection(int direction)
+        public void UpdateLinkAnimationFrames(Rectangle newFrame, bool moving, float rotation)
         {
-            currentAtlasColumn = direction;
+            currentFrameColumn = (newFrame.X/16);
+            currentAnimationFrame = newFrame;
+            isMoving = moving;
+            angle = rotation;
+
+            if((newFrame.X / 16) == 8 || (newFrame.X / 16) == 9)
+            {
+                Console.WriteLine("Vertical Attack");
+                animationCounter = 3;
+                lastFrameSize = new Vector2(16, 28);
+            }
+            else if ((newFrame.X / 16) == 10)
+            {
+                Console.WriteLine("Horiziontal Attack");
+                animationCounter = 3;
+                lastFrameSize = new Vector2(28, 16);
+            } else
+            {
+                animationCounter = 1;
+                lastFrameSize = new Vector2(16, 16);
+            }
         }
 
         public void DrawSprite()
         {
 
-            int frameWidth = 15;
-            int frameHeight = 16;
-            int row = currentFrame;
-            int column = currentAtlasColumn;
+            if (currentRow > 0)
+            {
+                drawWidth = (int)lastFrameSize.X;
+                drawHeight = (int)lastFrameSize.Y;
+            }
 
-
-            Rectangle srcRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
-            Rectangle destRectangle = new Rectangle((int)position.X, (int)position.Y, frameWidth, frameHeight);
+            Rectangle srcRectangle = new Rectangle(frameWidth * currentFrameColumn, frameHeight * currentRow, drawWidth, drawHeight);
+            Rectangle destRectangle = new Rectangle((int)position.X, (int)position.Y, drawWidth, drawHeight);
             batch.Draw(LinkTexture, destRectangle, srcRectangle, Color.White);
         }
 
