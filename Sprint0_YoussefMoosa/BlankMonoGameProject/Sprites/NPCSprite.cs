@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Sprint02
 {
+    // Abstract class allows for easy reuse of methods and variables
+    // that all NPCSprites share
+    // Look at Stalfos and Goriyas for comments on their NPC Sprite implementation
     public abstract class NPCSprite
     {
         // Variables for drawing the Sprite
@@ -27,26 +30,33 @@ namespace Sprint02
 
         public abstract void DrawSprite();
 
+        // Move to target position
         public void PathToPosition(Vector2 newPosition)
         {
             targetPosition.X = position.X + newPosition.X;
             targetPosition.Y = position.Y + newPosition.Y;
         }
 
+        // Teleports NPC sprite to new position
         public void UpdatePosition(Vector2 newPosition)
         {
             position = newPosition;
         }
 
+        // Returns true if NPC is at it's target pathing location
         public bool AtTargetLocation()
         {
             return (position == targetPosition);
         }
+
+        // Virtual identifier since AquamentusSprite and GoriyasSprite will need to override
+        // the basic animation
         public virtual void UpdateSpriteFrames(int newAtlasColumn)
         {
             currentAtlasColumn = newAtlasColumn;
         }
 
+        // Returns current location of NPC sprite
         public Vector2 getLocation()
         {
             return position;

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Sprint02
 {
+    // Abstract class allows for code reuse since a lot of NPC's share similar variables
+    // Look at the Stalfos and Goriyas classes for commments about specific implementations
     public abstract class NPC
     {
         public NPCSprite Sprite;
@@ -21,6 +23,7 @@ namespace Sprint02
             Dead            // State for when NPC is slain (RIP)
         }
 
+        // Keep track of basic info about NPC
         public State state;
         public int hitpoints;
         public int maxHP;
@@ -30,16 +33,20 @@ namespace Sprint02
         public abstract void Draw();
 
 
+        // Default state is idle
         public void Idle()
         {
             state = State.Idle;
         }
+
+        // Randomly move somewhere 
         public void Patrol()
         {
             StateMachine.generateRandomPosition();
             state = State.Patrolling;
         }
 
+        // Activate attack animation if available
         public void NPCAttack()
         {
             state = State.Attacking;
@@ -52,6 +59,7 @@ namespace Sprint02
 
         protected void Update()
         {
+            // Calls respective behavior for each state
             switch (this.state)
             {
                 case (State.Idle):

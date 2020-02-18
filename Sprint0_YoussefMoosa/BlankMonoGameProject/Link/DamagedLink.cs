@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 
 namespace Sprint02
 {
-    public class AttackingLink : ILink
+    public class DamagedLink : ILink
     {
 
         public LinkSprite Sprite;
         public LinkStateMachine LinkSM;
         public Link decoratedLink;
         public Game1 monoProcess;
-        // Attack timer so the decorator is removed after certain amount of frames
-        int AttackTimer = 0;
+        int DamageTimer = 0;
 
 
         LinkStateMachine ILink.StateMachine
@@ -33,7 +32,7 @@ namespace Sprint02
 
 
 
-        public AttackingLink(Link _link, Game1 monoInstance)
+        public DamagedLink(Link _link, Game1 monoInstance)
         {
             decoratedLink = _link;
             monoProcess = monoInstance;
@@ -43,10 +42,7 @@ namespace Sprint02
 
         public void TakeDamage()
         {
-            // You can be damaged while attacking
-            // So it removes the attacking decorator and adds the damaged one
-            RemoveDecorator();
-            monoProcess.Link.StateMachine.DamagedState();
+ 
         }
 
         public void Draw()
@@ -57,12 +53,15 @@ namespace Sprint02
 
         public void Update()
         {
-            // Leaves the attack animation after 10 frames
-            AttackTimer++;
-            if(AttackTimer == 10)
+            // After 180 frames remove damage decorator
+            // and set Link to idle
+            DamageTimer++;
+            if(DamageTimer > 180)
             {
-                AttackTimer = 0;
+                DamageTimer = 0;
                 RemoveDecorator();
+                monoProcess.Link.StateMachine.IdleState();
+
             }
         }
 

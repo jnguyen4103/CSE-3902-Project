@@ -9,6 +9,7 @@ namespace Sprint02
 {
     public class Stalfos : NPC
     {
+        // Setting info about NPC and default parameters
         public Stalfos(StalfosSprite sprite)
         {
             this.state = State.Patrolling;
@@ -34,6 +35,7 @@ namespace Sprint02
         NPC self;
         Random random = new Random();
         Vector2 positionPathingTo;
+        // Keeps track of whether or not NPC is pathing to a different location
         bool isPathing = false;
 
         public StalfosSM(NPC Stalfos)
@@ -44,11 +46,13 @@ namespace Sprint02
 
         public void PatrolState()
         {
+            // If NPC is not pathing then find new location to path too
             if (!isPathing)
             {
                 self.Sprite.PathToPosition(positionPathingTo);
                 isPathing = true;
             }
+            // If NPC is at it's pathing location then idle
             else if (self.Sprite.AtTargetLocation())
             {
                 self.Idle();
@@ -85,6 +89,9 @@ namespace Sprint02
         }
         public void generateRandomPosition()
         {
+            // Generates random distance to path to
+            // NPC only moves in X or Y direction, never
+            // moves at a diagonal
             int randDirection = random.Next(1, 3);
             int randDistance = random.Next(0, 100) - 50;
             switch (randDirection)

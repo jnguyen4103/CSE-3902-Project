@@ -42,6 +42,7 @@
     <Compile Include="Commands\DecrementItem.cs" />
     <Compile Include="Commands\IncrementItem.cs" />
     <Compile Include="Commands\IncrementNPC.cs" />
+    <Compile Include="Commands\DamageLink.cs" />
     <Compile Include="Commands\LinkUseBoomerang.cs" />
     <Compile Include="Commands\LinkAttack.cs" />
     <Compile Include="Commands\LinkWalkRight.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Items\RedHeart.cs" />
     <Compile Include="Items\YellowRupee.cs" />
     <Compile Include="Items\YellowTriforce.cs" />
+    <Compile Include="Link\DamagedLink.cs" />
     <Compile Include="Link\AttackingLink.cs" />
     <Compile Include="Link\ILink.cs" />
     <Compile Include="Link\Link.cs" />

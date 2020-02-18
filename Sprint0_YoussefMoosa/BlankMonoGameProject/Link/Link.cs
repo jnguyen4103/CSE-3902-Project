@@ -11,6 +11,9 @@ namespace Sprint02
     public class Link : ILink
     {
 
+        // Basic states that control what action he is doing
+        // Idle just means he is not taking damage, attacking or using items.
+        // The idle allows for movement
         public enum LinkState
         {
             Attacking,
@@ -19,6 +22,8 @@ namespace Sprint02
             UsingItem
         }
 
+        // 4 directional states of Link, these are used to determine which directional
+        // sprite to drawn in certain states
         public enum LinkDirection
         {
             Up,
@@ -27,10 +32,18 @@ namespace Sprint02
             Right
         }
 
+        // Creating references to Link's Sprite and StateMachine
         public LinkSprite Sprite;
         public LinkStateMachine LinkSM;
+
+        // Creating a reference to the Game so Link's decorators can
+        // have access to link by using monoProcess
         public Game1 monoProcess;
+
+        // List of Link's secondary weapons
         public IEffect[] Secondaries;
+
+        // Setting initial action and movement states
         public LinkState State = LinkState.Idle;
         public LinkDirection Direction = LinkDirection.Down;
         public int hitpoints;
@@ -73,6 +86,7 @@ namespace Sprint02
 
         public void Update()
         {
+            // Based on which action state Link is in, it'll call it's respective function
             switch (State)
             {
                 case (LinkState.Idle):
@@ -83,6 +97,7 @@ namespace Sprint02
                     break;
                 case (LinkState.Attacking):
                     LinkSM.AttackState();
+                    State = LinkState.Idle;
                     break;
                 case (LinkState.UsingItem):
                     LinkSM.UsingItemState();

@@ -11,6 +11,10 @@ namespace Sprint02
         private bool itemSwapTriggered = false;
         private bool secondaryTriggered = false;
         private bool linkAttackTriggered = false;
+        private bool linkDamagedTriggered = false;
+        private int attackTimer = 60;
+        private int damageTimer = 180;
+
 
         public KeyboardController(Keys[] keys, ICommand[] commands) 
         {
@@ -31,8 +35,25 @@ namespace Sprint02
             if (keyState.IsKeyUp(Keys.I) & keyState.IsKeyUp(Keys.U)) { itemSwapTriggered = false; }
             if (keyState.IsKeyUp(Keys.D1)) { secondaryTriggered = false; }
             if (keyState.IsKeyUp(Keys.Z)) { linkAttackTriggered = false; }
+            if (keyState.IsKeyUp(Keys.E)) { linkDamagedTriggered = false; }
+            
+            // If Link attacks he won't be able to attack until 60 frames have passed
+            // If Link is damaged he won't be able to move and attack until 180 frames have
+            // passed
 
 
+            if (attackTimer < 60)
+            {
+                attackTimer++;
+            }
+            if (damageTimer < 180)
+            {
+                damageTimer++;
+            }
+
+            // Legend of Zelda prioritizes veritcal movement over horizontal so horizontal movement
+            // is ignored if the W and S keys are pressed
+            // There are flags coded in so a command will only activate once on a key press
 
             foreach (Keys k in pressed)
             {
@@ -42,23 +63,30 @@ namespace Sprint02
                     {
                         keyMappings[k].Execute();
                     }
-                    if(k == Keys.W || k == Keys.S)
+                    if((k == Keys.W || k == Keys.S) && damageTimer >= 180)
                     {
                         keyMappings[k].Execute();
                     }
-                    if ((k == Keys.A || k == Keys.D) && pressed.Length == 1)
+                    if ((k == Keys.A || k == Keys.D) && pressed.Length == 1 && damageTimer >= 180)
                     {
                         keyMappings[k].Execute();
                     }
 
-                    if(!secondaryTriggered & k == Keys.D1)
+                    if(!secondaryTriggered & k == Keys.D1 & damageTimer >= 180)
                     {
                         keyMappings[k].Execute();
                         secondaryTriggered = true;
                     }
-
-                    if (!linkAttackTriggered & k == Keys.Z)
+                    if (!linkDamagedTriggered & k == Keys.E)
                     {
+                        damageTimer = 0;
+                        keyMappings[k].Execute();
+                        linkDamagedTriggered = true;
+                    }
+
+                    if (!linkAttackTriggered & k == Keys.Z & attackTimer == 60 & damageTimer >= 180)
+                    {
+                        attackTimer = 0;
                         keyMappings[k].Execute();
                         linkAttackTriggered = true;
                     }
