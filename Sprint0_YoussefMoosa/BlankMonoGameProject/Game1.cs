@@ -45,8 +45,8 @@ namespace Sprint02
         public List<ISprite> EffectsList = new List<ISprite>();
         public IEffect[] LinkSecondaries = new IEffect[1];
 
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1, Keys.R, Keys.Z };
-        private ICommand[] keyboardCommands = new ICommand[12];
+        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1, Keys.R, Keys.Z, Keys.E };
+        private ICommand[] keyboardCommands = new ICommand[13];
         private KeyboardController keyboardController;
 
         public readonly Vector2 itemSpawnPosition = new Vector2(100, 240);
@@ -88,6 +88,7 @@ namespace Sprint02
             keyboardCommands[9] = new LinkUseBoomerang(this);
             keyboardCommands[10] = new ResetCommand(this);
             keyboardCommands[11] = new LinkAttack(this);
+            keyboardCommands[12] = new DamageLink(this);
 
 
             // ILink Link will use these

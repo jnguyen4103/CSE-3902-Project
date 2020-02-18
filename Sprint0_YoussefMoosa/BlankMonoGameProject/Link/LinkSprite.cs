@@ -16,8 +16,9 @@ namespace Sprint02
         Vector2 lastFrameSize;
         SpriteBatch batch;
         Texture2D LinkTexture;
-        public bool isMoving = false;
-        public bool isAttacking = false;
+        private bool isMoving = false;
+        private bool isAttacking = false;
+        private bool isDamaged = false;
         SpriteEffects SpriteEffect;
         int currentRow = 0;
 
@@ -85,10 +86,16 @@ namespace Sprint02
                 isAttacking = true;
                 currentRow = 0;
                 lastFrameSize = new Vector2(28, 16);
-            } else
+            }
+            else if((newFrame.X / 16) >3 && (newFrame.X / 16) < 8)
+            {
+                isDamaged = true;
+            }
+            else
             {
                 animationCounter = 1;
                 isAttacking = false;
+                isDamaged = false;
                 lastFrameSize = new Vector2(16, 16);
             }
         }
@@ -114,7 +121,7 @@ namespace Sprint02
                 origin.Y = drawHeight - frameHeight;
             }
 
-            if (isAttacking) { Animate(); }
+            if (isAttacking || isDamaged) { Animate(); }
 
             Rectangle srcRectangle = new Rectangle(frameWidth * currentFrameColumn, frameHeight * currentRow, drawWidth, drawHeight);
             Rectangle destRectangle = new Rectangle((int)position.X, (int)position.Y, drawWidth, drawHeight);

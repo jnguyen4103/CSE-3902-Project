@@ -109,6 +109,25 @@ namespace Sprint02
 
         public void DamagedState()
         {
+            Link.State = Link.LinkState.Damaged;
+            switch (Link.Direction)
+            {
+                case (Link.LinkDirection.Down):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[5], false, new SpriteEffects());
+                    break;
+                case (Link.LinkDirection.Up):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[4], false, new SpriteEffects());
+                    break;
+                case (Link.LinkDirection.Left):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[7], false, new SpriteEffects());
+                    break;
+                case (Link.LinkDirection.Right):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[6], false, new SpriteEffects());
+                    break;
+                default:
+                    break;
+            }
+            Link.monoProcess.Link = new DamagedLink(Link, Link.monoProcess);
         }
 
         public void UsingItemState()
