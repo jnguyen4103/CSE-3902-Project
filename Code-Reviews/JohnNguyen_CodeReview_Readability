@@ -1,0 +1,11 @@
+Author: John Nguyen
+Code Review Date: 2/17/19
+Sprint02
+File to be reviewed: ResetCommand.cs
+Author of the file: Xueying Liang
+Time to review: 5 minutes
+
+Comments:
+The class as a whole is pretty short and does its intended purpose of resetting the game to an initial state.
+Readability can be improved though because just calling methods can be hard to trace. Maybe consider adding some comments
+for the future.
