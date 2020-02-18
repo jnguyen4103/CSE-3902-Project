@@ -10,6 +10,7 @@ namespace Sprint02
         private bool npcSwapTriggered = false;
         private bool itemSwapTriggered = false;
         private bool secondaryTriggered = false;
+        private bool linkAttackTriggered = false;
 
         public KeyboardController(Keys[] keys, ICommand[] commands) 
         {
@@ -29,13 +30,15 @@ namespace Sprint02
             if (keyState.IsKeyUp(Keys.O) & keyState.IsKeyUp(Keys.P)) { npcSwapTriggered = false; }
             if (keyState.IsKeyUp(Keys.I) & keyState.IsKeyUp(Keys.U)) { itemSwapTriggered = false; }
             if (keyState.IsKeyUp(Keys.D1)) { secondaryTriggered = false; }
+            if (keyState.IsKeyUp(Keys.Z)) { linkAttackTriggered = false; }
+
 
 
             foreach (Keys k in pressed)
             {
                 if (keyMappings.ContainsKey(k))
                 {
-                    if (k == Keys.Q)
+                    if (k == Keys.Q || k == Keys.R)
                     {
                         keyMappings[k].Execute();
                     }
@@ -52,6 +55,12 @@ namespace Sprint02
                     {
                         keyMappings[k].Execute();
                         secondaryTriggered = true;
+                    }
+
+                    if (!linkAttackTriggered & k == Keys.Z)
+                    {
+                        keyMappings[k].Execute();
+                        linkAttackTriggered = true;
                     }
 
 

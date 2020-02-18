@@ -24,8 +24,8 @@ namespace Sprint02
             directionMoving.X = 0;
             directionMoving.Y = -0.6f;
             Link.Direction = Link.LinkDirection.Up;
-            Link.SpriteLink.updateLinkDirection(0);
             Link.SpriteLink.UpdateLocation(directionMoving);
+            Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[0], true, 0);
         }
 
         public void DownState()
@@ -33,8 +33,8 @@ namespace Sprint02
             directionMoving.X = 0;
             directionMoving.Y = 0.6f;
             Link.Direction = Link.LinkDirection.Down;
-            Link.SpriteLink.updateLinkDirection(1);
             Link.SpriteLink.UpdateLocation(directionMoving);
+            Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[1], true, 0);
         }
 
         public void LeftState()
@@ -42,8 +42,8 @@ namespace Sprint02
             directionMoving.X = -0.6f;
             directionMoving.Y = 0;
             Link.Direction = Link.LinkDirection.Left;
-            Link.SpriteLink.updateLinkDirection(3);
             Link.SpriteLink.UpdateLocation(directionMoving);
+            Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[3], true, 0);
         }
 
         public void RightState()
@@ -51,8 +51,8 @@ namespace Sprint02
             directionMoving.X = 0.6f;
             directionMoving.Y = 0;
             Link.Direction = Link.LinkDirection.Right;
-            Link.SpriteLink.updateLinkDirection(2);
             Link.SpriteLink.UpdateLocation(directionMoving);
+            Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[2], true, 0);
         }
 
         public void IdleState()
@@ -60,11 +60,50 @@ namespace Sprint02
             Link.State = Link.LinkState.Idle;
             directionMoving.X = 0;
             directionMoving.Y = 0;
+            switch (Link.Direction)
+            {
+                case (Link.LinkDirection.Down):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[1], true, 0);
+                    break;
+                case (Link.LinkDirection.Up):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[0], true, 0);
+                    break;
+                case (Link.LinkDirection.Left):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[3], true, 0);
+                    break;
+                case (Link.LinkDirection.Right):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[2], true, 0);
+                    break;
+                default:
+                    DownState();
+                    break;
+            }
+
+
         }
 
         public void AttackState()
         {
+            switch (Link.Direction)
+            {
+                case (Link.LinkDirection.Down):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[9], false, 0);
+                    break;
+                case (Link.LinkDirection.Up):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[8], false, 0);
+                    break;
+                case (Link.LinkDirection.Left):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[10], false, 0);
+                    break;
+                case (Link.LinkDirection.Right):
+                    Link.SpriteLink.UpdateLinkAnimationFrames(Link.SpriteLink.AnimationFrames[10], false, 0);
+                    break;
+                default:
+                    break;
+            }
+            Link.monoProcess.Link = new AttackingLink(Link, Link.monoProcess);
         }
+
 
         public void DamagedState()
         {
