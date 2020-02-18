@@ -1,0 +1,47 @@
+Sprint 2 Reflection
+
+Name: Youssef Moosa
+
+We as a team were dysfunctional for this sprint. From what I gathered, 
+it seemed like we were all in a deadlock, waiting for someone else to finish. 
+The only reason anything got done was because Stephen Hogg (props to him) took
+it upon himself to finish the project. 
+
+To put this in terms of qualitative ratings from the peer review rubric, 
+the cooperation was poor. Though Stephen did do much more than a full share 
+of work and the roles were fairly clearly defined on the task board, we flubbed 
+the synchronization and failed to perform our roles (except for Stephen). I think
+a solution to this would be to list tasks weekly and to take extreme care not to
+schedule tasks for the week which have dependencies on other tasks scheduled that
+week to different people, and if there are dependencies, we want to let the entire 
+group know immediately.
+
+The organization was also not desirable. I think a prime problem for this was that 
+we didn't establish deadlines and hold ourselves accountable to those deadlines. 
+Like up top, a solution to this is to schedule tasks weekly and to hold people accountable. 
+As an addition, if someone isn't doing the tasks they're scheduled, there must be a well-defined 
+plan to take care of those cases so that the weeks after don't suffer. 
+
+As additional points for both of these categories (mainly cooperation), a daily scrum would be
+helpful in making sure everyone is up to date and everyone is accountable everyday. Optimally,
+an in-person meeting would be best, but a daily discussion on Discord would be sufficent
+for next sprint. Also on Discord, a code feedback text channel for every individual would
+be fantastic so that people can @everyone to request feedback on their recent code, and everyone
+can then pitch in to help.
+
+We could have used more research, too. It feels like we don't really know Monogame as well as 
+we should to use the tool. I wouldn't be surprised if we just missed a bunch of helpful
+and simple things in the API which would've made our code much more maintainable and simple.
+A solution for this is to have "Research Weekends", since people have more time to do this
+than on weekdays, to revisit the problems they reflected on in the daily scrums (online or
+in-person) and research in the Monogame API, Stack Overflow, etc., to see if there are components
+in Monogame which make the problem easier to solve.
+
+Finally, for member responsibility, I think this is our best category. It's still not perfect,
+but I think everyone chips in pretty well on what he/she feels is an appropriate amount
+of work, any ideas he/she has, and he/she treats all else with respect. Again, the synchronization
+and letting everyone know when we think we have a dependency on another person's work is something
+which needs work, but that's more of a concern with the cooperation category.
+
+
+
