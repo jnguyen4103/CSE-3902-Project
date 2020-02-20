@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Sprint02
+namespace Sprint03
 {
     class DecrementNPC : ICommand
     {
@@ -23,7 +23,7 @@ namespace Sprint02
                 monoProcess.currentMonsterPosition--;
             }
             monoProcess.Monster = monoProcess.MonsterList[monoProcess.currentMonsterPosition];
-            monoProcess.Monster.Sprite.UpdatePosition(monoProcess.spawnPosition);
+            //monoProcess.Monster.Sprite.UpdatePosition(monoProcess.spawnPosition);
         }
     }
 }

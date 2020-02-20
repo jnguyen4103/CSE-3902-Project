@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Sprint02
+namespace Sprint03
 {
     class IncrementItem : ICommand
     {

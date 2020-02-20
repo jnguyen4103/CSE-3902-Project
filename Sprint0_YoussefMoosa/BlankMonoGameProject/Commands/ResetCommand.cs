@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Sprint02
+namespace Sprint03
 {
     class ResetCommand : ICommand
     {
@@ -15,10 +15,10 @@ namespace Sprint02
 
         public void Execute()
         {
-            monoProcess.Link.SpriteLink.position = monoProcess.LinkSpawn;
-            monoProcess.Link.StateMachine.DownState();
+            //monoProcess.Link.SpriteLink.position = monoProcess.LinkSpawn;
+            //monoProcess.Link.StateMachine.DownState();
             monoProcess.Monster = monoProcess.MonsterList[0];
-            monoProcess.Monster.Sprite.UpdatePosition(monoProcess.spawnPosition);
+            //monoProcess.Monster.Sprite.UpdatePosition(monoProcess.spawnPosition);
             monoProcess.Item = monoProcess.ItemList[0];
             monoProcess.EffectsList.Clear();
         }

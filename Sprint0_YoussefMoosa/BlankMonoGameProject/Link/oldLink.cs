@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Sprint02
+namespace Sprint03
 {
     public class oldLink : Game
     {

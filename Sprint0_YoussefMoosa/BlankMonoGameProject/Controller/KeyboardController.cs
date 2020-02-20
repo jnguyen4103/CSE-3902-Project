@@ -2,7 +2,7 @@
 using System.Timers;
 using Microsoft.Xna.Framework.Input;
 
-namespace Sprint02
+namespace Sprint03
 {
     public class KeyboardController : IController
     {

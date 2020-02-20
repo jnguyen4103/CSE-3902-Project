@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace Sprint02
+namespace Sprint03
 {
     /// <summary>
     /// This is the main type for your game.
@@ -13,9 +13,11 @@ namespace Sprint02
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public SpriteFactory Factory;
+
         // Link Object & Sprite
         public ILink Link;
-        public LinkSprite SpriteLink;
+        public ISprite SpriteLink;
 
         /* Link SpriteSheet Breakdown
          * Each element in the array is a rectangle which covers
@@ -33,6 +35,12 @@ namespace Sprint02
          * Element 10: Attacking Right (Needs flipped for left attacking)
          */
         public Rectangle[] LinkAnimationFrames = new Rectangle[11];
+
+        private Texture2D LinkSpriteSheet;
+        private Texture2D MonsterSpriteSheet;
+        private Texture2D ItemSpriteSheet;
+        private Texture2D EffectSpriteSheet;
+
 
 
         // Monster is the current NPC displayed
@@ -94,6 +102,7 @@ namespace Sprint02
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            Factory = new SpriteFactory();
 
             // Adding all of the commands into the keyboard controller
             keyboardCommands[0] = new LinkWalkUp(this);
@@ -143,34 +152,38 @@ namespace Sprint02
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Creating Link and loading in his effects so he can use them when the command is called
-            SpriteLink = new LinkSprite(Content.Load<Texture2D>("LinkSpriteSheet"), LinkSpawn, spriteBatch, LinkAnimationFrames);
-            LinkSecondaries[0] = new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this);
-            Link = new Link(SpriteLink, LinkSecondaries, this);
+            LinkSpriteSheet = Content.Load<Texture2D>("Link Sprite Sheet");
+            MonsterSpriteSheet = Content.Load<Texture2D>("Monster Sprite Sheet");
+            ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
+            EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
+            SpriteLink = new LinkSprite(this, "WalkDown", LinkSpriteSheet, LinkSpawn, spriteBatch);
+            //LinkSecondaries[0] = new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this);
+            //Link = new Link(SpriteLink, LinkSecondaries, this);
 
 
 
             // Loading in the monster list
-            MonsterList[0] = new Stalfos(new StalfosSprite(Content.Load<Texture2D>("StalfosDefault"), spawnPosition, screenDimensions, spriteBatch));
-            MonsterList[1] = new Gel(new GelSprite(Content.Load<Texture2D>("GelDefault"), spawnPosition, screenDimensions, spriteBatch));
-            MonsterList[2] = new Geese(new GeeseSprite(Content.Load<Texture2D>("GeeseDefault"), spawnPosition, screenDimensions, spriteBatch));
-            MonsterList[3] = new Aquamentus(new AquamentusSprite(Content.Load<Texture2D>("AquamentusDefault"), spawnPosition, screenDimensions, spriteBatch), new FireballEffect(Content.Load<Texture2D>("AquamentusFireball"), spriteBatch, this));
-            MonsterList[4] = new Fairy(new FairySprite(Content.Load<Texture2D>("FairyDefault"), spawnPosition, screenDimensions, spriteBatch));
-            MonsterList[5] = new Goriyas(new GoriyasSprite(Content.Load<Texture2D>("GoriyasDefault"), spawnPosition, screenDimensions, spriteBatch), new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this));
+            MonsterList[0] = new Stalfos(new StalfosSprite (this, "StalfosWalk", MonsterSpriteSheet, spawnPosition, spriteBatch));
+            //MonsterList[1] = new Gel(new GelSprite(Content.Load<Texture2D>("GelDefault"), spawnPosition, screenDimensions, spriteBatch));
+            //MonsterList[2] = new Geese(new GeeseSprite(Content.Load<Texture2D>("GeeseDefault"), spawnPosition, screenDimensions, spriteBatch));
+            //MonsterList[3] = new Aquamentus(new AquamentusSprite(Content.Load<Texture2D>("AquamentusDefault"), spawnPosition, screenDimensions, spriteBatch), new FireballEffect(Content.Load<Texture2D>("AquamentusFireball"), spriteBatch, this));
+            //MonsterList[4] = new Fairy(new FairySprite(Content.Load<Texture2D>("FairyDefault"), spawnPosition, screenDimensions, spriteBatch));
+            //MonsterList[5] = new Goriyas(new GoriyasSprite(Content.Load<Texture2D>("GoriyasDefault"), spawnPosition, screenDimensions, spriteBatch), new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this));
 
             // Loading in the items list
-            ItemList[0] = new RedHeart(Content.Load<Texture2D>("RedHeart"), itemSpawnPosition, spriteBatch);
-            ItemList[1] = new HeartContainer(Content.Load<Texture2D>("HeartContainer"), itemSpawnPosition, spriteBatch);
-            ItemList[2] = new Bomb(Content.Load<Texture2D>("Bomb"), itemSpawnPosition, spriteBatch);
-            ItemList[3] = new Clock(Content.Load<Texture2D>("Clock"), itemSpawnPosition, spriteBatch);
-            ItemList[4] = new Map(Content.Load<Texture2D>("Map"), itemSpawnPosition, spriteBatch);
-            ItemList[5] = new Compass(Content.Load<Texture2D>("Compass"), itemSpawnPosition, spriteBatch);
-            ItemList[6] = new YellowRupee(Content.Load<Texture2D>("YellowRupee"), itemSpawnPosition, spriteBatch);
-            ItemList[7] = new BlueRupee(Content.Load<Texture2D>("BlueRupee"), itemSpawnPosition, spriteBatch);
-            ItemList[8] = new YellowTriforce(Content.Load<Texture2D>("YellowTriforce"), itemSpawnPosition, spriteBatch);
-            ItemList[9] = new Bow(Content.Load<Texture2D>("Bow"), itemSpawnPosition, spriteBatch);
-            ItemList[10] = new Boomerang(Content.Load<Texture2D>("Boomerang"), itemSpawnPosition, spriteBatch);
-            ItemList[11] = new Key(Content.Load<Texture2D>("Key"), itemSpawnPosition, spriteBatch);
-            ItemList[12] = new LionKey(Content.Load<Texture2D>("LionKey"), itemSpawnPosition, spriteBatch);
+            //ItemList[0] = new RedHeart(Content.Load<Texture2D>("RedHeart"), itemSpawnPosition, spriteBatch);
+            //ItemList[1] = new HeartContainer(Content.Load<Texture2D>("HeartContainer"), itemSpawnPosition, spriteBatch);
+            //ItemList[2] = new Bomb(Content.Load<Texture2D>("Bomb"), itemSpawnPosition, spriteBatch);
+            //ItemList[3] = new Clock(Content.Load<Texture2D>("Clock"), itemSpawnPosition, spriteBatch);
+            //ItemList[4] = new Map(Content.Load<Texture2D>("Map"), itemSpawnPosition, spriteBatch);
+            //ItemList[5] = new Compass(Content.Load<Texture2D>("Compass"), itemSpawnPosition, spriteBatch);
+            //ItemList[6] = new YellowRupee(Content.Load<Texture2D>("YellowRupee"), itemSpawnPosition, spriteBatch);
+            //ItemList[7] = new BlueRupee(Content.Load<Texture2D>("BlueRupee"), itemSpawnPosition, spriteBatch);
+            //ItemList[8] = new YellowTriforce(Content.Load<Texture2D>("YellowTriforce"), itemSpawnPosition, spriteBatch);
+            //ItemList[9] = new Bow(Content.Load<Texture2D>("Bow"), itemSpawnPosition, spriteBatch);
+            //ItemList[10] = new Boomerang(Content.Load<Texture2D>("Boomerang"), itemSpawnPosition, spriteBatch);
+            //ItemList[11] = new Key(Content.Load<Texture2D>("Key"), itemSpawnPosition, spriteBatch);
+            //ItemList[12] = new LionKey(Content.Load<Texture2D>("LionKey"), itemSpawnPosition, spriteBatch);
 
             // Defining the first monster and item so they can be drawn later on
             Monster = MonsterList[0];
@@ -212,13 +225,9 @@ namespace Sprint02
 
             spriteBatch.Begin();
             Monster.Draw();
-            Item.DrawItem();
-            Link.Draw();
-
-            foreach (ISprite effect in EffectsList)
-            {
-                effect.DrawSprite();
-            }
+            SpriteLink.DrawSprite();
+            //Item.DrawItem();
+            //Link.Draw();
 
             spriteBatch.End();
 

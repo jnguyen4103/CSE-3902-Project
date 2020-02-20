@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-namespace Sprint02
+namespace Sprint03
 {
 
     public class oldLs : Game
