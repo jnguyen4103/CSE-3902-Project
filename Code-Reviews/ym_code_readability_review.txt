@@ -1,0 +1,19 @@
+Name:           Youssef Moosa
+Class Reviewed: GoriyasSM
+Author:         Stephen Hogg
+Focus:          Code Readability
+
+- In the switch statement for randDirection,
+  consider having an array of integers of size 4
+  and use new Vector2(randDirX[randDirection-1], randDirY[randDirection-1]) * randDistance, 
+  where
+
+  randDirX = { 0, 0, -1, 1 }
+  randDirY = { -1, 1, 0, 0 }
+
+  This elimates the switch statement and makes the code more readable.
+
+- For GoriyasSM, consider using an enum and switch statements instead of
+  separate functions to keep the state-switching code in one centralized place. 
+ 
+

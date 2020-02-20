@@ -1,0 +1,30 @@
+﻿This is the code review wrote by Xueying Liang:
+
+Readability review:
+	Author of the code review: Xueying Liang
+	Date of the code review: 2/17/2020
+	Sprint number: Sprint #2
+	Name of the .cs file being reviewed: LinkWalkUp.cs
+	Author of the .cs file being reviewed: Stephen Hogg
+	Number of minutes taken to complete the review: 15 minutes
+	Specific comments on what is readable and what is not:
+		Our group did Sprint #2 based on Youssef's Sprint #0 code, Stephen tried to use Command
+	interface in a very intelligent way, instead of hard coding it, he refactored the code so 
+	that it is easy to understand, does not take too many lines of the code and functioning
+	very well. It is overall done very nice.
+
+Code quality review:
+	Author of the code review: Xueying Liang
+	Date of the code review: 2/17/2020
+	Sprint number: Sprint #2
+	Name of the .cs file being reviewed: LinkWalkUp.cs
+	Author of the .cs file being reviewed: Stephen Hogg
+	Specific comments on code quality:
+		Stephen's code is high quality. He utilized the command interface very well and wrote
+	concise and short code. Once again it functions very well and has high quality.
+	A hypothetical change to make to the game related to file being reviewed and how the current
+	implementation could or could not easily support that change:
+		One change that I would considering changing for this file is that to change the file's
+	name to "LinkWalkUpCommand" so that it is very easily understand that this is a command class.
+	There are not much changes needed in the main game class, just when calling command classes,
+	still using their corresponding names and that's the only thing.
