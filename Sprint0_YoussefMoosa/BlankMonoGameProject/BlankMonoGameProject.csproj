@@ -90,6 +90,7 @@
     <Compile Include="Sprites\Effects\FireballSprite.cs" />
     <Compile Include="Sprites\ISprite.cs" />
     <Compile Include="Sprites\Link\LinkSprite.cs" />
+    <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="Sprites\Monsters\MonsterSprite.cs" />
     <Compile Include="Sprites\Monsters\StalfosSprite.cs" />
     <Compile Include="Sprites\SpriteFactory.cs" />
@@ -330,6 +331,7 @@
   <ItemGroup>
     <Folder Include="bin\Windows\Content\" />
     <Folder Include="bin\Windows\x86\Release\" />
+    <Folder Include="Collision\" />
     <Folder Include="GameObjects\Blocks\" />
     <Folder Include="obj\Windows\Content\" />
     <Folder Include="obj\x86\Debug\TempPE\" />

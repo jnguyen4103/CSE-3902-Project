@@ -8,40 +8,9 @@ using System.Threading.Tasks;
 
 namespace Sprint03
 {
-    public class LinkSprite : ISprite
+    public class LinkSprite : CharacterSprite
     {
-
-        // Variables for keeping track of Sprite's position on the screen
-        protected Game1 Game;
-
-        // Position & Movement Info
-        private float BaseSpeed = 0.75f;
-        protected Vector2 CurrentSpeed = new Vector2(0.0f, 0.0f);
-        protected Vector2 Position;
-
-
-        // Sprite Info
-        private string Name;
-        protected Vector2 Origin = new Vector2(0, 0);
-        protected Vector2 Size;
-
-        // Sprite Animation & Drawing Info
-        private SpriteBatch Batch;
-        private Texture2D Texture;
-        private Rectangle DrawWindow;
-        private Rectangle AnimationWindow;
-        protected SpriteEffects SpriteEffect = SpriteEffects.None;
-        protected float Rotation = 0;
-        protected int Layer = 0;
         private bool FlipFlag = false;
-        private readonly int FlipOffset;
-
-        // Animation & Moving Info
-        private int TotalFrames;
-        private int CurrentFrame = 0;
-        private int FPS;
-        private int GameFrame = 0;
-
 
         public LinkSprite(Game1 game, String name, Texture2D texture, Vector2 spawn, SpriteBatch batch)
         {
@@ -55,20 +24,25 @@ namespace Sprint03
             TotalFrames = game.Factory.LinkSprites[name].Item3;
             FPS = 4;
             ChangeSpriteAnimation(name);
-            FlipOffset = (int)this.Size.X;
-
+            BaseSpeed = 0.75f;
 
             // Setting up conditions for testing
             // Remove if still presnet
             this.CurrentSpeed.Y = BaseSpeed;
-
         }
 
-        public Vector2 GetPosition { get { return Position; } }
+        public override void ChangeSpriteAnimation(string newSpriteName)
+        {
+            Name = newSpriteName;
+            CurrentFrame = 0;
+            Tuple<Rectangle, Vector2, int> NewInfo = Game.Factory.LinkSprites[newSpriteName];
+            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
+            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
+            TotalFrames = NewInfo.Item3;
+        }
 
-        public Vector2 GetSize { get { return Size; } }
 
-        public void Animate()
+        public override void Animate()
         {
             if (CurrentSpeed.X != 0 || CurrentSpeed.Y != 0)
             {
@@ -95,40 +69,7 @@ namespace Sprint03
 
         }
 
-        public void ChangeSpriteAnimation(string newSpriteName)
-        {
-            Name = newSpriteName;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.Factory.LinkSprites[newSpriteName];
-            CurrentFrame = 0;
-            TotalFrames = NewInfo.Item3;
-            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
-            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
-        }
-
-        private void DrawHelper()
-        {
-            DrawWindow.X = (int)Position.X;
-            DrawWindow.Y = (int)Position.Y;
-            AnimationWindow.Y = (int)(CurrentFrame * Size.Y);
-        }
-
-
-        public void DrawSprite()
-        {
-
-            Move();
-            Animate();
-            DrawHelper();
-            Batch.Draw(Texture, DrawWindow, AnimationWindow, Color.White, Rotation, Origin, SpriteEffect, Layer);
-        }
-
-        public void Move()
-        {
-            Position.X += CurrentSpeed.X;
-            Position.Y += CurrentSpeed.Y;
-        }
-
-        public void Update(Vector2 newSpeed)
+        public void UpdateSpeed(Vector2 newSpeed)
         {
             // Call this method in the StateMachine
             // Update speed based on direction
