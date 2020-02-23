@@ -4,17 +4,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Sprint02
 {
-    class LinkUseBoomerang : ICommand
+    class LinkUseArrow : ICommand
     {
         private readonly Game1 monoProcess;
-        public LinkUseBoomerang(Game1 monoInstance)
+        public LinkUseArrow(Game1 monoInstance)
         {
             monoProcess = monoInstance;
         }
 
         public void Execute()
         {
-            monoProcess.Link.StateMachine.UseBoomerRange(0);
+            monoProcess.Link.StateMachine.UseArrow(1);
         }
     }
 }

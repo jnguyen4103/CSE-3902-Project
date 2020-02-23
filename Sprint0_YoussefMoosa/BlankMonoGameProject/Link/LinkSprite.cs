@@ -23,6 +23,7 @@ namespace Sprint02
         private bool isMoving = false;
         private bool isAttacking = false;
         private bool isDamaged = false;
+        private bool isPickingUp = false;
         SpriteEffects SpriteEffect;
 
         // Default sprite frame height
@@ -110,6 +111,11 @@ namespace Sprint02
                 isDamaged = true;
             }
             
+            else if((newFrame.X/16)>11)
+            {
+                isPickingUp = true;
+                Console.WriteLine("Shite");
+            }
             // True for just basic W A S D movement
             else
             {
@@ -148,7 +154,7 @@ namespace Sprint02
             }
 
             // Call animate when Link is not moving, otherwise movement animation is handled in the UpdateLocation method
-            if (isAttacking || isDamaged) { Animate(); }
+            if (isAttacking || isDamaged || isPickingUp) { Animate(); }
 
             Rectangle srcRectangle = new Rectangle(frameWidth * currentFrameColumn, frameHeight * currentRow, drawWidth, drawHeight);
             Rectangle destRectangle = new Rectangle((int)position.X, (int)position.Y, drawWidth, drawHeight);

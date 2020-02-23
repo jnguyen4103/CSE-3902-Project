@@ -43,6 +43,8 @@
     <Compile Include="Commands\IncrementItem.cs" />
     <Compile Include="Commands\IncrementNPC.cs" />
     <Compile Include="Commands\DamageLink.cs" />
+    <Compile Include="Commands\LinkUseArrow.cs" />
+    <Compile Include="Commands\LinkUseBeamSword.cs" />
     <Compile Include="Commands\LinkUseBoomerang.cs" />
     <Compile Include="Commands\LinkAttack.cs" />
     <Compile Include="Commands\LinkWalkRight.cs" />
@@ -50,10 +52,12 @@
     <Compile Include="Commands\LinkWalkLeft.cs" />
     <Compile Include="Commands\LinkWalkUp.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
+    <Compile Include="Effects\ArrowEffect.cs" />
     <Compile Include="Effects\BoomerangEffect.cs" />
     <Compile Include="Effects\FireballEffect.cs" />
     <Compile Include="Effects\IEffect.cs" />
     <Compile Include="Effects\ISprite.cs" />
+    <Compile Include="Effects\SwordBeamEffect.cs" />
     <Compile Include="Items\BlueRupee.cs" />
     <Compile Include="Items\Bomb.cs" />
     <Compile Include="Items\Boomerang.cs" />
@@ -79,6 +83,7 @@
     <Compile Include="NPC\Goriyas.cs" />
     <Compile Include="NPC\Aquamentus.cs" />
     <Compile Include="NPC\Fairy.cs" />
+    <Compile Include="Sprites\ArrowSprite.cs" />
     <Compile Include="Sprites\BoomerangSprite.cs" />
     <Compile Include="Sprites\GoriyasSprite.cs" />
     <Compile Include="Sprites\FireballSprite.cs" />
@@ -100,6 +105,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Sprites\StalfosSprite.cs" />
+    <Compile Include="Sprites\SwordBeamSprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

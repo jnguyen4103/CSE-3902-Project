@@ -19,7 +19,8 @@ namespace Sprint02
             Attacking,
             Idle,
             Damaged,
-            UsingItem
+            UseArrow,
+            UseBoomerRange
         }
 
         // 4 directional states of Link, these are used to determine which directional
@@ -40,8 +41,8 @@ namespace Sprint02
         // have access to link by using monoProcess
         public Game1 monoProcess;
 
-        // List of Link's secondary weapons
-        public IEffect[] Secondaries;
+        // List of Link's secondary weaponss
+        public IEffect[] Secondaries = new IEffect[2];
 
         // Setting initial action and movement states
         public LinkState State = LinkState.Idle;
@@ -60,8 +61,6 @@ namespace Sprint02
             get { return Sprite; }
             set { }
         }
-
-
 
         public Link(LinkSprite sprite, IEffect[] _secondaries, Game1 monoInstance)
         {
@@ -99,8 +98,11 @@ namespace Sprint02
                     LinkSM.AttackState();
                     State = LinkState.Idle;
                     break;
-                case (LinkState.UsingItem):
-                    LinkSM.UsingItemState();
+                case (LinkState.UseArrow):
+                    LinkSM.UseArrow(1);
+                    break;
+                case (LinkState.UseBoomerRange):
+                    LinkSM.UseBoomerRange(0);
                     break;
                 default:
                     State = LinkState.Idle;

@@ -17,6 +17,9 @@ namespace Sprint02
         public ILink Link;
         public LinkSprite SpriteLink;
 
+        public KeyboardState previousState;
+        KeyboardState state;
+
         /* Link SpriteSheet Breakdown
          * Each element in the array is a rectangle which covers
          * all the frame for one type of sprite animation
@@ -32,7 +35,7 @@ namespace Sprint02
          * Element 9: Attacking Down
          * Element 10: Attacking Right (Needs flipped for left attacking)
          */
-        public Rectangle[] LinkAnimationFrames = new Rectangle[11];
+        public Rectangle[] LinkAnimationFrames = new Rectangle[12];
 
 
         // Monster is the current NPC displayed
@@ -62,10 +65,10 @@ namespace Sprint02
         public List<ISprite> EffectsList = new List<ISprite>();
 
         // A list of all the secondary weapons Link can use (only boomerang is implemented)
-        public IEffect[] LinkSecondaries = new IEffect[1];
+        public IEffect[] LinkSecondaries = new IEffect[10];
 
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1, Keys.R, Keys.Z, Keys.E };
-        private ICommand[] keyboardCommands = new ICommand[13];
+        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1, Keys.R, Keys.Z, Keys.E,Keys.F, Keys.G };
+        private ICommand[] keyboardCommands = new ICommand[15];
         private KeyboardController keyboardController;
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
@@ -109,6 +112,8 @@ namespace Sprint02
             keyboardCommands[10] = new ResetCommand(this);
             keyboardCommands[11] = new LinkAttack(this);
             keyboardCommands[12] = new DamageLink(this);
+            keyboardCommands[13] = new LinkUseArrow(this);
+            keyboardCommands[14] = new LinkUseBoomerang(this);
 
             // Setting all of the elements in the Animation array to their proper locations on Link's sprite sheet
             // ILink Link will use these
@@ -128,8 +133,11 @@ namespace Sprint02
             LinkAnimationFrames[9] = new Rectangle(144, 0, 16, 44);
             LinkAnimationFrames[10] = new Rectangle(160, 0, 28, 32);
 
-            keyboardController = new KeyboardController(keyboardKeys, keyboardCommands);
+            //LinkAnimationFrames[11] = new Rectangle(176, 0, 16, 32);
 
+            keyboardController = new KeyboardController(keyboardKeys, keyboardCommands,this);
+            previousState = Keyboard.GetState();
+            state = Keyboard.GetState();
             base.Initialize();
         }
 
@@ -144,7 +152,20 @@ namespace Sprint02
 
             // Creating Link and loading in his effects so he can use them when the command is called
             SpriteLink = new LinkSprite(Content.Load<Texture2D>("LinkSpriteSheet"), LinkSpawn, spriteBatch, LinkAnimationFrames);
+
             LinkSecondaries[0] = new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this);
+
+            LinkSecondaries[1] = new ArrowEffect(Content.Load<Texture2D>("ArrowUp"), spriteBatch, this);
+            LinkSecondaries[2] = new ArrowEffect(Content.Load<Texture2D>("ArrowDown"), spriteBatch, this);
+            LinkSecondaries[3] = new ArrowEffect(Content.Load<Texture2D>("ArrowLeft"), spriteBatch, this);
+            LinkSecondaries[4] = new ArrowEffect(Content.Load<Texture2D>("ArrowRight"), spriteBatch, this);
+
+            LinkSecondaries[5] = new SwordBeamEffect(Content.Load<Texture2D>("BeamSwordUp"), spriteBatch, this);
+            LinkSecondaries[6] = new SwordBeamEffect(Content.Load<Texture2D>("BeamSwordDown"), spriteBatch, this);
+            LinkSecondaries[7] = new SwordBeamEffect(Content.Load<Texture2D>("BeamSwordLeft"), spriteBatch, this);
+            LinkSecondaries[8] = new SwordBeamEffect(Content.Load<Texture2D>("BeamSwordRight"), spriteBatch, this);
+
+
             Link = new Link(SpriteLink, LinkSecondaries, this);
 
 
@@ -197,8 +218,11 @@ namespace Sprint02
 
 
             // TODO: Add your update logic here
+            state = Keyboard.GetState();
             keyboardController.Update();
+            previousState = state;
             base.Update(gameTime);
+           
         }
 
         /// <summary>

@@ -14,9 +14,9 @@ namespace Sprint02
         private bool linkDamagedTriggered = false;
         private int attackTimer = 60;
         private int damageTimer = 180;
+        Game1 game;
 
-
-        public KeyboardController(Keys[] keys, ICommand[] commands) 
+        public KeyboardController(Keys[] keys, ICommand[] commands, Game1 Game) 
         {
             keyMappings = new Dictionary<Keys, ICommand>();
 
@@ -24,6 +24,7 @@ namespace Sprint02
             {
                 keyMappings.Add(keys[i], commands[i]);
             }
+            game = Game;
         }
 
         public void Update() 
@@ -92,6 +93,18 @@ namespace Sprint02
                     }
 
 
+                    if(!linkAttackTriggered & k == Keys.F )
+                    {
+                       attackTimer = 0;
+                        keyMappings[k].Execute();
+                        linkAttackTriggered = true;
+
+                    }
+
+                    if(k == Keys.G)
+                    {
+                        keyMappings[k].Execute();
+                    }
                     if (k == Keys.O & !npcSwapTriggered)
                     {
                         keyMappings[k].Execute();
