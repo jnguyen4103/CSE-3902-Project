@@ -39,6 +39,7 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CollisionDetection.cs" />
     <Compile Include="Commands\Attacks\LinkAttack.cs" />
     <Compile Include="Commands\Attacks\LinkUseArrow.cs" />
     <Compile Include="Commands\Attacks\LinkUseBoomerang.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
+    <Compile Include="Controller\MouseController.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameObjects\Components\ITimer.cs" />
     <Compile Include="GameObjects\Components\MonoTime.cs" />
