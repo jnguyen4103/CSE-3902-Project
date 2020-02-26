@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint03
 {
-    public class BoomerangEffect : IEffect
+    public class SwordBeamEffect : IEffect
     {
         Sprite Creator;
         Game1 Game;
@@ -13,7 +13,7 @@ namespace Sprint03
         // Fireball effect requires a sprite, a game process to access the EffectsList array
         // and a batch so the sprite can draw
 
-        public BoomerangEffect(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
+        public SwordBeamEffect(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
             Game = game;
@@ -25,7 +25,7 @@ namespace Sprint03
         public void CreateEffect()
         {
             // Adds new sprite effect to the EffectsList array so it'll be drawn on screen
-            Game.EffectsList.Add(new BoomerangSprite(Creator, Game, Direction, Texture, Batch));
+            Game.EffectsList.Add(new SwordBeamSprite(Creator, Game, Direction, Texture, Batch));
 
         }
     }

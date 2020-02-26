@@ -14,7 +14,7 @@ namespace Sprint03
 
         public void Execute()
         {
-            //monoProcess.Link.StateMachine.UseItem(0);
+            monoProcess.Link.StateMachine.UseBoomerang();
         }
     }
 }

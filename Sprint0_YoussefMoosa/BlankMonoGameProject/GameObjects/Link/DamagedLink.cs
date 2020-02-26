@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -43,7 +43,7 @@ namespace Sprint03
 
         public void TakeDamage()
         {
- 
+
         }
 
         public void Draw()
@@ -57,7 +57,7 @@ namespace Sprint03
             // After 180 frames remove damage decorator
             // and set Link to idle
             DamageTimer++;
-            if(DamageTimer > 180)
+            if (DamageTimer > 180)
             {
                 DamageTimer = 0;
                 RemoveDecorator();
@@ -72,4 +72,3 @@ namespace Sprint03
         }
     }
 }
-*/

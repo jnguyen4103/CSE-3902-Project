@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Timers;
 using Microsoft.Xna.Framework.Input;
 
 namespace Sprint03
@@ -12,7 +11,7 @@ namespace Sprint03
         private bool secondaryTriggered = false;
         private bool linkAttackTriggered = false;
         private bool linkDamagedTriggered = false;
-        private int attackTimer = 60;
+        private int attackTimer = 30;
         private int damageTimer = 180;
 
 
@@ -33,16 +32,20 @@ namespace Sprint03
 
             if (keyState.IsKeyUp(Keys.O) & keyState.IsKeyUp(Keys.P)) { npcSwapTriggered = false; }
             if (keyState.IsKeyUp(Keys.I) & keyState.IsKeyUp(Keys.U)) { itemSwapTriggered = false; }
-            if (keyState.IsKeyUp(Keys.D1)) { secondaryTriggered = false; }
+            if (keyState.IsKeyUp(Keys.D1) & keyState.IsKeyUp(Keys.D2)) { secondaryTriggered = false; }
             if (keyState.IsKeyUp(Keys.Z)) { linkAttackTriggered = false; }
             if (keyState.IsKeyUp(Keys.E)) { linkDamagedTriggered = false; }
+            if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.A) && keyState.IsKeyUp(Keys.S) && keyState.IsKeyUp(Keys.D))
+            {
+                keyMappings[Keys.H].Execute();
+            }
             
             // If Link attacks he won't be able to attack until 60 frames have passed
             // If Link is damaged he won't be able to move and attack until 180 frames have
             // passed
 
 
-            if (attackTimer < 60)
+            if (attackTimer < 30)
             {
                 attackTimer++;
             }
@@ -57,22 +60,27 @@ namespace Sprint03
 
             foreach (Keys k in pressed)
             {
+                if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && (damageTimer >= 180) && (attackTimer >= 30))
+                {
+                    if (k == Keys.W || k == Keys.S)
+                    {
+                        keyMappings[k].Execute();
+                    }
+                    else if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.S))
+                    {
+                        keyMappings[k].Execute();
+                    }
+
+                }
+
                 if (keyMappings.ContainsKey(k))
                 {
                     if (k == Keys.Q || k == Keys.R)
                     {
                         keyMappings[k].Execute();
                     }
-                    if((k == Keys.W || k == Keys.S) && damageTimer >= 180)
-                    {
-                        keyMappings[k].Execute();
-                    }
-                    if ((k == Keys.A || k == Keys.D) && pressed.Length == 1 && damageTimer >= 180)
-                    {
-                        keyMappings[k].Execute();
-                    }
 
-                    if(!secondaryTriggered & k == Keys.D1 & damageTimer >= 180)
+                    if((k == Keys.D1 || k == Keys.D2) & !secondaryTriggered & damageTimer >= 180)
                     {
                         keyMappings[k].Execute();
                         secondaryTriggered = true;
@@ -84,7 +92,7 @@ namespace Sprint03
                         linkDamagedTriggered = true;
                     }
 
-                    if (!linkAttackTriggered & k == Keys.Z & attackTimer == 60 & damageTimer >= 180)
+                    if (!linkAttackTriggered & k == Keys.Z & attackTimer == 30 & damageTimer >= 180)
                     {
                         attackTimer = 0;
                         keyMappings[k].Execute();

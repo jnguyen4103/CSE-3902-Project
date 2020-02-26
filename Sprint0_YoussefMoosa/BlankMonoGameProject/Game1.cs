@@ -11,35 +11,19 @@ namespace Sprint03
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
 
         public SpriteFactory Factory;
 
         // Link Object & Sprite
         public ILink Link;
-        public ISprite SpriteLink;
+        public LinkSprite SpriteLink;
 
-        /* Link SpriteSheet Breakdown
-         * Each element in the array is a rectangle which covers
-         * all the frame for one type of sprite animation
-         * Element 0 : Walking Up
-         * Element 1: Walking Down
-         * Element 2: Walking Right
-         * Element 3: Walking Left
-         * Element 4: Hurt Walking Up
-         * Element 5: Hurt Walking Down
-         * Element 6: Hurt Walking Right
-         * Element 7: Hurt Walking Left
-         * Element 8: Attacking Up (Needs flipped)
-         * Element 9: Attacking Down
-         * Element 10: Attacking Right (Needs flipped for left attacking)
-         */
-        public Rectangle[] LinkAnimationFrames = new Rectangle[11];
-
+        // Sprite Sheets
         private Texture2D LinkSpriteSheet;
         private Texture2D MonsterSpriteSheet;
         private Texture2D ItemSpriteSheet;
-        private Texture2D EffectSpriteSheet;
+        public Texture2D EffectSpriteSheet;
 
 
 
@@ -69,11 +53,8 @@ namespace Sprint03
          */
         public List<ISprite> EffectsList = new List<ISprite>();
 
-        // A list of all the secondary weapons Link can use (only boomerang is implemented)
-        public IEffect[] LinkSecondaries = new IEffect[1];
-
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1, Keys.R, Keys.Z, Keys.E };
-        private ICommand[] keyboardCommands = new ICommand[13];
+        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
+        private ICommand[] keyboardCommands = new ICommand[15];
         private KeyboardController keyboardController;
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
@@ -115,28 +96,11 @@ namespace Sprint03
             keyboardCommands[7] = new DecrementItem(this);
             keyboardCommands[8] = new QuitCommand(this);
             keyboardCommands[9] = new LinkUseBoomerang(this);
-            keyboardCommands[10] = new ResetCommand(this);
-            keyboardCommands[11] = new LinkAttack(this);
-            keyboardCommands[12] = new DamageLink(this);
-
-            // Setting all of the elements in the Animation array to their proper locations on Link's sprite sheet
-            // ILink Link will use these
-            LinkAnimationFrames[0] = new Rectangle(0, 0, 16, 32);
-            LinkAnimationFrames[1] = new Rectangle(16, 0, 16, 32);
-            LinkAnimationFrames[2] = new Rectangle(32, 0, 16, 32);
-            LinkAnimationFrames[3] = new Rectangle(48, 0, 16, 32);
-
-            // ILink DamagedLink will use these
-            LinkAnimationFrames[4] = new Rectangle(64, 0, 16, 32);
-            LinkAnimationFrames[5] = new Rectangle(80, 0, 16, 32);
-            LinkAnimationFrames[6] = new Rectangle(96, 0, 16, 32);
-            LinkAnimationFrames[7] = new Rectangle(112, 0, 16, 32);
-
-            // ILink AttackingLink will use these
-            LinkAnimationFrames[8] = new Rectangle(128, 0, 16, 44);
-            LinkAnimationFrames[9] = new Rectangle(144, 0, 16, 44);
-            LinkAnimationFrames[10] = new Rectangle(160, 0, 28, 32);
-
+            keyboardCommands[10] = new LinkUseArrow(this);
+            keyboardCommands[11] = new ResetCommand(this);
+            keyboardCommands[12] = new LinkAttack(this);
+            keyboardCommands[13] = new DamageLink(this);
+            keyboardCommands[14] = new IdleLink(this);
             keyboardController = new KeyboardController(keyboardKeys, keyboardCommands);
 
             base.Initialize();
@@ -157,8 +121,7 @@ namespace Sprint03
             ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
             SpriteLink = new LinkSprite(this, "WalkDown", LinkSpriteSheet, LinkSpawn, spriteBatch);
-            //LinkSecondaries[0] = new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this);
-            //Link = new Link(SpriteLink, LinkSecondaries, this);
+            Link = new Link(SpriteLink, this);
 
 
 
@@ -210,6 +173,7 @@ namespace Sprint03
 
 
             // TODO: Add your update logic here
+            Link.Update();
             keyboardController.Update();
             base.Update(gameTime);
         }
@@ -224,10 +188,15 @@ namespace Sprint03
 
 
             spriteBatch.Begin();
+            foreach (Sprite sprite in EffectsList)
+            {
+                sprite.DrawSprite();
+            }
             Monster.Draw();
-            SpriteLink.DrawSprite();
             //Item.DrawItem();
-            //Link.Draw();
+            Link.Draw();
+
+
 
             spriteBatch.End();
 

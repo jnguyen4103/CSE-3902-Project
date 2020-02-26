@@ -1,13 +1,4 @@
-﻿/*
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sprint03
+﻿namespace Sprint03
 {
     public class Link : ILink
     {
@@ -18,9 +9,11 @@ namespace Sprint03
         public enum LinkState
         {
             Attacking,
+            Moving,
             Idle,
             Damaged,
-            UsingItem
+            UseArrow,
+            UseBoomerRange
         }
 
         // 4 directional states of Link, these are used to determine which directional
@@ -39,16 +32,13 @@ namespace Sprint03
 
         // Creating a reference to the Game so Link's decorators can
         // have access to link by using monoProcess
-        public Game1 monoProcess;
-
-        // List of Link's secondary weapons
-        public IEffect[] Secondaries;
+        public Game1 Game;
 
         // Setting initial action and movement states
         public LinkState State = LinkState.Idle;
         public LinkDirection Direction = LinkDirection.Down;
         public int hitpoints;
-        public int maxHP = 3;
+        public int maxHP = 6;
 
         LinkStateMachine ILink.StateMachine
         {
@@ -62,14 +52,11 @@ namespace Sprint03
             set { }
         }
 
-
-
-        public Link(LinkSprite sprite, IEffect[] _secondaries, Game1 monoInstance)
+        public Link(LinkSprite sprite, Game1 game)
         {
-            Secondaries = _secondaries;
-            monoProcess = monoInstance;
+            Game = game;
             Sprite = sprite;
-            hitpoints = 3;
+            hitpoints = 6;
             State = LinkState.Idle;
             LinkSM = new LinkStateMachine(this);
         }
@@ -81,33 +68,12 @@ namespace Sprint03
 
         public void Draw()
         {
-            this.Update();
             SpriteLink.DrawSprite();
         }
 
         public void Update()
         {
-            // Based on which action state Link is in, it'll call it's respective function
-            switch (State)
-            {
-                case (LinkState.Idle):
-                    LinkSM.IdleState();
-                    break;
-                case (LinkState.Damaged):
-                    LinkSM.DamagedState();
-                    break;
-                case (LinkState.Attacking):
-                    LinkSM.AttackState();
-                    State = LinkState.Idle;
-                    break;
-                case (LinkState.UsingItem):
-                    LinkSM.UsingItemState();
-                    break;
-                default:
-                    State = LinkState.Idle;
-                    break;
-            }
+            SpriteLink.Update(State, Direction);
         }
     }
 }
-*/

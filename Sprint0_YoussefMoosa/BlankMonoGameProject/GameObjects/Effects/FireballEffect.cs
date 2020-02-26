@@ -16,7 +16,7 @@ namespace Sprint03
             monoProcess = monoInstance;
         }
 
-        public void createEffectSprite(Vector2 position, int xDir, int yDir)
+        public void CreateEffect()
         {
             //monoProcess.EffectsList.Add(new FireballSprite(effectTexture, spriteBatch, position,  -1, 0));
             //monoProcess.EffectsList.Add(new FireballSprite(effectTexture, spriteBatch, position, -1, -1));

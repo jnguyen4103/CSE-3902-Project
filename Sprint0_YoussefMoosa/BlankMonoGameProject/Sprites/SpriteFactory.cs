@@ -39,10 +39,10 @@ namespace Sprint03
          */
 
 
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> LinkSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(10);
+        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> LinkSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(13);
         public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> MonsterSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(12);
         public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> ItemSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(15);
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> EffectSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(9);
+        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> EffectSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(10);
         
         // Al off the LinkSprites are size 16 by 16
         private readonly Vector2 LinkSpriteSize = new Vector2(16, 16);
@@ -58,14 +58,17 @@ namespace Sprint03
             // Iniitalizing all Link Sprites into a dictionary
             LinkSprites["WalkUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 32), LinkSpriteSize, 2);
             LinkSprites["WalkDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 16, 32), LinkSpriteSize, 2);
-            LinkSprites["WalkSide"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(32, 0, 16, 32), LinkSpriteSize, 2);
-            LinkSprites["DamagedUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 32), LinkSpriteSize, 2);
-            LinkSprites["DamagedDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 16, 32), LinkSpriteSize, 2);
-            LinkSprites["DamagedSide"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 16, 32), LinkSpriteSize, 2);
-            LinkSprites["EffectUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 16), LinkSpriteSize, 1);
-            LinkSprites["EffectDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 0, 16, 16), LinkSpriteSize, 1);
-            LinkSprites["EffectSide"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 0, 16, 16), LinkSpriteSize, 1);
-            LinkSprites["Pickup"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 16), LinkSpriteSize, 1);
+            LinkSprites["WalkRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(32, 0, 16, 32), LinkSpriteSize, 2);
+            LinkSprites["WalkLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 32), LinkSpriteSize, 2);
+            LinkSprites["DamagedUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 16, 32), LinkSpriteSize, 2);
+            LinkSprites["DamagedDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 16, 32), LinkSpriteSize, 2);
+            LinkSprites["DamagedRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 32), LinkSpriteSize, 2);
+            LinkSprites["DamagedLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 0, 16, 32), LinkSpriteSize, 2);
+            LinkSprites["EffectUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(176, 0, 16, 16), LinkSpriteSize, 1);
+            LinkSprites["EffectDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 0, 16, 16), LinkSpriteSize, 1);
+            LinkSprites["EffectRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 16), LinkSpriteSize, 1);
+            LinkSprites["EffectLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 0, 16, 16), LinkSpriteSize, 1);
+            LinkSprites["Pickup"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(192, 0, 16, 16), LinkSpriteSize, 2);
 
 
             // Initializing all Monster Sprites into the dictionary
@@ -107,6 +110,7 @@ namespace Sprint03
             ItemSprites["Triforce"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(136, 0, 16, 32), defaultMonsterSize, 2);
 
             // Initializing all Effects Sprites into the dictionary
+            EffectSprites["SwordSwing"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 16), defaultItemSize, 1);
             EffectSprites["SwordBeam"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 64), defaultItemSize, 4);
             EffectSprites["SwordBeamExplosion"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(8, 0, 8, 64), defaultItemSize, 4);
             EffectSprites["Boomerang"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 8, 64), Vector2.Divide(defaultMonsterSize, 2), 8);

@@ -4,17 +4,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Sprint03
 {
-    class DamageLink : ICommand
+    class LinkUseArrow : ICommand
     {
         private readonly Game1 monoProcess;
-        public DamageLink(Game1 monoInstance)
+        public LinkUseArrow(Game1 monoInstance)
         {
             monoProcess = monoInstance;
         }
 
         public void Execute()
         {
-            monoProcess.Link.StateMachine.DamagedState();
+            monoProcess.Link.StateMachine.UseArrow();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Sprint03
     // Abstract class allows for easy reuse of methods and variables
     // that all NPCSprites share
     // Look at Stalfos and Goriyas for comments on their NPC Sprite implementation
-    public abstract class MonsterSprite: CharacterSprite
+    public abstract class MonsterSprite: Sprite
     {
 
         // Position & Movement Info

@@ -1,24 +1,19 @@
-﻿
-/*
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Sprint03
 {
     public class AttackingLink : ILink
     {
-
-        public LinkSprite Sprite;
-        public LinkStateMachine LinkSM;
-        public Link decoratedLink;
-        public Game1 monoProcess;
-        // Attack timer so the decorator is removed after certain amount of frames
-        int AttackTimer = 0;
+        private IEffect SwordAttack;
+        private IEffect SwordBeam;
+        private LinkSprite Sprite;
+        private LinkStateMachine LinkSM;
+        private Link decoratedLink;
+        private Link.LinkDirection Direction;
+        private string directionSpriteName;
+        private Game1 Game;
+        private int LifeSpan;
+        private int AttackTimer = 0;
 
 
         LinkStateMachine ILink.StateMachine
@@ -35,12 +30,19 @@ namespace Sprint03
 
 
 
-        public AttackingLink(Link _link, Game1 monoInstance)
+        public AttackingLink(Link _link, Game1 game, string oldSpriteName, Link.LinkDirection _direction)
         {
             decoratedLink = _link;
-            monoProcess = monoInstance;
+            Game = game;
             Sprite = _link.SpriteLink;
             LinkSM = _link.LinkSM;
+            directionSpriteName = oldSpriteName;
+            Direction = _direction;
+            Sprite.FPS = 24;
+            LifeSpan = (60/Sprite.FPS) * 4;
+            SwordAttack = new SwordEffect(_link.SpriteLink, game, _direction, game.EffectSpriteSheet, game.spriteBatch);
+            SwordBeam = new SwordBeamEffect(_link.SpriteLink, game, _direction, game.EffectSpriteSheet, game.spriteBatch);
+
         }
 
         public void TakeDamage()
@@ -48,32 +50,45 @@ namespace Sprint03
             // You can be damaged while attacking
             // So it removes the attacking decorator and adds the damaged one
             RemoveDecorator();
-            monoProcess.Link.StateMachine.DamagedState();
+            Game.Link.StateMachine.DamagedState();
         }
 
         public void Draw()
         {
-            this.Update();
             Sprite.DrawSprite();
         }
 
         public void Update()
         {
-            // Leaves the attack animation after 10 frames
+            SpriteLink.Update(Link.LinkState.Attacking, Direction);
+
             AttackTimer++;
-            if(AttackTimer == 10)
+            if (AttackTimer == (LifeSpan/3))
             {
-                AttackTimer = 0;
+                SwordAttack.CreateEffect();
+            }
+            else if (AttackTimer == (LifeSpan/2))
+            {
+                Sprite.ChangeSpriteAnimation(directionSpriteName);
+
+            }
+            else if (AttackTimer >= LifeSpan)
+            {
+                if (decoratedLink.hitpoints == decoratedLink.maxHP)
+                {
+                    SwordBeam.CreateEffect();
+                }
                 RemoveDecorator();
             }
         }
 
         public void RemoveDecorator()
         {
-            monoProcess.Link = decoratedLink;
+            AttackTimer = 0;
+            Sprite.FPS = 4;
+            SpriteLink.Update(Link.LinkState.Idle, Direction);
+            Game.Link = decoratedLink;
+            Game.Link.StateMachine.IdleState();
         }
     }
 }
-
-
-*/

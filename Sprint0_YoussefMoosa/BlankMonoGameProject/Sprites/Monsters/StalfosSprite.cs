@@ -25,13 +25,6 @@ namespace Sprint03
             this.TotalFrames = game.Factory.MonsterSprites[name].Item3;
             this.FPS = 4;
             this.ChangeSpriteAnimation(name);
-
-
-            // Setting up conditions for testing
-            // Remove if still presnet
-            this.Path.X = 100;
-            this.CurrentSpeed.X = -BaseSpeed;
-
         }
 
         public override void Animate()

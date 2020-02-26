@@ -1,30 +1,25 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sprint03
 {
     // Abstract class allows for easy reuse of methods and variables
     // that all NPCSprites share
     // Look at Stalfos and Goriyas for comments on their NPC Sprite implementation
-    public abstract class CharacterSprite: ISprite
+    public abstract class Sprite: ISprite
     {
 
         // Variables for keeping track of Sprite's position on the screen
         protected Game1 Game;
 
         // Position & Movement Info
-        protected float BaseSpeed;
+        public float BaseSpeed;
         protected Vector2 CurrentSpeed;                // Controls movement speed of NPC
         public Vector2 Position;
 
 
         // Sprite Info
-        protected string Name;
+        public string Name;
         protected Vector2 Origin = new Vector2(0, 0);
         protected Vector2 Size;
 
@@ -35,12 +30,12 @@ namespace Sprint03
         protected Rectangle AnimationWindow;
         protected SpriteEffects SpriteEffect = SpriteEffects.None;
         protected float Rotation = 0;
-        protected int Layer = 0;
+        protected float Layer = 0;
 
         // Animation & Moving Info
         protected int TotalFrames;
         protected int CurrentFrame = 0;
-        protected int FPS;
+        public int FPS;
         protected int GameFrame = 0;
 
         public Vector2 GetSize { get { return Size; } }
@@ -66,8 +61,7 @@ namespace Sprint03
             }
         }
 
-
-        public void Move()
+        public virtual void Move()
         {
             Position.X += CurrentSpeed.X;
             Position.Y += CurrentSpeed.Y;
@@ -75,7 +69,7 @@ namespace Sprint03
         public abstract void ChangeSpriteAnimation(string newSpriteName);
 
 
-        public void DrawSprite()
+        public virtual void DrawSprite()
         {
             Move();
             Animate();
