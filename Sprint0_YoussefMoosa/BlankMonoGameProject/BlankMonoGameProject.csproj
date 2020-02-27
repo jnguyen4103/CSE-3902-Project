@@ -40,6 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CollisionDetection.cs" />
+    <Compile Include="CollisionHandler.cs" />
     <Compile Include="Commands\Attacks\LinkAttack.cs" />
     <Compile Include="Commands\Attacks\LinkUseArrow.cs" />
     <Compile Include="Commands\Attacks\LinkUseBoomerang.cs" />

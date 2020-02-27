@@ -12,7 +12,7 @@ namespace Sprint03
     {
         // Keeps track of basic info about items
         protected Texture2D itemTexture;
-        protected Vector2 itemLocation;
+        public Vector2 itemLocation;
         protected SpriteBatch spriteBatch;
         public abstract void ActivateEffect();
         public void DeleteItem()
