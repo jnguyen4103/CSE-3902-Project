@@ -21,11 +21,11 @@ namespace Sprint03
             this.Game = game;
             this.Batch = batch;
             this.Name = "Boomerang";
-            this.Size = game.Factory.EffectSprites["Boomerang"].Item2;
+            this.Size = game.SFactory.EffectSprites["Boomerang"].Item2;
             this.Position = creator.GetPosition;
             this.Texture = texture;
             this.BaseSpeed = 2.5f;
-            this.TotalFrames = game.Factory.EffectSprites["Boomerang"].Item3;
+            this.TotalFrames = game.SFactory.EffectSprites["Boomerang"].Item3;
             this.ChangeSpriteAnimation("Boomerang");
             this.FPS = 16;
             LifeSpan = 600;
@@ -35,7 +35,7 @@ namespace Sprint03
         {
             Name = newSpriteName;
             CurrentFrame = 0;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.Factory.EffectSprites[newSpriteName];
+            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.EffectSprites[newSpriteName];
             DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
             AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
             TotalFrames = NewInfo.Item3;

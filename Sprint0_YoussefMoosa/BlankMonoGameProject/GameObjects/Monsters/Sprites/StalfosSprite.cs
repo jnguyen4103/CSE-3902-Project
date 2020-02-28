@@ -10,18 +10,17 @@ namespace Sprint03
 {
     public class StalfosSprite : Sprite
     {
-        private bool FlipFlag = false;
 
         public StalfosSprite(Game1 game, String name, Texture2D texture, Vector2 spawn, SpriteBatch batch)
         {
             this.Game = game;
             this.Batch = batch;
             this.Name = name;
-            this.Size = game.Factory.MonsterSprites[name].Item2;
+            this.Size = game.SFactory.MonsterSprites[name].Item2;
             this.Position = spawn;
             this.Texture = texture;
             this.BaseSpeed = 0.5f;
-            this.TotalFrames = game.Factory.MonsterSprites[name].Item3;
+            this.TotalFrames = game.SFactory.MonsterSprites[name].Item3;
             this.FPS = 4;
             this.ChangeSpriteAnimation(name);
         }
@@ -30,7 +29,7 @@ namespace Sprint03
         {
             Name = newSpriteName;
             CurrentFrame = 0;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.Factory.MonsterSprites[newSpriteName];
+            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.MonsterSprites[newSpriteName];
             DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
             AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
             TotalFrames = NewInfo.Item3;
@@ -45,15 +44,6 @@ namespace Sprint03
                 if ((60 / FPS <= GameFrame))
                 {
                     GameFrame = 0;
-                    if (FlipFlag)
-                    {
-                        this.SpriteEffect = SpriteEffects.FlipHorizontally;
-                    }
-                    else
-                    {
-                        this.SpriteEffect = SpriteEffects.None;
-                    }
-                    FlipFlag = !FlipFlag;
                 }
             }
         }

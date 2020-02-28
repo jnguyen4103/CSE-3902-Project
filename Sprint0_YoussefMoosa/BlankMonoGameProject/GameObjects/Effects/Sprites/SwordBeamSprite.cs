@@ -21,12 +21,12 @@ namespace Sprint03
             this.Game = game;
             this.Batch = batch;
             this.Name = "SwordBeam";
-            this.Size = game.Factory.EffectSprites["SwordBeam"].Item2;
+            this.Size = game.SFactory.EffectSprites["SwordBeam"].Item2;
             this.Position = creator.GetPosition;
             this.Texture = texture;
             this.BaseSpeed = 3.5f;
             this.CurrentSpeed = new Vector2(1f, 1f);
-            this.TotalFrames = game.Factory.EffectSprites["SwordBeam"].Item3;
+            this.TotalFrames = game.SFactory.EffectSprites["SwordBeam"].Item3;
             this.ChangeSpriteAnimation("SwordBeam");
             this.FPS = 16;
             LifeSpan = 600;
@@ -36,7 +36,7 @@ namespace Sprint03
         {
             Name = newSpriteName;
             CurrentFrame = 0;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.Factory.EffectSprites[newSpriteName];
+            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.EffectSprites[newSpriteName];
             DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
             AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
             TotalFrames = NewInfo.Item3;
