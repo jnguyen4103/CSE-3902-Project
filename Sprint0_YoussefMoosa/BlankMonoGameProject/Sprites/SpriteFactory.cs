@@ -121,9 +121,6 @@ namespace Sprint03
             EffectSprites["Fire"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 16, 16), defaultMonsterSize, 1);
             EffectSprites["Fireball"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 64), defaultItemSize, 4);
             EffectSprites["SwordSwing"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(88, 0, 8, 48), defaultItemSize, 3);
-
-
-
         }
 
     }

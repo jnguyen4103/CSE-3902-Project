@@ -25,7 +25,6 @@ namespace Sprint03
             this.Position = creator.GetPosition;
             this.Texture = texture;
             this.BaseSpeed = 2.5f;
-            this.CurrentSpeed = new Vector2(1f, 1f);
             this.TotalFrames = game.Factory.EffectSprites["Boomerang"].Item3;
             this.ChangeSpriteAnimation("Boomerang");
             this.FPS = 16;

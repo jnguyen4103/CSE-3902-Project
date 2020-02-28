@@ -12,6 +12,8 @@ namespace Sprint03
         // Allows for public access of Link's state machine and sprite for his decorators
         LinkStateMachine StateMachine { get; set; }
         LinkSprite SpriteLink { get; set; }
+        int HP { get; set; }
+        int MaxHP { get; set; }
         void Update();
         void Draw();
         void TakeDamage();

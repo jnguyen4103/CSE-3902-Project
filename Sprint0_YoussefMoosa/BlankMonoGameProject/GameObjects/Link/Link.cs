@@ -52,6 +52,9 @@
             set { }
         }
 
+        public int HP { get => hitpoints; set => hitpoints = value; }
+        public int MaxHP { get => maxHP; set => maxHP = value; }
+
         public Link(LinkSprite sprite, Game1 game)
         {
             Game = game;

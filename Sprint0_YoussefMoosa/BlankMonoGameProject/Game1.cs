@@ -14,10 +14,12 @@ namespace Sprint03
         public SpriteBatch spriteBatch;
 
         public SpriteFactory Factory;
+        public ItemFactory IFactory;
 
         // Link Object & Sprite
         public ILink Link;
         public LinkSprite SpriteLink;
+        public int RupeeCounter = 0;
 
         // Sprite Sheets
         private Texture2D LinkSpriteSheet;
@@ -28,7 +30,7 @@ namespace Sprint03
 
 
         // Monster is the current NPC displayed
-        public NPC Monster { get; set; }
+        public Monster Monster { get; set; }
 
         /* MonsterList has a list of all the monsters so Monster can just be swapped for a NPC on the list
          * Element 0: Stalfos
@@ -38,13 +40,13 @@ namespace Sprint03
          * Element 4: Fairy
          * Element 5: Goriyas
          */
-        public NPC[] MonsterList = new NPC[6];
+        public Monster[] MonsterList = new Monster[1];
         public int currentMonsterPosition = 0;
 
 
         // ItemList keeps track of all the items and allows the command to just swap which item is displayed
-        public ItemFactory Item { get; set; }
-        public ItemFactory[] ItemList = new ItemFactory[13];
+        public Item Item { get; set; }
+        public Item[] ItemList = new Item[13];
 
         public int currentItemPosition = 0;
 
@@ -87,6 +89,7 @@ namespace Sprint03
         {
             // TODO: Add your initialization logic here
             Factory = new SpriteFactory();
+            IFactory = new ItemFactory(this);
 
             // Adding all of the commands into the keyboard controller
             keyboardCommands[0] = new LinkWalkUp(this);
@@ -127,7 +130,7 @@ namespace Sprint03
             Link = new Link(SpriteLink, this);
             
 
-            handler = new CollisionHandler(new CollisionDetection(MonsterList,Link,ItemList, EffectsList));
+            //handler = new CollisionHandler(new CollisionDetection(MonsterList,Link,ItemList, EffectsList));
 
 
             // Loading in the monster list
@@ -139,19 +142,19 @@ namespace Sprint03
             //MonsterList[5] = new Goriyas(new GoriyasSprite(Content.Load<Texture2D>("GoriyasDefault"), spawnPosition, screenDimensions, spriteBatch), new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this));
 
             // Loading in the items list
-            //ItemList[0] = new RedHeart(Content.Load<Texture2D>("RedHeart"), itemSpawnPosition, spriteBatch);
-            //ItemList[1] = new HeartContainer(Content.Load<Texture2D>("HeartContainer"), itemSpawnPosition, spriteBatch);
-            //ItemList[2] = new Bomb(Content.Load<Texture2D>("Bomb"), itemSpawnPosition, spriteBatch);
-            //ItemList[3] = new Clock(Content.Load<Texture2D>("Clock"), itemSpawnPosition, spriteBatch);
-            //ItemList[4] = new Map(Content.Load<Texture2D>("Map"), itemSpawnPosition, spriteBatch);
-            //ItemList[5] = new Compass(Content.Load<Texture2D>("Compass"), itemSpawnPosition, spriteBatch);
-            //ItemList[6] = new YellowRupee(Content.Load<Texture2D>("YellowRupee"), itemSpawnPosition, spriteBatch);
-            //ItemList[7] = new BlueRupee(Content.Load<Texture2D>("BlueRupee"), itemSpawnPosition, spriteBatch);
-            //ItemList[8] = new YellowTriforce(Content.Load<Texture2D>("YellowTriforce"), itemSpawnPosition, spriteBatch);
-            //ItemList[9] = new Bow(Content.Load<Texture2D>("Bow"), itemSpawnPosition, spriteBatch);
-            //ItemList[10] = new Boomerang(Content.Load<Texture2D>("Boomerang"), itemSpawnPosition, spriteBatch);
-            //ItemList[11] = new Key(Content.Load<Texture2D>("Key"), itemSpawnPosition, spriteBatch);
-            //ItemList[12] = new LionKey(Content.Load<Texture2D>("LionKey"), itemSpawnPosition, spriteBatch);
+            ItemList[0] = new Item(this, "Heart", "Heart", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[1] = new Item(this, "BlueRupee", "BlueRupee", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[2] = new Item(this, "Rupee", "Rupee", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[3] = new Item(this, "Boomerang", "Boomerang", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[4] = new Item(this, "HeartContainer", "HeartContainer", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[5] = new Item(this, "Clock", "Clock", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[6] = new Item(this, "Map", "Map", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[7] = new Item(this, "Bomb", "Bomb", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[8] = new Item(this, "Triforce", "Triforce", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[9] = new Item(this, "Key", "Key", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[10] = new Item(this, "LionKey", "LionKey", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[11] = new Item(this, "Compass", "Compass", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
+            ItemList[12] = new Item(this, "Bow", "Bow", ItemSpriteSheet, itemSpawnPosition, spriteBatch);
 
             // Defining the first monster and item so they can be drawn later on
             Monster = MonsterList[0];
@@ -179,6 +182,7 @@ namespace Sprint03
 
             // TODO: Add your update logic here
             Link.Update();
+            Monster.Update();
             keyboardController.Update();
             base.Update(gameTime);
         }
@@ -193,15 +197,19 @@ namespace Sprint03
 
 
             spriteBatch.Begin();
+
             foreach (Sprite sprite in EffectsList)
             {
                 sprite.DrawSprite();
             }
+
+
+
             Monster.Draw();
-            //Item.DrawItem();
+            Item.Draw();
             Link.Draw();
 
-            handler.Update();
+            //handler.Update();
 
             spriteBatch.End();
 

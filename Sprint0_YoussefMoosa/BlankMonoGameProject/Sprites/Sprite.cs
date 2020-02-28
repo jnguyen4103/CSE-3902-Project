@@ -14,7 +14,7 @@ namespace Sprint03
 
         // Position & Movement Info
         public float BaseSpeed;
-        protected Vector2 CurrentSpeed;                // Controls movement speed of NPC
+        public Vector2 CurrentSpeed;                // Controls movement speed of NPC
         public Vector2 Position;
 
 
@@ -45,18 +45,15 @@ namespace Sprint03
 
         public virtual void Animate()
         {
-            if (CurrentSpeed.X != 0 || CurrentSpeed.Y != 0)
+            GameFrame++;
+            if ((60 / FPS <= GameFrame))
             {
-                GameFrame++;
-                if ((60 / FPS <= GameFrame))
-                {
-                    GameFrame = 0;
-                    CurrentFrame++;
+                GameFrame = 0;
+                CurrentFrame++;
 
-                    if (CurrentFrame == TotalFrames)
-                    {
-                        CurrentFrame = 0;
-                    }
+                if (CurrentFrame == TotalFrames)
+                {
+                    CurrentFrame = 0;
                 }
             }
         }

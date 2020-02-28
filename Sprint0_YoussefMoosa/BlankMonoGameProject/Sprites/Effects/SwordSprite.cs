@@ -70,22 +70,6 @@ namespace Sprint03
             }
         }
 
-        public override void Animate()
-        {
-            GameFrame++;
-            if ((60 / FPS <= GameFrame))
-            {
-                GameFrame = 0;
-                CurrentFrame++;
-
-                if (CurrentFrame == TotalFrames)
-                {
-                    CurrentFrame = 0;
-                }
-            }
-
-        }
-
         public override void DrawSprite()
         {
             if (LifeCounter <= LifeSpan)

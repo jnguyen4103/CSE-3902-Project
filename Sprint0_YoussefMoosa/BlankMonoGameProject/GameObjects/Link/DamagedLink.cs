@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sprint03
 {
+
     public class DamagedLink : ILink
     {
 
@@ -30,6 +31,9 @@ namespace Sprint03
             get { return Sprite; }
             set { }
         }
+
+        public int HP { get => decoratedLink.hitpoints; set => decoratedLink.hitpoints = value; }
+        public int MaxHP { get => decoratedLink.maxHP; set => decoratedLink.maxHP = value; }
 
 
 

@@ -22,7 +22,7 @@ namespace Sprint03
             {
                 monoProcess.currentMonsterPosition--;
             }
-            monoProcess.Monster = monoProcess.MonsterList[monoProcess.currentMonsterPosition];
+            //monoProcess.Monster = monoProcess.MonsterList[monoProcess.currentMonsterPosition];
             //monoProcess.Monster.Sprite.UpdatePosition(monoProcess.spawnPosition);
         }
     }

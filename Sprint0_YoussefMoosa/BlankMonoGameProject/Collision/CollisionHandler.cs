@@ -28,6 +28,7 @@ namespace Sprint03
                 Console.WriteLine("LINK WAS HIT BY A MONSTER");
             }
         }
+        /*
         public void handleLinkHitByEffect()
         {
             if(detector.linkCollisionDetectionEffect())
@@ -41,7 +42,7 @@ namespace Sprint03
             {
                 Console.WriteLine("LINK PICKED UP AN ITEM ");
             }
-        }
+        } */
 
         /*
          * Monster Collision
@@ -53,13 +54,13 @@ namespace Sprint03
                 Console.WriteLine("MONSTER WAS HIT");
             }
         }
-
+        /*
         public void Update()
         {
             handleLinkHitByMonster();
             handleLinkHitByEffect();
             handleLinkGetsItem();
             handleMonsterHitByLink();
-        }
+        } */
     }
 }
