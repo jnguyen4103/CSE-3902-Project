@@ -38,7 +38,7 @@ namespace Sprint03
             LinkSM = _link.LinkSM;
             directionSpriteName = oldSpriteName;
             Direction = _direction;
-            Sprite.FPS = 24;
+            Sprite.FPS = 16;
             LifeSpan = (60/Sprite.FPS) * 4;
             SwordAttack = new SwordEffect(_link.SpriteLink, game, _direction, game.EffectSpriteSheet, game.spriteBatch);
             SwordBeam = new SwordBeamEffect(_link.SpriteLink, game, _direction, game.EffectSpriteSheet, game.spriteBatch);

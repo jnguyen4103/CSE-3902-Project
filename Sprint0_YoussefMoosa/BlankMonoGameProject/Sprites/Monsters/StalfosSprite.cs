@@ -21,9 +21,9 @@ namespace Sprint03
             this.Position = spawn;
             this.PathPosition = spawn;
             this.Texture = texture;
-            this.BaseSpeed = 0.25f;
+            this.BaseSpeed = 0.5f;
             this.TotalFrames = game.Factory.MonsterSprites[name].Item3;
-            this.FPS = 4;
+            this.FPS = 8;
             this.ChangeSpriteAnimation(name);
         }
 

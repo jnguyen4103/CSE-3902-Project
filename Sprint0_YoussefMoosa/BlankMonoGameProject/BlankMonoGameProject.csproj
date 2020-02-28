@@ -130,7 +130,6 @@
     <Content Include="bin\Windows\x86\Debug\SharpDX.xml" />
     <Content Include="bin\Windows\x86\Debug\Sprint03.exe" />
     <Content Include="bin\Windows\x86\Debug\Sprint03.pdb" />
-    <Content Include="Content\Effects Sprite Sheet.png" />
     <Content Include="Content\Item Sprite Sheet.png" />
     <Content Include="Content\Link Sprite Sheet.png" />
     <Content Include="Content\Monster Sprite Sheet.png" />

@@ -24,7 +24,6 @@ namespace Sprint03
             this.Size = game.Factory.EffectSprites["SwordSwing"].Item2;
             this.Position = creator.GetPosition;
             this.Texture = texture;
-            this.BaseSpeed = 1f;
             this.TotalFrames = game.Factory.EffectSprites["SwordSwing"].Item3;
             this.ChangeSpriteAnimation("SwordSwing");
             this.FPS = 16;
@@ -71,25 +70,20 @@ namespace Sprint03
             }
         }
 
-        public override void Move()
+        public override void Animate()
         {
-            switch (Direction)
+            GameFrame++;
+            if ((60 / FPS <= GameFrame))
             {
-                case (Link.LinkDirection.Down):
-                    Position.Y -= BaseSpeed;
-                    break; 
-                case (Link.LinkDirection.Up):
-                    Position.Y += BaseSpeed;
-                    break;
-                case (Link.LinkDirection.Left):
-                    Position.X += BaseSpeed;
-                    break;
-                case (Link.LinkDirection.Right):
-                    Position.X -= BaseSpeed;
-                    break;
-                default:
-                    break;
+                GameFrame = 0;
+                CurrentFrame++;
+
+                if (CurrentFrame == TotalFrames)
+                {
+                    CurrentFrame = 0;
+                }
             }
+
         }
 
         public override void DrawSprite()
