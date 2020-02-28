@@ -89,9 +89,8 @@
     <Compile Include="GameObjects\Items\ItemSprite.cs" />
     <Compile Include="GameObjects\Link\LinkSprite.cs" />
     <Compile Include="Sprite\Sprite.cs" />
-    <Compile Include="GameObjects\Monsters\Sprites\MonsterSprite.cs" />
     <Compile Include="GameObjects\Monsters\Sprites\StalfosSprite.cs" />
-    <Compile Include="SpriteFactory.cs" />
+    <Compile Include="Sprite\SpriteFactory.cs" />
     <Compile Include="GameObjects\Monsters\Monster.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +121,7 @@
     <Content Include="bin\Windows\x86\Debug\SharpDX.xml" />
     <Content Include="bin\Windows\x86\Debug\Sprint03.exe" />
     <Content Include="bin\Windows\x86\Debug\Sprint03.pdb" />
+    <Content Include="Content\Effects Sprite Sheet.png" />
     <Content Include="Content\Item Sprite Sheet.png" />
     <Content Include="Content\Link Sprite Sheet.png" />
     <Content Include="Content\Monster Sprite Sheet.png" />
@@ -132,6 +132,9 @@
     <Content Include="obj\x86\Debug\Sprint03.csproj.FileListAbsolute.txt" />
     <Content Include="obj\x86\Debug\Sprint03.exe" />
     <Content Include="obj\x86\Debug\Sprint03.pdb" />
+    <Content Include="Rooms\roomAfterAqua.xml" />
+    <Content Include="Rooms\roomBeforeAqua.xml" />
+    <Content Include="Rooms\roomWithAqua.xml" />
     <Content Include="Sprint03.csproj" />
     <Content Include="Sprint03.csproj.user" />
     <Content Include="Sprite Sheets\Effects Sprite Sheet.png" />
@@ -195,7 +198,6 @@
     <Folder Include="GameObjects\Blocks\" />
     <Folder Include="obj\Windows\Content\" />
     <Folder Include="obj\x86\Debug\TempPE\" />
-    <Folder Include="Rooms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

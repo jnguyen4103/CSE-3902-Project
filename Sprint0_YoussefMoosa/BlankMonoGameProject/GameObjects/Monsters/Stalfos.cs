@@ -18,7 +18,7 @@ namespace Sprint03
 
     public class StalfosSM : IStateMachine
     {
-        private Stalfos self;
+        private Monster self;
         private Random random = new Random();
         private int WalkCounter = 0;
 

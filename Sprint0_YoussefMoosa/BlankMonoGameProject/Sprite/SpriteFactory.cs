@@ -72,13 +72,13 @@ namespace Sprint03
 
 
             // Initializing all Monster Sprites into the dictionary
-            MonsterSprites["StalfosWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 16), defaultMonsterSize, 1);
+            MonsterSprites["StalfosWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 16), defaultMonsterSize, 2);
             MonsterSprites["StalfosDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 64, 16, 32), defaultMonsterSize, 2);
 
             MonsterSprites["GeeseWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 16, 32), defaultMonsterSize, 2);
 
-            MonsterSprites["GoriyasWalkDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(32, 0, 16, 16), defaultMonsterSize, 1);
-            MonsterSprites["GoriyasWalkUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 16), defaultMonsterSize, 1);
+            MonsterSprites["GoriyasWalkDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(32, 0, 16, 16), defaultMonsterSize, 2);
+            MonsterSprites["GoriyasWalkUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 16), defaultMonsterSize, 2);
             MonsterSprites["GoriyasWalkSide"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 16, 32), defaultMonsterSize, 2);
 
             MonsterSprites["BladeTrap"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 16, 16), defaultMonsterSize, 1);
