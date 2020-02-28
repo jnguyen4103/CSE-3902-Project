@@ -11,7 +11,7 @@ namespace Sprint03
     public abstract class ItemFactory
     {
         // Keeps track of basic info about items
-        protected Texture2D itemTexture;
+        public Texture2D itemTexture;
         public Vector2 itemLocation;
         protected SpriteBatch spriteBatch;
         public abstract void ActivateEffect();

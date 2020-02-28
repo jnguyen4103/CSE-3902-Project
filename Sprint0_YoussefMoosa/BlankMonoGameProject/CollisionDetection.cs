@@ -17,13 +17,14 @@ namespace Sprint03
         Rectangle enemyRect;
         Rectangle itemRect;
         Rectangle effectRect;
-        
-        public CollisionDetection(NPC[] Enemies,Link Link, ItemFactory[] Items,List<ISprite> Effects)
+
+        public CollisionDetection(NPC[] Enemies, Link Link, ItemFactory[] Items, List<ISprite> Effects)
         {
-            enemies = Enemies;
-            link = Link;
-            items = Items;
-            effects = Effects;
+            this.enemies = Enemies;
+            Console.WriteLine(enemies.Length);
+            this.link = Link;
+            this.items = Items;
+            this.effects = Effects;
         }
 
         public bool mosterCollisionDetection()
@@ -33,20 +34,21 @@ namespace Sprint03
 
             linkRect = new Rectangle((int)link.Sprite.Position.X, (int)link.Sprite.Position.Y, (int)link.Sprite.GetSize.X, (int)link.Sprite.GetSize.Y);
 
-            for(int i =0; i< enemies.Length; i++)
+            for (int i = 0; i < enemies.Length; i++)
             {
 
                 /*Create Rectangel for the current enemey */
                 enemyRect = new Rectangle((int)enemies[i].Sprite.Position.X, (int)enemies[i].Sprite.Position.Y, (int)enemies[i].Sprite.GetSize.X, (int)enemies[i].Sprite.GetSize.Y);
-                
+
 
                 /*Go over the list of items*/
 
-                for (int j = 0; j< effects.Count; j++ )
+
+                for (int j = 0; j < effects.Count; j++)
                 {
 
                     /*Create Rectangle for effect*/
-                    effectRect = new Rectangle((int)effects[j].Position.X,(int)effects[j].Position.Y,(int)effects[j].GetSize.X,(int)effects[j].GetSize.Y);
+                    effectRect = new Rectangle((int)effects.ElementAt(j).GetPosition.X, (int)effects.ElementAt(j).GetPosition.Y, (int)effects.ElementAt(j).GetSize.X, (int)effects.ElementAt(j).GetSize.Y);
                     if (enemyRect.Intersects(itemRect))
                     {
                         collisionFound = true;
@@ -63,8 +65,8 @@ namespace Sprint03
         }
 
         public bool linkCollisionDetectionMonster()
-        {        
-            
+        {
+
             bool collisionFound = false;
 
             linkRect = new Rectangle((int)link.Sprite.Position.X, (int)link.Sprite.Position.Y, (int)link.Sprite.GetSize.X, (int)link.Sprite.GetSize.Y);
@@ -92,11 +94,11 @@ namespace Sprint03
             linkRect = new Rectangle((int)link.Sprite.Position.X, (int)link.Sprite.Position.Y, (int)link.Sprite.GetSize.X, (int)link.Sprite.GetSize.Y);
             bool collisionFound = false;
 
-            for (int j = 0; j < effects.Length; j++)
+            for (int j = 0; j < effects.Count; j++)
             {
 
                 /*Create Rectangle for effect*/
-                effectRect = new Rectangle((int)effects[j].Position.X, (int)effects[j].Position.Y, (int)effects[j].GetSize.X, (int)effects[j].GetSize.Y);
+                effectRect = new Rectangle((int)effects.ElementAt(j).GetPosition.X, (int)effects.ElementAt(j).GetPosition.Y, (int)effects.ElementAt(j).GetSize.X, (int)effects.ElementAt(j).GetSize.Y);
                 if (linkRect.Intersects(itemRect))
                 {
                     collisionFound = true;
@@ -110,10 +112,10 @@ namespace Sprint03
         {
             linkRect = new Rectangle((int)link.Sprite.Position.X, (int)link.Sprite.Position.Y, (int)link.Sprite.GetSize.X, (int)link.Sprite.GetSize.Y);
             bool collisionFound = false;
-            for(int k = 0; k< items.Length; k++)
+            for (int k = 0; k < items.Length; k++)
             {
-                itemRect = new Rectangle((int)items[k].GetPosition.X, (int)items[k].GetPosition.Y, (int)items[k].GetSize.X, (int)items[k].GetSize.Y);
-                if(linkRect.Intersects(itemRect))
+                itemRect = new Rectangle((int)items[k].itemLocation.X, (int)items[k].itemLocation.Y, (int)items[k].itemTexture.Width, (int)items[k].itemTexture.Height);
+                if (linkRect.Intersects(itemRect))
                 {
                     collisionFound = true;
                 }

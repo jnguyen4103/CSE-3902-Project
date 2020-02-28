@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint03
@@ -38,13 +39,13 @@ namespace Sprint03
          * Element 4: Fairy
          * Element 5: Goriyas
          */
-        public NPC[] MonsterList = new NPC[6];
+        public NPC[] MonsterList = new NPC[1];
         public int currentMonsterPosition = 0;
 
 
         // ItemList keeps track of all the items and allows the command to just swap which item is displayed
         public ItemFactory Item { get; set; }
-        public ItemFactory[] ItemList = new ItemFactory[13];
+        public ItemFactory[] ItemList = new ItemFactory[1];
 
         public int currentItemPosition = 0;
 
@@ -127,7 +128,6 @@ namespace Sprint03
             Link = new Link(SpriteLink, this);
             
 
-            handler = new CollisionHandler(new CollisionDetection(MonsterList,Link,ItemList, EffectsList));
 
 
             // Loading in the monster list
@@ -156,6 +156,8 @@ namespace Sprint03
             // Defining the first monster and item so they can be drawn later on
             Monster = MonsterList[0];
             Item = ItemList[0];
+            CollisionDetection detector = new CollisionDetection(MonsterList, (Link)Link, ItemList, EffectsList);
+            handler = new CollisionHandler(detector);
 
         }
 
