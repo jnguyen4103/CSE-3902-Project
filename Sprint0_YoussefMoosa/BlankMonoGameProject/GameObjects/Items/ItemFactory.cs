@@ -33,12 +33,10 @@ namespace Sprint03
 
         private void BombItem()
         {
-            throw new System.NotImplementedException();
         }
 
         private void BoomerangItem()
         {
-            throw new System.NotImplementedException();
         }
 
         private void BowItem()
@@ -48,12 +46,10 @@ namespace Sprint03
 
         private void Clock()
         {
-            throw new System.NotImplementedException();
         }
 
         private void Compass()
         {
-            throw new System.NotImplementedException();
         }
 
         private void Heart()
@@ -76,17 +72,14 @@ namespace Sprint03
 
         private void Key()
         {
-            throw new System.NotImplementedException();
         }
 
         private void LionKey()
         {
-            throw new System.NotImplementedException();
         }
 
         private void Map()
         {
-            throw new System.NotImplementedException();
         }
 
         private void Rupee()
@@ -96,7 +89,6 @@ namespace Sprint03
 
         private void TriForce()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

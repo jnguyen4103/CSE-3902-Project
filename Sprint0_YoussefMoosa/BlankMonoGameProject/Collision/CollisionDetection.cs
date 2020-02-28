@@ -1,125 +1,112 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sprint03
 {
     class CollisionDetection
     {
-        public ILink link;
-        public Monster[] enemies;
-        public Item[] items;
-        public List<ISprite> effects;
-        Rectangle linkRect;
-        Rectangle enemyRect;
-        Rectangle itemRect;
-        Rectangle effectRect;
-        
+        public ILink Link;
+        private List<Item> Items;
+        private List<Monster> Monsters;
+        public List<IEffect> Effects;
+        private Game1 Game;
+        private CollisionResolution ColRes;
         public CollisionDetection(Game1 game)
         {
-            this.enemies = game.MonsterList;
-            this.link = game.Link;
-            this.items = game.ItemList;
-            this.effects = game.EffectsList;
+            this.Monsters = game.MonsterList;
+            this.Link = game.Link;
+            this.Items = game.ItemsList;
+            this.Effects = game.EffectsList;
+            Game = game;
+            ColRes = new CollisionResolution(game);
         }
 
-        public bool mosterCollisionDetection()
+        private String collisionFound(Sprite A, Sprite B)
         {
-            /*Go over the  list of enemies */
-            bool collisionFound = false;
+            //Determines if there is an interesection between two Rectangles 
+            Rectangle ARectangle = new Rectangle((int)A.GetPosition.X, (int)A.GetPosition.Y, (int)A.GetSize.X, (int)A.GetSize.Y);
+            Rectangle BRectangle = new Rectangle((int)B.GetPosition.X, (int)B.GetPosition.Y, (int)B.GetSize.X, (int)B.GetSize.Y);
 
-            linkRect = new Rectangle((int)link.SpriteLink.GetPosition.X, (int)link.SpriteLink.GetPosition.Y, (int)link.SpriteLink.GetSize.X, (int)link.SpriteLink.GetSize.Y);
-
-            for (int i = 0; i < enemies.Length; i++)
+            String toReturn = "NONE";
+            if (ARectangle.Right < BRectangle.Left)
             {
+                toReturn = "RIGHT";
+            }
+            else if (ARectangle.Left > BRectangle.Right)
+            {
+                toReturn = "LEFT";
+            }
+            else if (ARectangle.Top < BRectangle.Bottom)
+            {
+                toReturn = "TOP";
+            }
+            else if (ARectangle.Bottom > BRectangle.Top)
+            {
+                toReturn = "BOTTOM";
+            }
+            else
+            {
+                toReturn = "NONE";
+            }
+            return toReturn;
+        }
 
-                /*Create Rectangel for the current enemey */
-                enemyRect = new Rectangle((int)enemies[i].Sprite.GetPosition.X, (int)enemies[i].Sprite.GetPosition.Y, (int)enemies[i].Sprite.GetSize.X, (int)enemies[i].Sprite.GetSize.Y);
-
-
-                /*Go over the list of items*/
-
-
-                for (int j = 0; j < effects.Count; j++)
+        public void CollisionHandler()
+        {
+            string detection;
+            // Monster vs. Link
+            foreach(Monster monster in Monsters)
+            {
+                detection = collisionFound(Link.SpriteLink, monster.Sprite);
+                if (!detection.Equals("None") && !detection.Equals(null))
                 {
+                    //ColRes.HurtLink(monster.attackDamage, detection);
+                    Console.WriteLine("Enemy Contact " + detection);
+                }
+            }
 
-                    /*Create Rectangle for effect*/
-                    effectRect = new Rectangle((int)effects.ElementAt(j).GetPosition.X, (int)effects.ElementAt(j).GetPosition.Y, (int)effects.ElementAt(j).GetSize.X, (int)effects.ElementAt(j).GetSize.Y);
-                    if (enemyRect.Intersects(itemRect))
+            // Link vs. Effects
+            foreach (IEffect effect in Effects)
+            {
+                detection = collisionFound(Link.SpriteLink, effect.Sprite);
+                if (!detection.Equals("None") && !detection.Equals(null))
+                {
+                    ColRes.DamageLinkEffect(2, detection, effect);
+                    Console.WriteLine("Effect Contact " + detection);
+
+                }
+            }
+
+
+            // Monster vs. Effects
+            foreach (IEffect effect in Effects)
+            {
+                foreach(Monster monster in Monsters)
+                {
+                    detection = collisionFound(monster.Sprite, effect.Sprite);
+                    if (!detection.Equals("None") && !detection.Equals(null))
                     {
-                        collisionFound = true;
+                        ColRes.DamageMonsterEffect(monster, detection, effect);
+                        Console.WriteLine("Monster Effect Contact " + detection);
+
                     }
                 }
 
-                if (enemyRect.Intersects(linkRect))
-                {
-                    collisionFound = true;
-                }
-
             }
-            return collisionFound;
-        }
 
-        public bool linkCollisionDetectionMonster()
-        {
-
-            bool collisionFound = false;
-
-            linkRect = new Rectangle((int)link.SpriteLink.GetPosition.X, (int)link.SpriteLink.GetPosition.Y, (int)link.SpriteLink.GetSize.X, (int)link.SpriteLink.GetSize.Y);
-
-            for (int i = 0; i < enemies.Length; i++)
+            // Link vs. Items
+            foreach (Item item in Items)
             {
-
-                /*Create Rectangel for the current enemey */
-                enemyRect = new Rectangle((int)enemies[i].Sprite.GetPosition.X, (int)enemies[i].Sprite.GetPosition.Y, (int)enemies[i].Sprite.GetSize.X, (int)enemies[i].Sprite.GetSize.Y);
-
-
-                if (enemyRect.Intersects(linkRect))
+                detection = collisionFound(Link.SpriteLink, item.Sprite);
+                if (!detection.Equals("None") && !detection.Equals(null))
                 {
-                    collisionFound = true;
+                    ColRes.PickupItem(item);
+                    Console.WriteLine("Item Pickup " + detection);
+
                 }
-
             }
-
-            return collisionFound;
 
         }
-
-      
-        public bool linkCollisionDetectionEffect()
-        {
-            linkRect = new Rectangle((int)link.SpriteLink.GetPosition.X, (int)link.SpriteLink.GetPosition.Y, (int)link.SpriteLink.GetSize.X, (int)link.SpriteLink.GetSize.Y);
-            bool collisionFound = false;
-
-            for (int j = 0; j < effects.Count; j++)
-            {
-
-                effectRect = new Rectangle((int)effects.ElementAt(j).GetPosition.X, (int)effects.ElementAt(j).GetPosition.Y, (int)effects.ElementAt(j).GetSize.X, (int)effects.ElementAt(j).GetSize.Y);
-                if (linkRect.Intersects(itemRect))
-                {
-                    collisionFound = true;
-                }
-            }
-            return collisionFound;
-        }
-
-        public bool linkCollisionDetectionItem()
-        {
-            bool collisionFound = false;
-            linkRect = new Rectangle((int)link.SpriteLink.GetPosition.X, (int)link.SpriteLink.GetPosition.Y, (int)link.SpriteLink.GetSize.X, (int)link.SpriteLink.GetSize.Y);
-            for (int k = 0; k < items.Length; k++)
-            {
-                itemRect = new Rectangle((int)items[k].Sprite.GetPosition.X, (int)items[k].Sprite.GetPosition.Y, (int)items[k].Sprite.GetSize.X, (int)items[k].Sprite.GetSize.Y);
-                if (linkRect.Intersects(itemRect))
-                {
-                    collisionFound = true;
-                }
-            }
-            return collisionFound;
-
-        } 
     }
 }

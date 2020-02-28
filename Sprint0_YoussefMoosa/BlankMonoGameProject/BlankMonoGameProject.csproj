@@ -40,16 +40,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Collision\CollisionDetection.cs" />
-    <Compile Include="Collision\CollisionHandler.cs" />
+    <Compile Include="Collision\CollisionResolution.cs" />
     <Compile Include="Commands\Attacks\LinkAttack.cs" />
     <Compile Include="Commands\Attacks\LinkUseArrow.cs" />
     <Compile Include="Commands\Attacks\LinkUseBoomerang.cs" />
     <Compile Include="Commands\DamageLink.cs" />
-    <Compile Include="Commands\DecrementItem.cs" />
-    <Compile Include="Commands\DecrementNPC.cs" />
     <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Commands\IncrementItem.cs" />
-    <Compile Include="Commands\IncrementNPC.cs" />
     <Compile Include="Commands\Movement\IdleLink.cs" />
     <Compile Include="Commands\Movement\LinkWalkDown.cs" />
     <Compile Include="Commands\Movement\LinkWalkLeft.cs" />

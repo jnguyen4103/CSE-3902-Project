@@ -6,12 +6,13 @@ namespace Sprint03
     public class SwordBeamEffect : IEffect
     {
         Sprite Creator;
+        Sprite EffectSprite;
         Game1 Game;
         Link.LinkDirection Direction;
         Texture2D Texture;
         SpriteBatch Batch;
-        // Fireball effect requires a sprite, a game process to access the EffectsList array
-        // and a batch so the sprite can draw
+
+        public Sprite Sprite { get => EffectSprite; set => EffectSprite = value; }
 
         public SwordBeamEffect(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
@@ -25,7 +26,8 @@ namespace Sprint03
         public void CreateEffect()
         {
             // Adds new sprite effect to the EffectsList array so it'll be drawn on screen
-            Game.EffectsList.Add(new SwordBeamSprite(Creator, Game, Direction, Texture, Batch));
+            EffectSprite = new SwordBeamSprite(Creator, Game, Direction, Texture, Batch);
+            Game.EffectsList.Add(this);
 
         }
     }
