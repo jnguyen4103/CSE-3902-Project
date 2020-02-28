@@ -45,7 +45,10 @@ namespace Sprint03
         // ItemList keeps track of all the items and allows the command to just swap which item is displayed
         public ItemFactory Item { get; set; }
         public ItemFactory[] ItemList = new ItemFactory[13];
+
         public int currentItemPosition = 0;
+
+        CollisionHandler handler;
 
         /* Each effect (items used or NPC projectile attacks) have an effect which spawns the sprite.
          * The sprite is loaded into an effects List which then is drawn in the Draw() method
@@ -122,7 +125,9 @@ namespace Sprint03
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
             SpriteLink = new LinkSprite(this, "WalkDown", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
+            
 
+            handler = new CollisionHandler(new CollisionDetection(MonsterList,Link,ItemList, EffectsList));
 
 
             // Loading in the monster list
@@ -196,7 +201,7 @@ namespace Sprint03
             //Item.DrawItem();
             Link.Draw();
 
-
+            handler.Update();
 
             spriteBatch.End();
 
