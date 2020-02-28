@@ -160,6 +160,8 @@ namespace Sprint03
             Monster = MonsterList[0];
             Item = ItemList[0];
 
+            handler = new CollisionHandler(new CollisionDetection(this));
+
         }
 
         /// <summary>
@@ -184,6 +186,7 @@ namespace Sprint03
             Link.Update();
             Monster.Update();
             keyboardController.Update();
+            handler.Update();
             base.Update(gameTime);
         }
 
@@ -209,7 +212,7 @@ namespace Sprint03
             Item.Draw();
             Link.Draw();
 
-            //handler.Update();
+         
 
             spriteBatch.End();
 
