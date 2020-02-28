@@ -35,18 +35,5 @@ namespace Sprint03
             TotalFrames = NewInfo.Item3;
         }
 
-
-        public override void Animate()
-        {
-            GameFrame++;
-            if (CurrentSpeed.X != 0 || CurrentSpeed.Y != 0)
-            {
-                if ((60 / FPS <= GameFrame))
-                {
-                    GameFrame = 0;
-                }
-            }
-        }
-
     }
 }
