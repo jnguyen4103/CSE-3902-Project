@@ -10,15 +10,15 @@ namespace Sprint03
     class CollisionDetection
     {
         public Link link;
-        public NPC[] enemies;
+        public Monster[] enemies;
         public ItemFactory[] items;
         public List<ISprite> effects;
         Rectangle linkRect;
         Rectangle enemyRect;
         Rectangle itemRect;
         Rectangle effectRect;
-
-        public CollisionDetection(NPC[] Enemies, Link Link, ItemFactory[] Items, List<ISprite> Effects)
+        
+        public CollisionDetection(NPC[] Enemies,Link Link, ItemFactory[] Items,List<ISprite> Effects)
         {
             this.enemies = Enemies;
             Console.WriteLine(enemies.Length);
@@ -48,7 +48,7 @@ namespace Sprint03
                 {
 
                     /*Create Rectangle for effect*/
-                    effectRect = new Rectangle((int)effects.ElementAt(j).GetPosition.X, (int)effects.ElementAt(j).GetPosition.Y, (int)effects.ElementAt(j).GetSize.X, (int)effects.ElementAt(j).GetSize.Y);
+                    effectRect = new Rectangle((int)effects[j].Position.X,(int)effects[j].Position.Y,(int)effects[j].GetSize.X,(int)effects[j].GetSize.Y);
                     if (enemyRect.Intersects(itemRect))
                     {
                         collisionFound = true;
@@ -89,6 +89,7 @@ namespace Sprint03
 
         }
 
+      /*
         public bool linkCollisionDetectionEffect()
         {
             linkRect = new Rectangle((int)link.Sprite.Position.X, (int)link.Sprite.Position.Y, (int)link.Sprite.GetSize.X, (int)link.Sprite.GetSize.Y);
@@ -98,7 +99,7 @@ namespace Sprint03
             {
 
                 /*Create Rectangle for effect*/
-                effectRect = new Rectangle((int)effects.ElementAt(j).GetPosition.X, (int)effects.ElementAt(j).GetPosition.Y, (int)effects.ElementAt(j).GetSize.X, (int)effects.ElementAt(j).GetSize.Y);
+                effectRect = new Rectangle((int)effects[j].Position.X, (int)effects[j].Position.Y, (int)effects[j].GetSize.X, (int)effects[j].GetSize.Y);
                 if (linkRect.Intersects(itemRect))
                 {
                     collisionFound = true;
@@ -106,7 +107,6 @@ namespace Sprint03
             }
             return collisionFound;
         }
-
 
         public bool linkCollisionDetectionItem()
         {
@@ -122,6 +122,6 @@ namespace Sprint03
             }
             return collisionFound;
 
-        }
+        } */
     }
 }

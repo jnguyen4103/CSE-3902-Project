@@ -1,25 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sprint03
+﻿namespace Sprint03
 {
     // Enemies have basic behavior
     // Patrolling - Randomly moving around
     // Attacking - Using attacks and/or chasing Link
     // Dead - Got rekt by Link
     // TakeDamage - Got injured
-    public interface INPCStateMachine
+    public interface IStateMachine
     {
         void IdleState();
-        void PatrolState();
+        void MoveState();
         void AttackState();
-        void TakeDamageState();
+        void DamagedState();
         void DeadState();
-
-        void generateRandomPosition();
     }
- 
+
 }

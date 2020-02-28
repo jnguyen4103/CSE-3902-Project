@@ -42,7 +42,7 @@ namespace Sprint03
         public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> LinkSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(13);
         public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> MonsterSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(12);
         public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> ItemSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(15);
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> EffectSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(10);
+        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> EffectSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(11);
         
         // Al off the LinkSprites are size 16 by 16
         private readonly Vector2 LinkSpriteSize = new Vector2(16, 16);
@@ -110,7 +110,7 @@ namespace Sprint03
             ItemSprites["Triforce"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(136, 0, 16, 32), defaultMonsterSize, 2);
 
             // Initializing all Effects Sprites into the dictionary
-            EffectSprites["SwordSwing"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 16), defaultItemSize, 1);
+            EffectSprites["Sword"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 16), defaultItemSize, 1);
             EffectSprites["SwordBeam"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 64), defaultItemSize, 4);
             EffectSprites["SwordBeamExplosion"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(8, 0, 8, 64), defaultItemSize, 4);
             EffectSprites["Boomerang"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 8, 64), Vector2.Divide(defaultMonsterSize, 2), 8);
@@ -120,8 +120,7 @@ namespace Sprint03
             EffectSprites["BombExplosion"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 48), defaultMonsterSize, 3);
             EffectSprites["Fire"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 16, 16), defaultMonsterSize, 1);
             EffectSprites["Fireball"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 64), defaultItemSize, 4);
-
-
+            EffectSprites["SwordSwing"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(88, 0, 8, 48), defaultItemSize, 3);
         }
 
     }

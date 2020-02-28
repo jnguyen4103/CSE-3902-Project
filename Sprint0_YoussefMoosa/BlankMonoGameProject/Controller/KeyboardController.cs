@@ -11,7 +11,9 @@ namespace Sprint03
         private bool secondaryTriggered = false;
         private bool linkAttackTriggered = false;
         private bool linkDamagedTriggered = false;
-        private int attackTimer = 30;
+        private int attackDelay = 25;
+        private int attackTimer = 25;
+        private int damageDelay = 180;
         private int damageTimer = 180;
 
 
@@ -45,11 +47,11 @@ namespace Sprint03
             // passed
 
 
-            if (attackTimer < 30)
+            if (attackTimer < attackDelay)
             {
                 attackTimer++;
             }
-            if (damageTimer < 180)
+            if (damageTimer < damageDelay)
             {
                 damageTimer++;
             }
@@ -60,7 +62,7 @@ namespace Sprint03
 
             foreach (Keys k in pressed)
             {
-                if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && (damageTimer >= 180) && (attackTimer >= 30))
+                if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && (damageTimer >= damageDelay) && (attackTimer >= attackDelay))
                 {
                     if (k == Keys.W || k == Keys.S)
                     {
@@ -80,7 +82,7 @@ namespace Sprint03
                         keyMappings[k].Execute();
                     }
 
-                    if((k == Keys.D1 || k == Keys.D2) & !secondaryTriggered & damageTimer >= 180)
+                    if((k == Keys.D1 || k == Keys.D2) & !secondaryTriggered & damageTimer >= damageDelay)
                     {
                         keyMappings[k].Execute();
                         secondaryTriggered = true;
@@ -92,7 +94,7 @@ namespace Sprint03
                         linkDamagedTriggered = true;
                     }
 
-                    if (!linkAttackTriggered & k == Keys.Z & attackTimer == 30 & damageTimer >= 180)
+                    if (!linkAttackTriggered & k == Keys.Z & attackTimer >= attackDelay & damageTimer >= damageDelay)
                     {
                         attackTimer = 0;
                         keyMappings[k].Execute();

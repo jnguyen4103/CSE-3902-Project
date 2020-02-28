@@ -28,23 +28,6 @@ namespace Sprint03
             TotalFrames = NewInfo.Item3;
         }
 
-
-        // Consider adding this to the state machine
-        // So Call DonePathing() after every update if the
-        // Monster is in the Moving State
-        // If it returns true then get a new random distance to path
-        // and Update Speed of sprite to the direction of that path
-
-        public bool DonePathing()
-        {
-            return (Path.X == Position.Y && Path.Y == Position.Y);
-        }
-
-        public void PathToPosition(Vector2 newPath)
-        {
-            Path = newPath;
-        }
-
         public void UpdateSpeed(Vector2 newSpeed)
         {
             // Call this method in the Monster StateMachine

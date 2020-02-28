@@ -21,9 +21,9 @@ namespace Sprint03
             Texture = texture;
             CurrentFrame = 0;
             TotalFrames = game.Factory.LinkSprites[name].Item3;
-            FPS = 4;
+            FPS = 8;
             ChangeSpriteAnimation(name);
-            BaseSpeed = 0.75f;
+            BaseSpeed = 1f;
         }
 
         public override void ChangeSpriteAnimation(string newSpriteName)

@@ -28,7 +28,8 @@ namespace Sprint03
             set { }
         }
 
-
+        public int HP { get => decoratedLink.hitpoints; set => decoratedLink.hitpoints = value; }
+        public int MaxHP { get => decoratedLink.maxHP; set => decoratedLink.maxHP = value; }
 
         public AttackingLink(Link _link, Game1 game, string oldSpriteName, Link.LinkDirection _direction)
         {
@@ -38,7 +39,7 @@ namespace Sprint03
             LinkSM = _link.LinkSM;
             directionSpriteName = oldSpriteName;
             Direction = _direction;
-            Sprite.FPS = 24;
+            Sprite.FPS = 16;
             LifeSpan = (60/Sprite.FPS) * 4;
             SwordAttack = new SwordEffect(_link.SpriteLink, game, _direction, game.EffectSpriteSheet, game.spriteBatch);
             SwordBeam = new SwordBeamEffect(_link.SpriteLink, game, _direction, game.EffectSpriteSheet, game.spriteBatch);
@@ -85,9 +86,9 @@ namespace Sprint03
         public void RemoveDecorator()
         {
             AttackTimer = 0;
-            Sprite.FPS = 4;
             SpriteLink.Update(Link.LinkState.Idle, Direction);
             Game.Link = decoratedLink;
+            Sprite.FPS = 8;
             Game.Link.StateMachine.IdleState();
         }
     }

@@ -1,61 +1,65 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 namespace Sprint03
 {
-    public class Stalfos : NPC
+    public class Stalfos : Monster
     {
         // Setting info about NPC and default parameters
         public Stalfos(StalfosSprite sprite)
         {
-            this.state = State.Patrolling;
+            this.State = MonsterState.Idle;
+            this.Direction = MonsterDirection.Down;
             this.Sprite = sprite;
-            Sprite = sprite;
-            hitpoints = 1;
-            maxHP = 1;
-            attackDamage = 0;
-            contactDamage = 1;
-            StateMachine = new StalfosSM(this);
+            this.hitpoints = 1;
+            this.maxHP = 1;
+            this.attackDamage = 1;
+            this.StateMachine = new StalfosSM(this);
         }
-
-        public override void Draw()
-        {
-            this.Update();
-            Sprite.DrawSprite();
-        }
-
     }
 
-    public class StalfosSM : INPCStateMachine
+    public class StalfosSM : IStateMachine
     {
-        NPC self;
-        Random random = new Random();
-        Vector2 positionPathingTo;
-        // Keeps track of whether or not NPC is pathing to a different location
-        bool isPathing = false;
+        private Stalfos self;
+        private Random random = new Random();
+        private int WalkCounter = 0;
 
-        public StalfosSM(NPC Stalfos)
+
+        public StalfosSM(Stalfos Stalfos)
         {
             self = Stalfos;
         }
 
 
-        public void PatrolState()
+        public void MoveState()
         {
-            // If NPC is not pathing then find new location to path too
-            if (!isPathing)
+            if (WalkCounter > 0)
             {
-                self.Sprite.PathToPosition(positionPathingTo);
-                isPathing = true;
-            }
-            // If NPC is at it's pathing location then idle
-            else if (self.Sprite.DonePathing())
+                switch (self.Direction)
+                {
+                    case (Monster.MonsterDirection.Down):
+                        self.Sprite.CurrentSpeed.X = 0;
+                        self.Sprite.CurrentSpeed.Y = self.Sprite.BaseSpeed;
+                        break;
+                    case (Monster.MonsterDirection.Up):
+                        self.Sprite.CurrentSpeed.X = 0;
+                        self.Sprite.CurrentSpeed.Y = -self.Sprite.BaseSpeed;
+                        break;
+                    case (Monster.MonsterDirection.Left):
+                        self.Sprite.CurrentSpeed.X = -self.Sprite.BaseSpeed;
+                        self.Sprite.CurrentSpeed.Y = 0;
+                        break;
+                    case (Monster.MonsterDirection.Right):
+                        self.Sprite.CurrentSpeed.X = self.Sprite.BaseSpeed;
+                        self.Sprite.CurrentSpeed.Y = 0;
+                        break;
+
+                    default:
+                        break;
+                }
+                WalkCounter--;
+
+            } else
             {
-                self.Idle();
+                self.State = Monster.MonsterState.Idle;
             }
         }
 
@@ -66,6 +70,12 @@ namespace Sprint03
             // If we want more advanced actions then implement later on
         }
 
+
+        public void DamagedState()
+        {
+
+        }
+
         public void DeadState()
         {
             // Turn off visibility in sprite
@@ -74,37 +84,33 @@ namespace Sprint03
 
         public void IdleState()
         {
-            // Doesn't attack so just switches back to patrolling
-            // Can use this method if we want NPC to idle after each burst of movement
-            isPathing = false;
-            self.Patrol();
-
+            self.State = Monster.MonsterState.Moving;
+            getRandomDirection();
         }
 
-        public void TakeDamageState()
-        {
-            // Takes damage from Link, depending on which weapon
-            self.hitpoints--;
-
-        }
-        public void generateRandomPosition()
+        private void getRandomDirection()
         {
             // Generates random distance to path to
             // NPC only moves in X or Y direction, never
             // moves at a diagonal
-            int randDirection = random.Next(1, 3);
-            int randDistance = random.Next(0, 100) - 50;
+            int randDirection = random.Next(1, 5);
+            WalkCounter = 30 * random.Next(2, 6);
+
             switch (randDirection)
             {
                 case (1):
-                    positionPathingTo = new Vector2(0, randDistance);
+                    self.Direction = Monster.MonsterDirection.Down;
                     break;
                 case (2):
-                    positionPathingTo = new Vector2(randDistance, 0);
+                    self.Direction = Monster.MonsterDirection.Up;
+                    break;
+                case (3):
+                    self.Direction = Monster.MonsterDirection.Left;
+                    break;
+                case (4):
+                    self.Direction = Monster.MonsterDirection.Right;
                     break;
                 default:
-                    positionPathingTo = self.Sprite.GetPosition;
-                    isPathing = false;
                     break;
             }
         }
