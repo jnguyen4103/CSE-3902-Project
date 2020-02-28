@@ -35,8 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Collision\CollisionDetection.cs" />
@@ -102,110 +101,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Windows\x86\Debug\BlankMonoGameProject.exe" />
-    <Content Include="bin\Windows\x86\Debug\BlankMonoGameProject.pdb" />
-    <Content Include="bin\Windows\x86\Debug\MonoGame.Framework.dll" />
-    <Content Include="bin\Windows\x86\Debug\MonoGame.Framework.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct2D1.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct2D1.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D11.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D11.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.DXGI.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.DXGI.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XAudio2.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XAudio2.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.xml" />
-    <Content Include="bin\Windows\x86\Debug\Sprint03.exe" />
-    <Content Include="bin\Windows\x86\Debug\Sprint03.pdb" />
-    <Content Include="Content\Effects Sprite Sheet.png" />
-    <Content Include="Content\Item Sprite Sheet.png" />
-    <Content Include="Content\Link Sprite Sheet.png" />
-    <Content Include="Content\Monster Sprite Sheet.png" />
-    <Content Include="Icon.ico" />
-    <Content Include="obj\x86\Debug\BlankMonoGameProject.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\x86\Debug\BlankMonoGameProject.exe" />
-    <Content Include="obj\x86\Debug\BlankMonoGameProject.pdb" />
-    <Content Include="obj\x86\Debug\Sprint03.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\x86\Debug\Sprint03.exe" />
-    <Content Include="obj\x86\Debug\Sprint03.pdb" />
-    <Content Include="Rooms\roomAfterAqua.xml" />
-    <Content Include="Rooms\roomBeforeAqua.xml" />
-    <Content Include="Rooms\roomWithAqua.xml" />
-    <Content Include="Sprint03.csproj" />
-    <Content Include="Sprint03.csproj.user" />
-    <Content Include="Sprite Sheets\Effects Sprite Sheet.png" />
-    <Content Include="Sprite Sheets\Item Sprite Sheet.png" />
-    <Content Include="Sprite Sheets\Link Sprite Sheet.png" />
-    <Content Include="Sprite Sheets\Monster Sprite Sheet.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Windows\x86\Debug\Content\AquamentusDefault.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\AquamentusFireball.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\BladeTrap.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\BlueRupee.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Bomb.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Boomerang.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\BoomerangEffect.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Bow.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Clock.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Compass.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Effects Sprite Sheet.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FairyDefault.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\GeeseDefault.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\GelDefault.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\GoriyasDefault.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\HeartContainer.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Item Sprite Sheet.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Key.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Link Sprite Sheet.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\LinkSpritesheet.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\LionKey.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Map.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Monster Sprite Sheet.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\RedHeart.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StalfosDefault.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\WallMasterLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\WallMasterRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\YellowRupee.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\YellowTriforce.xnb" />
-    <None Include="Content\bin\Windows\Effects Sprite Sheet.xnb" />
-    <None Include="Content\bin\Windows\Item Sprite Sheet.xnb" />
-    <None Include="Content\bin\Windows\Link Sprite Sheet.xnb" />
-    <None Include="Content\bin\Windows\Monster Sprite Sheet.xnb" />
-    <None Include="Content\Content.mgcb" />
-    <None Include="Content\obj\Windows\.mgcontent" />
-    <None Include="Content\obj\Windows\.mgstats" />
-    <None Include="Content\obj\Windows\Effects Sprite Sheet.mgcontent" />
-    <None Include="Content\obj\Windows\Item Sprite Sheet.mgcontent" />
-    <None Include="Content\obj\Windows\Link Sprite Sheet.mgcontent" />
-    <None Include="Content\obj\Windows\Monster Sprite Sheet.mgcontent" />
-    <None Include="obj\x86\Debug\BlankMonoGameProject.csproj.CopyComplete" />
-    <None Include="obj\x86\Debug\BlankMonoGameProject.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\x86\Debug\BlankMonoGameProject.csprojAssemblyReference.cache" />
-    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\x86\Debug\Sprint03.csproj.CopyComplete" />
-    <None Include="obj\x86\Debug\Sprint03.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\x86\Debug\Sprint03.csprojAssemblyReference.cache" />
-    <None Include="obj\x86\Release\BlankMonoGameProject.csproj.CoreCompileInputs.cache" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Windows\Content\" />
-    <Folder Include="bin\Windows\x86\Release\" />
-    <Folder Include="GameObjects\Blocks\" />
-    <Folder Include="obj\Windows\Content\" />
-    <Folder Include="obj\x86\Debug\TempPE\" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
