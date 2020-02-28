@@ -13,6 +13,8 @@ namespace Sprint03
         public Monster[] enemies;
         public Item[] items;
         public List<ISprite> effects;
+        public 
+    
         Rectangle linkRect;
         Rectangle enemyRect;
         Rectangle itemRect;
@@ -26,43 +28,41 @@ namespace Sprint03
             this.effects = game.EffectsList;
         }
 
-        public bool mosterCollisionDetection()
+        private String collisionFound(Sprite A, Sprite B)
         {
-            /*Go over the  list of enemies */
-            bool collisionFound = false;
+            //Determines if there is an interesection between two Rectangles 
+            Rectangle ARectangle = new Rectangle((int)A.GetPosition.X, (int)A.GetPosition.Y, (int)A.GetSize.X, (int)A.GetSize.Y);
+            Rectangle BRectangle = new Rectangle((int)B.GetPosition.X, (int)B.GetPosition.Y, (int)B.GetSize.X, (int)B.GetSize.Y);
 
-            linkRect = new Rectangle((int)link.SpriteLink.GetPosition.X, (int)link.SpriteLink.GetPosition.Y, (int)link.SpriteLink.GetSize.X, (int)link.SpriteLink.GetSize.Y);
-
-            for (int i = 0; i < enemies.Length; i++)
+            String toReturn = "NONE";
+            if(ARectangle.Right< BRectangle.Left)
             {
-
-                /*Create Rectangel for the current enemey */
-                enemyRect = new Rectangle((int)enemies[i].Sprite.GetPosition.X, (int)enemies[i].Sprite.GetPosition.Y, (int)enemies[i].Sprite.GetSize.X, (int)enemies[i].Sprite.GetSize.Y);
-
-
-                /*Go over the list of items*/
-
-
-                for (int j = 0; j < effects.Count; j++)
-                {
-
-                    /*Create Rectangle for effect*/
-                    effectRect = new Rectangle((int)effects.ElementAt(j).GetPosition.X, (int)effects.ElementAt(j).GetPosition.Y, (int)effects.ElementAt(j).GetSize.X, (int)effects.ElementAt(j).GetSize.Y);
-                    if (enemyRect.Intersects(itemRect))
-                    {
-                        collisionFound = true;
-                    }
-                }
-
-                if (enemyRect.Intersects(linkRect))
-                {
-                    collisionFound = true;
-                }
-
+                toReturn = "RIGHT"; 
             }
-            return collisionFound;
+            else if(ARectangle.Left>BRectangle.Right)
+            {
+                toReturn = "LEFT";
+            }
+            else if(ARectangle.Top<BRectangle.Bottom)
+            {
+                toReturn = "TOP";
+            }
+            else if(ARectangle.Bottom>BRectangle.Top)
+            {
+                toReturn = "BOTTOM";
+            }
+            else
+            {
+                toReturn = "NONE";
+            }
+            return toReturn;
         }
 
+        public void collisionHandler()
+        {
+            for
+        }
+        /*
         public bool linkCollisionDetectionMonster()
         {
 
@@ -73,7 +73,7 @@ namespace Sprint03
             for (int i = 0; i < enemies.Length; i++)
             {
 
-                /*Create Rectangel for the current enemey */
+                *//*Create Rectangel for the current enemey *//*
                 enemyRect = new Rectangle((int)enemies[i].Sprite.GetPosition.X, (int)enemies[i].Sprite.GetPosition.Y, (int)enemies[i].Sprite.GetSize.X, (int)enemies[i].Sprite.GetSize.Y);
 
 
@@ -120,6 +120,6 @@ namespace Sprint03
             }
             return collisionFound;
 
-        } 
+        } */
     }
 }

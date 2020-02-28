@@ -186,7 +186,7 @@ namespace Sprint03
             Link.Update();
             Monster.Update();
             keyboardController.Update();
-            handler.Update();
+           // handler.Update();
             base.Update(gameTime);
         }
 

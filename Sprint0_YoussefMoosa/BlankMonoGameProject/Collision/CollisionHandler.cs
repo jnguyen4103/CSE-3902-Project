@@ -17,14 +17,14 @@ namespace Sprint03
 
         /* These three handle what happens when a link interacts with 
             an item, monster or effect 
-        */
+        *//*
         public void handleLinkHitByMonster()
         {
             if(detector.linkCollisionDetectionMonster())
             {
-                /* Perform Action
+                *//* Perform Action
                     This is just a test  
-                */
+                *//*
                 Console.WriteLine("LINK WAS HIT BY A MONSTER");
             }
         }
@@ -44,9 +44,9 @@ namespace Sprint03
             }
         } 
 
-        /*
+        *//*
          * Monster Collision
-         */
+         *//*
          public void handleMonsterHitByLink()
         {
             if(detector.mosterCollisionDetection())
@@ -61,6 +61,6 @@ namespace Sprint03
             handleLinkHitByEffect();
             handleLinkGetsItem();
             handleMonsterHitByLink();
-        } 
+        } */
     }
 }
