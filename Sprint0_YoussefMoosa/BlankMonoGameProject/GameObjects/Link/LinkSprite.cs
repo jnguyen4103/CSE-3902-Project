@@ -16,11 +16,11 @@ namespace Sprint03
             Batch = batch;
             Name = name;
             Layer = 0.25f;
-            Size = game.Factory.LinkSprites[name].Item2;
+            Size = game.SFactory.LinkSprites[name].Item2;
             Position = spawn;
             Texture = texture;
             CurrentFrame = 0;
-            TotalFrames = game.Factory.LinkSprites[name].Item3;
+            TotalFrames = game.SFactory.LinkSprites[name].Item3;
             FPS = 8;
             ChangeSpriteAnimation(name);
             BaseSpeed = 1f;
@@ -30,7 +30,7 @@ namespace Sprint03
         {
             if (Name != newSpriteName) { CurrentFrame = 0; }
             Name = newSpriteName;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.Factory.LinkSprites[newSpriteName];
+            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.LinkSprites[newSpriteName];
             DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
             AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
             TotalFrames = NewInfo.Item3;

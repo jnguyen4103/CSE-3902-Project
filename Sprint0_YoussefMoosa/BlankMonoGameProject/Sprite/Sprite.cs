@@ -45,17 +45,21 @@ namespace Sprint03
 
         public virtual void Animate()
         {
-            GameFrame++;
-            if ((60 / FPS <= GameFrame))
+            if (TotalFrames > 1)
             {
-                GameFrame = 0;
-                CurrentFrame++;
-
-                if (CurrentFrame == TotalFrames)
+                GameFrame++;
+                if ((60 / FPS <= GameFrame))
                 {
-                    CurrentFrame = 0;
+                    GameFrame = 0;
+                    CurrentFrame++;
+
+                    if (CurrentFrame == TotalFrames)
+                    {
+                        CurrentFrame = 0;
+                    }
                 }
             }
+
         }
 
         public virtual void Move()

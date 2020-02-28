@@ -8,26 +8,25 @@ using System.Threading.Tasks;
 
 namespace Sprint03
 {
-    public class BoomerangSprite : Sprite
+    public class ArrowSprite : Sprite
     {
         private Sprite Creator;
         private Link.LinkDirection Direction;
         private int LifeSpan;
         private int LifeCounter = 0;
-        public BoomerangSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
+        public ArrowSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
             Direction = direction;
             this.Game = game;
             this.Batch = batch;
-            this.Name = "Boomerang";
-            this.Size = game.Factory.EffectSprites["Boomerang"].Item2;
+            this.Name = "ArrowEffect";
+            this.Size = game.SFactory.EffectSprites["ArrowEffect"].Item2;
             this.Position = creator.GetPosition;
             this.Texture = texture;
             this.BaseSpeed = 2.5f;
-            this.TotalFrames = game.Factory.EffectSprites["Boomerang"].Item3;
-            this.ChangeSpriteAnimation("Boomerang");
-            this.FPS = 16;
+            this.TotalFrames = game.SFactory.EffectSprites["ArrowEffect"].Item3;
+            this.ChangeSpriteAnimation("ArrowEffect");
             LifeSpan = 600;
             GetSpawnPosition();
         }
@@ -35,7 +34,7 @@ namespace Sprint03
         {
             Name = newSpriteName;
             CurrentFrame = 0;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.Factory.EffectSprites[newSpriteName];
+            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.EffectSprites[newSpriteName];
             DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
             AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
             TotalFrames = NewInfo.Item3;
@@ -49,7 +48,7 @@ namespace Sprint03
                 case (Link.LinkDirection.Down):
                     this.Position.X += 12;
                     this.Position.Y += 20;
-                    this.Rotation = (float)Math.PI;
+                    this.Rotation = (float) Math.PI;
                     break;
                 case (Link.LinkDirection.Up):
                     this.Position.X += 4;
@@ -58,12 +57,12 @@ namespace Sprint03
                 case (Link.LinkDirection.Left):
                     this.Position.X -= 4;
                     this.Position.Y += 12;
-                    this.Rotation = (float)(3 * Math.PI / 2);
+                    this.Rotation = (float)(3*Math.PI / 2);
                     break;
                 case (Link.LinkDirection.Right):
                     this.Position.X += 20;
                     this.Position.Y += 4;
-                    this.Rotation = (float)(Math.PI / 2);
+                    this.Rotation = (float) (Math.PI / 2);
                     break;
                 default:
                     break;
@@ -76,7 +75,7 @@ namespace Sprint03
             {
                 case (Link.LinkDirection.Down):
                     Position.Y += BaseSpeed;
-                    break;
+                    break; 
                 case (Link.LinkDirection.Up):
                     Position.Y -= BaseSpeed;
                     break;

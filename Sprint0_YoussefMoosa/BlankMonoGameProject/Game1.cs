@@ -13,7 +13,7 @@ namespace Sprint03
         GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
 
-        public SpriteFactory Factory;
+        public SpriteFactory SFactory;
         public ItemFactory IFactory;
 
         // Link Object & Sprite
@@ -88,7 +88,7 @@ namespace Sprint03
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            Factory = new SpriteFactory();
+            SFactory = new SpriteFactory();
             IFactory = new ItemFactory(this);
 
             // Adding all of the commands into the keyboard controller

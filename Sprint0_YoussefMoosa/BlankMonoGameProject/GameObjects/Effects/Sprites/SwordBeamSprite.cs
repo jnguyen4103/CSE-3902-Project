@@ -8,25 +8,27 @@ using System.Threading.Tasks;
 
 namespace Sprint03
 {
-    public class ArrowSprite : Sprite
+    public class SwordBeamSprite : Sprite
     {
         private Sprite Creator;
         private Link.LinkDirection Direction;
         private int LifeSpan;
         private int LifeCounter = 0;
-        public ArrowSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
+        public SwordBeamSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
             Direction = direction;
             this.Game = game;
             this.Batch = batch;
-            this.Name = "ArrowEffect";
-            this.Size = game.Factory.EffectSprites["ArrowEffect"].Item2;
+            this.Name = "SwordBeam";
+            this.Size = game.SFactory.EffectSprites["SwordBeam"].Item2;
             this.Position = creator.GetPosition;
             this.Texture = texture;
-            this.BaseSpeed = 2.5f;
-            this.TotalFrames = game.Factory.EffectSprites["ArrowEffect"].Item3;
-            this.ChangeSpriteAnimation("ArrowEffect");
+            this.BaseSpeed = 3.5f;
+            this.CurrentSpeed = new Vector2(1f, 1f);
+            this.TotalFrames = game.SFactory.EffectSprites["SwordBeam"].Item3;
+            this.ChangeSpriteAnimation("SwordBeam");
+            this.FPS = 16;
             LifeSpan = 600;
             GetSpawnPosition();
         }
@@ -34,7 +36,7 @@ namespace Sprint03
         {
             Name = newSpriteName;
             CurrentFrame = 0;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.Factory.EffectSprites[newSpriteName];
+            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.EffectSprites[newSpriteName];
             DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
             AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
             TotalFrames = NewInfo.Item3;
@@ -43,25 +45,26 @@ namespace Sprint03
         private void GetSpawnPosition()
         {
             this.Position = Creator.GetPosition;
+
             switch (Direction)
             {
                 case (Link.LinkDirection.Down):
-                    this.Position.X += 12;
-                    this.Position.Y += 20;
-                    this.Rotation = (float) Math.PI;
+                    this.Position.X += 6;
+                    this.Position.Y += 12;
+                    this.SpriteEffect = SpriteEffects.FlipVertically;
                     break;
                 case (Link.LinkDirection.Up):
-                    this.Position.X += 4;
-                    this.Position.Y -= 4;
+                    this.Position.X += 3;
+                    this.Position.Y -= 13;
                     break;
                 case (Link.LinkDirection.Left):
-                    this.Position.X -= 4;
+                    this.Position.X -= 12;
                     this.Position.Y += 12;
                     this.Rotation = (float)(3*Math.PI / 2);
                     break;
                 case (Link.LinkDirection.Right):
-                    this.Position.X += 20;
-                    this.Position.Y += 4;
+                    this.Position.X += 28;
+                    this.Position.Y += 6;
                     this.Rotation = (float) (Math.PI / 2);
                     break;
                 default:
@@ -75,7 +78,7 @@ namespace Sprint03
             {
                 case (Link.LinkDirection.Down):
                     Position.Y += BaseSpeed;
-                    break; 
+                    break;
                 case (Link.LinkDirection.Up):
                     Position.Y -= BaseSpeed;
                     break;
