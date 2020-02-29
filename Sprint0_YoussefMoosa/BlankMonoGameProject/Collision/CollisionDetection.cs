@@ -27,13 +27,11 @@ namespace Sprint03
         private int CollisionDirection(Sprite Receiver, FRectangle Collision)
         {
             Vector2 CollisionCenter = Collision.Center;
-            Vector2 dir = new Vector2(Receiver.GetPosition.X - Collision.X, Receiver.GetPosition.Y - Collision.Y);
-
 
             double TopDist = Math.Sqrt(
                 Math.Pow((CollisionCenter.X - Receiver.Position.X + (Receiver.GetSize.X / 2)), 2) +
                 Math.Pow((CollisionCenter.Y - Receiver.Position.Y), 2));
-
+        
             double BottomDist = Math.Sqrt(
                 Math.Pow((CollisionCenter.X - Receiver.Position.X + (Receiver.GetSize.X / 2)), 2) +
                 Math.Pow((CollisionCenter.Y - Receiver.Position.Y + Receiver.GetSize.Y), 2));
@@ -46,8 +44,6 @@ namespace Sprint03
                 Math.Pow((CollisionCenter.X - Receiver.Position.X + Receiver.GetSize.X), 2) +
                 Math.Pow((CollisionCenter.Y - Receiver.Position.Y + (Receiver.GetSize.Y / 2)), 2));
 
-
-
             double[] Distances = { TopDist, BottomDist, LeftDist, RightDist };
 
             /* 0 - Up
@@ -55,11 +51,7 @@ namespace Sprint03
             * 2 - Left
             * 3 - Right
             */
-
-
-
-            Console.WriteLine(Distances.ToList().IndexOf(Distances.Min()));
-
+            Console.WriteLine(Distances.ToList().IndexOf(Distances.Max()));
             return Distances.ToList().IndexOf(Distances.Max());
 
         }

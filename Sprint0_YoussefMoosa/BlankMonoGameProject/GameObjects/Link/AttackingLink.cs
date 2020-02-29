@@ -64,11 +64,11 @@ namespace Sprint03
             SpriteLink.Update(Link.LinkState.Attacking, Direction);
 
             AttackTimer++;
-            if (AttackTimer == (LifeSpan/3))
+            if (AttackTimer == (LifeSpan/2))
             {
                 SwordAttack.CreateEffect();
             }
-            else if (AttackTimer == (LifeSpan/2))
+            else if (AttackTimer == (LifeSpan/2) + 1)
             {
                 Sprite.ChangeSpriteAnimation(directionSpriteName);
 
@@ -79,6 +79,7 @@ namespace Sprint03
                 {
                     SwordBeam.CreateEffect();
                 }
+
                 RemoveDecorator();
             }
         }
@@ -87,6 +88,7 @@ namespace Sprint03
         {
             AttackTimer = 0;
             SpriteLink.Update(Link.LinkState.Idle, Direction);
+            SwordAttack.Sprite.KillSprite();
             Game.Link = decoratedLink;
             Sprite.FPS = 8;
             Game.Link.StateMachine.IdleState();

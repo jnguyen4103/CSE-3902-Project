@@ -31,6 +31,7 @@ namespace Sprint03
         protected SpriteEffects SpriteEffect = SpriteEffects.None;
         protected float Rotation = 0;
         protected float Layer = 0;
+        public Color Colour = Color.White;
 
         // Animation & Moving Info
         protected int TotalFrames;
@@ -69,6 +70,10 @@ namespace Sprint03
         }
         public abstract void ChangeSpriteAnimation(string newSpriteName);
 
+        public void KillSprite()
+        {
+            Colour = Color.Transparent;
+        }
 
         public virtual void DrawSprite()
         {
@@ -77,7 +82,7 @@ namespace Sprint03
             DrawWindow.X = (int)Position.X;
             DrawWindow.Y = (int)Position.Y;
             AnimationWindow.Y = (int)(CurrentFrame * Size.Y);
-            Batch.Draw(Texture, DrawWindow, AnimationWindow, Color.White, Rotation, Origin, SpriteEffect, Layer);
+            Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
         }
     }
 }

@@ -12,8 +12,7 @@ namespace Sprint03
     {
         private Sprite Creator;
         private Link.LinkDirection Direction;
-        private int LifeSpan;
-        private int LifeCounter = 0;
+
         public BoomerangSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
@@ -28,7 +27,6 @@ namespace Sprint03
             this.TotalFrames = game.SFactory.EffectSprites["Boomerang"].Item3;
             this.ChangeSpriteAnimation("Boomerang");
             this.FPS = 16;
-            LifeSpan = 600;
             GetSpawnPosition();
         }
         public override void ChangeSpriteAnimation(string newSpriteName) 
@@ -88,20 +86,6 @@ namespace Sprint03
                     break;
                 default:
                     break;
-            }
-        }
-
-        public override void DrawSprite()
-        {
-            if (LifeCounter <= LifeSpan)
-            {
-                LifeCounter++;
-                Move();
-                Animate();
-                DrawWindow.X = (int)Position.X;
-                DrawWindow.Y = (int)Position.Y;
-                AnimationWindow.Y = (int)(CurrentFrame * Size.Y);
-                Batch.Draw(Texture, DrawWindow, AnimationWindow, Color.White, Rotation, Origin, SpriteEffect, Layer);
             }
 
         }

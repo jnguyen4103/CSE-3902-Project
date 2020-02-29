@@ -16,5 +16,7 @@ namespace Sprint03
         void Move();
         void Animate();
         void ChangeSpriteAnimation(string newSpriteName);
+
+        void KillSprite();
     }
 }
