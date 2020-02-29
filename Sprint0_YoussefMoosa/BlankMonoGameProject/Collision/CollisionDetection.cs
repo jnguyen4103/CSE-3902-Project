@@ -27,33 +27,53 @@ namespace Sprint03
         private int CollisionDirection(Sprite Receiver, FRectangle Collision)
         {
             Vector2 CollisionCenter = Collision.Center;
-
-            double TopDist = Math.Sqrt(
-                Math.Pow((CollisionCenter.X - Receiver.Position.X + (Receiver.GetSize.X / 2)), 2) +
-                Math.Pow((CollisionCenter.Y - Receiver.Position.Y), 2));
-        
-            double BottomDist = Math.Sqrt(
-                Math.Pow((CollisionCenter.X - Receiver.Position.X + (Receiver.GetSize.X / 2)), 2) +
-                Math.Pow((CollisionCenter.Y -Receiver.Position.Y+ Receiver.GetSize.Y ), 2));
-
-            double LeftDist =  Math.Sqrt(
-                Math.Pow((CollisionCenter.X - Receiver.Position.X), 2) +
-                Math.Pow((CollisionCenter.Y - Receiver.Position.Y + (Receiver.GetSize.Y / 2)), 2));
-
-            double RightDist = Math.Sqrt(
-                Math.Pow((CollisionCenter.X - Receiver.GetPosition.X+Receiver.GetSize.X), 2) +
-                Math.Pow((CollisionCenter.Y - Receiver.Position.Y + (Receiver.GetSize.Y / 2)), 2));
-
-            double[] Distances = { TopDist, BottomDist, LeftDist, RightDist };
-
-            /* 0 - Up
-            * 1 - Down
+            int returnVal=0;
+            /* 0 - TOp
+            * 1 - Bottom
             * 2 - Left
             * 3 - Right
             */
-            Console.WriteLine(Distances.ToList().IndexOf(Distances.Min()));
-            return Distances.ToList().IndexOf(Distances.Min());
 
+            Console.WriteLine("X: "+Collision.Width+" "+ "Y: "+Collision.Height);
+            //Our intersection happened on the left or the right
+            if(Collision.Width<Collision.Height)
+            {
+                //Collision happend on the Left
+
+
+
+                if (Receiver.GetPosition.X<Collision.Right && Math.Round( Receiver.GetPosition.X) == Math.Round(Collision.Left))
+                {
+                    returnVal = 2;
+                }
+                //Collision happened on the right 
+                else if(Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left && Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) == Math.Round(Collision.Right) )
+                {
+                    returnVal = 3;
+                }
+            }
+            //Our intersection happend on the top or the bottom 
+            else if(Collision.Height<Collision.Width)
+            {
+                //Collision happend on the Top
+
+                Console.WriteLine("TOP: " + Collision.Top);
+                Console.WriteLine("BOTTOM: " + Collision.Bottom);
+                Console.WriteLine("Top OF SPRITE: " + Receiver.GetPosition.Y);
+                Console.WriteLine("Bottom OF SPRITE: " + (Receiver.GetPosition.Y + Receiver.GetSize.Y));
+                if (Receiver.GetPosition.Y == Collision.Top && Receiver.GetPosition.Y > Collision.Bottom)
+                {
+                    returnVal = 0;
+                }
+                //Collision Happened on the bottom
+                else if(Math.Round(Receiver.GetPosition.Y +Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top)
+                {
+                    returnVal = 1;
+                }
+
+            }
+            Console.WriteLine(returnVal);
+            return returnVal;
         }
 
         public void CollisionHandler()

@@ -65,7 +65,7 @@ namespace Sprint03
         public static FRectangle Intersection(FRectangle rec1, FRectangle rec2)
         {
             float top = Math.Max(rec1.Y, rec2.Y);
-            float bottom = Math.Min(rec1.Y + rec1.Height, rec2.Y + rec2.Height);
+            float bottom = Math.Min(rec1.Y + rec1.Width, rec2.Y + rec2.Height);
             float left = Math.Max(rec1.X, rec2.X);
             float right = Math.Min(rec1.X + rec1.Width, rec2.X + rec2.Width);
             return new FRectangle(left, top, (int)Math.Round(right - left), (int)Math.Round(bottom - top));
