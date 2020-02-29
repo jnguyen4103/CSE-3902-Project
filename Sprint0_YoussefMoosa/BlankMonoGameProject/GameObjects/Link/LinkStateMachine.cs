@@ -73,6 +73,8 @@ namespace Sprint03
             Link.Game.Link = new DamagedLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction, direction);
             Link.SpriteLink.ChangeSpriteAnimation("Damaged" + GetDirection());
 
+            Link.State = Link.LinkState.Idle;
+
 
         }
 
