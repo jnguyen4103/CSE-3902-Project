@@ -79,7 +79,6 @@ namespace Sprint03
                 {
                     SwordBeam.CreateEffect();
                 }
-
                 RemoveDecorator();
             }
         }
@@ -88,7 +87,6 @@ namespace Sprint03
         {
             AttackTimer = 0;
             SpriteLink.Update(Link.LinkState.Idle, Direction);
-            SwordAttack.Sprite.KillSprite();
             Game.Link = decoratedLink;
             Sprite.FPS = 8;
             Game.Link.StateMachine.IdleState();

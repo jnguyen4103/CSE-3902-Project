@@ -75,10 +75,6 @@ namespace Sprint03
 
         public void DamagedState(int directionDamaged)
         {
-            if (damgeTimer == 0)
-            {
-                WalkCounter = damgeDuration;
-            }
             damgeTimer++;
             Pushback(directionDamaged);
             if (damgeTimer >= damgeDuration)
@@ -86,6 +82,7 @@ namespace Sprint03
                 self.Sprite.CurrentSpeed.X = 0;
                 self.Sprite.CurrentSpeed.Y = 0;
                 damgeTimer = 0;
+                IdleState();
                 self.State = Monster.MonsterState.Idle;
             } 
         }
