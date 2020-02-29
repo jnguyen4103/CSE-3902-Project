@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sprint03
 {
@@ -12,10 +13,6 @@ namespace Sprint03
         public List<IEffect> Effects;
         private Game1 Game;
         private CollisionResolution ColRes;
-        // Reduces hitbox detection to border of sprites
-        private float ShrinkFactor = 4;
-        private FRectangle actorHitbox;
-        private FRectangle receiverHitbox;
 
         public CollisionDetection(Game1 game)
         {
@@ -27,119 +24,97 @@ namespace Sprint03
             ColRes = new CollisionResolution(game);
         }
 
-        private bool Intersect(Sprite Actor, Sprite Receiver)
+        private int CollisionDirection(Sprite Receiver, FRectangle Collision)
         {
-            actorHitbox = new FRectangle(Actor.Position.X, Actor.Position.Y, (int)Actor.GetSize.X, (int)Actor.GetSize.Y);
-            receiverHitbox = new FRectangle(Receiver.Position.X, Receiver.Position.Y, (int)Receiver.GetSize.X, (int)Receiver.GetSize.Y);
-            return receiverHitbox.Intersects(actorHitbox);
+            Vector2 CollisionCenter = Collision.Center;
+
+            double TopDist = Math.Sqrt(
+                Math.Pow((CollisionCenter.X - Receiver.Position.X + (Receiver.GetSize.X / 2)), 2) +
+                Math.Pow((CollisionCenter.Y - Receiver.Position.Y), 2));
+        
+            double BottomDist = Math.Sqrt(
+                Math.Pow((CollisionCenter.X - Receiver.Position.X + (Receiver.GetSize.X / 2)), 2) +
+                Math.Pow((CollisionCenter.Y - Receiver.Position.Y + Receiver.GetSize.Y), 2));
+
+            double LeftDist = Math.Sqrt(
+                Math.Pow((CollisionCenter.X - Receiver.Position.X), 2) +
+                Math.Pow((CollisionCenter.Y - Receiver.Position.Y + (Receiver.GetSize.Y / 2)), 2));
+
+            double RightDist = Math.Sqrt(
+                Math.Pow((CollisionCenter.X - Receiver.Position.X + Receiver.GetSize.X), 2) +
+                Math.Pow((CollisionCenter.Y - Receiver.Position.Y + (Receiver.GetSize.Y / 2)), 2));
+
+            double[] Distances = { TopDist, BottomDist, LeftDist, RightDist };
+
+            /* 0 - Up
+            * 1 - Down
+            * 2 - Left
+            * 3 - Right
+            */
+            return Distances.ToList().IndexOf(Distances.Max());
+
         }
-
-        /*
-
-        private bool RightCollision(Sprite Actor, Sprite Receiver)
-        {
-            return (Actor.Position.X > Receiver.Position.X
-                && (Receiver.Position.X + Receiver.GetSize.X) >= Actor.Position.X
-                && Actor.Position.Y >= (Receiver.Position.Y + (Receiver.GetSize.Y / ShrinkFactor))
-                && (Actor.Position.Y + Actor.GetSize.Y) <= (Receiver.Position.Y + Receiver.GetSize.Y - (Receiver.GetSize.Y / ShrinkFactor)));
-        }
-        private bool LeftCollision(Sprite Actor, Sprite Receiver)
-        {
-            return (Actor.Position.X < Receiver.Position.X
-                && (Receiver.Position.X) < (Actor.Position.X + Actor.GetSize.X)
-                && Actor.Position.Y >= (Receiver.Position.Y + (Receiver.GetSize.Y / ShrinkFactor))
-                && (Actor.Position.Y + Actor.GetSize.Y) <= (Receiver.Position.Y + Receiver.GetSize.Y - (Receiver.GetSize.Y / ShrinkFactor)));
-        }
-        private bool UpCollision(Sprite Actor, Sprite Receiver)
-        {
-            return false;
-        }
-        private bool DownCollision(Sprite Actor, Sprite Receiver)
-        {
-            return false;
-        }
-
-
-
-
-        private String collisionFound(Sprite A, Sprite B)
-        {
-            //Determines if there is an interesection between two Rectangles 
-            Rectangle ARectangle = new Rectangle((int)A.GetPosition.X, (int)A.GetPosition.Y, (int)A.GetSize.X, (int)A.GetSize.Y);
-            Rectangle BRectangle = new Rectangle((int)B.GetPosition.X, (int)B.GetPosition.Y, (int)B.GetSize.X, (int)B.GetSize.Y);
-
-            String toReturn = "NONE";
-            if (ARectangle.Right < BRectangle.Left)
-            {
-                toReturn = "RIGHT";
-            }
-            else if (ARectangle.Left > BRectangle.Right)
-            {
-                toReturn = "LEFT";
-            }
-            else if (ARectangle.Top < BRectangle.Bottom)
-            {
-                toReturn = "TOP";
-            }
-            else if (ARectangle.Bottom > BRectangle.Top)
-            {
-                toReturn = "BOTTOM";
-            }
-            else
-            {
-                toReturn = "NONE";
-            }
-            return toReturn;
-        } */
 
         public void CollisionHandler()
         {
-            // Monster vs. Link
-            foreach(Monster monster in Monsters)
+
+
+            int direction;
+
+            FRectangle monsterHitbox;
+            FRectangle linkHitbox = new FRectangle(Link.SpriteLink.Position.X, Link.SpriteLink.Position.Y, (int)Link.SpriteLink.GetSize.X, (int)Link.SpriteLink.GetSize.Y);
+            FRectangle effectHitbox;
+            FRectangle itemHitbox;
+
+            foreach (Monster monster in Monsters)
             {
-                if (Intersect(monster.Sprite, Link.SpriteLink))
+                // Monster vs. Link
+                monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
+                if (monsterHitbox.Intersects(linkHitbox))
                 {
-                    //ColRes.HurtLink(monster.attackDamage, detection);
-                    ColRes.HurtLink(1);
+                    direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(monsterHitbox, linkHitbox));
+                    ColRes.HurtLink(monster.attackDamage, direction);
                     Console.WriteLine("Enemy Contact");
                 }
-            }
-
-            // Link vs. Effects
-            foreach (IEffect effect in Effects)
-            {
-                if (Intersect(effect.Sprite, Link.SpriteLink))
+                
+                foreach (IEffect effect in Effects)
                 {
-                    //ColRes.DamageLinkEffect(2, detection, effect);
-                    if(!effect.IsCreator(Link.SpriteLink))
+                    effectHitbox = new FRectangle(effect.Sprite.Position.X, effect.Sprite.Position.Y, (int)effect.Sprite.GetSize.X, (int)effect.Sprite.GetSize.Y);
+
+                    // Monster vs. Effects
+                    if (monsterHitbox.Intersects(effectHitbox))
                     {
-                        Console.WriteLine("Effect Contact");
+                        if (!effect.IsCreator(monster.Sprite))
+                        {
+                            direction = CollisionDirection(monster.Sprite, FRectangle.Intersection(effectHitbox, monsterHitbox));
+                            ColRes.DamageMonsterEffect(monster, direction, effect);
+                            Console.WriteLine("Enemy Effect Contact");
+                        }
+                    }
+
+                    // Link vs. Effects
+                    if (effectHitbox.Intersects(linkHitbox))
+                    {
+                        if(!effect.IsCreator(Link.SpriteLink))
+                        {
+                            direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(effectHitbox, linkHitbox));
+                            ColRes.DamageLinkEffect(effect.Damage, direction, effect);
+                            Console.WriteLine("Link Effect Contact");
+                        }
+
                     }
 
                 }
-            }
-
-
-            // Monster vs. Effects
-            foreach (IEffect effect in Effects)
-            {
-                foreach(Monster monster in Monsters)
-                {
-                    if (Intersect(effect.Sprite, monster.Sprite))
-                    {
-                        //ColRes.DamageMonsterEffect(monster, detection, effect);
-                        Console.WriteLine("Monster Effect Contact");
-
-                    }
-                }
-
             }
 
             // Link vs. Items
             foreach (Item item in Items)
             {
-                if (Intersect(item.Sprite, Link.SpriteLink))
+                itemHitbox = new FRectangle(item.Sprite.Position.X, item.Sprite.Position.Y, (int)item.Sprite.GetSize.X, (int)item.Sprite.GetSize.Y);
+
+                if (linkHitbox.Intersects(itemHitbox))
                 {
+                    direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(itemHitbox, linkHitbox));
                     ColRes.PickupItem(item);
                     Console.WriteLine("Item Pickup " + item.ToString());
 

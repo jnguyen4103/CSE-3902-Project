@@ -15,24 +15,24 @@ namespace Sprint03
             Game = game;
         }
 
-        public void HurtLink(int damage)
+        public void HurtLink(int damage, int direction)
         {
-            Game.Link.TakeDamage(damage);
+            Game.Link.TakeDamage(damage, direction);
         }
 
-        public void DamageMonster(Monster monster, string direction)
+        public void DamageMonster(Monster monster, int direction)
         {
             monster.StateMachine.DamagedState();
 
         }
 
-        public void DamageLinkEffect(int damage, string direction, IEffect effect)
+        public void DamageLinkEffect(int damage, int direction, IEffect effect)
         {
-            Game.Link.TakeDamage(effect.Damage);
+            Game.Link.TakeDamage(effect.Damage, direction);
 
         }
 
-        public void DamageMonsterEffect(Monster monster, string direction, IEffect effect)
+        public void DamageMonsterEffect(Monster monster, int direction, IEffect effect)
         {
             monster.StateMachine.DamagedState();
         }

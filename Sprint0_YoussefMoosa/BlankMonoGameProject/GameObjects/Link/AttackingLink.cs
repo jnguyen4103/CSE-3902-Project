@@ -46,12 +46,12 @@ namespace Sprint03
 
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, int direction)
         {
             // You can be damaged while attacking
             // So it removes the attacking decorator and adds the damaged one
             RemoveDecorator();
-            Game.Link.TakeDamage(damage);
+            Game.Link.TakeDamage(damage, direction);
         }
 
         public void Draw()

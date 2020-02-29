@@ -65,7 +65,7 @@
             LinkSM = new LinkStateMachine(this);
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, int direction)
         {
             hitpoints -= damage;
             if(hitpoints > 0)

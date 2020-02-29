@@ -17,9 +17,9 @@
         public enum MonsterDirection
         {
             Up,
-            Right,
             Down,
-            Left
+            Left,
+            Right
         }
 
         // Keep track of basic info about NPC

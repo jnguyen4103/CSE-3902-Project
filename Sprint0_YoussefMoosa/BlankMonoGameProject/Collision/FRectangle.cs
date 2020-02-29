@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using System;
+
 
 namespace Sprint03
 {
@@ -47,6 +45,14 @@ namespace Sprint03
             get { return (Y + Height); }
         }
 
+        public Vector2 Center
+        {
+            get
+            {
+                return new Vector2(X + (Width / 2), Y + (Height / 2));
+            }
+        }
+
         public bool Intersects(FRectangle rec)
         {
             return rec.Top < Bottom
@@ -55,27 +61,15 @@ namespace Sprint03
                 && Top < rec.Bottom;
         }
 
+        // Assumes rec1 and rec2 are intersected
         public static FRectangle Intersection(FRectangle rec1, FRectangle rec2)
         {
-            FRectangle intersection;
-
-            if(rec1.Intersects(rec2))
-            {
-                intersection = new FRectangle(0f, 0f, 0, 0);
-            }
-            else
-            {
-                float top = Math.Max(rec1.Y, rec2.Y);
-                float bottom = Math.Min(rec1.Y + rec1.Width, rec2.Y + rec2.Height);
-                float left = Math.Max(rec1.X, rec2.X);
-                float right = Math.Min(rec1.X + rec1.Width, rec2.X + rec2.Width);
-                intersection = new FRectangle(left, top, (int) Math.Round(right - left), (int) Math.Round(bottom - top));
-
-            }
-
-            return intersection;
+            float top = Math.Max(rec1.Y, rec2.Y);
+            float bottom = Math.Min(rec1.Y + rec1.Width, rec2.Y + rec2.Height);
+            float left = Math.Max(rec1.X, rec2.X);
+            float right = Math.Min(rec1.X + rec1.Width, rec2.X + rec2.Width);
+            return new FRectangle(left, top, (int)Math.Round(right - left), (int)Math.Round(bottom - top));
         }
-
-
     }
-}
+   }
+

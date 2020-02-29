@@ -51,7 +51,7 @@ namespace Sprint03
             Sprite.FPS = 8;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, int direction)
         {
 
         }
