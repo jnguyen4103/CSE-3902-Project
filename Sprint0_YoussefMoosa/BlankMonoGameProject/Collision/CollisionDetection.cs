@@ -34,14 +34,14 @@ namespace Sprint03
         
             double BottomDist = Math.Sqrt(
                 Math.Pow((CollisionCenter.X - Receiver.Position.X + (Receiver.GetSize.X / 2)), 2) +
-                Math.Pow((CollisionCenter.Y - Receiver.Position.Y + Receiver.GetSize.Y), 2));
+                Math.Pow((CollisionCenter.Y -Receiver.Position.Y+ Receiver.GetSize.Y ), 2));
 
-            double LeftDist = Math.Sqrt(
+            double LeftDist =  Math.Sqrt(
                 Math.Pow((CollisionCenter.X - Receiver.Position.X), 2) +
                 Math.Pow((CollisionCenter.Y - Receiver.Position.Y + (Receiver.GetSize.Y / 2)), 2));
 
             double RightDist = Math.Sqrt(
-                Math.Pow((CollisionCenter.X - Receiver.Position.X + Receiver.GetSize.X), 2) +
+                Math.Pow((CollisionCenter.X - Receiver.GetPosition.X+Receiver.GetSize.X), 2) +
                 Math.Pow((CollisionCenter.Y - Receiver.Position.Y + (Receiver.GetSize.Y / 2)), 2));
 
             double[] Distances = { TopDist, BottomDist, LeftDist, RightDist };
@@ -51,8 +51,8 @@ namespace Sprint03
             * 2 - Left
             * 3 - Right
             */
-            Console.WriteLine(Distances.ToList().IndexOf(Distances.Max()));
-            return Distances.ToList().IndexOf(Distances.Max());
+            Console.WriteLine(Distances.ToList().IndexOf(Distances.Min()));
+            return Distances.ToList().IndexOf(Distances.Min());
 
         }
 
