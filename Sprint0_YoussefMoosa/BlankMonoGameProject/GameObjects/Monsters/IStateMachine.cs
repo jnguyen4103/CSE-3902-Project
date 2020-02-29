@@ -10,7 +10,7 @@
         void IdleState();
         void MoveState();
         void AttackState();
-        void DamagedState();
+        void DamagedState(int directionDamaged);
         void DeadState();
     }
 

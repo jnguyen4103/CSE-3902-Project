@@ -70,7 +70,7 @@ namespace Sprint03
         }
         public abstract void ChangeSpriteAnimation(string newSpriteName);
 
-        public void KillSprite()
+        public virtual void KillSprite()
         {
             Colour = Color.Transparent;
         }

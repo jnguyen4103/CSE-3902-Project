@@ -25,7 +25,7 @@ namespace Sprint03
 
         public void DamageMonster(Monster monster, int direction)
         {
-            monster.StateMachine.DamagedState();
+            monster.TakeDamage(1, direction);
 
         }
 
@@ -37,8 +37,11 @@ namespace Sprint03
 
         public void DamageMonsterEffect(Monster monster, int direction, IEffect effect)
         {
-            monster.StateMachine.DamagedState();
-            effect.Sprite.KillSprite();
+            monster.TakeDamage(effect.Damage, direction);
+            if(!effect.Sprite.Name.Equals("SwordSwing"))
+            {
+                effect.Sprite.KillSprite();
+            }
 
         }
 

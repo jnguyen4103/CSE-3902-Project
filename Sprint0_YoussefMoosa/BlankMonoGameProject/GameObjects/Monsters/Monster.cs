@@ -6,6 +6,7 @@
     {
         public Sprite Sprite;
         public IStateMachine StateMachine;
+        private int DamageDirection;
         public enum MonsterState
         {
             Idle,           // NPC remains idle due to clock item or other effects
@@ -34,6 +35,24 @@
             Sprite.DrawSprite();
         }
 
+        public virtual void TakeDamage(int damage, int damageDirection)
+        {
+            if (State != MonsterState.Damaged)
+            {
+                hitpoints -= damage;
+                if (hitpoints < 1)
+                {
+                    State = MonsterState.Dead;
+                }
+                else
+                {
+                    State = MonsterState.Damaged;
+                    DamageDirection = damageDirection;
+                    StateMachine.DamagedState(damageDirection);
+                }
+            }
+        }
+
         public void Update()
         {
             // Calls respective behavior for each state
@@ -45,11 +64,11 @@
                 case (MonsterState.Moving):
                     StateMachine.MoveState();
                     break;
+                case (MonsterState.Damaged):
+                    StateMachine.DamagedState(DamageDirection);
+                    break;
                 case (MonsterState.Dead):
                     StateMachine.DeadState();
-                    break;
-                case (MonsterState.Damaged):
-                    StateMachine.DamagedState();
                     break;
                 default:
                     State = MonsterState.Idle;

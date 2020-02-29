@@ -21,6 +21,8 @@ namespace Sprint03
         private Monster self;
         private Random random = new Random();
         private int WalkCounter = 0;
+        private int damgeTimer = 0;
+        private int damgeDuration = 45;
 
 
         public StalfosSM(Stalfos Stalfos)
@@ -71,9 +73,46 @@ namespace Sprint03
         }
 
 
-        public void DamagedState()
+        public void DamagedState(int directionDamaged)
         {
+            if (damgeTimer == 0)
+            {
+                WalkCounter = damgeDuration;
+            }
+            damgeTimer++;
+            Pushback(directionDamaged);
+            if (damgeTimer >= damgeDuration)
+            {
+                self.Sprite.CurrentSpeed.X = 0;
+                self.Sprite.CurrentSpeed.Y = 0;
+                damgeTimer = 0;
+                self.State = Monster.MonsterState.Idle;
+            } 
+        }
 
+        private void Pushback(int damagedDirection)
+        {
+            switch (damagedDirection)
+            {
+                case (0):
+                    self.Sprite.CurrentSpeed.X = 0;
+                    self.Sprite.CurrentSpeed.Y = self.Sprite.BaseSpeed;
+                    break;
+                case (1):
+                    self.Sprite.CurrentSpeed.X = 0;
+                    self.Sprite.CurrentSpeed.Y = -self.Sprite.BaseSpeed;
+                    break;
+                case (2):
+                    self.Sprite.CurrentSpeed.X = -self.Sprite.BaseSpeed;
+                    self.Sprite.CurrentSpeed.Y = 0;
+                    break;
+                case (3):
+                    self.Sprite.CurrentSpeed.X = self.Sprite.BaseSpeed;
+                    self.Sprite.CurrentSpeed.Y = 0;
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void DeadState()
