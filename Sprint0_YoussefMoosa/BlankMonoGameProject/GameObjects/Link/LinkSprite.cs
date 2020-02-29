@@ -21,7 +21,7 @@ namespace Sprint03
             Texture = texture;
             CurrentFrame = 0;
             TotalFrames = game.SFactory.LinkSprites[name].Item3;
-            FPS = 60;
+            FPS = 8;
             ChangeSpriteAnimation(name);
             BaseSpeed = 1f;
         }

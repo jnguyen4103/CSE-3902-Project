@@ -15,10 +15,14 @@ namespace Sprint03
 
         public void Execute()
         {
-            //monoProcess.Link.SpriteLink.position = monoProcess.LinkSpawn;
-            //monoProcess.Link.StateMachine.DownState();
-            //monoProcess.Monster.Sprite.UpdatePosition(monoProcess.spawnPosition);
+            monoProcess.Link.SpriteLink.Position = monoProcess.LinkSpawn;
+            monoProcess.Link.StateMachine.DownState();
+            monoProcess.Link.HP = monoProcess.Link.MaxHP;
             monoProcess.EffectsList.Clear();
+            foreach (Monster monster in monoProcess.MonsterList)
+            {
+                monster.Sprite.Position = monoProcess.spawnPosition;
+            }
         }
     }
 

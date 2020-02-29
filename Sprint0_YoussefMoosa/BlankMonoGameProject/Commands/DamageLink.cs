@@ -14,7 +14,7 @@ namespace Sprint03
 
         public void Execute()
         {
-            monoProcess.Link.TakeDamage(0, 0);
+            monoProcess.Link.TakeDamage(5, 2);
         }
     }
 }

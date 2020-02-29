@@ -68,6 +68,7 @@
     <Compile Include="GameObjects\Effects\IEffect.cs" />
     <Compile Include="GameObjects\Items\Item.cs" />
     <Compile Include="GameObjects\Items\ItemFactory.cs" />
+    <Compile Include="GameObjects\Link\UseSecondaryLink.cs" />
     <Compile Include="GameObjects\Monsters\Stalfos.cs" />
     <Compile Include="GameObjects\Link\AttackingLink.cs" />
     <Compile Include="GameObjects\Link\DamagedLink.cs" />

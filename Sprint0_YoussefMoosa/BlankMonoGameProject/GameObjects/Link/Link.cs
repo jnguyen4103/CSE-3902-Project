@@ -9,6 +9,7 @@
         public enum LinkState
         {
             Attacking,
+            UsingSecondary,
             Moving,
             Idle,
             Damaged,

@@ -6,11 +6,9 @@ namespace Sprint03
     public class LinkStateMachine
     {
         Link Link;
-        private int UseItemTimer = 0;
         public LinkStateMachine(Link _link)
         {
             Link = _link;
-            UseItemTimer = 60 / Link.SpriteLink.FPS;
         }
 
 
@@ -44,38 +42,27 @@ namespace Sprint03
 
         public void IdleState()
         {
-            if (UseItemTimer <= (60 / Link.SpriteLink.FPS))
-            {
-                UseItemTimer++;
-            } else
-            {
-                Link.State = Link.LinkState.Idle;
-                Link.SpriteLink.ChangeSpriteAnimation("Walk" + GetDirection());
-            }
+            Link.State = Link.LinkState.Idle;
+            Link.SpriteLink.ChangeSpriteAnimation("Walk" + GetDirection());
         }
 
         public void AttackState()
         {
-            // Update Link's object to be a decorator and changes the
-            // animation frames so it corresponds with his current direction
-            Link.State = Link.LinkState.Attacking;
-            Link.Game.Link = new AttackingLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction);
-            Link.SpriteLink.ChangeSpriteAnimation("Effect" + GetDirection());
+            if (Link.State == Link.LinkState.Moving || Link.State == Link.LinkState.Idle)
+            {
+                Link.State = Link.LinkState.Attacking;
+                Link.Game.Link = new AttackingLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction);
+                Link.SpriteLink.ChangeSpriteAnimation("Effect" + GetDirection());
+            }
         }
 
 
 
         public void DamagedState(int direction)
         {
-            // Gives Link the damaged decorator while also changing his animation frames
-            // to the damaged onces.
             Link.State = Link.LinkState.Damaged;
             Link.Game.Link = new DamagedLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction, direction);
             Link.SpriteLink.ChangeSpriteAnimation("Damaged" + GetDirection());
-
-            Link.State = Link.LinkState.Idle;
-
-
         }
 
         public void DeadState()
@@ -89,21 +76,24 @@ namespace Sprint03
 
         public void UseArrow()
         {
-            IEffect Arrow = new ArrowEffect(Link.SpriteLink, Link.Game, Link.Direction, Link.Game.EffectSpriteSheet, Link.Game.spriteBatch);
-            Link.SpriteLink.ChangeSpriteAnimation("Effect" + GetDirection());
-            UseItemTimer = 0;
-            Arrow.CreateEffect();
-            Link.State = Link.LinkState.Idle;
+            if(Link.State == Link.LinkState.Moving || Link.State == Link.LinkState.Idle)
+            {
+                Link.State = Link.LinkState.UsingSecondary;
+                IEffect Arrow = new ArrowEffect(Link.SpriteLink, Link.Game, Link.Direction, Link.Game.EffectSpriteSheet, Link.Game.spriteBatch);
+                Link.Game.Link = new UseSecondaryLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction, Arrow);
+            }
         }
 
         public void UseBoomerang()
         {
-            IEffect Boomerang = new BoomerangEffect(Link.SpriteLink, Link.Game, Link.Direction, Link.Game.EffectSpriteSheet, Link.Game.spriteBatch);
-            Link.SpriteLink.ChangeSpriteAnimation("Effect" + GetDirection());
-            UseItemTimer = 0;
-            Boomerang.CreateEffect();
-            Link.State = Link.LinkState.Idle;
+            if (Link.State == Link.LinkState.Moving || Link.State == Link.LinkState.Idle)
+            {
+                Link.State = Link.LinkState.UsingSecondary;
+                IEffect Boomerang = new BoomerangEffect(Link.SpriteLink, Link.Game, Link.Direction, Link.Game.EffectSpriteSheet, Link.Game.spriteBatch);
+                Link.Game.Link = new UseSecondaryLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction, Boomerang);
+            }
         }
+
 
         public string GetDirection()
         {

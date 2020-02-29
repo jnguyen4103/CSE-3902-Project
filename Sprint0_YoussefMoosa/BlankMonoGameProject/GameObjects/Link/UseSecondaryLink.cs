@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 namespace Sprint03
 {
 
-    public class DamagedLink : ILink
+    public class UseSecondaryLink : ILink
     {
 
         private LinkSprite Sprite;
         private LinkStateMachine LinkSM;
         private Link decoratedLink;
         private Link.LinkDirection Direction;
-        private Link.LinkDirection PushbackDirection;
+        private IEffect AttackEffect;
         private string directionSpriteName;
         private Game1 Game;
-        int DamageTimer = 0;
-        int DamageDelay = 45;
+        int Lifespan; 
+        int UseSecondaryTimer;
 
 
         LinkStateMachine ILink.StateMachine
@@ -41,21 +41,27 @@ namespace Sprint03
 
 
 
-        public DamagedLink(Link _link, Game1 game, string oldSpriteName, Link.LinkDirection _direction, int directionDamaged)
+        public UseSecondaryLink(Link _link, Game1 game, string oldSpriteName, Link.LinkDirection _direction, IEffect effect)
         {
             decoratedLink = _link;
             Game = game;
             Sprite = _link.SpriteLink;
             LinkSM = _link.LinkSM;
+            AttackEffect = effect;
             directionSpriteName = oldSpriteName;
             Direction = _direction;
             Sprite.FPS = 8;
-            PushbackDirection = GetPushbackDirection(directionDamaged);
-            DamageTimer = 0;
+            Lifespan = (60 / Sprite.FPS) * 2;
+            Sprite.ChangeSpriteAnimation("Effect" + decoratedLink.LinkSM.GetDirection());
+            AttackEffect.CreateEffect();
         }
 
         public void TakeDamage(int damage, int direction)
         {
+            // You can be damaged while attacking
+            // So it removes the attacking decorator and adds the damaged one
+            RemoveDecorator();
+            Game.Link.TakeDamage(damage, direction);
 
         }
 
@@ -66,11 +72,10 @@ namespace Sprint03
 
         public void Update()
         {
+            SpriteLink.Update(Link.LinkState.UsingSecondary, Direction);
+            UseSecondaryTimer++;
 
-            SpriteLink.Update(Link.LinkState.Damaged, PushbackDirection);
-            DamageTimer++;
-
-            if (DamageTimer > DamageDelay)
+            if (UseSecondaryTimer >= Lifespan)
             {
                 RemoveDecorator();
             }
@@ -78,7 +83,7 @@ namespace Sprint03
 
         public void RemoveDecorator()
         {
-            DamageTimer = 0;
+            UseSecondaryTimer = 0;
             SpriteLink.Update(Link.LinkState.Idle, Direction);
             Game.Link = decoratedLink;
             Sprite.FPS = 8;
@@ -90,30 +95,5 @@ namespace Sprint03
             return Link.LinkState.Damaged;
         }
 
-        private Link.LinkDirection GetPushbackDirection(int directionDamaged)
-        {
-            Link.LinkDirection dir;
-
-            switch (directionDamaged)
-            {
-                case (0):
-                    dir = Link.LinkDirection.Down;
-                    break;
-                case (1):
-                    dir = Link.LinkDirection.Up;
-                    break;
-                case (2):
-                    dir = Link.LinkDirection.Left;
-                    break;
-                case (3):
-                    dir = Link.LinkDirection.Right;
-                    break;
-                default:
-                    dir = Link.LinkDirection.Down;
-                    break;
-            }
-
-            return dir;
-        }
     }
 }
