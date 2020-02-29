@@ -42,13 +42,26 @@ namespace Sprint03
             {
                 Game.Link.StateMachine.IdleState();
             }
-            
-            // If Link attacks he won't be able to attack until 60 frames have passed
-            // If Link is damaged he won't be able to move and attack until 180 frames have
-            // passed
+
+            if(keyState.IsKeyDown(Keys.W)&& keyState.IsKeyDown(Keys.A)&&
+                keyState.IsKeyDown(Keys.W) && keyState.IsKeyDown(Keys.D))
+            {
+                keyMappings[Keys.W].Execute();
+
+            }
+
+            if (keyState.IsKeyDown(Keys.S) && keyState.IsKeyDown(Keys.A) &&
+              keyState.IsKeyDown(Keys.S) && keyState.IsKeyDown(Keys.D))
+            {
+                keyMappings[Keys.S].Execute();
+            }
+
+                // If Link attacks he won't be able to attack until 60 frames have passed
+                // If Link is damaged he won't be able to move and attack until 180 frames have
+                // passed
 
 
-            if (attackTimer < attackDelay)
+                if (attackTimer < attackDelay)
             {
                 attackTimer++;
             }
