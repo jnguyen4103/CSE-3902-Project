@@ -12,6 +12,8 @@ namespace Sprint03
     {
         private Sprite Creator;
         private Link.LinkDirection Direction;
+        private int Lifespan;
+        private int timer = 0;
         public SwordSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
@@ -25,7 +27,8 @@ namespace Sprint03
             this.TotalFrames = game.SFactory.EffectSprites["SwordSwing"].Item3;
             this.ChangeSpriteAnimation("SwordSwing");
             this.FPS = 16;
-            GetSpawnPosition();
+            Lifespan = (60 / FPS) * 3;
+            UpdatePosition();
         }
         public override void ChangeSpriteAnimation(string newSpriteName) 
         {
@@ -37,7 +40,7 @@ namespace Sprint03
             TotalFrames = NewInfo.Item3;
         }
 
-        private void GetSpawnPosition()
+        private void UpdatePosition()
         {
             this.Position = Creator.GetPosition;
 
@@ -65,6 +68,24 @@ namespace Sprint03
                 default:
                     break;
             }
+        }
+
+        public override void DrawSprite()
+        {
+            timer++;
+            if (timer >= Lifespan)
+            {
+                KillSprite();
+                timer = 0;
+            }
+
+            UpdatePosition();
+            Move();
+            Animate();
+            DrawWindow.X = (int)Position.X;
+            DrawWindow.Y = (int)Position.Y;
+            AnimationWindow.Y = (int)(CurrentFrame * Size.Y);
+            Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
         }
     }
 }

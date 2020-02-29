@@ -17,11 +17,13 @@ namespace Sprint03
         {
             monoProcess.Link.SpriteLink.Position = monoProcess.LinkSpawn;
             monoProcess.Link.StateMachine.DownState();
+            monoProcess.Link = new Link(monoProcess.SpriteLink, monoProcess);
             monoProcess.Link.HP = monoProcess.Link.MaxHP;
             monoProcess.EffectsList.Clear();
             foreach (Monster monster in monoProcess.MonsterList)
             {
                 monster.Sprite.Position = monoProcess.spawnPosition;
+                monster.StateMachine.IdleState();
             }
         }
     }
