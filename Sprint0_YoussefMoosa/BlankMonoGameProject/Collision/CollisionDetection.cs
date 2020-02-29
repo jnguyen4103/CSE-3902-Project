@@ -116,7 +116,7 @@ namespace Sprint03
                 {
                     direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(itemHitbox, linkHitbox));
                     ColRes.PickupItem(item);
-                    Console.WriteLine("Item Pickup " + item.ToString());
+                    Console.WriteLine("Item Pickup " + item.Sprite.Name);
 
                 }
             }

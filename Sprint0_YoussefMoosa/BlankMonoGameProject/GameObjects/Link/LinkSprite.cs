@@ -21,7 +21,7 @@ namespace Sprint03
             Texture = texture;
             CurrentFrame = 0;
             TotalFrames = game.SFactory.LinkSprites[name].Item3;
-            FPS = 8;
+            FPS = 60;
             ChangeSpriteAnimation(name);
             BaseSpeed = 1f;
         }
@@ -62,7 +62,7 @@ namespace Sprint03
 
         public override void Move()
         {
-            if (State == Link.LinkState.Moving)
+            if (State == Link.LinkState.Moving || State == Link.LinkState.Damaged)
             {
                 switch (Direction)
                 {

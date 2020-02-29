@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace Sprint03
 {
@@ -64,15 +65,22 @@ namespace Sprint03
 
 
 
-        public void DamagedState()
+        public void DamagedState(int direction)
         {
             // Gives Link the damaged decorator while also changing his animation frames
             // to the damaged onces.
             Link.State = Link.LinkState.Damaged;
-            Link.Game.Link = new DamagedLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction);
+            Link.Game.Link = new DamagedLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction, direction);
             Link.SpriteLink.ChangeSpriteAnimation("Damaged" + GetDirection());
 
 
+        }
+
+        public void DeadState()
+        {
+            Console.WriteLine("Got rekt\nReviving Link!");
+            Link.hitpoints = 6;
+            IdleState();
         }
 
 

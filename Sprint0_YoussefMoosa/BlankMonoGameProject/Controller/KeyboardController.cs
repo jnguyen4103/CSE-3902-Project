@@ -5,6 +5,7 @@ namespace Sprint03
 {
     public class KeyboardController : IController
     {
+        Game1 Game;
         IDictionary<Keys, ICommand> keyMappings;
         private bool secondaryTriggered = false;
         private bool linkAttackTriggered = false;
@@ -17,8 +18,9 @@ namespace Sprint03
         private int secondaryTimer = 8;
 
 
-        public KeyboardController(Keys[] keys, ICommand[] commands) 
+        public KeyboardController(Game1 game, Keys[] keys, ICommand[] commands) 
         {
+            Game = game;
             keyMappings = new Dictionary<Keys, ICommand>();
 
             for (int i = 0; i < keys.Length; i++)
@@ -35,9 +37,10 @@ namespace Sprint03
             if (keyState.IsKeyUp(Keys.D1) & keyState.IsKeyUp(Keys.D2)) { secondaryTriggered = false; }
             if (keyState.IsKeyUp(Keys.Z)) { linkAttackTriggered = false; }
             if (keyState.IsKeyUp(Keys.E)) { linkDamagedTriggered = false; }
-            if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.A) && keyState.IsKeyUp(Keys.S) && keyState.IsKeyUp(Keys.D) && damageDelay <= damageTimer && attackDelay <= attackTimer)
+
+            if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.A) && keyState.IsKeyUp(Keys.S) && keyState.IsKeyUp(Keys.D) && Game.Link.GetState() == Link.LinkState.Moving)
             {
-                keyMappings[Keys.H].Execute();
+                Game.Link.StateMachine.IdleState();
             }
             
             // If Link attacks he won't be able to attack until 60 frames have passed

@@ -17,6 +17,7 @@ namespace Sprint03
         private LinkStateMachine LinkSM;
         private Link decoratedLink;
         private Link.LinkDirection Direction;
+        private Link.LinkDirection PushbackDirection;
         private string directionSpriteName;
         private Game1 Game;
         int DamageTimer = 0;
@@ -40,7 +41,7 @@ namespace Sprint03
 
 
 
-        public DamagedLink(Link _link, Game1 game, string oldSpriteName, Link.LinkDirection _direction)
+        public DamagedLink(Link _link, Game1 game, string oldSpriteName, Link.LinkDirection _direction, int directionDamaged)
         {
             decoratedLink = _link;
             Game = game;
@@ -49,6 +50,8 @@ namespace Sprint03
             directionSpriteName = oldSpriteName;
             Direction = _direction;
             Sprite.FPS = 8;
+            PushbackDirection = GetPushbackDirection(directionDamaged);
+            DamageTimer = 0;
         }
 
         public void TakeDamage(int damage, int direction)
@@ -64,7 +67,7 @@ namespace Sprint03
         public void Update()
         {
 
-            SpriteLink.Update(Link.LinkState.Damaged, Direction);
+            SpriteLink.Update(Link.LinkState.Damaged, PushbackDirection);
             DamageTimer++;
 
             if (DamageTimer > DamageDelay)
@@ -85,6 +88,32 @@ namespace Sprint03
         public Link.LinkState GetState()
         { 
             return Link.LinkState.Damaged;
+        }
+
+        private Link.LinkDirection GetPushbackDirection(int directionDamaged)
+        {
+            Link.LinkDirection dir;
+
+            switch (directionDamaged)
+            {
+                case (0):
+                    dir = Link.LinkDirection.Down;
+                    break;
+                case (1):
+                    dir = Link.LinkDirection.Up;
+                    break;
+                case (2):
+                    dir = Link.LinkDirection.Left;
+                    break;
+                case (3):
+                    dir = Link.LinkDirection.Right;
+                    break;
+                default:
+                    dir = Link.LinkDirection.Down;
+                    break;
+            }
+
+            return dir;
         }
     }
 }

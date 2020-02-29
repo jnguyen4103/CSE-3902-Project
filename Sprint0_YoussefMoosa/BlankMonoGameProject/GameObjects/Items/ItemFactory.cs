@@ -60,7 +60,7 @@ namespace Sprint03
             }
             else if (Game.Link.MaxHP > Game.Link.HP)
             {
-                Game.Link.HP+= 2;
+                Game.Link.HP += 2;
             }
         }
 

@@ -80,7 +80,7 @@ namespace Sprint03
             keyboardCommands[8] = new LinkAttack(this);
             keyboardCommands[9] = new DamageLink(this);
             keyboardCommands[10] = new IdleLink(this);
-            keyboardController = new KeyboardController(keyboardKeys, keyboardCommands);
+            keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
             base.Initialize();
         }

@@ -12,8 +12,6 @@
             Moving,
             Idle,
             Damaged,
-            UseArrow,
-            UseBoomerRange,
             Dead
         }
 
@@ -70,7 +68,10 @@
             hitpoints -= damage;
             if(hitpoints > 0)
             {
-                LinkSM.DamagedState();
+                LinkSM.DamagedState(direction);
+            } else
+            {
+                LinkSM.DeadState();
             }
         }
 
