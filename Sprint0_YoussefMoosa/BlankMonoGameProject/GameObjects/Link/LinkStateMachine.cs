@@ -68,9 +68,11 @@ namespace Sprint03
         {
             // Gives Link the damaged decorator while also changing his animation frames
             // to the damaged onces.
-
             Link.State = Link.LinkState.Damaged;
-            Link.Game.Link = new DamagedLink(Link, Link.Game);
+            Link.Game.Link = new DamagedLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction);
+            Link.SpriteLink.ChangeSpriteAnimation("Damaged" + GetDirection());
+
+
         }
 
 
@@ -93,7 +95,7 @@ namespace Sprint03
             Link.State = Link.LinkState.Idle;
         }
 
-        private string GetDirection()
+        public string GetDirection()
         {
             string dir = "";
             switch (Link.Direction)

@@ -6,15 +6,15 @@ namespace Sprint03
     public class KeyboardController : IController
     {
         IDictionary<Keys, ICommand> keyMappings;
-        private bool npcSwapTriggered = false;
-        private bool itemSwapTriggered = false;
         private bool secondaryTriggered = false;
         private bool linkAttackTriggered = false;
         private bool linkDamagedTriggered = false;
         private int attackDelay = 25;
         private int attackTimer = 25;
-        private int damageDelay = 180;
-        private int damageTimer = 180;
+        private int damageDelay = 90;
+        private int damageTimer = 90;
+        private int secondaryDelay = 8;
+        private int secondaryTimer = 8;
 
 
         public KeyboardController(Keys[] keys, ICommand[] commands) 
@@ -32,12 +32,10 @@ namespace Sprint03
             KeyboardState keyState = Keyboard.GetState();
             Keys[] pressed = keyState.GetPressedKeys();
 
-            if (keyState.IsKeyUp(Keys.O) & keyState.IsKeyUp(Keys.P)) { npcSwapTriggered = false; }
-            if (keyState.IsKeyUp(Keys.I) & keyState.IsKeyUp(Keys.U)) { itemSwapTriggered = false; }
             if (keyState.IsKeyUp(Keys.D1) & keyState.IsKeyUp(Keys.D2)) { secondaryTriggered = false; }
             if (keyState.IsKeyUp(Keys.Z)) { linkAttackTriggered = false; }
             if (keyState.IsKeyUp(Keys.E)) { linkDamagedTriggered = false; }
-            if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.A) && keyState.IsKeyUp(Keys.S) && keyState.IsKeyUp(Keys.D))
+            if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.A) && keyState.IsKeyUp(Keys.S) && keyState.IsKeyUp(Keys.D) && damageDelay <= damageTimer && attackDelay <= attackTimer)
             {
                 keyMappings[Keys.H].Execute();
             }
@@ -56,13 +54,18 @@ namespace Sprint03
                 damageTimer++;
             }
 
+            if (secondaryTimer < secondaryDelay)
+            {
+                secondaryTimer++;
+            }
+
             // Legend of Zelda prioritizes veritcal movement over horizontal so horizontal movement
             // is ignored if the W and S keys are pressed
             // There are flags coded in so a command will only activate once on a key press
 
             foreach (Keys k in pressed)
             {
-                if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && (damageTimer >= damageDelay) && (attackTimer >= attackDelay))
+                if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && (damageTimer >= damageDelay) && (attackTimer >= attackDelay) && (secondaryTimer >= secondaryDelay))
                 {
                     if (k == Keys.W || k == Keys.S)
                     {
@@ -82,11 +85,13 @@ namespace Sprint03
                         keyMappings[k].Execute();
                     }
 
-                    if((k == Keys.D1 || k == Keys.D2) & !secondaryTriggered & damageTimer >= damageDelay)
+                    if((k == Keys.D1 || k == Keys.D2) & !secondaryTriggered & damageTimer >= damageDelay & secondaryTimer >= secondaryDelay)
                     {
+                        secondaryTimer = 0;
                         keyMappings[k].Execute();
                         secondaryTriggered = true;
                     }
+
                     if (!linkDamagedTriggered & k == Keys.E)
                     {
                         damageTimer = 0;
@@ -99,23 +104,6 @@ namespace Sprint03
                         attackTimer = 0;
                         keyMappings[k].Execute();
                         linkAttackTriggered = true;
-                    }
-
-
-                    if (k == Keys.O & !npcSwapTriggered)
-                    {
-                        keyMappings[k].Execute();
-                        npcSwapTriggered = true;
-                    }
-                    if (!npcSwapTriggered & k == Keys.P)
-                    {
-                        keyMappings[k].Execute();
-                        npcSwapTriggered = true;
-                    }
-                    else if ((k == Keys.I | k == Keys.U) & !itemSwapTriggered)
-                    {
-                        keyMappings[k].Execute();
-                        itemSwapTriggered = true;
                     }
                 }
             }

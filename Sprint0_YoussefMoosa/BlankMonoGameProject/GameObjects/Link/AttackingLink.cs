@@ -46,12 +46,12 @@ namespace Sprint03
 
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
             // You can be damaged while attacking
             // So it removes the attacking decorator and adds the damaged one
             RemoveDecorator();
-            Game.Link.StateMachine.DamagedState();
+            Game.Link.TakeDamage(damage);
         }
 
         public void Draw()
@@ -90,6 +90,11 @@ namespace Sprint03
             Game.Link = decoratedLink;
             Sprite.FPS = 8;
             Game.Link.StateMachine.IdleState();
+        }
+
+        public Link.LinkState GetState()
+        {
+            return Link.LinkState.Attacking;
         }
     }
 }
