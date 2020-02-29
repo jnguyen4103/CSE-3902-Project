@@ -60,7 +60,7 @@ namespace Sprint03
 
         public void collisionHandler()
         {
-            for
+            
         }
         /*
         public bool linkCollisionDetectionMonster()
