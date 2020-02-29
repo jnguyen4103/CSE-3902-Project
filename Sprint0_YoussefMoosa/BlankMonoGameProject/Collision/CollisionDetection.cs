@@ -12,6 +12,11 @@ namespace Sprint03
         public List<IEffect> Effects;
         private Game1 Game;
         private CollisionResolution ColRes;
+        // Reduces hitbox detection to border of sprites
+        private float ShrinkFactor = 4;
+        private FRectangle actorHitbox;
+        private FRectangle receiverHitbox;
+
         public CollisionDetection(Game1 game)
         {
             this.Monsters = game.MonsterList;
@@ -21,6 +26,41 @@ namespace Sprint03
             Game = game;
             ColRes = new CollisionResolution(game);
         }
+
+        private bool Intersect(Sprite Actor, Sprite Receiver)
+        {
+            actorHitbox = new FRectangle(Actor.Position.X, Actor.Position.Y, (int)Actor.GetSize.X, (int)Actor.GetSize.Y);
+            receiverHitbox = new FRectangle(Receiver.Position.X, Receiver.Position.Y, (int)Receiver.GetSize.X, (int)Receiver.GetSize.Y);
+            return receiverHitbox.Intersects(actorHitbox);
+        }
+
+        /*
+
+        private bool RightCollision(Sprite Actor, Sprite Receiver)
+        {
+            return (Actor.Position.X > Receiver.Position.X
+                && (Receiver.Position.X + Receiver.GetSize.X) >= Actor.Position.X
+                && Actor.Position.Y >= (Receiver.Position.Y + (Receiver.GetSize.Y / ShrinkFactor))
+                && (Actor.Position.Y + Actor.GetSize.Y) <= (Receiver.Position.Y + Receiver.GetSize.Y - (Receiver.GetSize.Y / ShrinkFactor)));
+        }
+        private bool LeftCollision(Sprite Actor, Sprite Receiver)
+        {
+            return (Actor.Position.X < Receiver.Position.X
+                && (Receiver.Position.X) < (Actor.Position.X + Actor.GetSize.X)
+                && Actor.Position.Y >= (Receiver.Position.Y + (Receiver.GetSize.Y / ShrinkFactor))
+                && (Actor.Position.Y + Actor.GetSize.Y) <= (Receiver.Position.Y + Receiver.GetSize.Y - (Receiver.GetSize.Y / ShrinkFactor)));
+        }
+        private bool UpCollision(Sprite Actor, Sprite Receiver)
+        {
+            return false;
+        }
+        private bool DownCollision(Sprite Actor, Sprite Receiver)
+        {
+            return false;
+        }
+
+
+
 
         private String collisionFound(Sprite A, Sprite B)
         {
@@ -50,30 +90,31 @@ namespace Sprint03
                 toReturn = "NONE";
             }
             return toReturn;
-        }
+        } */
 
         public void CollisionHandler()
         {
-            string detection;
             // Monster vs. Link
             foreach(Monster monster in Monsters)
             {
-                detection = collisionFound(Link.SpriteLink, monster.Sprite);
-                if (!detection.Equals("None") && !detection.Equals(null))
+                if (Intersect(monster.Sprite, Link.SpriteLink))
                 {
                     //ColRes.HurtLink(monster.attackDamage, detection);
-                    Console.WriteLine("Enemy Contact " + detection);
+                    ColRes.HurtLink(1);
+                    Console.WriteLine("Enemy Contact");
                 }
             }
 
             // Link vs. Effects
             foreach (IEffect effect in Effects)
             {
-                detection = collisionFound(Link.SpriteLink, effect.Sprite);
-                if (!detection.Equals("None") && !detection.Equals(null))
+                if (Intersect(effect.Sprite, Link.SpriteLink))
                 {
-                    ColRes.DamageLinkEffect(2, detection, effect);
-                    Console.WriteLine("Effect Contact " + detection);
+                    //ColRes.DamageLinkEffect(2, detection, effect);
+                    if(!effect.IsCreator(Link.SpriteLink))
+                    {
+                        Console.WriteLine("Effect Contact");
+                    }
 
                 }
             }
@@ -84,11 +125,10 @@ namespace Sprint03
             {
                 foreach(Monster monster in Monsters)
                 {
-                    detection = collisionFound(monster.Sprite, effect.Sprite);
-                    if (!detection.Equals("None") && !detection.Equals(null))
+                    if (Intersect(effect.Sprite, monster.Sprite))
                     {
-                        ColRes.DamageMonsterEffect(monster, detection, effect);
-                        Console.WriteLine("Monster Effect Contact " + detection);
+                        //ColRes.DamageMonsterEffect(monster, detection, effect);
+                        Console.WriteLine("Monster Effect Contact");
 
                     }
                 }
@@ -98,11 +138,10 @@ namespace Sprint03
             // Link vs. Items
             foreach (Item item in Items)
             {
-                detection = collisionFound(Link.SpriteLink, item.Sprite);
-                if (!detection.Equals("None") && !detection.Equals(null))
+                if (Intersect(item.Sprite, Link.SpriteLink))
                 {
                     ColRes.PickupItem(item);
-                    Console.WriteLine("Item Pickup " + detection);
+                    Console.WriteLine("Item Pickup " + item.ToString());
 
                 }
             }

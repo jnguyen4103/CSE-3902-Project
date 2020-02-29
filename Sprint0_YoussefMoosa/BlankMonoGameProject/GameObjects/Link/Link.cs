@@ -13,7 +13,8 @@
             Idle,
             Damaged,
             UseArrow,
-            UseBoomerRange
+            UseBoomerRange,
+            Dead
         }
 
         // 4 directional states of Link, these are used to determine which directional
@@ -64,9 +65,13 @@
             LinkSM = new LinkStateMachine(this);
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
-            LinkSM.DamagedState();
+            hitpoints -= damage;
+            if(hitpoints > 0)
+            {
+                LinkSM.DamagedState();
+            }
         }
 
         public void Draw()
@@ -78,5 +83,11 @@
         {
             SpriteLink.Update(State, Direction);
         }
+
+        public LinkState GetState()
+        {
+            return State;
+        }
+
     }
 }

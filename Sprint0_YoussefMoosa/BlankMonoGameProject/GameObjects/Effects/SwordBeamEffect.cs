@@ -7,12 +7,14 @@ namespace Sprint03
     {
         Sprite Creator;
         Sprite EffectSprite;
+        int EffectDamage;
         Game1 Game;
         Link.LinkDirection Direction;
         Texture2D Texture;
         SpriteBatch Batch;
 
         public Sprite Sprite { get => EffectSprite; set => EffectSprite = value; }
+        public int Damage { get => EffectDamage; set => EffectDamage = value; }
 
         public SwordBeamEffect(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
@@ -21,6 +23,7 @@ namespace Sprint03
             Direction = direction;
             Batch = batch;
             Texture = texture;
+            Damage = 1;
         }
 
         public void CreateEffect()
@@ -29,6 +32,11 @@ namespace Sprint03
             EffectSprite = new SwordBeamSprite(Creator, Game, Direction, Texture, Batch);
             Game.EffectsList.Add(this);
 
+        }
+
+        public bool IsCreator(Sprite sprite)
+        {
+            return (Creator.Equals(sprite));
         }
     }
 }

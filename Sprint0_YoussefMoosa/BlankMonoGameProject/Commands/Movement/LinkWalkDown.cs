@@ -14,7 +14,10 @@ namespace Sprint03
 
         public void Execute()
         {
-            monoProcess.Link.StateMachine.DownState();
+            if (monoProcess.Link.GetState() != Link.LinkState.Damaged)
+            {
+                monoProcess.Link.StateMachine.DownState();
+            }
         }
     }
 }

@@ -15,9 +15,9 @@ namespace Sprint03
             Game = game;
         }
 
-        public void HurtLink(int damage, string direction)
+        public void HurtLink(int damage)
         {
-            //Game.Link.TakeDamage();
+            Game.Link.TakeDamage(damage);
         }
 
         public void DamageMonster(Monster monster, string direction)
@@ -28,7 +28,8 @@ namespace Sprint03
 
         public void DamageLinkEffect(int damage, string direction, IEffect effect)
         {
-            //Game.Link.TakeDamage();
+            Game.Link.TakeDamage(effect.Damage);
+
         }
 
         public void DamageMonsterEffect(Monster monster, string direction, IEffect effect)

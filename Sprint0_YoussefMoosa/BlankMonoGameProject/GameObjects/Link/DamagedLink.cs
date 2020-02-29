@@ -13,11 +13,14 @@ namespace Sprint03
     public class DamagedLink : ILink
     {
 
-        public LinkSprite Sprite;
-        public LinkStateMachine LinkSM;
-        public Link decoratedLink;
-        public Game1 monoProcess;
+        private LinkSprite Sprite;
+        private LinkStateMachine LinkSM;
+        private Link decoratedLink;
+        private Link.LinkDirection Direction;
+        private string directionSpriteName;
+        private Game1 Game;
         int DamageTimer = 0;
+        int DamageDelay = 90;
 
 
         LinkStateMachine ILink.StateMachine
@@ -37,42 +40,51 @@ namespace Sprint03
 
 
 
-        public DamagedLink(Link _link, Game1 monoInstance)
+        public DamagedLink(Link _link, Game1 game, string oldSpriteName, Link.LinkDirection _direction)
         {
             decoratedLink = _link;
-            monoProcess = monoInstance;
+            Game = game;
             Sprite = _link.SpriteLink;
             LinkSM = _link.LinkSM;
+            directionSpriteName = oldSpriteName;
+            Direction = _direction;
+            Sprite.FPS = 8;
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
 
         }
 
         public void Draw()
         {
-            this.Update();
             Sprite.DrawSprite();
         }
 
         public void Update()
         {
-            // After 180 frames remove damage decorator
-            // and set Link to idle
-            DamageTimer++;
-            if (DamageTimer > 180)
-            {
-                DamageTimer = 0;
-                RemoveDecorator();
-                monoProcess.Link.StateMachine.IdleState();
 
+            SpriteLink.Update(Link.LinkState.Damaged, Direction);
+            DamageTimer++;
+
+            if (DamageTimer > DamageDelay)
+            {
+                RemoveDecorator();
             }
         }
 
         public void RemoveDecorator()
         {
-            monoProcess.Link = decoratedLink;
+            DamageTimer = 0;
+            SpriteLink.Update(Link.LinkState.Idle, Direction);
+            Game.Link = decoratedLink;
+            Sprite.FPS = 8;
+            Game.Link.StateMachine.IdleState();
+        }
+
+        public Link.LinkState GetState()
+        { 
+            return Link.LinkState.Damaged;
         }
     }
 }

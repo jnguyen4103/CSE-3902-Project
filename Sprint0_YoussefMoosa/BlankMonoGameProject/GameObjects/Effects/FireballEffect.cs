@@ -23,5 +23,7 @@ namespace Sprint03
             //monoProcess.EffectsList.Add(new FireballSprite(effectTexture, spriteBatch, position, -1, 1));
 
         }
+
+
     }
 }

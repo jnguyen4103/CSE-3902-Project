@@ -16,6 +16,7 @@ namespace Sprint03
         int MaxHP { get; set; }
         void Update();
         void Draw();
-        void TakeDamage();
+        void TakeDamage(int damage);
+        Link.LinkState GetState();
     }
 }

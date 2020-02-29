@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Collision\CollisionDetection.cs" />
     <Compile Include="Collision\CollisionResolution.cs" />
+    <Compile Include="Collision\FRectangle.cs" />
     <Compile Include="Commands\Attacks\LinkAttack.cs" />
     <Compile Include="Commands\Attacks\LinkUseArrow.cs" />
     <Compile Include="Commands\Attacks\LinkUseBoomerang.cs" />
