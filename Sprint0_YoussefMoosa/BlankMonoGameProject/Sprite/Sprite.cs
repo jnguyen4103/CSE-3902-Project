@@ -22,7 +22,6 @@ namespace Sprint03
         public string Name;
         protected Vector2 Origin = new Vector2(0, 0);
         protected Vector2 Size;
-        bool isGone;
 
         // Sprite Animation & Drawing Info
         protected SpriteBatch Batch;

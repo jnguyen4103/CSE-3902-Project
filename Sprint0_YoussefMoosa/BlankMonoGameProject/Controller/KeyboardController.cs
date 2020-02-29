@@ -38,7 +38,7 @@ namespace Sprint03
             if (keyState.IsKeyUp(Keys.Z)) { linkAttackTriggered = false; }
             if (keyState.IsKeyUp(Keys.E)) { linkDamagedTriggered = false; }
 
-            if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.A) && keyState.IsKeyUp(Keys.S) && keyState.IsKeyUp(Keys.D) && Game.Link.GetState() == Link.LinkState.Moving)
+            if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.A) && keyState.IsKeyUp(Keys.S) && keyState.IsKeyUp(Keys.D) && (damageTimer >= damageDelay) && (attackTimer >= attackDelay))
             {
                 Game.Link.StateMachine.IdleState();
             }
@@ -68,7 +68,7 @@ namespace Sprint03
 
             foreach (Keys k in pressed)
             {
-                if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && (damageTimer >= damageDelay) && (attackTimer >= attackDelay) && (secondaryTimer >= secondaryDelay))
+                if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && (damageTimer >= damageDelay) && (attackTimer >= attackDelay))
                 {
                     if (k == Keys.W || k == Keys.S)
                     {
