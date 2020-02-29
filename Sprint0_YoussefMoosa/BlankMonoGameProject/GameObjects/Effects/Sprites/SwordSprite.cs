@@ -26,7 +26,7 @@ namespace Sprint03
             this.Texture = texture;
             this.TotalFrames = game.SFactory.EffectSprites["SwordSwing"].Item3;
             this.ChangeSpriteAnimation("SwordSwing");
-            this.FPS = 16;
+            this.FPS = 12;
             Lifespan = (60 / FPS) * 3;
             UpdatePosition();
         }

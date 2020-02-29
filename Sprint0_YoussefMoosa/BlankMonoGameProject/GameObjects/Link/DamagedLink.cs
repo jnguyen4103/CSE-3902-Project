@@ -50,7 +50,6 @@ namespace Sprint03
             directionSpriteName = oldSpriteName;
             Direction = _direction;
             Sprite.FPS = 8;
-            Sprite.BaseSpeed = 3f;
             PushbackDirection = GetPushbackDirection(directionDamaged);
             DamageTimer = 0;
         }
@@ -82,7 +81,6 @@ namespace Sprint03
             DamageTimer = 0;
             SpriteLink.Update(Link.LinkState.Idle, Direction);
             Game.Link = decoratedLink;
-            Sprite.BaseSpeed = 1f;
             Sprite.FPS = 8;
             Game.Link.StateMachine.IdleState();
         }
@@ -105,10 +103,10 @@ namespace Sprint03
                     dir = Link.LinkDirection.Up;
                     break;
                 case (2):
-                    dir = Link.LinkDirection.Left;
+                    dir = Link.LinkDirection.Right;
                     break;
                 case (3):
-                    dir = Link.LinkDirection.Right;
+                    dir = Link.LinkDirection.Left;
                     break;
                 default:
                     dir = Link.LinkDirection.Down;

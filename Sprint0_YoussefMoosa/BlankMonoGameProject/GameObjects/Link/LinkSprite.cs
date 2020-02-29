@@ -23,7 +23,7 @@ namespace Sprint03
             TotalFrames = game.SFactory.LinkSprites[name].Item3;
             FPS = 8;
             ChangeSpriteAnimation(name);
-            BaseSpeed = 1f;
+            BaseSpeed = 1.75f;
         }
 
         public override void ChangeSpriteAnimation(string newSpriteName)
@@ -83,16 +83,6 @@ namespace Sprint03
                 }
             }
 
-        }
-
-        public override void DrawSprite()
-        {
-            Animate();
-            Move();
-            DrawWindow.X = (int)Position.X;
-            DrawWindow.Y = (int)Position.Y;
-            AnimationWindow.Y = (int)(CurrentFrame * Size.Y);
-            Batch.Draw(Texture, DrawWindow, AnimationWindow, Color.Azure, Rotation, Origin, SpriteEffect, Layer);
         }
 
     }
