@@ -62,6 +62,7 @@ namespace Sprint03
             {
                 Game.Link.HP += 2;
             }
+            Console.WriteLine(Game.Link.HP);
         }
 
         private void HeartContainer()

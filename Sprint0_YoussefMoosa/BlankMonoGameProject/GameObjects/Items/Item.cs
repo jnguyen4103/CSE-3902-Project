@@ -22,7 +22,7 @@ namespace Sprint03
         }
         public void ActivateItem()
         {
-            //Game.IFactory.UseItem[ItemName]();
+            Game.IFactory.UseItem[ItemName]();
         }
 
         public void Draw()

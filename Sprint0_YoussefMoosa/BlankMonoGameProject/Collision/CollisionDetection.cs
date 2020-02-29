@@ -51,6 +51,7 @@ namespace Sprint03
             * 2 - Left
             * 3 - Right
             */
+            Console.WriteLine(Distances.ToList().IndexOf(Distances.Max()));
             return Distances.ToList().IndexOf(Distances.Max());
 
         }

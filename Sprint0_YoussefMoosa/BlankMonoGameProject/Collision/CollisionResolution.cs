@@ -38,6 +38,8 @@ namespace Sprint03
         public void DamageMonsterEffect(Monster monster, int direction, IEffect effect)
         {
             monster.StateMachine.DamagedState();
+            effect.Sprite.KillSprite();
+
         }
 
 

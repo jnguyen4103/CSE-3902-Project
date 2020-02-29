@@ -92,7 +92,7 @@ namespace Sprint03
             DrawWindow.X = (int)Position.X;
             DrawWindow.Y = (int)Position.Y;
             AnimationWindow.Y = (int)(CurrentFrame * Size.Y);
-            Batch.Draw(Texture, DrawWindow, AnimationWindow, Color.White, Rotation, Origin, SpriteEffect, Layer);
+            Batch.Draw(Texture, DrawWindow, AnimationWindow, Color.Azure, Rotation, Origin, SpriteEffect, Layer);
         }
 
     }

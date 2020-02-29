@@ -54,7 +54,7 @@ namespace Sprint03
 
                 if (keyMappings.ContainsKey(k))
                 {
-
+                    // Without this if statement the game wil allow animation cancelling
                     if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.D1 || k == Keys.D2 || k == Keys.Z)
                     {
                         keyMappings[k].Execute();
