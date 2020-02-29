@@ -27,17 +27,22 @@ namespace Sprint03
         private int CollisionDirection(Sprite Receiver, FRectangle Collision)
         {
             Vector2 CollisionCenter = Collision.Center;
-            int returnVal=0;
+            int returnVal = 0;
             /* 0 - TOp
             * 1 - Bottom
             * 2 - Left
             * 3 - Right
             */
 
-            Console.WriteLine("X: "+Collision.Width+" "+ "Y: "+Collision.Height);
+            Console.WriteLine("X: " + Collision.Width + " " + "Y: " + Collision.Height);
             //Our intersection happened on the left or the right
-            if (Collision.Height == 0)
+
+
+            if (Collision.Width < Collision.Height)
             {
+                //Collision happend on the Left
+
+
 
                 if (Receiver.GetPosition.X < Collision.Right && Math.Round(Receiver.GetPosition.X) == Math.Round(Collision.Left))
                 {
@@ -48,14 +53,8 @@ namespace Sprint03
                 {
                     returnVal = 3;
                 }
-            }
-            else
-            {
-                if (Collision.Width < Collision.Height)
+                if (Collision.Height <= 1)
                 {
-                    //Collision happend on the Left
-
-
 
                     if (Receiver.GetPosition.X < Collision.Right && Math.Round(Receiver.GetPosition.X) == Math.Round(Collision.Left))
                     {
@@ -67,30 +66,32 @@ namespace Sprint03
                         returnVal = 3;
                     }
                 }
-                //Our intersection happend on the top or the bottom 
-                else if (Collision.Height < Collision.Width)
+            }
+            //Our intersection happend on the top or the bottom 
+            else if (Collision.Height < Collision.Width)
+            {
+                //Collision happend on the Top
+
+                Console.WriteLine("TOP: " + Collision.Top);
+                Console.WriteLine("BOTTOM: " + Collision.Bottom);
+                Console.WriteLine("Top OF SPRITE: " + Receiver.GetPosition.Y);
+                Console.WriteLine("Bottom OF SPRITE: " + (Receiver.GetPosition.Y + Receiver.GetSize.Y));
+                if (Receiver.GetPosition.Y == Collision.Top && Receiver.GetPosition.Y > Collision.Bottom)
                 {
-                    //Collision happend on the Top
-
-                    Console.WriteLine("TOP: " + Collision.Top);
-                    Console.WriteLine("BOTTOM: " + Collision.Bottom);
-                    Console.WriteLine("Top OF SPRITE: " + Receiver.GetPosition.Y);
-                    Console.WriteLine("Bottom OF SPRITE: " + (Receiver.GetPosition.Y + Receiver.GetSize.Y));
-                    if (Receiver.GetPosition.Y == Collision.Top && Receiver.GetPosition.Y > Collision.Bottom)
-                    {
-                        returnVal = 0;
-                    }
-                    //Collision Happened on the bottom
-                    else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top)
-                    {
-                        returnVal = 1;
-                    }
-
+                    returnVal = 0;
                 }
+                //Collision Happened on the bottom
+                else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top)
+                {
+                    returnVal = 1;
+                }
+
+
             }
             Console.WriteLine(returnVal);
             return returnVal;
         }
+
 
         public void CollisionHandler()
         {
@@ -106,14 +107,14 @@ namespace Sprint03
             foreach (Monster monster in Monsters)
             {
                 // Monster vs. Link
-                monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
+                monsterHitbox = new FRectangle(monster.Sprite.Position.X+4.0f, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
                 if (monsterHitbox.Intersects(linkHitbox))
                 {
                     direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(monsterHitbox, linkHitbox));
                     ColRes.HurtLink(monster.attackDamage, direction);
                     Console.WriteLine("Enemy Contact");
                 }
-                
+
                 foreach (IEffect effect in Effects)
                 {
                     effectHitbox = new FRectangle(effect.Sprite.Position.X, effect.Sprite.Position.Y, (int)effect.Sprite.GetSize.X, (int)effect.Sprite.GetSize.Y);
@@ -132,7 +133,7 @@ namespace Sprint03
                     // Link vs. Effects
                     if (effectHitbox.Intersects(linkHitbox))
                     {
-                        if(!effect.IsCreator(Link.SpriteLink))
+                        if (!effect.IsCreator(Link.SpriteLink))
                         {
                             direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(effectHitbox, linkHitbox));
                             ColRes.DamageLinkEffect(effect.Damage, direction, effect);
