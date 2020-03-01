@@ -129,7 +129,7 @@ namespace Sprint03
 
                 /*Makes Sure Monsters Stay InBounds*/
 
-                foreach (IEffect effect in Effects)
+                foreach (IEffect effect in Effects.ToArray())
                 {
                     effectHitbox = new FRectangle(effect.Sprite.Position.X, effect.Sprite.Position.Y, (int)effect.Sprite.GetSize.X, (int)effect.Sprite.GetSize.Y);
 

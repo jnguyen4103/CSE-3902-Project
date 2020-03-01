@@ -169,7 +169,7 @@ namespace Sprint03
                 }
             }
 
-            foreach (IEffect effect in EffectsList)
+            foreach (IEffect effect in EffectsList.ToArray())
             {
                 effect.Sprite.DrawSprite();
             }

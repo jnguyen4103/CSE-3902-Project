@@ -28,17 +28,17 @@ namespace Sprint03
 
         public void DestroyEffect(IEffect effect)
         {
-            effect.Sprite.KillSprite();
+            if(!effect.Sprite.Name.Equals("SwordBeamExplosion") && !effect.Sprite.Name.Equals("SwordSwing") && !effect.Sprite.Name.Equals("SwordSwingHorizontal"))
+            {
+                effect.Sprite.KillSprite();
+            }
         }
+
 
         public void DamageMonster(Monster monster, int direction, IEffect effect)
         {
             monster.TakeDamage(effect.Damage, direction);
-
-            if (!effect.Sprite.Name.Equals("SwordSwing"))
-            {
-                effect.Sprite.KillSprite();
-            }
+            DestroyEffect(effect);
         }
 
         public void DamageLinkEffect(int damage, int direction, IEffect effect)

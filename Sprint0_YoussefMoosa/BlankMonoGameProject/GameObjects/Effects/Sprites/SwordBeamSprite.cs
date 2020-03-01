@@ -13,51 +13,52 @@ namespace Sprint03
         private Sprite Creator;
         private Link.LinkDirection Direction;
 
+
         public SwordBeamSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
             Direction = direction;
-            this.Game = game;
-            this.Batch = batch;
+            Game = game;
+            Batch = batch;
             UpdatePosition();
-            this.Size = game.SFactory.Sprites[Name].Item2;
-            this.Texture = texture;
-            this.TotalFrames = game.SFactory.Sprites[Name].Item3;
-            this.ChangeSpriteAnimation(Name);
-            this.BaseSpeed = 3.5f;
-            this.FPS = 32;
+            Size = game.SFactory.Sprites[Name].Item2;
+            Texture = texture;
+            TotalFrames = game.SFactory.Sprites[Name].Item3;
+            ChangeSpriteAnimation(Name);
+            BaseSpeed = 3.5f;
+            FPS = 32;
         }
 
         private void UpdatePosition()
         {
-            this.Position = Creator.GetPosition;
+            Position = Creator.GetPosition;
 
             switch (Direction)
             {
                 case (Link.LinkDirection.Down):
-                    this.Position.X += 6;
-                    this.Position.Y += 12;
+                    Position.X += 6;
+                    Position.Y += 12;
                     Name = "SwordBeam";
-                    this.SpriteEffect = SpriteEffects.FlipVertically;
+                    SpriteEffect = SpriteEffects.FlipVertically;
                     break;
 
                 case (Link.LinkDirection.Up):
-                    this.Position.X += 3;
-                    this.Position.Y -= 13;
+                    Position.X += 3;
+                    Position.Y -= 13;
                     Name = "SwordBeam";
                     break;
 
                 case (Link.LinkDirection.Left):
-                    this.Position.X -= 12;
-                    this.Position.Y += 6;
+                    Position.X -= 12;
+                    Position.Y += 6;
                     Name = "SwordBeamHorizontal";
                     break;
 
                 case (Link.LinkDirection.Right):
-                    this.Position.X += 12;
-                    this.Position.Y += 6;
+                    Position.X += 12;
+                    Position.Y += 6;
                     Name = "SwordBeamHorizontal";
-                    this.SpriteEffect = SpriteEffects.FlipHorizontally;
+                    SpriteEffect = SpriteEffects.FlipHorizontally;
                     break;
 
                 default:
@@ -74,26 +75,47 @@ namespace Sprint03
 
                     Position.Y += BaseSpeed;
                     if (Position.Y >= Game.WalkingRect.Height + 16)
-                        this.KillSprite();
+                        KillSprite();
                     break;
                 case (Link.LinkDirection.Up):
                     Position.Y -= BaseSpeed;
                     if (Position.Y <= Game.WalkingRect.Y)
-                        this.KillSprite();
+                        KillSprite();
                     break;
                 case (Link.LinkDirection.Left):
                     Position.X -= BaseSpeed;
                     if (Position.X <= Game.WalkingRect.X)
-                        this.KillSprite();
+                        KillSprite();
                     break;
                 case (Link.LinkDirection.Right):
                     Position.X += BaseSpeed;
                     if (Position.X >= Game.WalkingRect.Width + 16)
-                        this.KillSprite();
+                        KillSprite();
                 break;
                 default:
                     break;
             }
+        }
+
+
+        public override void KillSprite()
+        {
+
+            base.KillSprite();
+            IEffect UpperLeftExplosion = new BeamExplosionEffect(Creator, Game, Position, new Vector2(-0.5f, -0.5f), Texture, Batch);
+            IEffect UpperRightExplosion = new BeamExplosionEffect(Creator, Game, Position, new Vector2(0.5f, -0.5f), Texture, Batch);
+            IEffect LowerLeftExplosion = new BeamExplosionEffect(Creator, Game, Position, new Vector2(-0.5f, 0.5f), Texture, Batch);
+            IEffect LowerRightExplosion = new BeamExplosionEffect(Creator, Game, Position, new Vector2(0.5f, 0.5f), Texture, Batch);
+
+            UpperLeftExplosion.CreateEffect();
+            UpperRightExplosion.CreateEffect();
+            LowerLeftExplosion.CreateEffect();
+            LowerRightExplosion.CreateEffect();
+
+            UpperRightExplosion.Sprite.SpriteEffect = SpriteEffects.FlipHorizontally;
+            LowerLeftExplosion.Sprite.SpriteEffect = SpriteEffects.FlipVertically;
+            LowerRightExplosion.Sprite.SpriteEffect = SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically;
+
 
 
         }

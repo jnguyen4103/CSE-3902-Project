@@ -30,7 +30,7 @@ namespace Sprint03
         protected Texture2D Texture;
         protected Rectangle DrawWindow;
         protected Rectangle AnimationWindow;
-        protected SpriteEffects SpriteEffect = SpriteEffects.None;
+        public SpriteEffects SpriteEffect = SpriteEffects.None;
         protected float Rotation = 0;
         protected float Layer = 0;
         public Color Colour = Color.White;
