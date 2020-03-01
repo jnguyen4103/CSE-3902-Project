@@ -43,6 +43,7 @@ namespace Sprint03
         private void GetSpawnPosition()
         {
             this.Position = Creator.GetPosition;
+            float tempValue = Size.X;
             switch (Direction)
             {
                 case (Link.LinkDirection.Down):
@@ -57,11 +58,15 @@ namespace Sprint03
                 case (Link.LinkDirection.Left):
                     this.Position.X -= 4;
                     this.Position.Y += 12;
+                    Size.X = this.GetSize.Y;
+                    Size.Y = tempValue;
                     this.Rotation = (float)(3*Math.PI / 2);
                     break;
                 case (Link.LinkDirection.Right):
                     this.Position.X += 20;
                     this.Position.Y += 4;
+                    Size.X = this.GetSize.X;
+                    Size.Y = tempValue;
                     this.Rotation = (float) (Math.PI / 2);
                     break;
                 default:

@@ -36,28 +36,22 @@ namespace Sprint03
 
         public void DestroyEffect(IEffect effect)
         {
-            effect.Sprite.Colour = Color.Transparent;
+            effect.Sprite.KillSprite();
         }
-        public void DamageMonster(Monster monster, int direction)
-        {
-            monster.TakeDamage(1, direction);
 
+        public void DamageMonster(Monster monster, int direction, IEffect effect)
+        {
+            monster.TakeDamage(effect.Damage, direction);
+
+            if (!effect.Sprite.Name.Equals("SwordSwing"))
+            {
+                effect.Sprite.KillSprite();
+            }
         }
 
         public void DamageLinkEffect(int damage, int direction, IEffect effect)
         {
             Game.Link.TakeDamage(effect.Damage, direction);
-
-        }
-
-        public void DamageMonsterEffect(Monster monster, int direction, IEffect effect)
-        {
-            monster.TakeDamage(effect.Damage, direction);
-
-            if(!effect.Sprite.Name.Equals("SwordSwing"))
-            {
-                effect.Sprite.KillSprite();
-            }
 
         }
 

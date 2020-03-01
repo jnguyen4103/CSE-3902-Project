@@ -54,6 +54,11 @@ namespace Sprint03
 
         // Most effects and items are 8 by 16 size
         private readonly Vector2 defaultItemSize = new Vector2(8, 16);
+        private readonly Vector2 rotatedItemSize = new Vector2(16, 8);
+
+
+        // Small Items & Effects
+        private readonly Vector2 smallItemSize = new Vector2(8, 8);
 
         public SpriteFactory()
         {
@@ -108,7 +113,7 @@ namespace Sprint03
             ItemSprites["Rupee"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 40), defaultItemSize, 2);
             ItemSprites["BlueRupee"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 16, 8, 16), defaultItemSize, 1);
             ItemSprites["Map"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 8, 16), defaultItemSize, 1);
-            ItemSprites["Boomerang"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 0, 8, 8), Vector2.Divide(defaultMonsterSize, 2), 1);
+            ItemSprites["Boomerang"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 0, 8, 8), smallItemSize, 1);
             ItemSprites["Bomb"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 0, 8, 16), defaultItemSize, 1);
             ItemSprites["Bow"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 8, 16), defaultItemSize, 1);
             ItemSprites["Arrow"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 0, 8, 16), defaultItemSize, 1);
@@ -122,14 +127,17 @@ namespace Sprint03
             EffectSprites["Sword"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 16), defaultItemSize, 1);
             EffectSprites["SwordBeam"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 88), defaultItemSize, 4);
             EffectSprites["SwordBeamExplosion"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 8, 88), defaultItemSize, 4);
-            EffectSprites["Boomerang"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(32, 0, 8, 120), Vector2.Divide(defaultMonsterSize, 2), 8);
-            EffectSprites["BombEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 8, 16), defaultItemSize, 1);
-            EffectSprites["ArrowEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 8, 16), defaultItemSize, 1);
-            EffectSprites["ProjectileHit"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 8), Vector2.Divide(defaultMonsterSize, 2), 1);
+            EffectSprites["Boomerang"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(32, 0, 8, 120), smallItemSize, 8);
+            EffectSprites["BombEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 8, 16), smallItemSize, 1);
+            EffectSprites["ArrowEffectVertical"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 8, 16), defaultItemSize, 1);
+            EffectSprites["ArrowEffectHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 24, 16, 8), rotatedItemSize, 1);
+            EffectSprites["ProjectileHit"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 8), smallItemSize, 1);
             EffectSprites["BombExplosion"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 64), defaultMonsterSize, 3);
             EffectSprites["Fire"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 16), defaultMonsterSize, 1);
             EffectSprites["Fireball"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 8, 88), defaultItemSize, 4);
-            EffectSprites["SwordSwing"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 0, 8, 64), defaultItemSize, 3);
+            EffectSprites["SwordSwingVertical"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 0, 8, 64), defaultItemSize, 3);
+            EffectSprites["SwordSwingHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(176, 0, 16, 40), rotatedItemSize, 3);
+
 
 
             // Creating Tile Sprites
