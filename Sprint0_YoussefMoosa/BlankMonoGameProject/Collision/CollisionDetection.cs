@@ -108,7 +108,7 @@ namespace Sprint03
                     ColRes.HurtLink(monster.attackDamage, direction);
                     Console.WriteLine("Enemy Contact");
                 }
-
+               // if(monster.Sprite.GetPosition.X == )
                 foreach (IEffect effect in Effects)
                 {
                     effectHitbox = new FRectangle(effect.Sprite.Position.X, effect.Sprite.Position.Y, (int)effect.Sprite.GetSize.X, (int)effect.Sprite.GetSize.Y);
