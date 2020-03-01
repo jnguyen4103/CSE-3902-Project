@@ -34,8 +34,7 @@ namespace Sprint03
             * 3 - Right
             */
 
-            Console.WriteLine("X: " + Collision.Width + " " + "Y: " + Collision.Height);
-            //Our intersection happened on the left or the right
+           //Our intersection happened on the left or the right
 
 
             if (Collision.Width < Collision.Height)
@@ -71,11 +70,6 @@ namespace Sprint03
             else if (Collision.Height < Collision.Width)
             {
                 //Collision happend on the Top
-
-                Console.WriteLine("TOP: " + Collision.Top);
-                Console.WriteLine("BOTTOM: " + Collision.Bottom);
-                Console.WriteLine("Top OF SPRITE: " + Receiver.GetPosition.Y);
-                Console.WriteLine("Bottom OF SPRITE: " + (Receiver.GetPosition.Y + Receiver.GetSize.Y));
                 if (Receiver.GetPosition.Y == Collision.Top && Receiver.GetPosition.Y > Collision.Bottom)
                 {
                     returnVal = 0;

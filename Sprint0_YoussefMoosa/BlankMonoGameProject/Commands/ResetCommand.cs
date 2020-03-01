@@ -23,6 +23,7 @@ namespace Sprint03
             foreach (Monster monster in monoProcess.MonsterList)
             {
                 monster.Sprite.Position = monoProcess.spawnPosition;
+                monster.hitpoints = monster.maxHP;
                 monster.StateMachine.IdleState();
             }
         }
