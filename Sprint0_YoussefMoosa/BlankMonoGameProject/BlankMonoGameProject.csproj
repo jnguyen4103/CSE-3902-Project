@@ -60,6 +60,7 @@
     <Compile Include="Components\ITimer.cs" />
     <Compile Include="Components\MonoTime.cs" />
     <Compile Include="Components\MonoTimer.cs" />
+    <Compile Include="GameObjects\Tile\TileSprite.cs" />
     <Compile Include="GameObjects\Effects\ArrowEffect.cs" />
     <Compile Include="GameObjects\Effects\BoomerangEffect.cs" />
     <Compile Include="GameObjects\Effects\SwordBeamEffect.cs" />
@@ -87,6 +88,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="GameObjects\Tile\Tile.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="GameObjects\Items\ItemSprite.cs" />
     <Compile Include="GameObjects\Link\LinkSprite.cs" />
