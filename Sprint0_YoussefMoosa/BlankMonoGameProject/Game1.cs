@@ -27,6 +27,7 @@ namespace Sprint03
         private Texture2D ItemSpriteSheet;
         public Texture2D EffectSpriteSheet;
         private Texture2D TileSpriteSheet;
+        private Texture2D Background;
 
 
 
@@ -45,7 +46,8 @@ namespace Sprint03
         public readonly Vector2 spawnPosition = new Vector2(400, 240);
         public readonly Vector2 LinkSpawn = new Vector2(600f, 100f);
 
-        public Vector2 screenDimensions = new Vector2(800.0f, 480.0f);
+        public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
+        private Rectangle window = new Rectangle(0, 0, 256, 240);
 
 
         public Game1()
@@ -53,6 +55,8 @@ namespace Sprint03
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            graphics.PreferredBackBufferWidth = (int)screenDimensions.X;
+            graphics.PreferredBackBufferHeight = (int)screenDimensions.Y;
 
 
         }
@@ -101,6 +105,7 @@ namespace Sprint03
             ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
             TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
+            Background = Content.Load<Texture2D>("Background");
 
             SpriteLink = new LinkSprite(this, "WalkDown", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
@@ -151,7 +156,9 @@ namespace Sprint03
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(transformMatrix: Matrix.CreateScale(4, 4, 1.0f));
+
+            spriteBatch.Draw(Background, window, Color.White);
 
             for(int i = 0; i < EffectsList.Count; i++)
             {
