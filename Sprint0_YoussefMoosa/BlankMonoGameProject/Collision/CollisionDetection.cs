@@ -139,7 +139,7 @@ namespace Sprint03
                         if (!effect.IsCreator(monster.Sprite))
                         {
                             direction = CollisionDirection(monster.Sprite, FRectangle.Intersection(effectHitbox, monsterHitbox));
-                            ColRes.DamageMonsterEffect(monster, direction, effect);
+                            ColRes.DamageMonster(monster, direction, effect);
                             Console.WriteLine("Enemy Effect Contact");
                         }
                     }
