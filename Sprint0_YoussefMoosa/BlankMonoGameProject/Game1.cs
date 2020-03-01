@@ -42,12 +42,12 @@ namespace Sprint03
         private KeyboardController keyboardController;
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
-        public readonly Vector2 itemSpawnPosition = new Vector2(100, 240);
-        public readonly Vector2 spawnPosition = new Vector2(400, 240);
-        public readonly Vector2 LinkSpawn = new Vector2(600f, 100f);
+        public readonly Vector2 itemSpawnPosition = new Vector2(180, 164);
+        public readonly Vector2 spawnPosition = new Vector2(80, 144);
+        public readonly Vector2 LinkSpawn = new Vector2(120, 192);
 
         public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
-        private Rectangle window = new Rectangle(0, 0, 256, 240);
+        public Rectangle CurrentScreen = new Rectangle(0, 0, 256, 240);
 
 
         public Game1()
@@ -158,7 +158,7 @@ namespace Sprint03
 
             spriteBatch.Begin(transformMatrix: Matrix.CreateScale(4, 4, 1.0f));
 
-            spriteBatch.Draw(Background, window, Color.White);
+            spriteBatch.Draw(Background, CurrentScreen, Color.White);
 
             for(int i = 0; i < EffectsList.Count; i++)
             {
