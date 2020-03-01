@@ -21,7 +21,7 @@ namespace Sprint03
             this.Link = game.Link;
             this.Items = game.ItemsList;
             this.Effects = game.EffectsList;
-            this.Tiles = game.TileList;
+           // this.Tiles = game.TileList;
             Game = game;
             ColRes = new CollisionResolution(game);
         }
@@ -111,8 +111,9 @@ namespace Sprint03
             FRectangle monsterHitbox;
             FRectangle linkHitbox = new FRectangle(Link.SpriteLink.Position.X, Link.SpriteLink.Position.Y, (int)Link.SpriteLink.GetSize.X, (int)Link.SpriteLink.GetSize.Y);
             FRectangle effectHitbox;
-            FRectangle tileHitBox;
+          //  FRectangle tileHitBox;
             FRectangle itemHitbox;
+            FRectangle screenDimensions= new FRectangle(Game.CurrentScreen.X, Game.CurrentScreen.Y, Game.CurrentScreen.Width, Game.CurrentScreen.Height);
 
             foreach (Monster monster in Monsters)
             {
@@ -127,14 +128,7 @@ namespace Sprint03
 
 
                 /*Makes Sure Monsters Stay InBounds*/
-                if(monster.Sprite.GetPosition.X == Game.GraphicsDevice.Viewport.Width)
-                {
-                    monster.Sprite.SetPosition();
-                }
-                if (monster.Sprite.GetPosition.Y == Game.GraphicsDevice.Viewport.Height)
-                {
-                    monster.Sprite.SetPosition();
-                }
+
                 foreach (IEffect effect in Effects)
                 {
                     effectHitbox = new FRectangle(effect.Sprite.Position.X, effect.Sprite.Position.Y, (int)effect.Sprite.GetSize.X, (int)effect.Sprite.GetSize.Y);
@@ -162,22 +156,9 @@ namespace Sprint03
                         }
 
                     }
-                    foreach(Tile tile in Tiles)
-                    {
-                        tileHitBox = new FRectangle(tile.Sprite.Position.X, tile.Sprite.Position.Y, (int)tile.Sprite.GetSize.X, (int)tile.Sprite.GetSize.Y);
-                        if(tileHitBox.Intersects(effectHitbox))
-                        {
+                
 
-                        }
-                        if(tileHitBox.Intersects(monsterHitbox))
-                        {
-
-                        }
-                        if(tileHitBox.Intersects(linkHitbox))
-                        {
-
-                        }
-                    }
+                    
 
                 }
             }

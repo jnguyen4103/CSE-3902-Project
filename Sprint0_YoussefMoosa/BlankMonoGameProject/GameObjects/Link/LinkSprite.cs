@@ -69,23 +69,23 @@ namespace Sprint03
                     case (Link.LinkDirection.Down):
                        
                         Position.Y += BaseSpeed;
-                        if (Position.Y >= Game.GraphicsDevice.Viewport.Height-16)
-                            Position.Y = Game.GraphicsDevice.Viewport.Height-16;
+                        if (Position.Y >= Game.WalkingRect.Height)
+                            Position.Y = Game.WalkingRect.Height;
                         break;
                     case (Link.LinkDirection.Up):
                         Position.Y -= BaseSpeed;
-                        if (Position.Y <= 0)
-                            Position.Y = 0;
+                        if (Position.Y <= Game.WalkingRect.Y)
+                            Position.Y = Game.WalkingRect.Y;
                          break;
                     case (Link.LinkDirection.Left):
                         Position.X -= BaseSpeed;
-                        if (Position.X <= 0)
-                            Position.X = 0;
+                        if (Position.X <= Game.WalkingRect.X)
+                            Position.X = Game.WalkingRect.X;
                         break;
                     case (Link.LinkDirection.Right):
                         Position.X += BaseSpeed;
-                        if (Position.X >= Game.GraphicsDevice.Viewport.Width - 16)
-                            Position.X = Game.GraphicsDevice.Viewport.Width - 16;
+                        if (Position.X >= Game.WalkingRect.Width)
+                            Position.X = Game.WalkingRect.Width ;
                         break;
                     default:
                         break;
