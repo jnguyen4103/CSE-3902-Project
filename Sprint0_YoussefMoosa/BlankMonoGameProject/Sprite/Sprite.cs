@@ -113,11 +113,8 @@ namespace Sprint03
             Animate();
             DrawWindow.X = (int)Position.X;
             DrawWindow.Y = (int)Position.Y;
-            AnimationWindow.Y = (int)(CurrentFrame * Size.Y);
+            AnimationWindow.Y = (int)(CurrentFrame * Size.Y) + (8 * CurrentFrame);
             Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
-
-            Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
-
         }
     }
 }
