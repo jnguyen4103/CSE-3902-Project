@@ -40,6 +40,7 @@ namespace Sprint03
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
         private ICommand[] keyboardCommands = new ICommand[11];
         private KeyboardController keyboardController;
+        //(32,96). w = 192 H =112
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
         public readonly Vector2 itemSpawnPosition = new Vector2(180, 164);
@@ -48,7 +49,7 @@ namespace Sprint03
 
         public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
         public Rectangle CurrentScreen = new Rectangle(0, 0, 256, 240);
-
+        public Rectangle WalkingRect = new Rectangle(32, 96, 208, 191);
 
         public Game1()
         {

@@ -76,34 +76,34 @@ namespace Sprint03
 
         public override void Move()
         {
-         
-                switch (Direction)
-                {
-                    case (Link.LinkDirection.Down):
 
-                        Position.Y += BaseSpeed;
-                       if (Position.Y >= Game.GraphicsDevice.Viewport.Height - 16)
-                          Colour = Color.Transparent;
-                        break;
-                    case (Link.LinkDirection.Up):
-                        Position.Y -= BaseSpeed;
-                        if (Position.Y <= 0)
-                         Colour = Color.Transparent;
-                      break;
-                    case (Link.LinkDirection.Left):
-                        Position.X -= BaseSpeed;
-                        if (Position.X <= 0)
-                            Colour = Color.Transparent;
-                      break;
-                    case (Link.LinkDirection.Right):
-                        Position.X += BaseSpeed;
-                        if (Position.X >= Game.GraphicsDevice.Viewport.Width - 16)
-                          Colour = Color.Transparent;
-                     break;
-                    default:
-                        break;
-                }
-            
+            switch (Direction)
+            {
+                case (Link.LinkDirection.Down):
+
+                    Position.Y += BaseSpeed;
+                    if (Position.Y >= Game.WalkingRect.Height + 16)
+                        this.KillSprite();
+                    break;
+                case (Link.LinkDirection.Up):
+                    Position.Y -= BaseSpeed;
+                    if (Position.Y <= Game.WalkingRect.Y)
+                        this.KillSprite();
+                    break;
+                case (Link.LinkDirection.Left):
+                    Position.X -= BaseSpeed;
+                    if (Position.X <= Game.WalkingRect.X)
+                        this.KillSprite();
+                    break;
+                case (Link.LinkDirection.Right):
+                    Position.X += BaseSpeed;
+                    if (Position.X >= Game.WalkingRect.Width + 16)
+                        this.KillSprite();
+                    break;
+                default:
+                    break;
+            }
+
 
         }
 

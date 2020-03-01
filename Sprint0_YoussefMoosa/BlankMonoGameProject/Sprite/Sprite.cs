@@ -76,21 +76,21 @@ namespace Sprint03
             Position.X += CurrentSpeed.X;
             Position.Y += CurrentSpeed.Y;
 
-            if (Position.X>= Game.GraphicsDevice.Viewport.Width-16)
+            if (Position.X>= Game.WalkingRect.Width)
             {
-                Position.X = Game.GraphicsDevice.Viewport.Width - 16;
+                Position.X = Game.WalkingRect.Width;
             }
-            else if(Position.X<=0)
+            else if(Position.X <= Game.WalkingRect.X)
             {
-                Position.X = 0;
+                Position.X = Game.WalkingRect.X;
             }
-            else if (Position.Y >= Game.GraphicsDevice.Viewport.Height - 16)
+            else if (Position.Y >= Game.WalkingRect.Height)
             {
-                Position.Y = Game.GraphicsDevice.Viewport.Height - 16;
+                Position.Y = Game.WalkingRect.Height;
             }
-            else if (Position.Y <= 0)
+            else if (Position.Y <= Game.WalkingRect.Y)
             {
-                Position.Y = 0;
+                Position.Y = Game.WalkingRect.Y;
             }
         }
         public abstract void ChangeSpriteAnimation(string newSpriteName);

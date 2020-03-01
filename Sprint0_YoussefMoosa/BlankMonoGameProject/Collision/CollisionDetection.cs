@@ -21,6 +21,7 @@ namespace Sprint03
             this.Link = game.Link;
             this.Items = game.ItemsList;
             this.Effects = game.EffectsList;
+           // this.Tiles = game.TileList;
             Game = game;
             ColRes = new CollisionResolution(game);
         }
@@ -110,24 +111,23 @@ namespace Sprint03
             FRectangle monsterHitbox;
             FRectangle linkHitbox = new FRectangle(Link.SpriteLink.Position.X, Link.SpriteLink.Position.Y, (int)Link.SpriteLink.GetSize.X, (int)Link.SpriteLink.GetSize.Y);
             FRectangle effectHitbox;
+          //  FRectangle tileHitBox;
             FRectangle itemHitbox;
+            FRectangle screenDimensions= new FRectangle(Game.CurrentScreen.X, Game.CurrentScreen.Y, Game.CurrentScreen.Width, Game.CurrentScreen.Height);
 
             foreach (Monster monster in Monsters)
             {
                 // Monster vs. Link
                 monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
-
-
                 if (monsterHitbox.Intersects(linkHitbox))
                 {
                     direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(monsterHitbox, linkHitbox));
                     ColRes.HurtLink(monster.attackDamage, direction);
                     Console.WriteLine("Enemy Contact");
-                    Console.WriteLine("X" + monsterHitbox.X);
-                    Console.WriteLine("Y" + monsterHitbox.Y);
-                    Console.WriteLine("Width: " + monsterHitbox.Width);
-                    Console.WriteLine("Height: " + monsterHitbox.Height);
                 }
+
+
+                /*Makes Sure Monsters Stay InBounds*/
 
                 foreach (IEffect effect in Effects)
                 {
@@ -141,13 +141,6 @@ namespace Sprint03
                             direction = CollisionDirection(monster.Sprite, FRectangle.Intersection(effectHitbox, monsterHitbox));
                             ColRes.DamageMonster(monster, direction, effect);
                             Console.WriteLine("Enemy Effect Contact");
-                            Console.WriteLine("X " + monsterHitbox.X);
-                            Console.WriteLine("Y " + monsterHitbox.Y);
-                            Console.WriteLine("Width: " + monsterHitbox.Width);
-                            Console.WriteLine("Height: " + monsterHitbox.Height);
-                            Console.WriteLine("Effect " + effect.Sprite.Name);
-                            Console.WriteLine("Hitbox Top" + effectHitbox.Top);
-                            Console.WriteLine("Hitbox Bottom" + effectHitbox.Bottom);
                         }
                     }
 
@@ -163,6 +156,9 @@ namespace Sprint03
                         }
 
                     }
+                
+
+                    
 
                 }
             }

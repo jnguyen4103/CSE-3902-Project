@@ -24,15 +24,7 @@ namespace Sprint03
             }
         }
 
-        public void StopLink()
-        {
-
-        }
-
-        public void StopMonster()
-        {
-
-        }
+        
 
         public void DestroyEffect(IEffect effect)
         {
