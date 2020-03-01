@@ -39,9 +39,23 @@ namespace Sprint03
         public int FPS;
         protected int GameFrame = 0;
 
-        public Vector2 GetSize { get { return Size; } }
+        public Vector2 GetSize {  get { return Size; } }
 
-        public Vector2 GetPosition { get { return Position; } }
+        
+
+        public Vector2 GetPosition {  get { return Position; } }
+
+        public void SetPosition(){
+            if (this.Position.X == Game.GraphicsDevice.Viewport.Width)
+            {
+                this.Position.X = Game.GraphicsDevice.Viewport.Width;
+            }
+            if (this.Position.Y == Game.GraphicsDevice.Viewport.Height)
+            {
+                this.Position.X = Game.GraphicsDevice.Viewport.Height;
+            }
+         
+        }
 
 
         public virtual void Animate()
