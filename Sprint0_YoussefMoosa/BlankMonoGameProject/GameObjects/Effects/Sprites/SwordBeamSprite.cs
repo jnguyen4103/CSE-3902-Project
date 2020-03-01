@@ -28,7 +28,7 @@ namespace Sprint03
             this.CurrentSpeed = new Vector2(1f, 1f);
             this.TotalFrames = game.SFactory.EffectSprites["SwordBeam"].Item3;
             this.ChangeSpriteAnimation("SwordBeam");
-            this.FPS = 16;
+            this.FPS = 32;
             LifeSpan = 600;
             GetSpawnPosition();
         }
@@ -105,19 +105,5 @@ namespace Sprint03
 
         }
 
-        public override void DrawSprite()
-        {
-            if (LifeCounter <= LifeSpan)
-            {
-                LifeCounter++;
-                Move();
-                Animate();
-                DrawWindow.X = (int)Position.X;
-                DrawWindow.Y = (int)Position.Y;
-                AnimationWindow.Y = (int)(CurrentFrame * Size.Y);
-                Batch.Draw(Texture, DrawWindow, AnimationWindow, Color.White, Rotation, Origin, SpriteEffect, Layer);
-            }
-
-        }
     }
 }
