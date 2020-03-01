@@ -38,18 +38,12 @@ namespace Sprint03
          * 
          */
 
+        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> Sprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(68);
 
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> LinkSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(13);
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> MonsterSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(12);
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> ItemSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(15);
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> EffectSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(11);
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> TileSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(10);
+        // Al off the Sprites are size 16 by 16
+        private readonly Vector2 Spritesize = new Vector2(16, 16);
 
-
-        // Al off the LinkSprites are size 16 by 16
-        private readonly Vector2 LinkSpriteSize = new Vector2(16, 16);
-
-        // Most of the MonsterSprites are size 16 by 16, new vectors will be made for special cases
+        // Most of the Sprites are size 16 by 16, new vectors will be made for special cases
         private readonly Vector2 defaultMonsterSize = new Vector2(16, 16);
 
         // Most effects and items are 8 by 16 size
@@ -63,94 +57,96 @@ namespace Sprint03
         public SpriteFactory()
         {
             // Iniitalizing all Link Sprites into a dictionary
-            LinkSprites["WalkUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 40), LinkSpriteSize, 2);
-            LinkSprites["WalkDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 40), LinkSpriteSize, 2);
-            LinkSprites["WalkRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 40), LinkSpriteSize, 2);
-            LinkSprites["WalkLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 0, 16, 40), LinkSpriteSize, 2);
-            LinkSprites["DamagedUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 40), LinkSpriteSize, 2);
-            LinkSprites["DamagedDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 40), LinkSpriteSize, 2);
-            LinkSprites["DamagedRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 40), LinkSpriteSize, 2);
-            LinkSprites["DamagedLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 0, 16, 40), LinkSpriteSize, 2);
-            LinkSprites["EffectUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(264, 0, 16, 16), LinkSpriteSize, 1);
-            LinkSprites["EffectDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(192, 0, 16, 16), LinkSpriteSize, 1);
-            LinkSprites["EffectRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(216, 0, 16, 16), LinkSpriteSize, 1);
-            LinkSprites["EffectLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(240, 0, 16, 16), LinkSpriteSize, 1);
-            LinkSprites["Pickup"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(288, 0, 16, 40), LinkSpriteSize, 2);
+            Sprites["WalkUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 40), Spritesize, 2);
+            Sprites["WalkDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 40), Spritesize, 2);
+            Sprites["WalkRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 40), Spritesize, 2);
+            Sprites["WalkLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 0, 16, 40), Spritesize, 2);
+            Sprites["DamagedUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 40), Spritesize, 2);
+            Sprites["DamagedDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 40), Spritesize, 2);
+            Sprites["DamagedRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 40), Spritesize, 2);
+            Sprites["DamagedLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 0, 16, 40), Spritesize, 2);
+            Sprites["EffectUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(264, 0, 16, 16), Spritesize, 1);
+            Sprites["EffectDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(192, 0, 16, 16), Spritesize, 1);
+            Sprites["EffectRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(216, 0, 16, 16), Spritesize, 1);
+            Sprites["EffectLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(240, 0, 16, 16), Spritesize, 1);
+            Sprites["Pickup"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(288, 0, 16, 40), Spritesize, 2);
 
 
             // Initializing all Monster Sprites into the dictionary
-            MonsterSprites["StalfosWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 40), defaultMonsterSize, 2);
-            MonsterSprites["StalfosDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 64, 16, 40), defaultMonsterSize, 2);
+            Sprites["StalfosWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["StalfosDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 64, 16, 40), defaultMonsterSize, 2);
 
-            MonsterSprites["GeeseWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["GeeseWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 40), defaultMonsterSize, 2);
 
-            MonsterSprites["GoriyasWalkDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 40), defaultMonsterSize, 2);
-            MonsterSprites["GoriyasWalkUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 0, 16, 40), defaultMonsterSize, 2);
-            MonsterSprites["GoriyasWalkSide"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasWalkDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasWalkUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasWalkSide"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 40), defaultMonsterSize, 2);
 
-            MonsterSprites["GoriyasDamageUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 64, 16, 40), defaultMonsterSize, 2);
-            MonsterSprites["GoriyasDamageDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 64, 16, 40), defaultMonsterSize, 2);
-            MonsterSprites["GoriyasDamageSide"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 64, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasDamageUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 64, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasDamageDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 64, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasDamageSide"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 64, 16, 40), defaultMonsterSize, 2);
 
-            MonsterSprites["BladeTrap"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 16), defaultMonsterSize, 1);
+            Sprites["BladeTrap"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 16), defaultMonsterSize, 1);
 
-            MonsterSprites["WallMaster"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 32), defaultMonsterSize, 2);
+            Sprites["WallMaster"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 32), defaultMonsterSize, 2);
 
-            MonsterSprites["Gel"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 0, 8, 40), defaultItemSize, 2);
+            Sprites["Gel"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 0, 8, 40), defaultItemSize, 2);
 
-            MonsterSprites["WizzrobeUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(184, 0, 8, 40), defaultMonsterSize, 2);
-            MonsterSprites["WizzrobeDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(208, 0, 8, 40), defaultMonsterSize, 2);
+            Sprites["WizzrobeUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(184, 0, 8, 40), defaultMonsterSize, 2);
+            Sprites["WizzrobeDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(208, 0, 8, 40), defaultMonsterSize, 2);
 
-            MonsterSprites["AquamentusWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(232, 0, 24, 72), new Vector2(24, 32), 2);
-            MonsterSprites["AquamentusDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(232, 80, 24, 72), new Vector2(24, 32), 2);
-            MonsterSprites["AquamentusAttack"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(264, 0, 24, 72), new Vector2(24, 32), 2);
+            Sprites["AquamentusWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(232, 0, 24, 72), new Vector2(24, 32), 2);
+            Sprites["AquamentusDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(232, 80, 24, 72), new Vector2(24, 32), 2);
+            Sprites["AquamentusAttack"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(264, 0, 24, 72), new Vector2(24, 32), 2);
 
 
             // Initializing all Item Sprites into the dictionary
-            ItemSprites["Heart"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 24), Vector2.Divide(defaultMonsterSize, 2), 2);
-            ItemSprites["HeartContainer"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 16, 16), defaultMonsterSize, 1);
-            ItemSprites["Clock"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(56, 0, 16, 16), defaultMonsterSize, 1);
-            ItemSprites["Rupee"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 40), defaultItemSize, 2);
-            ItemSprites["BlueRupee"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 16, 8, 16), defaultItemSize, 1);
-            ItemSprites["Map"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 8, 16), defaultItemSize, 1);
-            ItemSprites["Boomerang"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 0, 8, 8), smallItemSize, 1);
-            ItemSprites["Bomb"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 0, 8, 16), defaultItemSize, 1);
-            ItemSprites["Bow"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 8, 16), defaultItemSize, 1);
-            ItemSprites["Arrow"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 0, 8, 16), defaultItemSize, 1);
-            ItemSprites["Book"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(176, 0, 8, 16), defaultItemSize, 1);
-            ItemSprites["Key"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(192, 0, 8, 16), defaultItemSize, 1);
-            ItemSprites["LionKey"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(208, 0, 8, 16), defaultItemSize, 1);
-            ItemSprites["Compass"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(224, 0, 16, 16), defaultMonsterSize, 1);
-            ItemSprites["Triforce"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(248, 0, 16, 32), defaultMonsterSize, 2);
+            Sprites["Heart"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 24), Vector2.Divide(defaultMonsterSize, 2), 2);
+            Sprites["HeartContainer"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 16, 16), defaultMonsterSize, 1);
+            Sprites["Clock"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(56, 0, 16, 16), defaultMonsterSize, 1);
+            Sprites["Rupee"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 40), defaultItemSize, 2);
+            Sprites["BlueRupee"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 16, 8, 16), defaultItemSize, 1);
+            Sprites["Map"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 8, 16), defaultItemSize, 1);
+            Sprites["Boomerang"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 0, 8, 8), smallItemSize, 1);
+            Sprites["Bomb"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 0, 8, 16), defaultItemSize, 1);
+            Sprites["Bow"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 8, 16), defaultItemSize, 1);
+            Sprites["Arrow"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 0, 8, 16), defaultItemSize, 1);
+            Sprites["Book"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(176, 0, 8, 16), defaultItemSize, 1);
+            Sprites["Key"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(192, 0, 8, 16), defaultItemSize, 1);
+            Sprites["LionKey"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(208, 0, 8, 16), defaultItemSize, 1);
+            Sprites["Compass"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(224, 0, 16, 16), defaultMonsterSize, 1);
+            Sprites["Triforce"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(248, 0, 16, 32), defaultMonsterSize, 2);
 
             // Initializing all Effects Sprites into the dictionary
-            EffectSprites["Sword"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 16), defaultItemSize, 1);
-            EffectSprites["SwordBeam"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 88), defaultItemSize, 4);
-            EffectSprites["SwordBeamExplosion"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 8, 88), defaultItemSize, 4);
-            EffectSprites["Boomerang"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(32, 0, 8, 120), smallItemSize, 8);
-            EffectSprites["BombEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 8, 16), smallItemSize, 1);
-            EffectSprites["ArrowEffectVertical"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 8, 16), defaultItemSize, 1);
-            EffectSprites["ArrowEffectHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 24, 16, 8), rotatedItemSize, 1);
-            EffectSprites["ProjectileHit"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 8), smallItemSize, 1);
-            EffectSprites["BombExplosion"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 64), defaultMonsterSize, 3);
-            EffectSprites["Fire"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 16), defaultMonsterSize, 1);
-            EffectSprites["Fireball"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 8, 88), defaultItemSize, 4);
-            EffectSprites["SwordSwingVertical"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 0, 8, 64), defaultItemSize, 3);
-            EffectSprites["SwordSwingHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(176, 0, 16, 40), rotatedItemSize, 3);
+            Sprites["Sword"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 16), defaultItemSize, 1);
+            Sprites["SwordBeam"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 88), defaultItemSize, 4);
+            Sprites["SwordBeamHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 96, 16, 56), rotatedItemSize, 4);
+
+            Sprites["SwordBeamExplosion"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 8, 88), defaultItemSize, 4);
+            Sprites["BoomerangEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(32, 0, 8, 120), smallItemSize, 8);
+            Sprites["BombEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 8, 16), smallItemSize, 1);
+            Sprites["ArrowEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 8, 16), defaultItemSize, 1);
+            Sprites["ArrowEffectHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 24, 16, 8), rotatedItemSize, 1);
+            Sprites["ProjectileHit"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 8), smallItemSize, 1);
+            Sprites["BombExplosion"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 64), defaultMonsterSize, 3);
+            Sprites["Fire"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 16), defaultMonsterSize, 1);
+            Sprites["Fireball"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 8, 88), defaultItemSize, 4);
+            Sprites["SwordSwing"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 0, 8, 64), defaultItemSize, 3);
+            Sprites["SwordSwingHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(176, 0, 16, 40), rotatedItemSize, 3);
 
 
 
             // Creating Tile Sprites
-            TileSprites["Floor"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 16), defaultMonsterSize, 1);
-            TileSprites["Block"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 16), LinkSpriteSize, 1);
-            TileSprites["FishStatue"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 16), LinkSpriteSize, 1);
-            TileSprites["DragonStatue"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 0, 16, 16), LinkSpriteSize, 1);
-            TileSprites["BlackFloor"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 16), LinkSpriteSize, 1);
-            TileSprites["Gravel"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 16), LinkSpriteSize, 1);
-            TileSprites["Water"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 16), LinkSpriteSize, 1);
-            TileSprites["Stairs"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 0, 16, 16), LinkSpriteSize, 1);
-            TileSprites["Brick"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(192, 0, 16, 16), LinkSpriteSize, 1);
-            TileSprites["Steps"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(216, 0, 16, 16), LinkSpriteSize, 1);
+            Sprites["Floor"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 16), defaultMonsterSize, 1);
+            Sprites["Block"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 16), Spritesize, 1);
+            Sprites["FishStatue"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 16), Spritesize, 1);
+            Sprites["DragonStatue"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 0, 16, 16), Spritesize, 1);
+            Sprites["BlackFloor"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 16), Spritesize, 1);
+            Sprites["Gravel"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 16), Spritesize, 1);
+            Sprites["Water"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 16), Spritesize, 1);
+            Sprites["Stairs"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 0, 16, 16), Spritesize, 1);
+            Sprites["Brick"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(192, 0, 16, 16), Spritesize, 1);
+            Sprites["Steps"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(216, 0, 16, 16), Spritesize, 1);
 
         }
 

@@ -66,10 +66,12 @@ namespace Sprint03
 
         public void Update()
         {
-
-            SpriteLink.Update(Link.LinkState.Damaged, PushbackDirection);
             DamageTimer++;
 
+            if (DamageTimer < (DamageDelay/2))
+            {
+                SpriteLink.Update(Link.LinkState.Damaged, PushbackDirection);
+            }
             if (DamageTimer > DamageDelay)
             {
                 RemoveDecorator();

@@ -12,37 +12,23 @@ namespace Sprint03
     {
         private Sprite Creator;
         private Link.LinkDirection Direction;
-        private int LifeSpan;
-        private int LifeCounter = 0;
+
         public SwordBeamSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
             Direction = direction;
             this.Game = game;
             this.Batch = batch;
-            this.Name = "SwordBeam";
-            this.Size = game.SFactory.EffectSprites["SwordBeam"].Item2;
-            this.Position = creator.GetPosition;
+            UpdatePosition();
+            this.Size = game.SFactory.Sprites[Name].Item2;
             this.Texture = texture;
+            this.TotalFrames = game.SFactory.Sprites[Name].Item3;
+            this.ChangeSpriteAnimation(Name);
             this.BaseSpeed = 3.5f;
-            this.CurrentSpeed = new Vector2(1f, 1f);
-            this.TotalFrames = game.SFactory.EffectSprites["SwordBeam"].Item3;
-            this.ChangeSpriteAnimation("SwordBeam");
             this.FPS = 32;
-            LifeSpan = 600;
-            GetSpawnPosition();
-        }
-        public override void ChangeSpriteAnimation(string newSpriteName) 
-        {
-            Name = newSpriteName;
-            CurrentFrame = 0;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.EffectSprites[newSpriteName];
-            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
-            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
-            TotalFrames = NewInfo.Item3;
         }
 
-        private void GetSpawnPosition()
+        private void UpdatePosition()
         {
             this.Position = Creator.GetPosition;
 
@@ -51,22 +37,29 @@ namespace Sprint03
                 case (Link.LinkDirection.Down):
                     this.Position.X += 6;
                     this.Position.Y += 12;
+                    Name = "SwordBeam";
                     this.SpriteEffect = SpriteEffects.FlipVertically;
                     break;
+
                 case (Link.LinkDirection.Up):
                     this.Position.X += 3;
                     this.Position.Y -= 13;
+                    Name = "SwordBeam";
                     break;
+
                 case (Link.LinkDirection.Left):
                     this.Position.X -= 12;
-                    this.Position.Y += 12;
-                    this.Rotation = (float)(3*Math.PI / 2);
-                    break;
-                case (Link.LinkDirection.Right):
-                    this.Position.X += 28;
                     this.Position.Y += 6;
-                    this.Rotation = (float) (Math.PI / 2);
+                    Name = "SwordBeamHorizontal";
                     break;
+
+                case (Link.LinkDirection.Right):
+                    this.Position.X += 12;
+                    this.Position.Y += 6;
+                    Name = "SwordBeamHorizontal";
+                    this.SpriteEffect = SpriteEffects.FlipHorizontally;
+                    break;
+
                 default:
                     break;
             }

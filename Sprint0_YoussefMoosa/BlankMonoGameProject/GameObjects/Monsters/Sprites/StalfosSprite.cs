@@ -16,23 +16,13 @@ namespace Sprint03
             this.Game = game;
             this.Batch = batch;
             this.Name = name;
-            this.Size = game.SFactory.MonsterSprites[name].Item2;
+            this.Size = game.SFactory.Sprites[name].Item2;
             this.Position = spawn;
             this.Texture = texture;
             this.BaseSpeed = 0.0f;
-            this.TotalFrames = game.SFactory.MonsterSprites[name].Item3;
+            this.TotalFrames = game.SFactory.Sprites[name].Item3;
             this.FPS = 4;
             this.ChangeSpriteAnimation(name);
-        }
-
-        public override void ChangeSpriteAnimation(string newSpriteName)
-        {
-            Name = newSpriteName;
-            CurrentFrame = 0;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.MonsterSprites[newSpriteName];
-            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
-            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
-            TotalFrames = NewInfo.Item3;
         }
 
     }

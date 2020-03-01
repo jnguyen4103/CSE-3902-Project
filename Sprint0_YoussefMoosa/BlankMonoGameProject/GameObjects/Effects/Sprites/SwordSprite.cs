@@ -20,24 +20,13 @@ namespace Sprint03
             Direction = direction;
             this.Game = game;
             this.Batch = batch;
-            this.Name = "SwordSwing";
-            this.Size = game.SFactory.EffectSprites["SwordSwing"].Item2;
-            this.Position = creator.GetPosition;
+            UpdatePosition();
+            this.Size = game.SFactory.Sprites[Name].Item2;
             this.Texture = texture;
-            this.TotalFrames = game.SFactory.EffectSprites["SwordSwing"].Item3;
-            this.ChangeSpriteAnimation("SwordSwing");
+            this.TotalFrames = game.SFactory.Sprites[Name].Item3;
+            this.ChangeSpriteAnimation(Name);
             this.FPS = 12;
             Lifespan = (60 / FPS) * 3;
-            UpdatePosition();
-        }
-        public override void ChangeSpriteAnimation(string newSpriteName) 
-        {
-            Name = newSpriteName;
-            CurrentFrame = 0;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.EffectSprites[newSpriteName];
-            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
-            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
-            TotalFrames = NewInfo.Item3;
         }
 
         private void UpdatePosition()
@@ -49,22 +38,29 @@ namespace Sprint03
                 case (Link.LinkDirection.Down):
                     this.Position.X += 6;
                     this.Position.Y += 12;
+                    Name = "SwordSwing";
                     this.SpriteEffect = SpriteEffects.FlipVertically;
                     break;
+
                 case (Link.LinkDirection.Up):
                     this.Position.X += 3;
                     this.Position.Y -= 13;
+                    Name = "SwordSwing";
                     break;
+
                 case (Link.LinkDirection.Left):
                     this.Position.X -= 12;
-                    this.Position.Y += 12;
-                    this.Rotation = (float)(3*Math.PI / 2);
-                    break;
-                case (Link.LinkDirection.Right):
-                    this.Position.X += 28;
                     this.Position.Y += 6;
-                    this.Rotation = (float) (Math.PI / 2);
+                    Name = "SwordSwingHorizontal";
                     break;
+
+                case (Link.LinkDirection.Right):
+                    this.Position.X += 12;
+                    this.Position.Y += 6;
+                    Name = "SwordSwingHorizontal";
+                    this.SpriteEffect = SpriteEffects.FlipHorizontally;
+                    break;
+
                 default:
                     break;
             }

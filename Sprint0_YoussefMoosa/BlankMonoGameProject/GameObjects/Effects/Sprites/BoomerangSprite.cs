@@ -19,25 +19,16 @@ namespace Sprint03
             Direction = direction;
             this.Game = game;
             this.Batch = batch;
-            this.Name = "Boomerang";
-            this.Size = game.SFactory.EffectSprites["Boomerang"].Item2;
+            this.Name = "BoomerangEffect";
+            this.Size = game.SFactory.Sprites["BoomerangEffect"].Item2;
             this.Position = creator.GetPosition;
             this.Texture = texture;
             this.BaseSpeed = 2.5f;
-            this.TotalFrames = game.SFactory.EffectSprites["Boomerang"].Item3;
-            this.ChangeSpriteAnimation("Boomerang");
+            this.TotalFrames = game.SFactory.Sprites["BoomerangEffect"].Item3;
+            this.ChangeSpriteAnimation("BoomerangEffect");
             this.FPS = 16;
             
             GetSpawnPosition();
-        }
-        public override void ChangeSpriteAnimation(string newSpriteName)
-        {
-            Name = newSpriteName;
-            CurrentFrame = 0;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.EffectSprites[newSpriteName];
-            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
-            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
-            TotalFrames = NewInfo.Item3;
         }
 
         private void GetSpawnPosition()
@@ -46,23 +37,20 @@ namespace Sprint03
             switch (Direction)
             {
                 case (Link.LinkDirection.Down):
-                    this.Position.X += 12;
-                    this.Position.Y += 20;
-                    this.Rotation = (float)Math.PI;
+                    this.Position.X += 4;
+                    this.Position.Y += 14;
                     break;
                 case (Link.LinkDirection.Up):
                     this.Position.X += 4;
-                    this.Position.Y -= 4;
+                    this.Position.Y -= 2;
                     break;
                 case (Link.LinkDirection.Left):
-                    this.Position.X -= 4;
-                    this.Position.Y += 12;
-                    this.Rotation = (float)(3 * Math.PI / 2);
+                    this.Position.X -= 2;
+                    this.Position.Y += 4;
                     break;
                 case (Link.LinkDirection.Right):
-                    this.Position.X += 20;
+                    this.Position.X += 14;
                     this.Position.Y += 4;
-                    this.Rotation = (float)(Math.PI / 2);
                     break;
                 default:
                     break;

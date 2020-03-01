@@ -6,6 +6,7 @@
     {
         public Sprite Sprite;
         public IStateMachine StateMachine;
+        protected Game1 Game;
         private int DamageDirection;
         public enum MonsterState
         {

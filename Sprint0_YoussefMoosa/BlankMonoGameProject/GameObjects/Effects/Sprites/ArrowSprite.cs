@@ -12,62 +12,47 @@ namespace Sprint03
     {
         private Sprite Creator;
         private Link.LinkDirection Direction;
-        private int LifeSpan;
-        private int LifeCounter = 0;
         public ArrowSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
             Direction = direction;
-            this.Game = game;
-            this.Batch = batch;
-            this.Name = "ArrowEffect";
-            this.Size = game.SFactory.EffectSprites["ArrowEffect"].Item2;
-            this.Position = creator.GetPosition;
-            this.Texture = texture;
-            this.BaseSpeed = 2.5f;
-            this.TotalFrames = game.SFactory.EffectSprites["ArrowEffect"].Item3;
-            this.ChangeSpriteAnimation("ArrowEffect");
-            LifeSpan = 600;
+            Game = game;
+            Batch = batch;
+            Position = creator.GetPosition;
+            Texture = texture;
+            BaseSpeed = 2.5f;
             GetSpawnPosition();
-        }
-        public override void ChangeSpriteAnimation(string newSpriteName) 
-        {
-            Name = newSpriteName;
-            CurrentFrame = 0;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.EffectSprites[newSpriteName];
-            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
-            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
-            TotalFrames = NewInfo.Item3;
+            Size = Game.SFactory.Sprites[Name].Item2;
+            TotalFrames = Game.SFactory.Sprites[Name].Item3;
+            ChangeSpriteAnimation(Name);
         }
 
         private void GetSpawnPosition()
         {
-            this.Position = Creator.GetPosition;
-            float tempValue = Size.X;
+            Position = Creator.GetPosition;
             switch (Direction)
             {
                 case (Link.LinkDirection.Down):
-                    this.Position.X += 12;
-                    this.Position.Y += 20;
-                    this.Rotation = (float) Math.PI;
+                    Position.X += 4;
+                    Position.Y += 12;
+                    Name = "ArrowEffect";
+                    SpriteEffect = SpriteEffects.FlipVertically;
                     break;
                 case (Link.LinkDirection.Up):
-                    this.Position.X += 4;
-                    this.Position.Y -= 4;
+                    Position.X += 4;
+                    Position.Y -= 4;
+                    Name = "ArrowEffect";
                     break;
                 case (Link.LinkDirection.Left):
-                    this.Position.X -= 4;
-                    this.Position.Y += 12;
-                    Size.X = this.GetSize.Y;
-                    Size.Y = tempValue;
-                    this.Rotation = (float)(3*Math.PI / 2);
+                    Position.X -= 14;
+                    Position.Y += 4;
+                    Name = "ArrowEffectHorizontal";
                     break;
                 case (Link.LinkDirection.Right):
-                    this.Position.X += 20;
-                    this.Position.Y += 4;
-                    Size.X = this.GetSize.X;
-                    Size.Y = tempValue;
-                    this.Rotation = (float) (Math.PI / 2);
+                    Position.X += 14;
+                    Position.Y += 4;
+                    Name = "ArrowEffectHorizontal";
+                    SpriteEffect = SpriteEffects.FlipHorizontally;
                     break;
                 default:
                     break;
@@ -76,50 +61,31 @@ namespace Sprint03
 
         public override void Move()
         {
-
             switch (Direction)
             {
                 case (Link.LinkDirection.Down):
-
                     Position.Y += BaseSpeed;
                     if (Position.Y >= Game.WalkingRect.Height + 16)
-                        this.KillSprite();
+                        KillSprite();
                     break;
                 case (Link.LinkDirection.Up):
                     Position.Y -= BaseSpeed;
                     if (Position.Y <= Game.WalkingRect.Y)
-                        this.KillSprite();
+                        KillSprite();
                     break;
                 case (Link.LinkDirection.Left):
                     Position.X -= BaseSpeed;
                     if (Position.X <= Game.WalkingRect.X)
-                        this.KillSprite();
+                        KillSprite();
                     break;
                 case (Link.LinkDirection.Right):
                     Position.X += BaseSpeed;
                     if (Position.X >= Game.WalkingRect.Width + 16)
-                        this.KillSprite();
+                        KillSprite();
                     break;
                 default:
                     break;
             }
-
-
-        }
-
-        public override void DrawSprite()
-        {
-            if (LifeCounter <= LifeSpan)
-            {
-                LifeCounter++;
-                Move();
-                Animate();
-                DrawWindow.X = (int)Position.X;
-                DrawWindow.Y = (int)Position.Y;
-                AnimationWindow.Y = (int)(CurrentFrame * Size.Y);
-                Batch.Draw(Texture, DrawWindow, AnimationWindow, Color.White, Rotation, Origin, SpriteEffect, Layer);
-            }
-
         }
     }
 }

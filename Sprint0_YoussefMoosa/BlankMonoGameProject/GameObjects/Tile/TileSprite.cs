@@ -19,12 +19,5 @@ namespace Sprint03
             this.DrawWindow = new Rectangle(0, 0, 16, 16);
             this.Colour = Color.White;
         }
-
- 
-
-        public override void ChangeSpriteAnimation(string newSpriteName)
-        {
-            throw new NotImplementedException();
-        }
-    }
+   }
 }

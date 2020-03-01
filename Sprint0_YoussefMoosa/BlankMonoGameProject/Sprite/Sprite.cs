@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Sprint03
 {
@@ -16,6 +17,7 @@ namespace Sprint03
         public float BaseSpeed;
         public Vector2 CurrentSpeed;                // Controls movement speed of NPC
         public Vector2 Position;
+        protected float InitalAnimationY;
 
 
         // Sprite Info
@@ -36,7 +38,7 @@ namespace Sprint03
         // Animation & Moving Info
         protected int TotalFrames;
         protected int CurrentFrame = 0;
-        public int FPS;
+        public int FPS = 8;
         protected int GameFrame = 0;
 
         public Vector2 GetSize {  get { return Size; } }
@@ -76,7 +78,7 @@ namespace Sprint03
             Position.X += CurrentSpeed.X;
             Position.Y += CurrentSpeed.Y;
 
-            if (Position.X>= Game.WalkingRect.Width)
+            if (Position.X >= Game.WalkingRect.Width)
             {
                 Position.X = Game.WalkingRect.Width;
             }
@@ -93,7 +95,16 @@ namespace Sprint03
                 Position.Y = Game.WalkingRect.Y;
             }
         }
-        public abstract void ChangeSpriteAnimation(string newSpriteName);
+        public void ChangeSpriteAnimation(string newSpriteName)
+        {
+            if (Name != newSpriteName) { CurrentFrame = 0; }
+            Name = newSpriteName;
+            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.Sprites[newSpriteName];
+            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
+            InitalAnimationY = NewInfo.Item1.Y;
+            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
+            TotalFrames = NewInfo.Item3;
+        }
 
         public virtual void KillSprite()
         {
@@ -106,7 +117,7 @@ namespace Sprint03
             Animate();
             DrawWindow.X = (int)Position.X;
             DrawWindow.Y = (int)Position.Y;
-            AnimationWindow.Y = (int)(CurrentFrame * Size.Y) + (8 * CurrentFrame);
+            AnimationWindow.Y = (int)(InitalAnimationY + (CurrentFrame * Size.Y) + (8 * CurrentFrame));
             Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
         }
     }

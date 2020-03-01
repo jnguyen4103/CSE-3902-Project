@@ -29,10 +29,8 @@ namespace Sprint03
 
         public void CreateEffect()
         {
-            // Adds new sprite effect to the EffectsList array so it'll be drawn on screen
             EffectSprite = new ArrowSprite(Creator, Game, Direction, Texture, Batch);
             Game.EffectsList.Add(this);
-
         }
 
         public bool IsCreator(Sprite sprite)

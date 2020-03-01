@@ -3,21 +3,24 @@ namespace Sprint03
 {
     public class Stalfos : Monster
     {
+        
         // Setting info about NPC and default parameters
-        public Stalfos(StalfosSprite sprite)
+        public Stalfos(StalfosSprite sprite, Game1 game)
         {
-            this.State = MonsterState.Idle;
-            this.Direction = MonsterDirection.Down;
-            this.Sprite = sprite;
-            this.hitpoints = 2;
-            this.maxHP = 2;
-            this.attackDamage = 1;
-            this.StateMachine = new StalfosSM(this);
+            State = MonsterState.Idle;
+            Direction = MonsterDirection.Down;
+            Sprite = sprite;
+            Game = game;
+            hitpoints = 2;
+            maxHP = 2;
+            attackDamage = 1;
+            StateMachine = new StalfosSM(this, game);
         }
     }
 
     public class StalfosSM : IStateMachine
     {
+        private Game1 Game;
         private Monster self;
         private Random random = new Random();
         private int WalkCounter = 0;
@@ -25,14 +28,21 @@ namespace Sprint03
         private int damgeDuration = 45;
 
 
-        public StalfosSM(Stalfos Stalfos)
+        public StalfosSM(Stalfos Stalfos, Game1 game)
         {
             self = Stalfos;
+            Game = game;
         }
 
 
         public void MoveState()
         {
+            if(self.Sprite.Position.X >= Game.WalkingRect.Width || self.Sprite.Position.Y >= Game.WalkingRect.Height)
+            {
+                WalkCounter = 0;
+                IdleState();
+            }
+
             if (WalkCounter > 0)
             {
                 switch (self.Direction)

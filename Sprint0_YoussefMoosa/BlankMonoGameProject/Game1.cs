@@ -111,7 +111,7 @@ namespace Sprint03
             SpriteLink = new LinkSprite(this, "WalkDown", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
 
-            MonsterList.Add(new Stalfos(new StalfosSprite(this, "StalfosWalk", MonsterSpriteSheet, spawnPosition, spriteBatch)));
+            MonsterList.Add(new Stalfos(new StalfosSprite(this, "StalfosWalk", MonsterSpriteSheet, spawnPosition, spriteBatch), this));
             ItemsList.Add(new Item(this, "Heart", "Heart", ItemSpriteSheet, itemSpawnPosition, spriteBatch));
             handler = new CollisionDetection(this);
 
