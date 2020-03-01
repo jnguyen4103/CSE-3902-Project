@@ -43,7 +43,9 @@ namespace Sprint03
         public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> MonsterSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(12);
         public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> ItemSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(15);
         public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> EffectSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(11);
-        
+        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> TileSprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(10);
+
+
         // Al off the LinkSprites are size 16 by 16
         private readonly Vector2 LinkSpriteSize = new Vector2(16, 16);
 
@@ -121,6 +123,20 @@ namespace Sprint03
             EffectSprites["Fire"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 16, 16), defaultMonsterSize, 1);
             EffectSprites["Fireball"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 64), defaultItemSize, 4);
             EffectSprites["SwordSwing"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(88, 0, 8, 48), defaultItemSize, 3);
+
+
+            // Creating Tile Sprites
+            TileSprites["Floor"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 16), defaultMonsterSize, 1);
+            TileSprites["Block"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 16, 16), LinkSpriteSize, 1);
+            TileSprites["FishStatue"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(32, 0, 16, 16), LinkSpriteSize, 1);
+            TileSprites["DragonStatue"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 16), LinkSpriteSize, 1);
+            TileSprites["BlackFloor"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 16, 16), LinkSpriteSize, 1);
+            TileSprites["Gravel"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 16, 16), LinkSpriteSize, 1);
+            TileSprites["Water"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 16), LinkSpriteSize, 1);
+            TileSprites["Stairs"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 0, 16, 16), LinkSpriteSize, 1);
+            TileSprites["Brick"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 0, 16, 16), LinkSpriteSize, 1);
+            TileSprites["Steps"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 16), LinkSpriteSize, 1);
+
         }
 
     }

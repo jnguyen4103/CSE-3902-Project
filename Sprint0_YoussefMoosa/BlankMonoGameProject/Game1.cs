@@ -26,6 +26,7 @@ namespace Sprint03
         private Texture2D MonsterSpriteSheet;
         private Texture2D ItemSpriteSheet;
         public Texture2D EffectSpriteSheet;
+        private Texture2D TileSpriteSheet;
 
 
 
@@ -99,6 +100,8 @@ namespace Sprint03
             MonsterSpriteSheet = Content.Load<Texture2D>("Monster Sprite Sheet");
             ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
+            TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
+
             SpriteLink = new LinkSprite(this, "WalkDown", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
 
