@@ -9,8 +9,8 @@ namespace Sprint03
             this.State = MonsterState.Idle;
             this.Direction = MonsterDirection.Down;
             this.Sprite = sprite;
-            this.hitpoints = 1;
-            this.maxHP = 1;
+            this.hitpoints = 2;
+            this.maxHP = 2;
             this.attackDamage = 1;
             this.StateMachine = new StalfosSM(this);
         }
@@ -75,16 +75,24 @@ namespace Sprint03
 
         public void DamagedState(int directionDamaged)
         {
+            if(damgeTimer == 0)
+            {
+                self.Sprite.ChangeSpriteAnimation("StalfosDamaged");
+            }
+
             damgeTimer++;
             Pushback(directionDamaged);
             if (damgeTimer >= damgeDuration)
             {
+                Console.WriteLine("Damage Ended");
                 self.Sprite.CurrentSpeed.X = 0;
                 self.Sprite.CurrentSpeed.Y = 0;
                 damgeTimer = 0;
                 IdleState();
                 self.State = Monster.MonsterState.Idle;
-            } 
+                self.Sprite.ChangeSpriteAnimation("StalfosWalk");
+
+            }
         }
 
         private void Pushback(int damagedDirection)

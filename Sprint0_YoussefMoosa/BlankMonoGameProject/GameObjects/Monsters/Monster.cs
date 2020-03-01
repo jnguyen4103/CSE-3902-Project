@@ -37,7 +37,7 @@
 
         public virtual void TakeDamage(int damage, int damageDirection)
         {
-            if (State != MonsterState.Damaged)
+            if (State != MonsterState.Damaged && State != MonsterState.Dead)
             {
                 hitpoints -= damage;
                 if (hitpoints < 1)

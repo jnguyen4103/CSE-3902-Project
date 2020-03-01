@@ -38,6 +38,7 @@ namespace Sprint03
         public void DamageMonsterEffect(Monster monster, int direction, IEffect effect)
         {
             monster.TakeDamage(effect.Damage, direction);
+
             if(!effect.Sprite.Name.Equals("SwordSwing"))
             {
                 effect.Sprite.KillSprite();
