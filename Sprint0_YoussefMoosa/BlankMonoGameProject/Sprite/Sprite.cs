@@ -79,8 +79,26 @@ namespace Sprint03
 
         public virtual void Move()
         {
+
             Position.X += CurrentSpeed.X;
             Position.Y += CurrentSpeed.Y;
+
+            if (Position.X>= Game.GraphicsDevice.Viewport.Width-16)
+            {
+                Position.X = Game.GraphicsDevice.Viewport.Width - 16;
+            }
+            else if(Position.X<=0)
+            {
+                Position.X = 0;
+            }
+            else if (Position.Y >= Game.GraphicsDevice.Viewport.Height - 16)
+            {
+                Position.Y = Game.GraphicsDevice.Viewport.Height - 16;
+            }
+            else if (Position.Y <= 0)
+            {
+                Position.Y = 0;
+            }
         }
         public abstract void ChangeSpriteAnimation(string newSpriteName);
 

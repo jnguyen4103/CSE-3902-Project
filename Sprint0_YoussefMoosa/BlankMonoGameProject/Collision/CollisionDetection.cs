@@ -160,14 +160,7 @@ namespace Sprint03
                     }
 
                 }
-                if (Link.SpriteLink.GetPosition.X == Game.GraphicsDevice.Viewport.Width)
-                {
-                    monster.Sprite.SetPosition();
-                }
-                if (monster.Sprite.GetPosition.Y == Game.GraphicsDevice.Viewport.Height)
-                {
-                    monster.Sprite.SetPosition();
-                }
+
             }
 
             // Link vs. Items

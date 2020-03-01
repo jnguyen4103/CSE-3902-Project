@@ -67,16 +67,25 @@ namespace Sprint03
                 switch (Direction)
                 {
                     case (Link.LinkDirection.Down):
+                       
                         Position.Y += BaseSpeed;
+                        if (Position.Y >= Game.GraphicsDevice.Viewport.Height-16)
+                            Position.Y = Game.GraphicsDevice.Viewport.Height-16;
                         break;
                     case (Link.LinkDirection.Up):
                         Position.Y -= BaseSpeed;
-                        break;
+                        if (Position.Y <= 0)
+                            Position.Y = 0;
+                         break;
                     case (Link.LinkDirection.Left):
                         Position.X -= BaseSpeed;
+                        if (Position.X <= 0)
+                            Position.X = 0;
                         break;
                     case (Link.LinkDirection.Right):
                         Position.X += BaseSpeed;
+                        if (Position.X >= Game.GraphicsDevice.Viewport.Width - 16)
+                            Position.X = Game.GraphicsDevice.Viewport.Width - 16;
                         break;
                     default:
                         break;

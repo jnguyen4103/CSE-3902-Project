@@ -29,7 +29,7 @@ namespace Sprint03
             this.FPS = 16;
             GetSpawnPosition();
         }
-        public override void ChangeSpriteAnimation(string newSpriteName) 
+        public override void ChangeSpriteAnimation(string newSpriteName)
         {
             Name = newSpriteName;
             CurrentFrame = 0;
@@ -70,23 +70,34 @@ namespace Sprint03
 
         public override void Move()
         {
+
             switch (Direction)
             {
                 case (Link.LinkDirection.Down):
+
                     Position.Y += BaseSpeed;
+                    if (Position.Y >= Game.GraphicsDevice.Viewport.Height - 16)
+                        Colour = Color.Transparent;
                     break;
                 case (Link.LinkDirection.Up):
                     Position.Y -= BaseSpeed;
+                    if (Position.Y <= 0)
+                        Colour = Color.Transparent;
                     break;
                 case (Link.LinkDirection.Left):
                     Position.X -= BaseSpeed;
+                    if (Position.X <= 0)
+                        Colour = Color.Transparent;
                     break;
                 case (Link.LinkDirection.Right):
                     Position.X += BaseSpeed;
+                    if (Position.X >= Game.GraphicsDevice.Viewport.Width - 16)
+                        Colour = Color.Transparent;
                     break;
                 default:
                     break;
             }
+
 
         }
     }
