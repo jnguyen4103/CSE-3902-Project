@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,20 @@ namespace Sprint03
             }
         }
 
+        public void StopLink()
+        {
+
+        }
+
+        public void StopMonster()
+        {
+
+        }
+
+        public void DestroyEffect(IEffect effect)
+        {
+            effect.Sprite.Colour = Color.Transparent;
+        }
         public void DamageMonster(Monster monster, int direction)
         {
             monster.TakeDamage(1, direction);

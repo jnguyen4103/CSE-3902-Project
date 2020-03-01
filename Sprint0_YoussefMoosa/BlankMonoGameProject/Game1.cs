@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint03
@@ -33,16 +34,19 @@ namespace Sprint03
 
         CollisionDetection handler;
 
+        public List<Tile> TileList = new List<Tile>();
         public List<Monster> MonsterList = new List<Monster>();
         public List<Item> ItemsList = new List<Item>();
         public List<IEffect> EffectsList = new List<IEffect>();
+
 
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
         private ICommand[] keyboardCommands = new ICommand[11];
         private KeyboardController keyboardController;
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
-        public readonly Vector2 itemSpawnPosition = new Vector2(100, 240);
+        public readonly Vector2 itemSpawnPosition = new Vector2(300, 240);
+        public readonly Vector2 TileSpawnPosition = new Vector2(512, 250);
         public readonly Vector2 spawnPosition = new Vector2(400, 240);
         public readonly Vector2 LinkSpawn = new Vector2(600f, 100f);
 
@@ -113,7 +117,7 @@ namespace Sprint03
             MonsterList.Add(new Stalfos(new StalfosSprite(this, "StalfosWalk", MonsterSpriteSheet, spawnPosition, spriteBatch)));
             ItemsList.Add(new Item(this, "Heart", "Heart", ItemSpriteSheet, itemSpawnPosition, spriteBatch));
             handler = new CollisionDetection(this);
-
+            TileList.Add(new Tile(this, TileSpriteSheet,TileSpawnPosition, spriteBatch));
 
         }
 
@@ -153,12 +157,12 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
 
-            spriteBatch.Begin(transformMatrix: Matrix.CreateScale(4, 4, 1.0f));
+            spriteBatch.Begin();
 
-            spriteBatch.Draw(Background, window, Color.White);
+          //  spriteBatch.Draw(Background, window, Color.White);
 
             for(int i = 0; i < EffectsList.Count; i++)
             {
@@ -171,6 +175,12 @@ namespace Sprint03
             foreach (IEffect effect in EffectsList)
             {
                 effect.Sprite.DrawSprite();
+            }
+
+            foreach(Tile tile in TileList)
+            {
+                tile.Sprite.DrawSprite();
+                Console.WriteLine("Yah it should've been drawn");
             }
 
             foreach (Monster monster in MonsterList)

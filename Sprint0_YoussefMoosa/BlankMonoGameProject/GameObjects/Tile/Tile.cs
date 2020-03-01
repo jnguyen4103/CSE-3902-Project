@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Sprint03
 {
-    class Block
+    public class Tile
     {
         public Game1 Game;
         public Sprite Sprite;
         protected bool isDestroyed = false;
 
-        public Block(Game1 game, String spriteName, Texture2D texture, Vector2 spawn, SpriteBatch batch)
+        public Tile(Game1 game,  Texture2D texture, Vector2 spawn, SpriteBatch batch)
         {
             
             Game = game;
-            Sprite = new TileSprite(game, spriteName, texture, spawn, batch);
+            Sprite = new TileSprite(game, texture, spawn, batch);
         }
 
         public void Destroy()

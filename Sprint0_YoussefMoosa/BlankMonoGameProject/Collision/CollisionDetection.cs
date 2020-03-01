@@ -11,6 +11,7 @@ namespace Sprint03
         private List<Item> Items;
         private List<Monster> Monsters;
         public List<IEffect> Effects;
+        public List<Tile> Tiles;
         private Game1 Game;
         private CollisionResolution ColRes;
 
@@ -20,6 +21,7 @@ namespace Sprint03
             this.Link = game.Link;
             this.Items = game.ItemsList;
             this.Effects = game.EffectsList;
+            this.Tiles = game.TileList;
             Game = game;
             ColRes = new CollisionResolution(game);
         }
@@ -109,6 +111,7 @@ namespace Sprint03
             FRectangle monsterHitbox;
             FRectangle linkHitbox = new FRectangle(Link.SpriteLink.Position.X, Link.SpriteLink.Position.Y, (int)Link.SpriteLink.GetSize.X, (int)Link.SpriteLink.GetSize.Y);
             FRectangle effectHitbox;
+            FRectangle tileHitBox;
             FRectangle itemHitbox;
 
             foreach (Monster monster in Monsters)
@@ -147,6 +150,7 @@ namespace Sprint03
                         }
                     }
 
+
                     // Link vs. Effects
                     if (effectHitbox.Intersects(linkHitbox))
                     {
@@ -157,6 +161,22 @@ namespace Sprint03
                             Console.WriteLine("Link Effect Contact");
                         }
 
+                    }
+                    foreach(Tile tile in Tiles)
+                    {
+                        tileHitBox = new FRectangle(tile.Sprite.Position.X, tile.Sprite.Position.Y, (int)tile.Sprite.GetSize.X, (int)tile.Sprite.GetSize.Y);
+                        if(tileHitBox.Intersects(effectHitbox))
+                        {
+
+                        }
+                        if(tileHitBox.Intersects(monsterHitbox))
+                        {
+
+                        }
+                        if(tileHitBox.Intersects(linkHitbox))
+                        {
+
+                        }
                     }
 
                 }
