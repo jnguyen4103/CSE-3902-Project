@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 
 namespace Sprint03
@@ -28,7 +29,7 @@ namespace Sprint03
         public Texture2D EffectSpriteSheet;
         private Texture2D TileSpriteSheet;
         private Texture2D Background;
-
+        private Song song;
 
 
         CollisionDetection handler;
@@ -73,7 +74,7 @@ namespace Sprint03
             // TODO: Add your initialization logic here
             SFactory = new SpriteFactory();
             IFactory = new ItemFactory(this);
-
+            this.song = Content.Load<Song>("musicForGame");
             // Adding all of the commands into the keyboard controller
             keyboardCommands[0] = new LinkWalkUp(this);
             keyboardCommands[1] = new LinkWalkDown(this);
@@ -87,8 +88,19 @@ namespace Sprint03
             keyboardCommands[9] = new DamageLink(this);
             keyboardCommands[10] = new IdleLink(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
-
+            MediaPlayer.Play(song);
+            //  Uncomment the following line will also loop the song
+            //  MediaPlayer.IsRepeating = true;
+            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
             base.Initialize();
+        }
+
+        void MediaPlayer_MediaStateChanged(object sender, System.
+                                        EventArgs e)
+        {
+            // 0.0f is silent, 1.0f is full volume
+            MediaPlayer.Volume -= 0.1f;
+            MediaPlayer.Play(song);
         }
 
         /// <summary>
