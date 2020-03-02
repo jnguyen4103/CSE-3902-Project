@@ -8,5 +8,6 @@
    2. Use items via numeric keys 1, 2, 3, etc.
 
    Descriptions of known bugs:
-   	If a collision occurs between Link and a Monster at the corner of a monster there is a chance link will move downward.
+   1. If a collision occurs between Link and a Monster at the corner of a monster there is a chance link will move downward in a very particular pixel.
+   
    Details of tool and processes that the team used: 
