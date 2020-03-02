@@ -2,23 +2,6 @@
 using System;
 namespace Sprint03
 {
-    public class Stalfos : Monster
-    {
-        
-        // Setting info about NPC and default parameters
-        public Stalfos(StalfosSprite sprite, Game1 game)
-        {
-            State = MonsterState.Spawning;
-            Direction = MonsterDirection.Down;
-            Sprite = sprite;
-            Game = game;
-            hitpoints = 2;
-            maxHP = 2;
-            attackDamage = 1;
-            StateMachine = new StalfosSM(this, game);
-        }
-    }
-
     public class StalfosSM : IStateMachine
     {
         private Game1 Game;
@@ -29,7 +12,7 @@ namespace Sprint03
         private int damgeDuration = 45;
 
 
-        public StalfosSM(Stalfos Stalfos, Game1 game)
+        public StalfosSM(Monster Stalfos, Game1 game)
         {
             self = Stalfos;
             Game = game;
@@ -112,7 +95,6 @@ namespace Sprint03
             Pushback(directionDamaged);
             if (Timer >= damgeDuration)
             {
-                Console.WriteLine("Damage Ended");
                 self.Sprite.CurrentSpeed.X = 0;
                 self.Sprite.CurrentSpeed.Y = 0;
                 Timer = 0;
@@ -160,12 +142,19 @@ namespace Sprint03
             } else if (Timer >= (20 / self.Sprite.FPS * 8))
             {
                 self.Sprite.KillSprite();
+                Timer = 0;
             }
 
         }
 
         public void IdleState()
         {
+            if (Timer == 1)
+            {
+                int wait = random.Next(20, 60);
+
+            }
+
             self.State = Monster.MonsterState.Moving;
             getRandomDirection();
         }

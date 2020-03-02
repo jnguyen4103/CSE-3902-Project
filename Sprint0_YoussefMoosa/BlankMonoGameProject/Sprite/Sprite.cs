@@ -48,7 +48,6 @@ namespace Sprint03
         public Vector2 GetPosition {  get { return Position; } }
 
 
-
         public virtual void Animate()
         {
             if (TotalFrames > 1)

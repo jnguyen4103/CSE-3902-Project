@@ -62,6 +62,8 @@
     <Compile Include="Components\MonoTimer.cs" />
     <Compile Include="GameObjects\Effects\Sprites\BeamExplosionSprite.cs" />
     <Compile Include="GameObjects\Effects\BeamExplosionEffect.cs" />
+    <Compile Include="GameObjects\Monsters\MonsterFactory.cs" />
+    <Compile Include="GameObjects\Monsters\MonsterSprite.cs" />
     <Compile Include="GameObjects\Tile\NonStaticTile.cs" />
     <Compile Include="GameObjects\Tile\StaticTile.cs" />
     <Compile Include="GameObjects\Tile\TileSprite.cs" />
@@ -74,7 +76,7 @@
     <Compile Include="GameObjects\Items\Item.cs" />
     <Compile Include="GameObjects\Items\ItemFactory.cs" />
     <Compile Include="GameObjects\Link\UseSecondaryLink.cs" />
-    <Compile Include="GameObjects\Monsters\Stalfos.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\StalfosSM.cs" />
     <Compile Include="GameObjects\Link\AttackingLink.cs" />
     <Compile Include="GameObjects\Link\DamagedLink.cs" />
     <Compile Include="GameObjects\Link\ILink.cs" />
@@ -97,7 +99,6 @@
     <Compile Include="GameObjects\Items\ItemSprite.cs" />
     <Compile Include="GameObjects\Link\LinkSprite.cs" />
     <Compile Include="Sprite\Sprite.cs" />
-    <Compile Include="GameObjects\Monsters\Sprites\StalfosSprite.cs" />
     <Compile Include="Sprite\SpriteFactory.cs" />
     <Compile Include="GameObjects\Monsters\Monster.cs" />
   </ItemGroup>

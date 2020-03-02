@@ -2,7 +2,7 @@
 {
     // Abstract class allows for code reuse since a lot of NPC's share similar variables
     // Look at the Stalfos and Goriyas classes for commments about specific implementations
-    public abstract class Monster
+    public class Monster
     {
         public Sprite Sprite;
         public IStateMachine StateMachine;
@@ -31,6 +31,14 @@
         public int hitpoints;
         public int maxHP;
         public int attackDamage;
+
+        public Monster(Sprite sprite, Game1 game)
+        {
+            State = MonsterState.Spawning;
+            Direction = MonsterDirection.Down;
+            Sprite = sprite;
+            Game = game;
+        }
 
         public virtual void Draw()
         {

@@ -16,6 +16,7 @@ namespace Sprint03
 
         public SpriteFactory SFactory;
         public ItemFactory IFactory;
+        public MonsterFactory MFactory;
 
         // Link Object & Sprite
         public ILink Link;
@@ -23,13 +24,13 @@ namespace Sprint03
         public int RupeeCounter = 0;
 
         // Sprite Sheets
-        private Texture2D LinkSpriteSheet;
-        private Texture2D MonsterSpriteSheet;
-        private Texture2D ItemSpriteSheet;
+        public Texture2D LinkSpriteSheet;
+        public Texture2D MonsterSpriteSheet;
+        public Texture2D ItemSpriteSheet;
         public Texture2D EffectSpriteSheet;
-        private Texture2D TileSpriteSheet;
-        private Texture2D Background;
-        private Song song;
+        public Texture2D TileSpriteSheet;
+        public Texture2D Background;
+        public Song song;
 
 
         CollisionDetection handler;
@@ -74,7 +75,9 @@ namespace Sprint03
             // TODO: Add your initialization logic here
             SFactory = new SpriteFactory();
             IFactory = new ItemFactory(this);
+            MFactory = new MonsterFactory(this);
             this.song = Content.Load<Song>("musicForGame");
+
             // Adding all of the commands into the keyboard controller
             keyboardCommands[0] = new LinkWalkUp(this);
             keyboardCommands[1] = new LinkWalkDown(this);
@@ -123,7 +126,7 @@ namespace Sprint03
             SpriteLink = new LinkSprite(this, "WalkDown", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
 
-            MonsterList.Add(new Stalfos(new StalfosSprite(this, "StalfosWalk", MonsterSpriteSheet, spawnPosition, spriteBatch), this));
+            MFactory.Monsters["Stalfos"](spawnPosition);
             ItemsList.Add(new Item(this, "Heart", "Heart", ItemSpriteSheet, itemSpawnPosition, spriteBatch));
             handler = new CollisionDetection(this);
 
