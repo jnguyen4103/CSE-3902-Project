@@ -112,7 +112,7 @@ namespace Sprint03
                 if (monsterHitbox.Intersects(linkHitbox))
                 {
                     direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(monsterHitbox, linkHitbox));
-                    ColRes.HurtLink(monster.attackDamage, direction);
+                    ColRes.HurtLink(monster, direction);
                     Console.WriteLine("Enemy Contact");
                 }
 

@@ -19,7 +19,7 @@ namespace Sprint03
             this.Size = game.SFactory.Sprites[name].Item2;
             this.Position = spawn;
             this.Texture = texture;
-            this.BaseSpeed = 0.9f;
+            this.BaseSpeed = 0.5f;
             this.TotalFrames = game.SFactory.Sprites[name].Item3;
             this.FPS = 4;
             this.ChangeSpriteAnimation(name);

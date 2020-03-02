@@ -16,11 +16,13 @@ namespace Sprint03
             Game = game;
         }
 
-        public void HurtLink(int damage, int direction)
+        public void HurtLink(Monster monster, int direction)
         {
-            if (Game.Link.GetState() != Link.LinkState.Damaged)
+            if (Game.Link.GetState() != Link.LinkState.Damaged 
+                && monster.State != Monster.MonsterState.Dead
+                && monster.State != Monster.MonsterState.Damaged)
             {
-                Game.Link.TakeDamage(damage, direction);
+                Game.Link.TakeDamage(monster.attackDamage, direction);
             }
         }
 
@@ -44,7 +46,6 @@ namespace Sprint03
         public void DamageLinkEffect(int damage, int direction, IEffect effect)
         {
             Game.Link.TakeDamage(effect.Damage, direction);
-
         }
 
 

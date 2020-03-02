@@ -7,6 +7,7 @@
     // TakeDamage - Got injured
     public interface IStateMachine
     {
+        void SpawnState();
         void IdleState();
         void MoveState();
         void AttackState();
