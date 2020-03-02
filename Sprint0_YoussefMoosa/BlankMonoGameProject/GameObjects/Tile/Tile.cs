@@ -26,7 +26,7 @@ namespace Sprint03
         }
         public virtual void Move()
         {
-            Sprite.Position.Y -= 1;
+            Sprite.Position.Y -= .5f;
         }
         public virtual void DestroyTile()
         {
