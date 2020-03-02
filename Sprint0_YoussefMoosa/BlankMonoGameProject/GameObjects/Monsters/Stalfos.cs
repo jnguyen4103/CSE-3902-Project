@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 namespace Sprint03
 {
     public class Stalfos : Monster
@@ -7,7 +8,7 @@ namespace Sprint03
         // Setting info about NPC and default parameters
         public Stalfos(StalfosSprite sprite, Game1 game)
         {
-            State = MonsterState.Idle;
+            State = MonsterState.Spawning;
             Direction = MonsterDirection.Down;
             Sprite = sprite;
             Game = game;
@@ -32,6 +33,23 @@ namespace Sprint03
         {
             self = Stalfos;
             Game = game;
+        }
+
+        public void SpawnState()
+        {
+            Timer++;
+            if (Timer == 1)
+            {
+                self.Sprite.ChangeSpriteAnimation("SpawningCloud");
+                self.Sprite.CurrentSpeed.X = 0;
+                self.Sprite.CurrentSpeed.Y = 0;
+                self.Sprite.FPS = 3;
+            } else if (Timer >= 60)
+            {
+                self.Sprite.ChangeSpriteAnimation("StalfosWalk");
+                self.Sprite.FPS = 8;
+                IdleState();
+            }
         }
 
 
@@ -136,7 +154,7 @@ namespace Sprint03
             if (Timer == 1)
             {
                 WalkCounter = 0;
-                self.Sprite.BaseSpeed = 0;
+                self.Sprite.CurrentSpeed = new Vector2(0, 0);
                 self.State = Monster.MonsterState.Dead;
                 self.Sprite.ChangeSpriteAnimation("Death");
             } else if (Timer >= (20 / self.Sprite.FPS * 8))

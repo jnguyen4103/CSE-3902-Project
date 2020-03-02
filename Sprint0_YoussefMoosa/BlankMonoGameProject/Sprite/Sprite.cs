@@ -76,6 +76,8 @@ namespace Sprint03
             Console.WriteLine(Position.X+" , "+ Position.Y);
             Console.WriteLine(Game.WalkingRect.Y);
             Console.WriteLine(Game.WalkingRect.X);
+
+
             if (Position.X >= Game.WalkingRect.Width)
             {
                 Position.X = Game.WalkingRect.Width;
@@ -125,6 +127,7 @@ namespace Sprint03
                 }
             }
         }
+
         public void ChangeSpriteAnimation(string newSpriteName)
         {
             if (Name != newSpriteName) { CurrentFrame = 0; }

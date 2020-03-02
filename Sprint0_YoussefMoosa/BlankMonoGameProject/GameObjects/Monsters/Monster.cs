@@ -10,6 +10,7 @@
         private int DamageDirection;
         public enum MonsterState
         {
+            Spawning,       // Initial State
             Idle,           // NPC remains idle due to clock item or other effects
             Moving,         // NPC randomly moves around (Only behavior most NPCs)
             Attacking,
@@ -59,6 +60,10 @@
             // Calls respective behavior for each state
             switch (State)
             {
+                case (MonsterState.Spawning):
+                    StateMachine.SpawnState();
+                    break;
+
                 case (MonsterState.Idle):
                     StateMachine.IdleState();
                     break;
