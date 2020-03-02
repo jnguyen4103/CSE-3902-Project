@@ -8,5 +8,5 @@
    2. Use items via numeric keys 1, 2, 3, etc.
 
    Descriptions of known bugs:
-   
+   	If a collision occurs between Link and a Monster at the corner of a monster there is a chance link will move downward.
    Details of tool and processes that the team used: 
