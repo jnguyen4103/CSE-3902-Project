@@ -36,37 +36,36 @@ namespace Sprint03
             * 3 - Right
             */
 
-           //Our intersection happened on the left or the right
-
-
+            //Our intersection happened on the left or the right
+            Console.WriteLine("WIDTH :"+Collision.Width);
+            Console.WriteLine("HEIGHT: " + Collision.Height);
+            Console.WriteLine("TOP OF SPRITE " + Receiver.GetPosition.Y);
+            Console.WriteLine("Bottom OF SPRITE " + Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y));
+            Console.WriteLine("TOP OF Collision" + Math.Round(Collision.Top));
+            Console.WriteLine(Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left );
+            Console.WriteLine(Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) >= Math.Round(Collision.Right));
+            Console.WriteLine("Right Side Of Sprite: " + Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X));
+            Console.WriteLine("Right Side Of Collision: "+Math.Round(Collision.Right));
             if (Collision.Width < Collision.Height)
             {
                 //Collision happend on the Left
+                
 
 
-
-                if (Receiver.GetPosition.X < Collision.Right && Math.Round(Receiver.GetPosition.X) == Math.Round(Collision.Left))
+                if (Receiver.GetPosition.X < Collision.Right && Math.Round(Receiver.GetPosition.X) == Math.Round(Collision.Left) && Receiver.GetPosition.Y <= Collision.Top
+                    && Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) >= Math.Round(Collision.Top))
                 {
                     returnVal = 2;
                 }
                 //Collision happened on the right 
-                else if (Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left && Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) == Math.Round(Collision.Right))
+                else if (Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left && 
+                    Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) == Math.Round(Collision.Right)
+                    && Receiver.GetPosition.Y<= Collision.Top 
+                    && Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) >= Math.Round(Collision.Top))
                 {
                     returnVal = 3;
                 }
-                if (Collision.Height <= 1)
-                {
-
-                    if (Receiver.GetPosition.X < Collision.Right && Math.Round(Receiver.GetPosition.X) == Math.Round(Collision.Left))
-                    {
-                        returnVal = 2;
-                    }
-                    //Collision happened on the right 
-                    else if (Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left && Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) == Math.Round(Collision.Right))
-                    {
-                        returnVal = 3;
-                    }
-                }
+             
             }
             //Our intersection happend on the top or the bottom 
             else if (Collision.Height < Collision.Width)
@@ -76,28 +75,17 @@ namespace Sprint03
                 {
                     returnVal = 0;
                 }
+      
                 //Collision Happened on the bottom
                 else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top)
                 {
                     returnVal = 1;
                 }
-                if (Collision.Height <= 1)
-                {
-
-                    if (Receiver.GetPosition.X < Collision.Right && Math.Round(Receiver.GetPosition.X) == Math.Round(Collision.Left))
-                    {
-                        returnVal = 2;
-                    }
-                    //Collision happened on the right 
-                    else if (Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left && Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) == Math.Round(Collision.Right))
-                    {
-                        returnVal = 3;
-                    }
-                }
+  
 
 
             }
-            Console.WriteLine(returnVal);
+            Console.WriteLine("Value is "+returnVal);
             return returnVal;
         }
 
