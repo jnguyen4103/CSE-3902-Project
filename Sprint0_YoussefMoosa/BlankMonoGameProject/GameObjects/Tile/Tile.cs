@@ -8,18 +8,12 @@ using System.Threading.Tasks;
 
 namespace Sprint03
 {
-    public class Tile
+    public abstract class Tile
     {
         public Game1 Game;
         public Sprite Sprite;
         protected bool isDestroyed = false;
 
-        public Tile(Game1 game,  Texture2D texture, Vector2 spawn, SpriteBatch batch)
-        {
-            
-            Game = game;
-            Sprite = new TileSprite(game, texture, spawn, batch);
-        }
 
         public void Destroy()
         {
@@ -30,6 +24,13 @@ namespace Sprint03
         {
             Sprite.DrawSprite();
         }
-
+        public virtual void Move()
+        {
+            Sprite.Position.Y -= 1;
+        }
+        public virtual void DestroyTile()
+        {
+           Sprite.Colour = Color.Transparent;
+        }
     }
 }

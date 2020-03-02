@@ -62,6 +62,8 @@
     <Compile Include="Components\MonoTimer.cs" />
     <Compile Include="GameObjects\Effects\Sprites\BeamExplosionSprite.cs" />
     <Compile Include="GameObjects\Effects\BeamExplosionEffect.cs" />
+    <Compile Include="GameObjects\Tile\NonStaticTile.cs" />
+    <Compile Include="GameObjects\Tile\StaticTile.cs" />
     <Compile Include="GameObjects\Tile\TileSprite.cs" />
     <Compile Include="GameObjects\Effects\ArrowEffect.cs" />
     <Compile Include="GameObjects\Effects\BoomerangEffect.cs" />

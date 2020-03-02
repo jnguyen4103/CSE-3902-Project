@@ -47,10 +47,6 @@ namespace Sprint03
 
         public Vector2 GetPosition {  get { return Position; } }
 
-        public void SetPosition(){
-
-         
-        }
 
 
         public virtual void Animate()

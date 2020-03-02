@@ -37,7 +37,7 @@ namespace Sprint03
             */
 
             //Our intersection happened on the left or the right
-            Console.WriteLine("WIDTH :"+Collision.Width);
+/*            Console.WriteLine("WIDTH :"+Collision.Width);
             Console.WriteLine("HEIGHT: " + Collision.Height);
             Console.WriteLine("TOP OF SPRITE " + Receiver.GetPosition.Y);
             Console.WriteLine("Bottom OF SPRITE " + Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y));
@@ -45,7 +45,7 @@ namespace Sprint03
             Console.WriteLine(Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left );
             Console.WriteLine(Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) >= Math.Round(Collision.Right));
             Console.WriteLine("Right Side Of Sprite: " + Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X));
-            Console.WriteLine("Right Side Of Collision: "+Math.Round(Collision.Right));
+            Console.WriteLine("Right Side Of Collision: "+Math.Round(Collision.Right));*/
             if (Collision.Width < Collision.Height)
             {
                 //Collision happend on the Left
