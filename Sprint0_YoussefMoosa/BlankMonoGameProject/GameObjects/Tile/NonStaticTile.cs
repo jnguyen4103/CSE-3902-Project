@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sprint03
 {
-    class NonStaticTile: Tile
+    public class NonStaticTile: Tile
     {
         public NonStaticTile()
         {
-
+            
         }
     }
 }

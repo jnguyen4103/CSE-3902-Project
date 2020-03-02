@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sprint03
 {
-    class StaticTile: Tile
+    public class StaticTile: Tile
     {
         public StaticTile()
         {

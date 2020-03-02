@@ -73,22 +73,56 @@ namespace Sprint03
 
             Position.X += CurrentSpeed.X;
             Position.Y += CurrentSpeed.Y;
-
+            Console.WriteLine(Position.X+" , "+ Position.Y);
+            Console.WriteLine(Game.WalkingRect.Y);
+            Console.WriteLine(Game.WalkingRect.X);
             if (Position.X >= Game.WalkingRect.Width)
             {
                 Position.X = Game.WalkingRect.Width;
+                if (Position.Y >= Game.WalkingRect.Height)
+                {
+                    Position.Y = Game.WalkingRect.Height;
+                }
+                else if (Position.Y <= Game.WalkingRect.Y)
+                {
+                    Position.Y = Game.WalkingRect.Y;
+                }
             }
-            else if(Position.X <= Game.WalkingRect.X)
+            else if (Position.X <= Game.WalkingRect.X)
             {
                 Position.X = Game.WalkingRect.X;
+                if (Position.Y >= Game.WalkingRect.Height)
+                {
+                    Position.Y = Game.WalkingRect.Height;
+                }
+                else if (Position.Y <= Game.WalkingRect.Y)
+                {
+                    Position.Y = Game.WalkingRect.Y;
+                }
             }
             else if (Position.Y >= Game.WalkingRect.Height)
             {
                 Position.Y = Game.WalkingRect.Height;
+                if (Position.X >= Game.WalkingRect.Width)
+                {
+                    Position.X = Game.WalkingRect.Width;
+                }
+                else if (Position.X <= Game.WalkingRect.X)
+                {
+                    Position.X = Game.WalkingRect.X;
+                }
             }
             else if (Position.Y <= Game.WalkingRect.Y)
             {
                 Position.Y = Game.WalkingRect.Y;
+                if (Position.X >= Game.WalkingRect.Width)
+                {
+                    Position.X = Game.WalkingRect.Width;
+                }
+                else if (Position.X <= Game.WalkingRect.X)
+                {
+                    Position.X = Game.WalkingRect.X;
+                }
             }
         }
         public void ChangeSpriteAnimation(string newSpriteName)
