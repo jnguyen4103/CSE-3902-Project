@@ -161,23 +161,25 @@ namespace Sprint03
 
             spriteBatch.Draw(Background, CurrentScreen, Color.White);
 
-            for(int i = 0; i < EffectsList.Count; i++)
-            {
-                if (EffectsList[i].Sprite.Colour == Color.Transparent)
-                {
-                    EffectsList.Remove(EffectsList[i]);
-                }
-            }
-
             foreach (IEffect effect in EffectsList.ToArray())
             {
                 effect.Sprite.DrawSprite();
+                if(effect.Sprite.Colour == Color.Transparent)
+                {
+                    EffectsList.Remove(effect);
+                }
             }
 
-            foreach (Monster monster in MonsterList)
+            foreach (Monster monster in MonsterList.ToArray())
             {
+                if(monster.Sprite.Colour == Color.Transparent)
+                {
+                    MonsterList.Remove(monster);
+                }
+
                 monster.Draw();
             }
+
             foreach(Item item in ItemsList)
             {
                 item.Draw();

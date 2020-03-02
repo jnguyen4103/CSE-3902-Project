@@ -24,7 +24,7 @@ namespace Sprint03
         private Monster self;
         private Random random = new Random();
         private int WalkCounter = 0;
-        private int damgeTimer = 0;
+        private int Timer = 0;
         private int damgeDuration = 45;
 
 
@@ -85,19 +85,19 @@ namespace Sprint03
 
         public void DamagedState(int directionDamaged)
         {
-            if(damgeTimer == 0)
+            if(Timer == 0)
             {
                 self.Sprite.ChangeSpriteAnimation("StalfosDamaged");
             }
 
-            damgeTimer++;
+            Timer++;
             Pushback(directionDamaged);
-            if (damgeTimer >= damgeDuration)
+            if (Timer >= damgeDuration)
             {
                 Console.WriteLine("Damage Ended");
                 self.Sprite.CurrentSpeed.X = 0;
                 self.Sprite.CurrentSpeed.Y = 0;
-                damgeTimer = 0;
+                Timer = 0;
                 IdleState();
                 self.State = Monster.MonsterState.Idle;
                 self.Sprite.ChangeSpriteAnimation("StalfosWalk");
@@ -132,7 +132,17 @@ namespace Sprint03
 
         public void DeadState()
         {
-            // Turn off visibility in sprite
+            Timer++;
+            if (Timer == 1)
+            {
+                WalkCounter = 0;
+                self.Sprite.BaseSpeed = 0;
+                self.State = Monster.MonsterState.Dead;
+                self.Sprite.ChangeSpriteAnimation("Death");
+            } else if (Timer >= (20 / self.Sprite.FPS * 8))
+            {
+                self.Sprite.KillSprite();
+            }
 
         }
 

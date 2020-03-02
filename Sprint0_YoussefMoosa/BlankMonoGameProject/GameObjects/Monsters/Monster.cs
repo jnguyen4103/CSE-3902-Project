@@ -21,7 +21,7 @@
             Up,
             Down,
             Left,
-            Right
+            Right,
         }
 
         // Keep track of basic info about NPC
