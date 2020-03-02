@@ -23,7 +23,7 @@ namespace Sprint03
             TotalFrames = game.SFactory.Sprites[name].Item3;
             FPS = 8;
             ChangeSpriteAnimation(name);
-            BaseSpeed = 1.25f;
+            BaseSpeed = 1f;
         }
 
         public override void Animate()
