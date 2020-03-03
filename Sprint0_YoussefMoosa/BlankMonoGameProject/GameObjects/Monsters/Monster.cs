@@ -56,7 +56,7 @@ namespace Sprint03
                 && State != MonsterState.Spawning)
             {
                 hitpoints -= damage;
-                if (hitpoints == -10)
+                if (hitpoints <= 0)
                 {
                     State = MonsterState.Dead;
                 }

@@ -69,14 +69,40 @@ namespace Sprint03
 
         public virtual void Move()
         {
-
             Position.X += CurrentSpeed.X;
             Position.Y += CurrentSpeed.Y;
-            //Console.WriteLine(Position.X+" , "+ Position.Y);
-            //Console.WriteLine(Game.WalkingRect.Y);
-            //Console.WriteLine(Game.WalkingRect.X);
+            BoundaryCheck();
+        }
+
+        public void ChangeSpriteAnimation(string newSpriteName)
+        {
+            if (Name != newSpriteName) { CurrentFrame = 0; }
+            Name = newSpriteName;
+            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.Sprites[newSpriteName];
+            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
+            InitalAnimationY = NewInfo.Item1.Y;
+            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
+            TotalFrames = NewInfo.Item3;
+        }
+
+        public virtual void KillSprite()
+        {
+            Colour = Color.Transparent;
+        }
+
+        public virtual void DrawSprite()
+        {
+            Move();
+            Animate();
+            DrawWindow.X = (int)Position.X;
+            DrawWindow.Y = (int)Position.Y;
+            AnimationWindow.Y = (int)(InitalAnimationY + (CurrentFrame * Size.Y) + (8 * CurrentFrame));
+            Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
+        }
 
 
+        protected void BoundaryCheck()
+        {
             if (Position.X >= Game.WalkingRect.Width)
             {
                 Position.X = Game.WalkingRect.Width;
@@ -125,32 +151,7 @@ namespace Sprint03
                     Position.X = Game.WalkingRect.X;
                 }
             }
-        }
 
-        public void ChangeSpriteAnimation(string newSpriteName)
-        {
-            if (Name != newSpriteName) { CurrentFrame = 0; }
-            Name = newSpriteName;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.Sprites[newSpriteName];
-            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
-            InitalAnimationY = NewInfo.Item1.Y;
-            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
-            TotalFrames = NewInfo.Item3;
-        }
-
-        public virtual void KillSprite()
-        {
-            Colour = Color.Transparent;
-        }
-
-        public virtual void DrawSprite()
-        {
-            Move();
-            Animate();
-            DrawWindow.X = (int)Position.X;
-            DrawWindow.Y = (int)Position.Y;
-            AnimationWindow.Y = (int)(InitalAnimationY + (CurrentFrame * Size.Y) + (8 * CurrentFrame));
-            Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
         }
     }
 }

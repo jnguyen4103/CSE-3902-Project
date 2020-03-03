@@ -128,7 +128,7 @@ namespace Sprint03
             Link = new Link(SpriteLink, this);
 
             MFactory.Monsters["Stalfos"](spawnPosition);
-            ItemsList.Add(new Item(this, "Heart", "Heart", ItemSpriteSheet, itemSpawnPosition, spriteBatch));
+            IFactory.SpawnItem("Heart", itemSpawnPosition);
             handler = new CollisionDetection(this);
 
 

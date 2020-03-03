@@ -56,6 +56,7 @@ namespace Sprint03
         public void PickupItem(Item item)
         {
             item.ActivateItem();
+            item.Sprite.KillSprite();
         }
 
     }

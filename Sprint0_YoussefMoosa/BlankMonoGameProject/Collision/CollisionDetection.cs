@@ -58,6 +58,7 @@ namespace Sprint03
                 {
                     returnVal = 2;
                 }
+
                 //Collision happened on the right 
                 else if (Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left && 
                     Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) == Math.Round(Collision.Right)
@@ -99,7 +100,7 @@ namespace Sprint03
             int direction;
 
             FRectangle monsterHitbox;
-            FRectangle linkHitbox = new FRectangle(Link.SpriteLink.Position.X, Link.SpriteLink.Position.Y, (int)Link.SpriteLink.GetSize.X, (int)Link.SpriteLink.GetSize.Y);
+            FRectangle linkHitbox = new FRectangle(Link.SpriteLink.Position.X, Link.SpriteLink.Position.Y + (Link.SpriteLink.GetSize.Y/2), (int)Link.SpriteLink.GetSize.X, (int)Link.SpriteLink.GetSize.Y/2);
             FRectangle effectHitbox;
           //  FRectangle tileHitBox;
             FRectangle itemHitbox;
