@@ -89,7 +89,6 @@ namespace Sprint03
         {
             self.State = Monster.MonsterState.Damaged;
             Timer++;
-            Console.WriteLine(Timer);
             Pushback(directionDamaged);
             if (Timer >= damgeDuration)
             {

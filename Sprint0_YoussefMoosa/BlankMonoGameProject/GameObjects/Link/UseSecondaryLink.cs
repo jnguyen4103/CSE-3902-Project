@@ -53,7 +53,11 @@ namespace Sprint03
             Sprite.FPS = 8;
             Lifespan = (60 / Sprite.FPS) * 2;
             Sprite.ChangeSpriteAnimation("Effect" + decoratedLink.LinkSM.GetDirection());
-            AttackEffect.CreateEffect();
+
+            if (effect != null)
+            {
+                AttackEffect.CreateEffect();
+            }
         }
 
         public void TakeDamage(int damage, int direction)

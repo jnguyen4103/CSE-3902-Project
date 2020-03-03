@@ -127,7 +127,7 @@ namespace Sprint03
                     // Monster vs. Effects
                     if (monsterHitbox.Intersects(effectHitbox))
                     {
-                        if (!effect.IsCreator(monster.Sprite))
+                        if (!effect.IsCreator(monster.Sprite) && effect.Sprite.Layer != 0.5f)
                         {
                             direction = CollisionDirection(monster.Sprite, FRectangle.Intersection(effectHitbox, monsterHitbox));
                             ColRes.DamageMonster(monster, direction, effect);
@@ -144,6 +144,10 @@ namespace Sprint03
                             direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(effectHitbox, linkHitbox));
                             ColRes.DamageLinkEffect(effect.Damage, direction, effect);
                             Console.WriteLine("Link Effect Contact");
+                        }
+                        else if (effect.Sprite.Name.Equals("BoomerangEffect"))
+                        {
+                            effect.Sprite.KillSprite();
                         }
 
                     }

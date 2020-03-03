@@ -32,7 +32,7 @@ namespace Sprint03
         protected Rectangle AnimationWindow;
         public SpriteEffects SpriteEffect = SpriteEffects.None;
         protected float Rotation = 0;
-        protected float Layer = 0;
+        public float Layer = 0;
         public Color Colour = Color.White;
 
         // Animation & Moving Info

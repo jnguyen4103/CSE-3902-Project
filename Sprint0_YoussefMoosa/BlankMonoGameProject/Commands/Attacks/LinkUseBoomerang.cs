@@ -1,20 +1,21 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+﻿using System.Linq;
 
 namespace Sprint03
 {
     class LinkUseBoomerang : ICommand
     {
-        private readonly Game1 monoProcess;
-        public LinkUseBoomerang(Game1 monoInstance)
+        private readonly Game1 Game;
+        public LinkUseBoomerang(Game1 game)
         {
-            monoProcess = monoInstance;
+            Game = game;
         }
 
         public void Execute()
         {
-            monoProcess.Link.StateMachine.UseBoomerang();
+            if (!Game.EffectsList.Any(item => item is BoomerangEffect))
+            {
+                Game.Link.StateMachine.UseBoomerang();
+            }
         }
     }
 }

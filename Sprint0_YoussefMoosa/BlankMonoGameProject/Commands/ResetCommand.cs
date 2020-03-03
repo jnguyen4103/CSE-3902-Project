@@ -18,7 +18,7 @@
             Game.ItemsList.Clear();
             Game.EffectsList.Clear();
             Game.MonsterList.Clear();
-            Game.IFactory.SpawnItem("Triforce", Game.itemSpawnPosition);
+            Game.IFactory.SpawnItem("Heart", Game.itemSpawnPosition);
             Game.MFactory.Monsters["Stalfos"](Game.spawnPosition);
         }
     }

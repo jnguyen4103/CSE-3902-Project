@@ -6,15 +6,15 @@ namespace Sprint03
 {
     class LinkAttack : ICommand
     {
-        private readonly Game1 monoProcess;
-        public LinkAttack(Game1 monoInstance)
+        private readonly Game1 Game;
+        public LinkAttack(Game1 game)
         {
-            monoProcess = monoInstance;
+            Game = game;
         }
 
         public void Execute()
         {
-            monoProcess.Link.StateMachine.AttackState();
+            Game.Link.StateMachine.AttackState();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Sprint03
             UseItem["LionKey"] = LionKey;
             UseItem["Map"] = Map;
             UseItem["Rupee"] = Rupee;
-            UseItem["TriForce"] = TriForce;
+            UseItem["Triforce"] = Triforce;
 
         }
         
@@ -95,8 +95,9 @@ namespace Sprint03
             Game.RupeeCounter++;
         }
 
-        private void TriForce()
+        private void Triforce()
         {
+
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Sprint03
             Direction = direction;
             Batch = batch;
             Texture = texture;
-            Damage = 1;
+            Damage = 0;
         }
 
         public void CreateEffect()
