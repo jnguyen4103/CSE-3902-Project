@@ -28,6 +28,7 @@ namespace Sprint03
             this.TotalFrames = game.SFactory.Sprites[Name].Item3;
             this.ChangeSpriteAnimation(Name);
             this.FPS = 12;
+            IgnoresBoundaries = true;
             Lifespan = (60 / FPS) * 3;
         }
 

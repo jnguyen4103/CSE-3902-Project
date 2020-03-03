@@ -24,6 +24,7 @@ namespace Sprint03
         public string Name;
         protected Vector2 Origin = new Vector2(0, 0);
         protected Vector2 Size;
+        protected bool IgnoresBoundaries = false;
 
         // Sprite Animation & Drawing Info
         protected SpriteBatch Batch;
@@ -71,7 +72,7 @@ namespace Sprint03
         {
             Position.X += CurrentSpeed.X;
             Position.Y += CurrentSpeed.Y;
-            BoundaryCheck();
+            if (!IgnoresBoundaries) { BoundaryCheck(); }
         }
 
         public void ChangeSpriteAnimation(string newSpriteName)
@@ -79,6 +80,7 @@ namespace Sprint03
             if (Name != newSpriteName) { CurrentFrame = 0; }
             Name = newSpriteName;
             Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.Sprites[newSpriteName];
+            Size = NewInfo.Item2;
             DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
             InitalAnimationY = NewInfo.Item1.Y;
             AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
