@@ -19,20 +19,20 @@ namespace Sprint03
         private void SpawnStalfos(Vector2 spawn)
         {
             // Creating Sprite for Stalfos
-            Sprite StalfosSprite = new MonsterSprite(Game, "StalfosWalk", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            Sprite StalfosSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
             StalfosSprite.FPS = 8;
             StalfosSprite.BaseSpeed = 0.5f;
             StalfosSprite.FPS = 4;
 
             // Setting up Monster object for Stalfos to hold stats
-            Monster Stalfos = new Monster(StalfosSprite, Game);
+            Monster Stalfos = new Monster(StalfosSprite, "Stalfos", Game);
             Stalfos.hitpoints = 2;
             Stalfos.maxHP = 2;
             Stalfos.attackDamage = 1;
             Stalfos.StateMachine = new StalfosSM(Stalfos, Game);
-            
-            Game.MonsterList.Add(Stalfos);
 
+            // Spawning dat boii
+            Game.MonsterList.Add(Stalfos);
         }
     }
 }

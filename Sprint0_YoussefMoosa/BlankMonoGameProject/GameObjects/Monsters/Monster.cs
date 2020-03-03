@@ -1,4 +1,6 @@
-﻿namespace Sprint03
+﻿using System;
+
+namespace Sprint03
 {
     // Abstract class allows for code reuse since a lot of NPC's share similar variables
     // Look at the Stalfos and Goriyas classes for commments about specific implementations
@@ -7,6 +9,7 @@
         public Sprite Sprite;
         public IStateMachine StateMachine;
         protected Game1 Game;
+        private string Name;
         private int DamageDirection;
         public enum MonsterState
         {
@@ -32,11 +35,12 @@
         public int maxHP;
         public int attackDamage;
 
-        public Monster(Sprite sprite, Game1 game)
+        public Monster(Sprite sprite, string name, Game1 game)
         {
             State = MonsterState.Spawning;
             Direction = MonsterDirection.Down;
             Sprite = sprite;
+            Name = name;
             Game = game;
         }
 
@@ -47,15 +51,19 @@
 
         public virtual void TakeDamage(int damage, int damageDirection)
         {
-            if (State != MonsterState.Damaged && State != MonsterState.Dead)
+            if (State != MonsterState.Damaged 
+                && State != MonsterState.Dead
+                && State != MonsterState.Spawning)
             {
                 hitpoints -= damage;
-                if (hitpoints < 1)
+                if (hitpoints == -10)
                 {
                     State = MonsterState.Dead;
                 }
                 else
                 {
+                    Sprite.ChangeSpriteAnimation(Name + "Damaged");
+                    Console.WriteLine("Stalfos Damaged");
                     State = MonsterState.Damaged;
                     DamageDirection = damageDirection;
                     StateMachine.DamagedState(damageDirection);

@@ -16,7 +16,6 @@
             Game.Link = new Link(Game.SpriteLink, Game);
             Game.Link.HP = Game.Link.MaxHP;
             Game.EffectsList.Clear();
-
             Game.MonsterList.Clear();
             Game.MFactory.Monsters["Stalfos"](Game.spawnPosition);
         }

@@ -9,7 +9,7 @@ namespace Sprint03
         private Random random = new Random();
         private int WalkCounter = 0;
         private int Timer = 0;
-        private int damgeDuration = 45;
+        private readonly int damgeDuration = 45;
 
 
         public StalfosSM(Monster Stalfos, Game1 game)
@@ -29,6 +29,7 @@ namespace Sprint03
                 self.Sprite.FPS = 3;
             } else if (Timer >= 60)
             {
+                Timer = 0;
                 self.Sprite.ChangeSpriteAnimation("StalfosWalk");
                 self.Sprite.FPS = 8;
                 IdleState();
@@ -86,12 +87,9 @@ namespace Sprint03
 
         public void DamagedState(int directionDamaged)
         {
-            if(Timer == 0)
-            {
-                self.Sprite.ChangeSpriteAnimation("StalfosDamaged");
-            }
-
+            self.State = Monster.MonsterState.Damaged;
             Timer++;
+            Console.WriteLine(Timer);
             Pushback(directionDamaged);
             if (Timer >= damgeDuration)
             {
@@ -99,7 +97,6 @@ namespace Sprint03
                 self.Sprite.CurrentSpeed.Y = 0;
                 Timer = 0;
                 IdleState();
-                self.State = Monster.MonsterState.Idle;
                 self.Sprite.ChangeSpriteAnimation("StalfosWalk");
 
             }
@@ -118,11 +115,11 @@ namespace Sprint03
                     self.Sprite.CurrentSpeed.Y = -self.Sprite.BaseSpeed;
                     break;
                 case (2):
-                    self.Sprite.CurrentSpeed.X = -self.Sprite.BaseSpeed;
+                    self.Sprite.CurrentSpeed.X = self.Sprite.BaseSpeed;
                     self.Sprite.CurrentSpeed.Y = 0;
                     break;
                 case (3):
-                    self.Sprite.CurrentSpeed.X = self.Sprite.BaseSpeed;
+                    self.Sprite.CurrentSpeed.X = -self.Sprite.BaseSpeed;
                     self.Sprite.CurrentSpeed.Y = 0;
                     break;
                 default:
@@ -149,12 +146,6 @@ namespace Sprint03
 
         public void IdleState()
         {
-            if (Timer == 1)
-            {
-                int wait = random.Next(20, 60);
-
-            }
-
             self.State = Monster.MonsterState.Moving;
             getRandomDirection();
         }

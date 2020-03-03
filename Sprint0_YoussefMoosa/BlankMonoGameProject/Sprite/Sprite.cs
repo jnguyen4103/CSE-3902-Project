@@ -72,9 +72,9 @@ namespace Sprint03
 
             Position.X += CurrentSpeed.X;
             Position.Y += CurrentSpeed.Y;
-            Console.WriteLine(Position.X+" , "+ Position.Y);
-            Console.WriteLine(Game.WalkingRect.Y);
-            Console.WriteLine(Game.WalkingRect.X);
+            //Console.WriteLine(Position.X+" , "+ Position.Y);
+            //Console.WriteLine(Game.WalkingRect.Y);
+            //Console.WriteLine(Game.WalkingRect.X);
 
 
             if (Position.X >= Game.WalkingRect.Width)

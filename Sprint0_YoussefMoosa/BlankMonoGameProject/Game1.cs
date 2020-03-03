@@ -92,6 +92,7 @@ namespace Sprint03
             keyboardCommands[10] = new IdleLink(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
             MediaPlayer.Play(song);
+            MediaPlayer.Volume = 0.0f;
             //  Uncomment the following line will also loop the song
             //  MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;

@@ -87,7 +87,7 @@ namespace Sprint03
                     returnVal = 1;
                 }
             }
-            Console.WriteLine("Value is "+returnVal);
+            //Console.WriteLine("Value is "+returnVal);
             return returnVal;
         }
 
