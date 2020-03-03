@@ -30,7 +30,6 @@ namespace Sprint03
         {
             EffectSprite = new SwordSprite(Creator, Game, Direction, Texture, Batch);
             Game.EffectsList.Add(this);
-
         }
 
         public bool IsCreator(Sprite sprite)

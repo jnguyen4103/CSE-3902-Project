@@ -36,7 +36,7 @@
 
         // Setting initial action and movement states
         public LinkState State = LinkState.Idle;
-        public LinkDirection Direction = LinkDirection.Down;
+        public LinkDirection Direction = LinkDirection.Up;
         public int hitpoints;
         public int maxHP = 6;
 

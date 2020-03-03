@@ -124,7 +124,7 @@ namespace Sprint03
             TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
             Background = Content.Load<Texture2D>("Background");
 
-            SpriteLink = new LinkSprite(this, "WalkDown", LinkSpriteSheet, LinkSpawn, spriteBatch);
+            SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
 
             MFactory.Monsters["Stalfos"](spawnPosition);
