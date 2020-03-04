@@ -48,8 +48,12 @@ namespace Sprint03
 
         public void DamageMonster(Monster monster, int direction, IEffect effect)
         {
-            monster.TakeDamage(effect.Damage, direction);
-            DestroyEffect(effect);
+            if(!effect.Sprite.Name.Equals("SwordBeamExplosion"))
+            {
+                monster.TakeDamage(effect.Damage, direction);
+                DestroyEffect(effect);
+            }
+
         }
 
         public void DamageLinkEffect(int damage, int direction, IEffect effect)
@@ -61,6 +65,7 @@ namespace Sprint03
         public void PickupItem(Item item)
         {
             item.ActivateItem();
+            item.Sprite.KillSprite();
         }
 
         private void StayOffBlock(Sprite Sp, FRectangle Block,int direction)

@@ -14,6 +14,8 @@ namespace Sprint03
         private Link.LinkDirection Direction;
         private int Lifespan;
         private int timer = 0;
+
+
         public SwordSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
@@ -26,6 +28,7 @@ namespace Sprint03
             this.TotalFrames = game.SFactory.Sprites[Name].Item3;
             this.ChangeSpriteAnimation(Name);
             this.FPS = 12;
+            IgnoresBoundaries = true;
             Lifespan = (60 / FPS) * 3;
         }
 

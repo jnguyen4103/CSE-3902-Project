@@ -1,31 +1,25 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
-namespace Sprint03
+﻿namespace Sprint03
 {
     class ResetCommand : ICommand
     {
-        private readonly Game1 monoProcess;
+        private readonly Game1 Game;
 
-        public ResetCommand(Game1 monoInstance)
+        public ResetCommand(Game1 game)
         {
-            monoProcess = monoInstance;
+            Game = game;
         }
 
         public void Execute()
         {
-            monoProcess.Link.SpriteLink.Position = monoProcess.LinkSpawn;
-            monoProcess.Link.StateMachine.DownState();
-            monoProcess.Link = new Link(monoProcess.SpriteLink, monoProcess);
-            monoProcess.Link.HP = monoProcess.Link.MaxHP;
-            monoProcess.EffectsList.Clear();
-            foreach (Monster monster in monoProcess.MonsterList)
-            {
-                monster.Sprite.Position = monoProcess.spawnPosition;
-                monster.hitpoints = monster.maxHP;
-                monster.StateMachine.IdleState();
-            }
+            Game.Link.SpriteLink.Position = Game.LinkSpawn;
+            Game.Link.StateMachine.DownState();
+            Game.Link = new Link(Game.SpriteLink, Game);
+            Game.Link.HP = Game.Link.MaxHP;
+            Game.ItemsList.Clear();
+            Game.EffectsList.Clear();
+            Game.MonsterList.Clear();
+            Game.IFactory.SpawnItem("Heart", Game.itemSpawnPosition);
+            Game.MFactory.Monsters["Stalfos"](Game.spawnPosition);
         }
     }
 

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<LevelData>
+
+  <!-- Information to draw the interior, walkable area of the room -->
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14-->
+  -<UseExterior>True</UseExterior>
+  -<Interior>1056,384,192,112</Interior>
+
+  <!-- Collide-able tiles in the room -->
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+
+  <!-- Information on drawing and handling door events -->
+  -<Door>
+    -<Location>Up</Location>
+    -<Type>KeyLocked</Type>
+    -<NextRoom>Room17</NextRoom>
+  </Door>
+  -<Door>
+    -<Location>Down</Location>
+    -<Type>Wall</Type>
+  </Door>
+  -<Door>
+    -<Location>Right</Location>
+    -<Type>Wall</Type>
+  </Door>
+  -<Door>
+    -<Location>Left</Location>
+    -<Type>Open</Type>
+    -<NextRoom>Room11</NextRoom>
+  </Door>
+
+  <!-- Information on Link's spawn location-->
+  -<Link>
+    -<PreviousRoom>Room11</PreviousRoom>
+    -<Coords></Coords>
+  </Link>
+  -<Link>
+    -<PreviousRoom>Room17</PreviousRoom>
+    -<Coords></Coords>
+  </Link>
+
+  <!-- Information to draw enemies -->
+  -<Monster>
+    -<Name>Wallmaster</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Wallmaster</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Wallmaster</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Wallmaster</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Wallmaster</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Wallmaster</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Wallmaster</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Wallmaster</Name>
+    -<Coords></Coords>
+  </Monster>
+
+  <!-- Information to draw items -->
+  -<Item>
+    -<Name>Key</Name>
+    -<Coords></Coords>
+  </Item>
+
+</LevelData>

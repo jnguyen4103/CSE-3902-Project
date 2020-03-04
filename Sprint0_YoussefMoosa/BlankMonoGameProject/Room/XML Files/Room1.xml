@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelData>
+
+  <!-- Information to draw the interior, walkable area of the room -->
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
+  -<Interior>
+    <UseExterior>True</UseExterior>
+    <Rectangle>547,198,192,112</Rectangle>
+  </Interior>
+
+  <!-- Collide-able tiles in the room -->
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+
+  <!-- Information on drawing and handling door events -->
+  -<Door>
+    -<Location>Left</Location>
+    -<Type>Open</Type>
+    -<NextRoom>Room2</NextRoom>
+  </Door>
+  -<Door>
+    -<Location>Up</Location>
+    -<Type>KeyLocked</Type>
+    -<NextRoom>Room4</NextRoom>
+  </Door>
+  -<Door>
+    -<Location>Right</Location>
+    -<Type>Open</Type>
+    -<NextRoom>Room3</NextRoom>
+  </Door>
+  -<Door>
+    -<Location>Down</Location>
+    -<Type>Open</Type>
+    -<NextRoom>None</NextRoom>
+  </Door>
+
+  <!-- Information on Link's spawn location-->
+  -<Link>
+    -<PreviousRoom>None</PreviousRoom>
+    -<Coords></Coords>
+  </Link>
+  -<Link>
+    -<PreviousRoom>Room2</PreviousRoom>
+    -<Coords></Coords>
+  </Link>
+  -<Link>
+    -<PreviousRoom>Room3</PreviousRoom>
+    -<Coords></Coords>
+  </Link>
+  -<Link>
+    -<PreviousRoom>Room4</PreviousRoom>
+    -<Coords></Coords>
+  </Link>
+
+</LevelData>

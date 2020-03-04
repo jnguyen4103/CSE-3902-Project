@@ -1,17 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Microsoft.Xna.Framework.Graphics;
 namespace Sprint03
 {
     public class ArrowSprite : Sprite
     {
         private Sprite Creator;
         private Link.LinkDirection Direction;
+        private int Timer = 0;
+        private int Delay = 2;
         public ArrowSprite(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
@@ -85,6 +80,21 @@ namespace Sprint03
                     break;
                 default:
                     break;
+            }
+        }
+
+        public override void KillSprite()
+        {
+            Timer++;
+            if(Timer == 1)
+            {
+                BaseSpeed = 0;
+                ChangeSpriteAnimation("ProjectileHit");
+            }
+            else if (Timer >= Delay)
+            {
+                Timer = 0;
+                base.KillSprite();
             }
         }
     }

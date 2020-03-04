@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Sprint03
 {
@@ -77,7 +78,10 @@ namespace Sprint03
             {
                 if (decoratedLink.hitpoints == decoratedLink.maxHP)
                 {
-                    SwordBeam.CreateEffect();
+                    if (!Game.EffectsList.Any(item => item is SwordBeamEffect) && !Game.EffectsList.Any(item => item is BeamExplosionEffect))
+                    {
+                        SwordBeam.CreateEffect();
+                    }
                 }
                 RemoveDecorator();
             }

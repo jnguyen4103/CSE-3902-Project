@@ -16,6 +16,8 @@ namespace Sprint03
 
         public SpriteFactory SFactory;
         public ItemFactory IFactory;
+        public MonsterFactory MFactory;
+        public RoomFactory RFactory;
 
         // Link Object & Sprite
         public ILink Link;
@@ -23,13 +25,13 @@ namespace Sprint03
         public int RupeeCounter = 0;
 
         // Sprite Sheets
-        private Texture2D LinkSpriteSheet;
-        private Texture2D MonsterSpriteSheet;
-        private Texture2D ItemSpriteSheet;
+        public Texture2D LinkSpriteSheet;
+        public Texture2D MonsterSpriteSheet;
+        public Texture2D ItemSpriteSheet;
         public Texture2D EffectSpriteSheet;
-        private Texture2D TileSpriteSheet;
-        private Texture2D Background;
-        private Song song;
+        public Texture2D TileSpriteSheet;
+        public Texture2D Background;
+        public Song song;
 
 
         CollisionDetection handler;
@@ -37,7 +39,6 @@ namespace Sprint03
         public List<Monster> MonsterList = new List<Monster>();
         public List<Item> ItemsList = new List<Item>();
         public List<IEffect> EffectsList = new List<IEffect>();
-        public List<FRectangle> BoundedBlocks = new List<FRectangle>();
 
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
         private ICommand[] keyboardCommands = new ICommand[11];
@@ -75,7 +76,10 @@ namespace Sprint03
             // TODO: Add your initialization logic here
             SFactory = new SpriteFactory();
             IFactory = new ItemFactory(this);
+            MFactory = new MonsterFactory(this);
+            RFactory = new RoomFactory(this);
             this.song = Content.Load<Song>("musicForGame");
+
             // Adding all of the commands into the keyboard controller
             keyboardCommands[0] = new LinkWalkUp(this);
             keyboardCommands[1] = new LinkWalkDown(this);
@@ -90,9 +94,8 @@ namespace Sprint03
             keyboardCommands[10] = new IdleLink(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
             MediaPlayer.Play(song);
-
-            //  Uncomment the following line will also loop the song
-            //  MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = 0.1f;
+            MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
             base.Initialize();
         }
@@ -122,13 +125,11 @@ namespace Sprint03
             TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
             Background = Content.Load<Texture2D>("Background");
 
-            SpriteLink = new LinkSprite(this, "WalkDown", LinkSpriteSheet, LinkSpawn, spriteBatch);
+            SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
 
-            MonsterList.Add(new Stalfos(new StalfosSprite(this, "StalfosWalk", MonsterSpriteSheet, spawnPosition, spriteBatch), this));
-            ItemsList.Add(new Item(this, "Heart", "Heart", ItemSpriteSheet, itemSpawnPosition, spriteBatch));
-            BoundedBlocks.Add(new FRectangle(150f, 150f,16,16));
-            
+            MFactory.Monsters["Stalfos"](spawnPosition);
+            IFactory.SpawnItem("Heart", itemSpawnPosition);
             handler = new CollisionDetection(this);
 
 

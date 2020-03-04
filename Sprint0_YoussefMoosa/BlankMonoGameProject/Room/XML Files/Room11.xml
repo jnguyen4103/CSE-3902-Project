@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<LevelData>
+
+  <!-- Information to draw the interior, walkable area of the room -->
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14-->
+  -<UseExterior>True</UseExterior>
+  -<Interior>800,384,192,112</Interior>
+
+  <!-- Collide-able tiles in the room -->
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+  -<Tile>
+    -<Name>Block</Name>
+    -<Type>Static</Type>
+    -<Rectangle></Rectangle>
+  </Tile>
+
+  <!-- Information on drawing and handling door events -->
+  -<Door>
+    -<Location>Right</Location>
+    -<Type>Open</Type>
+    -<NextRoom>Room12</NextRoom>
+  </Door>
+  -<Door>
+    -<Location>Left</Location>
+    -<Type>KeyLocked</Type>
+    -<NextRoom>Room10</NextRoom>
+  </Door>
+  -<Door>
+    -<Location>Down</Location>
+    -<Type>Bombable</Type>
+    -<NextRoom>Room7</NextRoom>
+  </Door>
+  -<Door>
+    -<Location>Up</Location>
+    -<Type>Wall</Type>
+  </Door>
+
+  <!-- Information on Link's spawn location-->
+  -<Link>
+    -<PreviousRoom>Room10</PreviousRoom>
+    -<Coords></Coords>
+  </Link>
+  <Link>
+    -<PreviousRoom>Room12</PreviousRoom>
+    -<Coords></Coords>
+  </Link>
+
+  <!-- Information to draw enemies -->
+  -<Monster>
+    -<Name>Goriya</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Goriya</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Goriya</Name>
+    -<Coords></Coords>
+  </Monster>
+
+  <!-- Information to draw items -->
+  -<Item>
+    -<Name>Boomerang</Name>
+    -<Coords></Coords>
+  </Item>
+
+</LevelData>

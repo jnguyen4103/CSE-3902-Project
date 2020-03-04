@@ -7,6 +7,7 @@ namespace Sprint03
     {
         Game1 Game;
         IDictionary<Keys, ICommand> keyMappings;
+        private bool AttackTriggered = false;
 
        public KeyboardController(Game1 game, Keys[] keys, ICommand[] commands)
         {
@@ -29,6 +30,7 @@ namespace Sprint03
             {
                 Game.Link.StateMachine.IdleState();
             }
+            if (keyState.IsKeyUp(Keys.Z)) { AttackTriggered = false; }
 
 
             foreach (Keys k in pressed)
@@ -52,10 +54,16 @@ namespace Sprint03
                     }
                 }
 
+                if(k == Keys.Z && !AttackTriggered)
+                {
+                    AttackTriggered = true;
+                    keyMappings[k].Execute();
+                }
+
                 if (keyMappings.ContainsKey(k))
                 {
                     // Without this if statement the game wil allow animation cancelling
-                    if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.D1 || k == Keys.D2 || k == Keys.Z)
+                    if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.D1 || k == Keys.D2)
                     {
                         keyMappings[k].Execute();
 

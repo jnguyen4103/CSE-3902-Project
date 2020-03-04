@@ -62,6 +62,8 @@
     <Compile Include="Components\MonoTimer.cs" />
     <Compile Include="GameObjects\Effects\Sprites\BeamExplosionSprite.cs" />
     <Compile Include="GameObjects\Effects\BeamExplosionEffect.cs" />
+    <Compile Include="GameObjects\Monsters\MonsterFactory.cs" />
+    <Compile Include="GameObjects\Monsters\MonsterSprite.cs" />
     <Compile Include="GameObjects\Tile\NonStaticTile.cs" />
     <Compile Include="GameObjects\Tile\StaticTile.cs" />
     <Compile Include="GameObjects\Tile\TileSprite.cs" />
@@ -74,7 +76,7 @@
     <Compile Include="GameObjects\Items\Item.cs" />
     <Compile Include="GameObjects\Items\ItemFactory.cs" />
     <Compile Include="GameObjects\Link\UseSecondaryLink.cs" />
-    <Compile Include="GameObjects\Monsters\Stalfos.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\StalfosSM.cs" />
     <Compile Include="GameObjects\Link\AttackingLink.cs" />
     <Compile Include="GameObjects\Link\DamagedLink.cs" />
     <Compile Include="GameObjects\Link\ILink.cs" />
@@ -93,11 +95,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="GameObjects\Tile\Tile.cs" />
+    <Compile Include="Room\IRoom.cs" />
+    <Compile Include="Room\Room.cs" />
+    <Compile Include="Room\RoomHandler.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="GameObjects\Items\ItemSprite.cs" />
     <Compile Include="GameObjects\Link\LinkSprite.cs" />
     <Compile Include="Sprite\Sprite.cs" />
-    <Compile Include="GameObjects\Monsters\Sprites\StalfosSprite.cs" />
     <Compile Include="Sprite\SpriteFactory.cs" />
     <Compile Include="GameObjects\Monsters\Monster.cs" />
   </ItemGroup>
@@ -119,6 +123,26 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GameObjects\Blocks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Room\XML Files\Room4.xml" />
+    <Content Include="Room\XML Files\Room1.xml" />
+    <Content Include="Room\XML Files\Room10.xml" />
+    <Content Include="Room\XML Files\Room11.xml" />
+    <Content Include="Room\XML Files\Room12.xml" />
+    <Content Include="Room\XML Files\Room13.xml" />
+    <Content Include="Room\XML Files\Room14.xml" />
+    <Content Include="Room\XML Files\Room15.xml" />
+    <Content Include="Room\XML Files\Room16.xml" />
+    <Content Include="Room\XML Files\Room17.xml" />
+    <Content Include="Room\XML Files\Room18.xml" />
+    <Content Include="Room\XML Files\Room2.xml" />
+    <Content Include="Room\XML Files\Room3.xml" />
+    <Content Include="Room\XML Files\Room5.xml" />
+    <Content Include="Room\XML Files\Room6.xml" />
+    <Content Include="Room\XML Files\Room7.xml" />
+    <Content Include="Room\XML Files\Room8.xml" />
+    <Content Include="Room\XML Files\Room9.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

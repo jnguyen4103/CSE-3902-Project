@@ -11,7 +11,7 @@ namespace Sprint03
         private List<Item> Items;
         private List<Monster> Monsters;
         public List<IEffect> Effects;
-        public List<FRectangle> BoundedBlocks;
+        public List<Tile> Tiles;
         private Game1 Game;
         private CollisionResolution ColRes;
 
@@ -21,7 +21,6 @@ namespace Sprint03
             this.Link = game.Link;
             this.Items = game.ItemsList;
             this.Effects = game.EffectsList;
-            this.BoundedBlocks = game.BoundedBlocks;
            // this.Tiles = game.TileList;
             Game = game;
             ColRes = new CollisionResolution(game);
@@ -31,18 +30,35 @@ namespace Sprint03
         {
             Vector2 CollisionCenter = Collision.Center;
             int returnVal = 0;
+            /* 0 - TOp
+            * 1 - Bottom
+            * 2 - Left
+            * 3 - Right
+            */
 
-            Console.WriteLine("WIDTH " + Collision.Width);
-            Console.WriteLine("HEIGHT" + Collision.Height);
+            //Our intersection happened on the left or the right
+/*            Console.WriteLine("WIDTH :" + Collision.Width);
+            Console.WriteLine("HEIGHT: " + Collision.Height);
+            Console.WriteLine("TOP OF SPRITE " + Receiver.GetPosition.Y);
+            Console.WriteLine("Bottom OF SPRITE " + Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y));
+            Console.WriteLine("TOP OF Collision" + Math.Round(Collision.Top));
+            Console.WriteLine(Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left);
+            Console.WriteLine(Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) >= Math.Round(Collision.Right));
+            Console.WriteLine("Right Side Of Sprite: " + Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X));
+            Console.WriteLine("Right Side Of Collision: " + Math.Round(Collision.Right));*/
 
-            if (Collision.Width <= Collision.Height && Collision.Left != Collision.Right)
+            if (Collision.Width < Collision.Height)
             {
                 //Collision happend on the Left
+                
+
+
                 if (Receiver.GetPosition.X < Collision.Right && Math.Round(Receiver.GetPosition.X) == Math.Round(Collision.Left) && Receiver.GetPosition.Y <= Collision.Top
                     && Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) >= Math.Round(Collision.Top))
                 {
                     returnVal = 2;
                 }
+
                 //Collision happened on the right 
                 else if (Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left && 
                     Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) == Math.Round(Collision.Right)
@@ -59,21 +75,20 @@ namespace Sprint03
             }
 
             //Our intersection happend on the top or the bottom 
-            else if (Collision.Height < Collision.Width && Collision.Top != Collision.Bottom)
+            else if (Collision.Height < Collision.Width)
             {
                 //Collision happend on the Top
-                if (Receiver.GetPosition.Y == Collision.Top && Receiver.GetPosition.Y > Collision.Bottom && Receiver.GetPosition.X < Collision.Right && Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left)
+                if (Receiver.GetPosition.Y == Collision.Top && Receiver.GetPosition.Y > Collision.Bottom)
                 {
                     returnVal = 0;
                 }
                 //Collision Happened on the bottom
-                else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top && Receiver.GetPosition.X < Collision.Right && Receiver.GetPosition.X+Receiver.GetSize.X >Collision.Left)
+                else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top)
                 {
                     returnVal = 1;
                 }
             }
-            Console.WriteLine(returnVal);
-            
+            //Console.WriteLine("Value is "+returnVal);
             return returnVal;
         }
 
@@ -85,70 +100,64 @@ namespace Sprint03
             int direction;
 
             FRectangle monsterHitbox;
-            FRectangle linkHitbox = new FRectangle(Link.SpriteLink.Position.X, Link.SpriteLink.Position.Y, (int)Link.SpriteLink.GetSize.X, (int)Link.SpriteLink.GetSize.Y);
+            FRectangle linkHitbox = new FRectangle(Link.SpriteLink.Position.X, Link.SpriteLink.Position.Y + (Link.SpriteLink.GetSize.Y/2), (int)Link.SpriteLink.GetSize.X, (int)Link.SpriteLink.GetSize.Y/2);
             FRectangle effectHitbox;
           //  FRectangle tileHitBox;
             FRectangle itemHitbox;
             FRectangle screenDimensions= new FRectangle(Game.CurrentScreen.X, Game.CurrentScreen.Y, Game.CurrentScreen.Width, Game.CurrentScreen.Height);
-            foreach (FRectangle box in BoundedBlocks)
+
+            foreach (Monster monster in Monsters)
             {
-                foreach (Monster monster in Monsters)
+                // Monster vs. Link
+                monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
+                if (monsterHitbox.Intersects(linkHitbox))
                 {
-                    // Monster vs. Link
-                    monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
-                    if (monsterHitbox.Intersects(linkHitbox))
-                    {
-                        direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(monsterHitbox, linkHitbox));
-                        ColRes.HurtLink(monster, direction);
-                    }
-
-                    if (box.Intersects(monsterHitbox))
-                    {
-                        direction = CollisionDirection(monster.Sprite,FRectangle.Intersection(monsterHitbox,box));
-                        ColRes.StopSprite(monster.Sprite,box,direction);
-                    }
-                    /*Makes Sure Monsters Stay InBounds*/
-
-                    foreach (IEffect effect in Effects.ToArray())
-                    {
-                        effectHitbox = new FRectangle(effect.Sprite.Position.X, effect.Sprite.Position.Y, (int)effect.Sprite.GetSize.X, (int)effect.Sprite.GetSize.Y);
-
-
-                        Console.WriteLine("WE ARE IN THE LOOP");
-                        if (box.Intersects(effectHitbox))
-                        {
-                            ColRes.DestroyEffect(effect);
-                            Console.WriteLine("FUCK WE HITTING IT");
-                        }
-   
-
-                        // Monster vs. Effects
-                        if (monsterHitbox.Intersects(effectHitbox))
-                        {
-                            if (!effect.IsCreator(monster.Sprite))
-                            {
-                                direction = CollisionDirection(monster.Sprite, FRectangle.Intersection(effectHitbox, monsterHitbox));
-                                ColRes.DamageMonster(monster, direction, effect);
-                            }
-                        }
-
-
-                        // Link vs. Effects
-                        if (effectHitbox.Intersects(linkHitbox))
-                        {
-                            if (!effect.IsCreator(Link.SpriteLink))
-                            {
-                                direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(effectHitbox, linkHitbox));
-                                ColRes.DamageLinkEffect(effect.Damage, direction, effect);
-                            }
-                        }
-                    }
+                    direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(monsterHitbox, linkHitbox));
+                    ColRes.HurtLink(monster, direction);
+                    Console.WriteLine("Enemy Contact");
                 }
-                if (box.Intersects(linkHitbox))
+
+
+                /*Makes Sure Monsters Stay InBounds*/
+
+                foreach (IEffect effect in Effects.ToArray())
                 {
-                    direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(box, linkHitbox));
-                    ColRes.StopSprite(Link.SpriteLink,box,direction);                }
+                    effectHitbox = new FRectangle(effect.Sprite.Position.X, effect.Sprite.Position.Y, (int)effect.Sprite.GetSize.X, (int)effect.Sprite.GetSize.Y);
+
+                    // Monster vs. Effects
+                    if (monsterHitbox.Intersects(effectHitbox))
+                    {
+                        if (!effect.IsCreator(monster.Sprite) && effect.Sprite.Layer != 0.5f)
+                        {
+                            direction = CollisionDirection(monster.Sprite, FRectangle.Intersection(effectHitbox, monsterHitbox));
+                            ColRes.DamageMonster(monster, direction, effect);
+                            Console.WriteLine("Enemy Effect Contact");
+                        }
+                    }
+
+
+                    // Link vs. Effects
+                    if (effectHitbox.Intersects(linkHitbox))
+                    {
+                        if (!effect.IsCreator(Link.SpriteLink))
+                        {
+                            direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(effectHitbox, linkHitbox));
+                            ColRes.DamageLinkEffect(effect.Damage, direction, effect);
+                            Console.WriteLine("Link Effect Contact");
+                        }
+                        else if (effect.Sprite.Name.Equals("BoomerangEffect"))
+                        {
+                            effect.Sprite.KillSprite();
+                        }
+
+                    }
+                
+
+                    
+
+                }
             }
+
             // Link vs. Items
             foreach (Item item in Items)
             {
@@ -158,7 +167,7 @@ namespace Sprint03
                 {
                     direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(itemHitbox, linkHitbox));
                     ColRes.PickupItem(item);
-                   // Console.WriteLine("Item Pickup " + item.Sprite.Name);
+                    Console.WriteLine("Item Pickup " + item.Sprite.Name);
 
                 }
             }

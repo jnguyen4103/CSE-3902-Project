@@ -24,6 +24,7 @@ namespace Sprint03
         public string Name;
         protected Vector2 Origin = new Vector2(0, 0);
         protected Vector2 Size;
+        protected bool IgnoresBoundaries = false;
 
         // Sprite Animation & Drawing Info
         protected SpriteBatch Batch;
@@ -32,7 +33,7 @@ namespace Sprint03
         protected Rectangle AnimationWindow;
         public SpriteEffects SpriteEffect = SpriteEffects.None;
         protected float Rotation = 0;
-        protected float Layer = 0;
+        public float Layer = 0;
         public Color Colour = Color.White;
 
         // Animation & Moving Info
@@ -46,7 +47,6 @@ namespace Sprint03
         
 
         public Vector2 GetPosition {  get { return Position; } }
-
 
 
         public virtual void Animate()
@@ -70,16 +70,41 @@ namespace Sprint03
 
         public virtual void Move()
         {
-
             Position.X += CurrentSpeed.X;
             Position.Y += CurrentSpeed.Y;
-            StayInBoundaries();
-
-        
+            if (!IgnoresBoundaries) { BoundaryCheck(); }
         }
-        public void StayInBoundaries()
-        {
 
+        public void ChangeSpriteAnimation(string newSpriteName)
+        {
+            if (Name != newSpriteName) { CurrentFrame = 0; }
+            Name = newSpriteName;
+            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.Sprites[newSpriteName];
+            Size = NewInfo.Item2;
+            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
+            InitalAnimationY = NewInfo.Item1.Y;
+            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
+            TotalFrames = NewInfo.Item3;
+        }
+
+        public virtual void KillSprite()
+        {
+            Colour = Color.Transparent;
+        }
+
+        public virtual void DrawSprite()
+        {
+            Move();
+            Animate();
+            DrawWindow.X = (int)Position.X;
+            DrawWindow.Y = (int)Position.Y;
+            AnimationWindow.Y = (int)(InitalAnimationY + (CurrentFrame * Size.Y) + (8 * CurrentFrame));
+            Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
+        }
+
+
+        protected void BoundaryCheck()
+        {
             if (Position.X >= Game.WalkingRect.Width)
             {
                 Position.X = Game.WalkingRect.Width;
@@ -128,31 +153,7 @@ namespace Sprint03
                     Position.X = Game.WalkingRect.X;
                 }
             }
-        }
-        public void ChangeSpriteAnimation(string newSpriteName)
-        {
-            if (Name != newSpriteName) { CurrentFrame = 0; }
-            Name = newSpriteName;
-            Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.Sprites[newSpriteName];
-            DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);
-            InitalAnimationY = NewInfo.Item1.Y;
-            AnimationWindow = new Rectangle(NewInfo.Item1.X, NewInfo.Item1.Y * CurrentFrame, (int)NewInfo.Item2.X, (int)NewInfo.Item2.Y);
-            TotalFrames = NewInfo.Item3;
-        }
 
-        public virtual void KillSprite()
-        {
-            Colour = Color.Transparent;
-        }
-
-        public virtual void DrawSprite()
-        {
-            Move();
-            Animate();
-            DrawWindow.X = (int)Position.X;
-            DrawWindow.Y = (int)Position.Y;
-            AnimationWindow.Y = (int)(InitalAnimationY + (CurrentFrame * Size.Y) + (8 * CurrentFrame));
-            Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
         }
     }
 }

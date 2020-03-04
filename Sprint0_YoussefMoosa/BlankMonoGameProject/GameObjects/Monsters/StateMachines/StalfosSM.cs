@@ -2,23 +2,6 @@
 using System;
 namespace Sprint03
 {
-    public class Stalfos : Monster
-    {
-        
-        // Setting info about NPC and default parameters
-        public Stalfos(StalfosSprite sprite, Game1 game)
-        {
-            State = MonsterState.Spawning;
-            Direction = MonsterDirection.Down;
-            Sprite = sprite;
-            Game = game;
-            hitpoints = 2;
-            maxHP = 2;
-            attackDamage = 1;
-            StateMachine = new StalfosSM(this, game);
-        }
-    }
-
     public class StalfosSM : IStateMachine
     {
         private Game1 Game;
@@ -26,10 +9,10 @@ namespace Sprint03
         private Random random = new Random();
         private int WalkCounter = 0;
         private int Timer = 0;
-        private int damgeDuration = 45;
+        private readonly int damgeDuration = 45;
 
 
-        public StalfosSM(Stalfos Stalfos, Game1 game)
+        public StalfosSM(Monster Stalfos, Game1 game)
         {
             self = Stalfos;
             Game = game;
@@ -46,6 +29,7 @@ namespace Sprint03
                 self.Sprite.FPS = 3;
             } else if (Timer >= 60)
             {
+                Timer = 0;
                 self.Sprite.ChangeSpriteAnimation("StalfosWalk");
                 self.Sprite.FPS = 8;
                 IdleState();
@@ -103,21 +87,15 @@ namespace Sprint03
 
         public void DamagedState(int directionDamaged)
         {
-            if(Timer == 0)
-            {
-                self.Sprite.ChangeSpriteAnimation("StalfosDamaged");
-            }
-
+            self.State = Monster.MonsterState.Damaged;
             Timer++;
             Pushback(directionDamaged);
             if (Timer >= damgeDuration)
             {
-                Console.WriteLine("Damage Ended");
                 self.Sprite.CurrentSpeed.X = 0;
                 self.Sprite.CurrentSpeed.Y = 0;
                 Timer = 0;
                 IdleState();
-                self.State = Monster.MonsterState.Idle;
                 self.Sprite.ChangeSpriteAnimation("StalfosWalk");
 
             }
@@ -136,11 +114,11 @@ namespace Sprint03
                     self.Sprite.CurrentSpeed.Y = -self.Sprite.BaseSpeed;
                     break;
                 case (2):
-                    self.Sprite.CurrentSpeed.X = -self.Sprite.BaseSpeed;
+                    self.Sprite.CurrentSpeed.X = self.Sprite.BaseSpeed;
                     self.Sprite.CurrentSpeed.Y = 0;
                     break;
                 case (3):
-                    self.Sprite.CurrentSpeed.X = self.Sprite.BaseSpeed;
+                    self.Sprite.CurrentSpeed.X = -self.Sprite.BaseSpeed;
                     self.Sprite.CurrentSpeed.Y = 0;
                     break;
                 default:
@@ -160,6 +138,7 @@ namespace Sprint03
             } else if (Timer >= (20 / self.Sprite.FPS * 8))
             {
                 self.Sprite.KillSprite();
+                Timer = 0;
             }
 
         }
