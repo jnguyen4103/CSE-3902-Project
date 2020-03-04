@@ -68,16 +68,11 @@ namespace Sprint03
         {
             int direction;
             FRectangle monsterHitbox;
-            FRectangle linkHitbox = new FRectangle(Game.Link.SpriteLink.Position.X, Game.Link.SpriteLink.Position.Y + (Game.Link.SpriteLink.GetSize.Y / 2), (int)Game.Link.SpriteLink.GetSize.X, (int)Game.Link.SpriteLink.GetSize.Y / 2);
+            FRectangle linkHitbox = new FRectangle(Game.Link.SpriteLink.Position.X, Game.Link.SpriteLink.Position.Y + 2, (int)Game.Link.SpriteLink.GetSize.X, (int)Game.Link.SpriteLink.GetSize.Y - 2);
             FRectangle effectHitbox;
             FRectangle itemHitbox;
             FRectangle screenDimensions = new FRectangle(Game.CurrentScreen.X, Game.CurrentScreen.Y, Game.CurrentScreen.Width, Game.CurrentScreen.Height);
 
-            /*
-            Console.WriteLine("Link");
-            Console.WriteLine(linkHitbox.X);
-            Console.WriteLine(linkHitbox.Y);
-            */
 
             // Link vs. Blocks
             foreach (FRectangle box in Game.BlocksList)
