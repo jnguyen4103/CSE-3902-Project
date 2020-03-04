@@ -10,23 +10,24 @@ namespace Sprint03
     public class Door
     {
         public StaticSprite Sprite;
-        public bool Locked;
         public bool DestroyableWall;
         private bool Destroyed = false;
         private Game1 Game;
-        private int NextRoom;
+        private string NextRoom;
+        private string Side;
 
-        public Door(Game1 game, StaticSprite sprite, int NextRoom, bool locked, bool destroyable)
+        public Door(Game1 game, StaticSprite sprite, string next, string side, bool destroyable)
         {
             Game = game;
             Sprite = sprite;
-            Locked = locked;
+            NextRoom = next;
+            Side = side;
             DestroyableWall = destroyable;
         }
 
         public void DestroyWall()
         {
-            if(DestroyableWall && !Destroyed)
+            if (DestroyableWall && !Destroyed)
             {
                 Sprite.ChangeSpriteAnimation("DestroyedWall");
                 Destroyed = true;
@@ -38,7 +39,6 @@ namespace Sprint03
             if (Game.KeyCounter > 0)
             {
                 Game.KeyCounter--;
-                Locked = false;
                 Sprite.ChangeSpriteAnimation("OpenDoor");
             }
         }
@@ -50,11 +50,52 @@ namespace Sprint03
 
         public void EnterDoor()
         {
-            if(!Locked && !(DestroyableWall && Destroyed))
+            if (Sprite.Name.Equals("OpenDoor") || Sprite.Name.Equals("OpenDoorHorizontal")
+                || Sprite.Name.Equals("DestroyedWall") || Sprite.Name.Equals("DestroyedWallHorizontal"))
             {
                 Game.RFactory.LoadRoom(NextRoom);
+                PlaceLink();
             }
         }
 
+        private void PlaceLink()
+        {
+            switch (Side)
+            {
+                case "Up":
+                    Game.Link.StateMachine.DownState();
+                    Game.Link.StateMachine.IdleState();
+                    Game.Link.SpriteLink.Position.X = 120;
+                    Game.Link.SpriteLink.Position.X = 192;
+                    break;
+
+
+                case "Down":
+                    Game.Link.StateMachine.DownState();
+                    Game.Link.StateMachine.IdleState();
+                    Game.Link.SpriteLink.Position.X = 120;
+                    Game.Link.SpriteLink.Position.Y = 96;
+                    break;
+
+                case "Left":
+                    Game.Link.StateMachine.LeftState();
+                    Game.Link.StateMachine.IdleState();
+                    Game.Link.SpriteLink.Position.X = 208;
+                    Game.Link.SpriteLink.Position.Y = 144;
+                    break;
+
+                case "Right":
+                    Game.Link.StateMachine.RightState();
+                    Game.Link.StateMachine.IdleState();
+                    Game.Link.SpriteLink.Position.X = 32;
+                    Game.Link.SpriteLink.Position.Y = 144;
+                    break;
+
+                default:
+                    break;
+
+            }
+
+        }
     }
 }

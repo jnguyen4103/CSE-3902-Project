@@ -14,21 +14,24 @@ namespace Sprint03
     {
         private List<Monster> Enemies;
         private List<Item> Items;
-        //private List<object> lockedDoors;
-        //private List<object> unlockedDoors;
+        public Dictionary<string, Door> Doors = new Dictionary<string, Door>(4);
         private Game1 Game;
         private string File;
 
         public bool RoomLoadedAlready { get; set; } = false;
+        public FloorSprite Sprite { get; set; }
 
-        public Room(Game1 game, string XMLFile)
+        public Room(Game1 game, string XMLFile, string name)
         {
             Game = game;
-            File = XMLFile;
+            File = XMLFile + ".xml";
+            Sprite = new FloorSprite(Game, name, Game.Dungeon, Game.spriteBatch);
         }
 
         public void LoadRoom()
         {
+            Console.WriteLine(File);
+
             XmlReader Reader = XmlReader.Create(File);
             while (Reader.Read())
             {
@@ -36,7 +39,6 @@ namespace Sprint03
                 {
                     switch (Reader.Name)
                     {
-                        // Parse Tag here...
                         case "Monster":
                             Game.MFactory.Monsters[Reader.GetAttribute("Name")](ParseVector2(Reader.GetAttribute("Spawn")));
                             break;
@@ -46,8 +48,8 @@ namespace Sprint03
                             break;
 
                         case "Door":
-                            Game.SFactory.CreateDoor(Reader.GetAttribute("Name"), Reader.GetAttribute("Side"), 
-                                Reader.GetAttribute("Locked").Equals("True"), Reader.GetAttribute("Destroyable").Equals("False"));
+                            StaticSprite sprite = new DoorSprite(Game, Reader.GetAttribute("Name"), Reader.GetAttribute("Side"), Game.TileSpriteSheet, Game.spriteBatch);
+                            Doors.Add(Reader.GetAttribute("Side"), new Door(Game, sprite, Reader.GetAttribute("LeadsTo"), Reader.GetAttribute("Side"), Reader.GetAttribute("Destroyable").Equals("true")));
                             break;
 
                         default:
@@ -66,13 +68,22 @@ namespace Sprint03
             Game.EffectsList.Clear();
             Game.MonsterList.Clear();
             Game.ItemsList.Clear();
-
         }
 
         public void ReloadRoom()
         {
             Game.MonsterList = new List<Monster>(Enemies);
             Game.ItemsList = new List<Item>(Items);
+
+        }
+
+        public void Draw()
+        {
+            Sprite.DrawSprite();
+            Doors["Left"].Draw();
+            Doors["Right"].Draw();
+            Doors["Up"].Draw();
+            Doors["Down"].Draw();
 
         }
 

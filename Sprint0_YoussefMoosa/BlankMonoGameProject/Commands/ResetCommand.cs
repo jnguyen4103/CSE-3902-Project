@@ -19,7 +19,7 @@
             Game.ItemsList.Clear();
             Game.EffectsList.Clear();
             Game.RFactory.ResetRooms();
-            Game.RFactory.LoadRoom(0);
+            Game.RFactory.LoadRoom("Room0");
         }
     }
 }

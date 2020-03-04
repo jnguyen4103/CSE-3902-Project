@@ -32,6 +32,8 @@ namespace Sprint03
         public Texture2D EffectSpriteSheet;
         public Texture2D TileSpriteSheet;
         public Texture2D Background;
+        public Texture2D Dungeon;
+
         public Song song;
 
 
@@ -40,17 +42,21 @@ namespace Sprint03
         public List<Monster> MonsterList = new List<Monster>();
         public List<Item> ItemsList = new List<Item>();
         public List<IEffect> EffectsList = new List<IEffect>();
+        public Room CurrentRoom;
         public List<Door> DoorList = new List<Door>(4);
 
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
         private ICommand[] keyboardCommands = new ICommand[11];
         private KeyboardController keyboardController;
+        private MouseController mouseController;
+
         //(32,96). w = 192 H =112
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
         public readonly Vector2 LinkSpawn = new Vector2(120, 192);
 
         public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
+        public float ScreenScale = 4.0f;
         public Rectangle CurrentScreen = new Rectangle(0, 0, 256, 240);
         public Rectangle WalkingRect = new Rectangle(32, 96, 208, 191);
 
@@ -77,7 +83,6 @@ namespace Sprint03
             SFactory = new SpriteFactory(this);
             IFactory = new ItemFactory(this);
             MFactory = new MonsterFactory(this);
-            RFactory = new RoomFactory(this);
             this.song = Content.Load<Song>("musicForGame");
 
             // Adding all of the commands into the keyboard controller
@@ -93,6 +98,7 @@ namespace Sprint03
             keyboardCommands[9] = new DamageLink(this);
             keyboardCommands[10] = new IdleLink(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
+            mouseController = new MouseController(this);
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;
@@ -124,11 +130,11 @@ namespace Sprint03
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
             TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
             Background = Content.Load<Texture2D>("Background");
-
+            Dungeon = Content.Load<Texture2D>("Dungeon1");
             SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
-
-            RFactory.LoadRoom(0);
+            RFactory = new RoomFactory(this);
+            RFactory.LoadRoom("Room0");
             handler = new CollisionDetection(this);
 
 
@@ -159,8 +165,10 @@ namespace Sprint03
                 monster.Update();
             }
 
+
             handler.CollisionHandler();
             keyboardController.Update();
+            mouseController.Update();
             base.Update(gameTime);
         }
 
@@ -173,14 +181,10 @@ namespace Sprint03
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Matrix.CreateScale(4, 4, 1.0f));
-
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Matrix.CreateScale(ScreenScale, ScreenScale, 1.0f));
             spriteBatch.Draw(Background, CurrentScreen, Color.White);
+            CurrentRoom.Draw();
 
-            foreach (Door door in DoorList)
-            {
-                door.Draw();
-            }
 
             foreach (IEffect effect in EffectsList.ToArray())
             {
@@ -201,14 +205,16 @@ namespace Sprint03
                 monster.Draw();
             }
 
-            foreach(Item item in ItemsList)
+            foreach(Item item in ItemsList.ToArray())
             {
                 item.Draw();
+                if(item.Sprite.Colour == Color.Transparent)
+                {
+                    ItemsList.Remove(item);
+                }
             }
 
-
             Link.Draw();
-
          
 
             spriteBatch.End();

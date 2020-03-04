@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Room\XML Files\ItemRoom.xml" />
     <Content Include="Room\XML Files\Room0.xml" />
     <Content Include="Room\XML Files\Room4.xml" />
     <Content Include="Room\XML Files\Room1.xml" />

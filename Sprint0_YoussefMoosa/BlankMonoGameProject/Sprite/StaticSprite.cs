@@ -61,4 +61,17 @@ namespace Sprint03
             Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
         }
     }
+
+    public class FloorSprite: StaticSprite
+    {
+        public FloorSprite(Game1 game, string name, Texture2D texture, SpriteBatch batch)
+        {
+            Game = game;
+            Name = name;
+            Texture = texture;
+            Batch = batch;
+            Position = new Vector2(32, 96);
+            ChangeSpriteAnimation(name);
+        }
+    }
 }

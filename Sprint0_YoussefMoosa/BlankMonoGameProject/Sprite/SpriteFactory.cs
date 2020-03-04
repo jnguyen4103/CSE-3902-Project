@@ -40,7 +40,7 @@ namespace Sprint03
 
         private Game1 Game;
 
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> Sprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(78);
+        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> Sprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(98);
 
         // Al off the Sprites are size 16 by 16
         private readonly Vector2 Spritesize = new Vector2(16, 16);
@@ -52,8 +52,10 @@ namespace Sprint03
         private readonly Vector2 defaultItemSize = new Vector2(8, 16);
         private readonly Vector2 rotatedItemSize = new Vector2(16, 8);
 
-        // Door Size
+        // Room Sizes
         private readonly Vector2 doorSize = new Vector2(32, 32);
+        private readonly Vector2 floorSize = new Vector2(192, 112);
+
 
 
         // Small Items & Effects
@@ -174,14 +176,29 @@ namespace Sprint03
             Sprites["DestroyedWallHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 64, 32, 32), doorSize, 1);
 
 
-        }
+            // Dungeon 1 Floor Sprites
+            Sprites["Room0"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(1216, 720, 192, 112), floorSize, 1);
+            Sprites["Room1"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(290, 918, 192, 112), floorSize, 1);
+            Sprites["Room2"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(547, 918, 192, 112), floorSize, 1);
+            Sprites["Room3"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(804, 918, 192, 112), floorSize, 1);
+            Sprites["Room4"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(547, 741, 192, 112), floorSize, 1);
+            Sprites["Room5"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(290, 564, 192, 112), floorSize, 1);
+            Sprites["Room6"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(547, 564, 192, 112), floorSize, 1);
+            Sprites["Room7"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(804, 564, 192, 112), floorSize, 1);
+            Sprites["Room8"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(33, 387, 192, 112), floorSize, 1);
+            Sprites["Room9"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(290, 387, 192, 112), floorSize, 1);
+            Sprites["Room10"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(547, 387, 192, 112), floorSize, 1);
+            Sprites["Room11"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(804, 308, 192, 112), floorSize, 1);
+            Sprites["Room12"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(1061, 387, 192, 112), floorSize, 1);
+            Sprites["Room13"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(547, 210, 192, 112), floorSize, 1);
+            Sprites["Room14"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(1061, 210, 192, 112), floorSize, 1);
+            Sprites["Room15"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(1318, 210, 192, 112), floorSize, 1);
+            Sprites["Room16"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(290, 33, 192, 112), floorSize, 1);
+            Sprites["Room17"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(547, 33, 192, 112), floorSize, 1);
 
-        public void CreateDoor(string name, string side, bool locked, bool destroyable)
-        {
-            StaticSprite sprite = new DoorSprite(Game, name, side, Game.TileSpriteSheet, Game.spriteBatch);
-            Door door = new Door(Game, sprite, 1, locked, destroyable);
-            Game.DoorList.Add(door);
-        }
 
+            // Must be drawn over doors
+            Sprites["ItemRoom"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(1, 1, 256, 162), new Vector2(256, 162), 1);
+        }
     }
 }

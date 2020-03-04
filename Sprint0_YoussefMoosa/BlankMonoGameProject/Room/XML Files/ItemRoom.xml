@@ -30,11 +30,9 @@
   -<Item Name="Heart" Spawn="148 164"/>
 
   <!-- Monsters -->
-
-  
   <!-- Doors -->
-  -<Door LeadsTo="Room1" Name="OpenDoor" Side="Left" Destroyable="false"/>
-  -<Door LeadsTo="Room1" Name="Wall" Side="Right" Destroyable="false"/>
-  -<Door LeadsTo="Room1" Name="ClosedDoor" Side="Up" Destroyable="false"/>
-  -<Door LeadsTo="Room1" Name="ClosedDoor" Side="Down" Destroyable="false"/>
+  -<Door LeadsTo="3" Name="OpenDoor" Side="Left" Locked ="true" Destroyable="false"/>
+  -<Door LeadsTo="3" Name="Wall" Side="Right" Locked ="false" Destroyable="false"/>
+  -<Door LeadsTo="3" Name="ClosedDoor" Side="Up" Locked ="false" Destroyable="false"/>
+  -<Door LeadsTo="3" Name="DestroyedWall" Side="Down" Locked ="false" Destroyable="false"/>
 </LevelData>
