@@ -95,6 +95,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="GameObjects\Tile\Tile.cs" />
+    <Compile Include="Room\IRoom.cs" />
+    <Compile Include="Room\Room.cs" />
+    <Compile Include="Room\XMLHandler.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="GameObjects\Items\ItemSprite.cs" />
     <Compile Include="GameObjects\Link\LinkSprite.cs" />
@@ -122,24 +125,24 @@
     <Folder Include="GameObjects\Blocks\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Room XML Files\Rom4.xml" />
-    <Content Include="Room XML Files\Room1.xml" />
-    <Content Include="Room XML Files\Room10.xml" />
-    <Content Include="Room XML Files\Room11.xml" />
-    <Content Include="Room XML Files\Room12.xml" />
-    <Content Include="Room XML Files\Room13.xml" />
-    <Content Include="Room XML Files\Room14.xml" />
-    <Content Include="Room XML Files\Room15.xml" />
-    <Content Include="Room XML Files\Room16.xml" />
-    <Content Include="Room XML Files\Room17.xml" />
-    <Content Include="Room XML Files\Room18.xml" />
-    <Content Include="Room XML Files\Room2.xml" />
-    <Content Include="Room XML Files\Room3.xml" />
-    <Content Include="Room XML Files\Room5.xml" />
-    <Content Include="Room XML Files\Room6.xml" />
-    <Content Include="Room XML Files\Room7.xml" />
-    <Content Include="Room XML Files\Room8.xml" />
-    <Content Include="Room XML Files\Room9.xml" />
+    <Content Include="Room\XML Files\Rom4.xml" />
+    <Content Include="Room\XML Files\Room1.xml" />
+    <Content Include="Room\XML Files\Room10.xml" />
+    <Content Include="Room\XML Files\Room11.xml" />
+    <Content Include="Room\XML Files\Room12.xml" />
+    <Content Include="Room\XML Files\Room13.xml" />
+    <Content Include="Room\XML Files\Room14.xml" />
+    <Content Include="Room\XML Files\Room15.xml" />
+    <Content Include="Room\XML Files\Room16.xml" />
+    <Content Include="Room\XML Files\Room17.xml" />
+    <Content Include="Room\XML Files\Room18.xml" />
+    <Content Include="Room\XML Files\Room2.xml" />
+    <Content Include="Room\XML Files\Room3.xml" />
+    <Content Include="Room\XML Files\Room5.xml" />
+    <Content Include="Room\XML Files\Room6.xml" />
+    <Content Include="Room\XML Files\Room7.xml" />
+    <Content Include="Room\XML Files\Room8.xml" />
+    <Content Include="Room\XML Files\Room9.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
