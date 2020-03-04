@@ -1,101 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LevelData>
 
-  <!-- Information to draw the interior, walkable area of the room -->
-  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
-  -<Interior>
-    <UseExterior>True</UseExterior>
-    <Rectangle>547,198,192,112</Rectangle>
-  </Interior>
+  -<Room number ="1">
 
-  <!-- Collide-able tiles in the room -->
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
+    <!-- Information to draw the interior, walkable area of the room -->
+    <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
+    -<Interior UseExterior="True" Rectangle="547,198,192,112"/>
 
-  <!-- Information on drawing and handling door events -->
-  -<Door>
-    -<Location>Left</Location>
-    -<Type>Open</Type>
-    -<NextRoom>Room2</NextRoom>
-  </Door>
-  -<Door>
-    -<Location>Up</Location>
-    -<Type>KeyLocked</Type>
-    -<NextRoom>Room4</NextRoom>
-  </Door>
-  -<Door>
-    -<Location>Right</Location>
-    -<Type>Open</Type>
-    -<NextRoom>Room3</NextRoom>
-  </Door>
-  -<Door>
-    -<Location>Down</Location>
-    -<Type>Open</Type>
-    -<NextRoom>None</NextRoom>
-  </Door>
+    <!-- Collide-able tiles in the room -->
+    -<Tile Type="Static" Rectangle="48,48,16,16"/>
+    -<Tile Type="Static" Rectangle="48,80,16,16"/>
+    -<Tile Type="Static" Rectangle="48,112,16,16"/>
+    -<Tile Type="Static" Rectangle="96,48,16,16"/>
+    -<Tile Type="Static" Rectangle="96,80,16,16"/>
+    -<Tile Type="Static" Rectangle="96,112,16,16"/>
+    -<Tile Type="Static" Rectangle="144,48,16,16"/>
+    -<Tile Type="Static" Rectangle="144,80,16,16"/>
+    -<Tile Type="Static" Rectangle="144,112,16,16"/>
+    -<Tile Type="Static" Rectangle="192,48,16,16"/>
+    -<Tile Type="Static" Rectangle="192,80,16,16"/>
+    -<Tile Type="Static" Rectangle="192,112,16,16"/>
 
-  <!-- Information on Link's spawn location-->
-  -<Link>
-    -<PreviousRoom>None</PreviousRoom>
-    -<Coords></Coords>
-  </Link>
-  -<Link>
-    -<PreviousRoom>Room2</PreviousRoom>
-    -<Coords></Coords>
-  </Link>
-  -<Link>
-    -<PreviousRoom>Room3</PreviousRoom>
-    -<Coords></Coords>
-  </Link>
-  -<Link>
-    -<PreviousRoom>Room4</PreviousRoom>
-    -<Coords></Coords>
-  </Link>
+    <!-- Information on drawing and handling door events -->
+    -<Door Rectangle="0,72,32,32" Type="Open" LeadsTo="2"/>
+    -<Door Rectangle="112,0,32,32" Type="KeyLocked" LeadsTo="4"/>
+    -<Door Rectangle="224,72,32,32" Type="Open" LeadsTo="3"/>
+    -<Door Rectangle="112,144,32,32" Type="Open" LeadsTo="None"/>
+
+    <!-- Information on Link's spawn Rectangle-->
+    -<Link PreviousRoom="None" Spawn="120,144"/>
+    -<Link PreviousRoom="Room2" Spawn="16,80"/>
+    -<Link PreviousRoom="Room3" Spawn="224,80"/>
+    -<Link PreviousRoom="Room4" Spawn="120,16"/>
+
+  </Room>
 
 </LevelData>

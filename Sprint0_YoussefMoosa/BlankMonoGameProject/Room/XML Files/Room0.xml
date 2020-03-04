@@ -4,10 +4,7 @@
   <!-- Information to draw the interior, walkable area of the room -->
   <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
   <!-- This is a DEBUG ROOM -->
-  -<Interior>
-    <UseExterior>True</UseExterior>
-    <Rectangle>547,198,192,112</Rectangle>
-  </Interior>
+  -<Interior UseExterior="True" Rectangle=""/>
 
   <!-- Items -->
   -<Item Name="Rupee" Spawn="35 192"/>

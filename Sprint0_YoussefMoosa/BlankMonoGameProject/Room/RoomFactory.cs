@@ -7,7 +7,7 @@ namespace Sprint03
     {
         private Room[] Rooms;
         private Game1 Game;
-        private int CurrenRoom;
+        private int CurrentRoom;
         public RoomFactory(Game1 game)
         {
             Game = game;
@@ -17,9 +17,9 @@ namespace Sprint03
 
         public void LoadRoom(int room)
         {
-            if (Rooms[CurrenRoom].RoomLoadedAlready) { Rooms[CurrenRoom].UnloadRoom(); }
+            if (Rooms[CurrentRoom].RoomLoadedAlready) { Rooms[CurrentRoom].UnloadRoom(); }
             Rooms[room].LoadRoom();
-            CurrenRoom = room;
+            CurrentRoom = room;
         }
 
         public void ResetRooms()
