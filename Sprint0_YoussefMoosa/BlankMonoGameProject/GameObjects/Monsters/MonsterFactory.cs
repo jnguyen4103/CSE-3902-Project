@@ -8,7 +8,7 @@ namespace Sprint03
     public class MonsterFactory
     {
         protected Game1 Game;
-        public readonly Dictionary<string, Action<Vector2>> Monsters = new Dictionary<string, Action<Vector2>>(1);
+        public readonly Dictionary<string, Func<Vector2, Monster>> Monsters = new Dictionary<string, Func<Vector2, Monster>>(1);
 
         public MonsterFactory(Game1 game)
         {
@@ -16,7 +16,13 @@ namespace Sprint03
             Monsters["Stalfos"] = SpawnStalfos;
         }
 
-        private void SpawnStalfos(Vector2 spawn)
+        public void SpawnMonster(string name, Vector2 spawn)
+        {
+            Game.MonstersList.Add(Monsters[name](spawn));
+
+        }
+
+        private Monster SpawnStalfos(Vector2 spawn)
         {
             // Creating Sprite for Stalfos
             Sprite StalfosSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
@@ -32,7 +38,7 @@ namespace Sprint03
             Stalfos.StateMachine = new StalfosSM(Stalfos, Game);
 
             // Spawning dat boii
-            Game.CurrentRoom.Enemies.Add(Stalfos);
+            return Stalfos;
         }
     }
 }

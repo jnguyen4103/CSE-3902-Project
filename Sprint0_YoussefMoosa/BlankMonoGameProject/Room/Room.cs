@@ -12,9 +12,9 @@ namespace Sprint03
      */
     public class Room: IRoom
     {
-        public List<Monster> Enemies = new List<Monster>();
-        public List<Item> Items = new List<Item>();
-        public List<FRectangle> Blocks = new List<FRectangle>();
+        private List<Monster> Enemies;
+        private List<Item> Items;
+        private List<FRectangle> Blocks;
         public Dictionary<string, Door> Doors = new Dictionary<string, Door>(4);
         private Game1 Game;
         private string File;
@@ -32,7 +32,6 @@ namespace Sprint03
         public void LoadRoom()
         {
             Console.WriteLine(File);
-
             XmlReader Reader = XmlReader.Create(File);
             while (Reader.Read())
             {
@@ -41,7 +40,7 @@ namespace Sprint03
                     switch (Reader.Name)
                     {
                         case "Monster":
-                            Game.MFactory.Monsters[Reader.GetAttribute("Name")](ParseVector2(Reader.GetAttribute("Spawn")));
+                            Game.MFactory.SpawnMonster(Reader.GetAttribute("Name"), ParseVector2(Reader.GetAttribute("Spawn")));
                             break;
 
                         case "Item":
@@ -56,7 +55,7 @@ namespace Sprint03
                         case "Block":
                             Vector2 Position = ParseVector2(Reader.GetAttribute("Spawn"));
                             Vector2 Size = ParseVector2(Reader.GetAttribute("Size"));
-                            Blocks.Add(new FRectangle(Position, Size));
+                            Game.BlocksList.Add(new FRectangle(Position, Size));
 
                             break;
 
@@ -69,12 +68,23 @@ namespace Sprint03
             Reader.Close();
         }
 
-        public void Update()
+        public void UnloadRoom()
         {
-            foreach (Monster monster in Enemies)
-            {
-                monster.Update();
-            }
+            Enemies = new List<Monster>(Game.MonstersList);
+            Items = new List<Item>(Game.ItemsList);
+            Blocks = new List<FRectangle>(Game.BlocksList);
+            Game.EffectsList.Clear();
+            Game.MonstersList.Clear();
+            Game.ItemsList.Clear();
+            Game.BlocksList.Clear();
+        }
+
+        public void ReloadRoom()
+        {
+            Game.MonstersList = new List<Monster>(Enemies);
+            Game.ItemsList = new List<Item>(Items);
+            Game.BlocksList = new List<FRectangle>(Blocks);
+
         }
 
         public void Draw()
@@ -84,17 +94,6 @@ namespace Sprint03
             Doors["Right"].Draw();
             Doors["Up"].Draw();
             Doors["Down"].Draw();
-
-            foreach(Monster monster in Enemies)
-            {
-                monster.Draw();
-            }
-
-            foreach(Item item in Items)
-            {
-                item.Draw();
-            }
-
         }
 
         private Vector2 ParseVector2(string coord)

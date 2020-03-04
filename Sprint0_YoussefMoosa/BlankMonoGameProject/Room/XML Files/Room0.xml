@@ -9,6 +9,7 @@
   <!-- Items -->
 
   <!-- Monsters -->
+  -<Monster Name="Stalfos" Spawn="35 192"/>
 
   <!-- Blocks-->
   -<Block Name="Water" Spawn="94 144" Size="16 16" />

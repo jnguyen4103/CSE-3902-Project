@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Sprint03
 {
-    class CollisionDetection
+    public class CollisionDetection
     {
         private Game1 Game;
         private CollisionResolution ColRes;
@@ -14,6 +14,7 @@ namespace Sprint03
             Game = game;
             ColRes = new CollisionResolution(game);
         }
+
 
         private int CollisionDirection(Sprite Receiver, FRectangle Collision)
         {
@@ -65,29 +66,32 @@ namespace Sprint03
 
         public void CollisionHandler()
         {
-
-
             int direction;
-
             FRectangle monsterHitbox;
             FRectangle linkHitbox = new FRectangle(Game.Link.SpriteLink.Position.X, Game.Link.SpriteLink.Position.Y + (Game.Link.SpriteLink.GetSize.Y / 2), (int)Game.Link.SpriteLink.GetSize.X, (int)Game.Link.SpriteLink.GetSize.Y / 2);
             FRectangle effectHitbox;
-            //  FRectangle tileHitBox;
             FRectangle itemHitbox;
             FRectangle screenDimensions = new FRectangle(Game.CurrentScreen.X, Game.CurrentScreen.Y, Game.CurrentScreen.Width, Game.CurrentScreen.Height);
 
+            /*
+            Console.WriteLine("Link");
+            Console.WriteLine(linkHitbox.X);
+            Console.WriteLine(linkHitbox.Y);
+            */
+
             // Link vs. Blocks
-            foreach (FRectangle box in Game.CurrentRoom.Blocks)
+            foreach (FRectangle box in Game.BlocksList)
             {
                 if (linkHitbox.Intersects(box))
                 {
                     direction = CollisionDirection(Game.Link.SpriteLink, FRectangle.Intersection(linkHitbox, box));
                     ColRes.StopSprite(Game.Link.SpriteLink, box, direction);
                 }
+            }
 
 
                 // Link & Item Collision
-                foreach (Item item in Game.CurrentRoom.Items)
+                foreach (Item item in Game.ItemsList)
                 {
                     itemHitbox = new FRectangle(item.Sprite.Position.X, item.Sprite.Position.Y, (int)item.Sprite.GetSize.X, (int)item.Sprite.GetSize.Y);
 
@@ -100,16 +104,18 @@ namespace Sprint03
                 }
 
                 // Link & Monster Collision
-                foreach (Monster monster in Game.CurrentRoom.Enemies)
+                foreach (Monster monster in Game.MonstersList)
                 {
                     // Monster vs. Link
                     monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
+
                     if (monsterHitbox.Intersects(linkHitbox))
                     {
                         direction = CollisionDirection(Game.Link.SpriteLink, FRectangle.Intersection(monsterHitbox, linkHitbox));
                         ColRes.HurtLink(monster, direction);
                         Console.WriteLine("Enemy Contact");
                     }
+
                 }
 
                 // Effects Collision
@@ -132,11 +138,15 @@ namespace Sprint03
                             effect.Sprite.KillSprite();
                             Console.WriteLine("Link Effect Contact");
                         }
+                    }
 
 
                         // Effects & Monster Collision
-                        foreach (Monster monster in Game.CurrentRoom.Enemies)
+                        foreach (Monster monster in Game.MonstersList)
                         {
+                            Console.WriteLine(effect.Sprite.Position.X);
+                            Console.WriteLine(monster.Sprite.Position.X);
+
                             monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
                             if (monsterHitbox.Intersects(effectHitbox))
                             {
@@ -154,5 +164,3 @@ namespace Sprint03
                 }
             }
         }
-    }
-}

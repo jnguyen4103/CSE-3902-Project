@@ -32,8 +32,7 @@ namespace Sprint03
         
         public void SpawnItem(String itemName, Vector2 spawn)
         {
-            Game.CurrentRoom.Items.Add(new Item(Game, itemName, itemName, Game.ItemSpriteSheet, spawn, Game.spriteBatch));
-
+            Game.ItemsList.Add(new Item(Game, itemName, itemName, Game.ItemSpriteSheet, spawn, Game.spriteBatch));
         }
 
         private void BlueRupee()

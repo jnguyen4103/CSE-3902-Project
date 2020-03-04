@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint03
@@ -37,9 +38,11 @@ namespace Sprint03
         public Song song;
 
 
-        CollisionDetection handler;
+        public CollisionDetection handler;
 
-
+        public List<Monster> MonstersList = new List<Monster>();
+        public List<Item> ItemsList = new List<Item>();
+        public List<FRectangle> BlocksList = new List<FRectangle>();
         public List<IEffect> EffectsList = new List<IEffect>();
         public Room CurrentRoom;
 
@@ -118,6 +121,7 @@ namespace Sprint03
         /// </summary>
         protected override void LoadContent()
         {
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -134,6 +138,7 @@ namespace Sprint03
             RFactory = new RoomFactory(this);
             RFactory.LoadRoom("Room0");
             handler = new CollisionDetection(this);
+
 
 
         }
@@ -154,11 +159,13 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-
-
-            // TODO: Add your update logic here
             Link.Update();
-            CurrentRoom.Update();
+
+            foreach(Monster monster in MonstersList)
+            {
+                monster.Update();
+            }
+
             handler.CollisionHandler();
             keyboardController.Update();
             mouseController.Update();
@@ -172,27 +179,38 @@ namespace Sprint03
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-
             spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Matrix.CreateScale(ScreenScale, ScreenScale, 1.0f));
             spriteBatch.Draw(Background, CurrentScreen, Color.White);
             CurrentRoom.Draw();
 
-
             foreach (IEffect effect in EffectsList.ToArray())
             {
                 effect.Sprite.DrawSprite();
-                if(effect.Sprite.Colour == Color.Transparent)
+                if (effect.Sprite.Colour == Color.Transparent)
                 {
                     EffectsList.Remove(effect);
                 }
             }
 
+            foreach (Monster monster in MonstersList.ToArray())
+            {
+                monster.Sprite.DrawSprite();
+                if (monster.Sprite.Colour == Color.Transparent)
+                {
+                    MonstersList.Remove(monster);
+                }
+            }
 
+            foreach (Item item in ItemsList.ToArray())
+            {
+                item.Sprite.DrawSprite();
+                if (item.Sprite.Colour == Color.Transparent)
+                {
+                    ItemsList.Remove(item);
+                }
+            }
 
             Link.Draw();
-         
-
             spriteBatch.End();
 
             base.Draw(gameTime);
