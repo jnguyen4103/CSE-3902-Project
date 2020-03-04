@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<LevelData>
+
+  <!-- Information to draw the interior, walkable area of the room -->
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
+  -<Interior>
+    -<UseExterior>True</UseExterior>
+    -<Rectangle>290,918,192,112</Rectangle>
+  </Interior>
+
+  <!-- Information on drawing and handling door events -->
+  -<Door>
+    -<Location>Left</Location>
+    -<Type>Wall</Type>
+  </Door>
+  -<Door>
+    -<Location>Up</Location>
+    -<Type>Wall</Type>
+  </Door>
+  -<Door>
+    -<Location>Right</Location>
+    -<Type>Open</Type>
+    -<NextRoom>Room1</NextRoom>
+  </Door>
+  -<Door>
+    -<Location>Down</Location>
+    -<Type>Wall</Type>
+  </Door>
+
+  <!-- Information on Link's spawn location-->
+  -<Link>
+    -<PreviousRoom>Room1</PreviousRoom>
+    -<Coords></Coords>
+  </Link>
+
+  <!-- Information to draw enemies -->
+  -<Monster>
+    -<Name>Keese</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Keese</Name>
+    -<Coords></Coords>
+  </Monster>
+  -<Monster>
+    -<Name>Keese</Name>
+    -<Coords></Coords>
+  </Monster>
+
+  <!-- Information to draw items -->
+  -<Item>
+    -<Name>Key</Name>
+    -<Coords></Coords>
+  </Item>
+
+</LevelData>

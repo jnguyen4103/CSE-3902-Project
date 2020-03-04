@@ -93,6 +93,7 @@ namespace Sprint03
             }
             else if (Timer >= Delay)
             {
+                Timer = 0;
                 base.KillSprite();
             }
         }

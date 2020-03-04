@@ -142,7 +142,7 @@ namespace Sprint03
 
         public override void KillSprite()
         {
-            if (Returning && (Position.X - Creator.Position.X <= 8) && (Position.Y - Creator.Position.Y <= 8))
+            if (Returning)
             {
                 Game.Link.StateMachine.CatchBoomerang();
                 base.KillSprite();
