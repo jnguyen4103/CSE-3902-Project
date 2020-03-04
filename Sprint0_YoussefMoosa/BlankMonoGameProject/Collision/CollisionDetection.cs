@@ -128,12 +128,12 @@ namespace Sprint03
                 // Effects & Link Collision
                 if (effectHitbox.Intersects(linkHitbox))
                 {
-                    if (effect.IsCreator(Link.SpriteLink))
+                    if (effect.IsCreator(Link.SpriteLink) && effect.Sprite.Name.Equals("BoomerangEffect"))
                     {
                         Console.WriteLine("Boomerang Contact");
                         Game.Link.StateMachine.CatchBoomerang(effect);
                     }
-                    else
+                    else if (!effect.IsCreator(Link.SpriteLink))
                     {
                         direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(effectHitbox, linkHitbox));
                         ColRes.DamageLinkEffect(effect.Damage, direction, effect);
