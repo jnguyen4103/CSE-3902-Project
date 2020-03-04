@@ -25,6 +25,14 @@ namespace Sprint03
             Height = height;
         }
 
+        public FRectangle(Vector2 Position, Vector2 Size)
+        {
+            X = Position.X;
+            Y = Position.Y;
+            Width = (int)Size.X;
+            Height = (int)Size.Y;
+        }
+
         public float Left
         {
             get { return X; }

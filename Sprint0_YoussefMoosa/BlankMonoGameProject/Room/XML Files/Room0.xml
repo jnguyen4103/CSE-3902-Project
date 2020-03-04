@@ -28,7 +28,22 @@
 
   <!-- Monsters -->
 
-  
+  <!-- Blocks-->
+  -<Block Name="Water" Spawn="94 144" Size="16 16" />
+  -<Block Name="Water" Spawn="122 144" Size="16 32" />
+  -<Block Name="Water" Spawn="128 160" Size="16 32" />
+  -<Block Name="Statue" Spawn="128 122" Size="16 16" />
+  -<Block Name="Statue" Spawn="176 122" Size="16 16" />
+  -<Block Name="Block" Spawn="64 128" Size="16 48" />
+  -<Block Name="Block" Spawn="176 160" Size="16 16" />
+  -<Block Name="Block" Spawn="192 144" Size="32 16" />
+  -<Block Name="Block" Spawn="192 176" Size="16 32" />
+
+
+
+
+
+
   <!-- Doors -->
   -<Door LeadsTo="Room1" Name="OpenDoor" Side="Left" Destroyable="false"/>
   -<Door LeadsTo="Room1" Name="Wall" Side="Right" Destroyable="false"/>

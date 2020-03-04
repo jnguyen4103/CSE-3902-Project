@@ -88,68 +88,69 @@ namespace Sprint03
 
                 // Link & Item Collision
                 foreach (Item item in Game.ItemsList)
-            {
-                itemHitbox = new FRectangle(item.Sprite.Position.X, item.Sprite.Position.Y, (int)item.Sprite.GetSize.X, (int)item.Sprite.GetSize.Y);
-
-                if (linkHitbox.Intersects(itemHitbox))
                 {
-                    ColRes.PickupItem(item);
-                    Console.WriteLine("Item Pickup " + item.Sprite.Name);
+                    itemHitbox = new FRectangle(item.Sprite.Position.X, item.Sprite.Position.Y, (int)item.Sprite.GetSize.X, (int)item.Sprite.GetSize.Y);
 
-                }
-            }
-
-            // Link & Monster Collision
-            foreach (Monster monster in Game.MonsterList)
-            {
-                // Monster vs. Link
-                monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
-                if (monsterHitbox.Intersects(linkHitbox))
-                {
-                    direction = CollisionDirection(Game.Link.SpriteLink, FRectangle.Intersection(monsterHitbox, linkHitbox));
-                    ColRes.HurtLink(monster, direction);
-                    Console.WriteLine("Enemy Contact");
-                }
-            }
-
-            // Effects Collision
-            foreach (IEffect effect in Game.EffectsList.ToArray())
-            {
-                effectHitbox = new FRectangle(effect.Sprite.Position.X, effect.Sprite.Position.Y, (int)effect.Sprite.GetSize.X, (int)effect.Sprite.GetSize.Y);
-
-                // Effects & Link Collision
-                if (effectHitbox.Intersects(linkHitbox))
-                {
-                    if (effect.IsCreator(Game.Link.SpriteLink) && effect.Sprite.Name.Equals("BoomerangEffect"))
+                    if (linkHitbox.Intersects(itemHitbox))
                     {
-                        Console.WriteLine("Boomerang Contact");
-                        Game.Link.StateMachine.CatchBoomerang(effect);
+                        ColRes.PickupItem(item);
+                        Console.WriteLine("Item Pickup " + item.Sprite.Name);
+
                     }
-                    else if (!effect.IsCreator(Game.Link.SpriteLink))
+                }
+
+                // Link & Monster Collision
+                foreach (Monster monster in Game.MonsterList)
+                {
+                    // Monster vs. Link
+                    monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
+                    if (monsterHitbox.Intersects(linkHitbox))
                     {
-                        direction = CollisionDirection(Game.Link.SpriteLink, FRectangle.Intersection(effectHitbox, linkHitbox));
-                        ColRes.DamageLinkEffect(effect.Damage, direction, effect);
-                        effect.Sprite.KillSprite();
-                        Console.WriteLine("Link Effect Contact");
+                        direction = CollisionDirection(Game.Link.SpriteLink, FRectangle.Intersection(monsterHitbox, linkHitbox));
+                        ColRes.HurtLink(monster, direction);
+                        Console.WriteLine("Enemy Contact");
                     }
+                }
 
+                // Effects Collision
+                foreach (IEffect effect in Game.EffectsList.ToArray())
+                {
+                    effectHitbox = new FRectangle(effect.Sprite.Position.X, effect.Sprite.Position.Y, (int)effect.Sprite.GetSize.X, (int)effect.Sprite.GetSize.Y);
 
-                    // Effects & Monster Collision
-                    foreach (Monster monster in Game.MonsterList)
+                    // Effects & Link Collision
+                    if (effectHitbox.Intersects(linkHitbox))
                     {
-                        monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
-                        if (monsterHitbox.Intersects(effectHitbox))
+                        if (effect.IsCreator(Game.Link.SpriteLink) && effect.Sprite.Name.Equals("BoomerangEffect"))
                         {
-                            if (effect.IsCreator(Game.Link.SpriteLink))
+                            Console.WriteLine("Boomerang Contact");
+                            Game.Link.StateMachine.CatchBoomerang(effect);
+                        }
+                        else if (!effect.IsCreator(Game.Link.SpriteLink))
+                        {
+                            direction = CollisionDirection(Game.Link.SpriteLink, FRectangle.Intersection(effectHitbox, linkHitbox));
+                            ColRes.DamageLinkEffect(effect.Damage, direction, effect);
+                            effect.Sprite.KillSprite();
+                            Console.WriteLine("Link Effect Contact");
+                        }
+
+
+                        // Effects & Monster Collision
+                        foreach (Monster monster in Game.MonsterList)
+                        {
+                            monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
+                            if (monsterHitbox.Intersects(effectHitbox))
                             {
-                                direction = CollisionDirection(monster.Sprite, FRectangle.Intersection(effectHitbox, monsterHitbox));
-                                ColRes.DamageMonster(monster, direction, effect);
-                                Console.WriteLine("Enemy Effect Contact");
+                                if (effect.IsCreator(Game.Link.SpriteLink))
+                                {
+                                    direction = CollisionDirection(monster.Sprite, FRectangle.Intersection(effectHitbox, monsterHitbox));
+                                    ColRes.DamageMonster(monster, direction, effect);
+                                    Console.WriteLine("Enemy Effect Contact");
+                                }
                             }
+
                         }
 
                     }
-
                 }
             }
         }

@@ -99,7 +99,6 @@ namespace Sprint03
             keyboardCommands[10] = new IdleLink(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
             mouseController = new MouseController(this);
-            blocks.Add(new FRectangle(100f, 150f, 16, 16));
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;

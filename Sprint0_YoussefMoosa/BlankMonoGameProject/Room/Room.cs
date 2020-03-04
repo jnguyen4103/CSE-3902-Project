@@ -14,6 +14,7 @@ namespace Sprint03
     {
         private List<Monster> Enemies;
         private List<Item> Items;
+        private List<FRectangle> Blocks;
         public Dictionary<string, Door> Doors = new Dictionary<string, Door>(4);
         private Game1 Game;
         private string File;
@@ -50,6 +51,13 @@ namespace Sprint03
                         case "Door":
                             StaticSprite sprite = new DoorSprite(Game, Reader.GetAttribute("Name"), Reader.GetAttribute("Side"), Game.TileSpriteSheet, Game.spriteBatch);
                             Doors.Add(Reader.GetAttribute("Side"), new Door(Game, sprite, Reader.GetAttribute("LeadsTo"), Reader.GetAttribute("Side"), Reader.GetAttribute("Destroyable").Equals("true")));
+                            break;
+
+                        case "Block":
+                            Vector2 Position = ParseVector2(Reader.GetAttribute("Spawn"));
+                            Vector2 Size = ParseVector2(Reader.GetAttribute("Size"));
+                            Game.Blocks.Add(new FRectangle(Position, Size));
+
                             break;
 
                         default:
