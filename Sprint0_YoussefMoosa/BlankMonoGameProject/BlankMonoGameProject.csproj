@@ -97,7 +97,7 @@
     <Compile Include="GameObjects\Tile\Tile.cs" />
     <Compile Include="Room\IRoom.cs" />
     <Compile Include="Room\Room.cs" />
-    <Compile Include="Room\XMLHandler.cs" />
+    <Compile Include="Room\RoomHandler.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="GameObjects\Items\ItemSprite.cs" />
     <Compile Include="GameObjects\Link\LinkSprite.cs" />
@@ -125,7 +125,7 @@
     <Folder Include="GameObjects\Blocks\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Room\XML Files\Rom4.xml" />
+    <Content Include="Room\XML Files\Room4.xml" />
     <Content Include="Room\XML Files\Room1.xml" />
     <Content Include="Room\XML Files\Room10.xml" />
     <Content Include="Room\XML Files\Room11.xml" />

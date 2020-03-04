@@ -17,6 +17,7 @@ namespace Sprint03
         public SpriteFactory SFactory;
         public ItemFactory IFactory;
         public MonsterFactory MFactory;
+        public RoomFactory RFactory;
 
         // Link Object & Sprite
         public ILink Link;
@@ -76,6 +77,7 @@ namespace Sprint03
             SFactory = new SpriteFactory();
             IFactory = new ItemFactory(this);
             MFactory = new MonsterFactory(this);
+            RFactory = new RoomFactory(this);
             this.song = Content.Load<Song>("musicForGame");
 
             // Adding all of the commands into the keyboard controller

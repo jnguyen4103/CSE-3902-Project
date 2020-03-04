@@ -14,8 +14,8 @@ namespace Sprint03
     {
         private List<Monster> Enemies;
         private List<Item> Items;
-        private List<object> lockedDoors;
-        private List<object> unlockedDoors;
+        //private List<object> lockedDoors;
+        //private List<object> unlockedDoors;
         private Game1 Game;
         private XmlReader Reader;
         
@@ -23,7 +23,6 @@ namespace Sprint03
         {
             Game = game;
             Reader = XmlReader.Create(XMLFile);
-            LoadRoom();
         }
 
         public void LoadRoom()
