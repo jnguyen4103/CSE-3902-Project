@@ -43,7 +43,7 @@ namespace Sprint03
         public List<Item> ItemsList = new List<Item>();
         public List<IEffect> EffectsList = new List<IEffect>();
         public Room CurrentRoom;
-        public List<Door> DoorList = new List<Door>(4);
+        public List<FRectangle> Blocks = new List<FRectangle>();
 
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
         private ICommand[] keyboardCommands = new ICommand[11];
@@ -99,6 +99,7 @@ namespace Sprint03
             keyboardCommands[10] = new IdleLink(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
             mouseController = new MouseController(this);
+            blocks.Add(new FRectangle(100f, 150f, 16, 16));
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = true;

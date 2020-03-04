@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Sprint03
 {
@@ -25,19 +24,33 @@ namespace Sprint03
             * 2 - Left
             * 3 - Right
             */
+            Console.WriteLine("Height " + Collision.Height);
+            Console.WriteLine("Width " + Collision.Width);
+            if (Collision.Height < Collision.Width)
+            {
+                //Collision happend on the Top
+                Console.WriteLine(Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top);
+                if (Math.Round(Receiver.GetPosition.Y) <= Math.Round(Collision.Top) && Receiver.GetPosition.Y < Collision.Bottom && Receiver.GetPosition.Y + Receiver.GetSize.Y >= Collision.Bottom)
+                { returnVal = 0; }
 
-            if (Collision.Width < Collision.Height)
+                //Collision Happened on the bottom
+                else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top && Receiver.GetPosition.Y > Collision.Top)
+                { returnVal = 1; }
+                else { returnVal = 1; }
+
+            }
+            else if (Collision.Width < Collision.Height)
             {
                 //Collision happend on the Left
                 if (Receiver.GetPosition.X < Collision.Right && Math.Round(Receiver.GetPosition.X) == Math.Round(Collision.Left) && Receiver.GetPosition.Y <= Collision.Top
-                    && Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) >= Math.Round(Collision.Top))
+                    && Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) >= Math.Round(Collision.Top) && Receiver.GetPosition.Y < Collision.Bottom)
                 { returnVal = 2; }
 
 
                 //Collision happened on the right 
                 else if (Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left &&
                     Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) == Math.Round(Collision.Right)
-                    && Receiver.GetPosition.Y <= Collision.Top
+                    && Receiver.GetPosition.Y < Collision.Bottom
                     && Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) >= Math.Round(Collision.Top))
                 { returnVal = 3; }
 
@@ -45,16 +58,7 @@ namespace Sprint03
             }
 
             //Our intersection happend on the top or the bottom 
-            else if (Collision.Height < Collision.Width)
-            {
-                //Collision happend on the Top
-                if (Receiver.GetPosition.Y == Collision.Top && Receiver.GetPosition.Y > Collision.Bottom)
-                { returnVal = 0; }
 
-                //Collision Happened on the bottom
-                else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top)
-                { returnVal = 1; }
-            }
             return returnVal;
         }
 
@@ -72,8 +76,18 @@ namespace Sprint03
             FRectangle itemHitbox;
             FRectangle screenDimensions = new FRectangle(Game.CurrentScreen.X, Game.CurrentScreen.Y, Game.CurrentScreen.Width, Game.CurrentScreen.Height);
 
-            // Link & Item Collision
-            foreach (Item item in Game.ItemsList)
+            // 
+            foreach (FRectangle box in Game.Blocks)
+            {
+                if (linkHitbox.Intersects(box))
+                {
+                    direction = CollisionDirection(Game.Link.SpriteLink, FRectangle.Intersection(linkHitbox, box));
+                    ColRes.StopSprite(Game.Link.SpriteLink, box, direction);
+                }
+
+
+                // Link & Item Collision
+                foreach (Item item in Game.ItemsList)
             {
                 itemHitbox = new FRectangle(item.Sprite.Position.X, item.Sprite.Position.Y, (int)item.Sprite.GetSize.X, (int)item.Sprite.GetSize.Y);
 
