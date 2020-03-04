@@ -27,7 +27,6 @@ namespace Sprint03
 
                 case "Down":
                     SpriteEffect = SpriteEffects.FlipVertically;
-
                     ChangeSpriteAnimation(Name);
                     Position.X = 112;
                     Position.Y = 208;
@@ -37,6 +36,7 @@ namespace Sprint03
                     ChangeSpriteAnimation(Name + "Horizontal");
                     Position.X = 0;
                     Position.Y = 136;
+
                     break;
 
                 case "Right":

@@ -14,8 +14,9 @@ namespace Sprint03
         public bool DestroyableWall;
         private bool Destroyed = false;
         private Game1 Game;
+        private int NextRoom;
 
-        public Door(Game1 game, StaticSprite sprite, bool locked, bool destroyable)
+        public Door(Game1 game, StaticSprite sprite, int NextRoom, bool locked, bool destroyable)
         {
             Game = game;
             Sprite = sprite;
@@ -45,6 +46,14 @@ namespace Sprint03
         public void Draw()
         {
             Sprite.DrawSprite();
+        }
+
+        public void EnterDoor()
+        {
+            if(!Locked && !(DestroyableWall && Destroyed))
+            {
+                Game.RFactory.LoadRoom(NextRoom);
+            }
         }
 
     }

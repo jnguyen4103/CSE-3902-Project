@@ -179,7 +179,7 @@ namespace Sprint03
         public void CreateDoor(string name, string side, bool locked, bool destroyable)
         {
             StaticSprite sprite = new DoorSprite(Game, name, side, Game.TileSpriteSheet, Game.spriteBatch);
-            Door door = new Door(Game, sprite, locked, destroyable);
+            Door door = new Door(Game, sprite, 1, locked, destroyable);
             Game.DoorList.Add(door);
         }
 

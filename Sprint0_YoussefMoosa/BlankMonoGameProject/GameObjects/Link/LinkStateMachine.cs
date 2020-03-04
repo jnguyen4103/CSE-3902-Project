@@ -94,12 +94,13 @@ namespace Sprint03
             }
         }
 
-        public void CatchBoomerang()
+        public void CatchBoomerang(IEffect boomerang)
         {
             if (Link.State == Link.LinkState.Moving || Link.State == Link.LinkState.Idle)
             {
                 Link.State = Link.LinkState.UsingSecondary;
                 Link.Game.Link = new UseSecondaryLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction, null);
+                boomerang.Sprite.KillSprite();
             }
         }
 

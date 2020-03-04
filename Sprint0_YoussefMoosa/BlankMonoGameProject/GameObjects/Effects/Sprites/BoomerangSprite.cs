@@ -139,18 +139,5 @@ namespace Sprint03
             AnimationWindow.Y = (int)(InitalAnimationY + (CurrentFrame * Size.Y) + (8 * CurrentFrame));
             Batch.Draw(Texture, DrawWindow, AnimationWindow, Colour, Rotation, Origin, SpriteEffect, Layer);
         }
-
-        public override void KillSprite()
-        {
-            if (Returning)
-            {
-                Game.Link.StateMachine.CatchBoomerang();
-                base.KillSprite();
-
-            } else
-            {
-                Returning = true;
-            }
-        }
     }
 }

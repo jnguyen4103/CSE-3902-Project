@@ -60,8 +60,8 @@
     <Compile Include="Components\ITimer.cs" />
     <Compile Include="Components\MonoTime.cs" />
     <Compile Include="Components\MonoTimer.cs" />
-    <Compile Include="GameObjects\Blocks\Door.cs" />
-    <Compile Include="GameObjects\Blocks\DoorSprite.cs" />
+    <Compile Include="GameObjects\Doors\Door.cs" />
+    <Compile Include="GameObjects\Doors\DoorSprite.cs" />
     <Compile Include="GameObjects\Effects\Sprites\BeamExplosionSprite.cs" />
     <Compile Include="GameObjects\Effects\BeamExplosionEffect.cs" />
     <Compile Include="GameObjects\Monsters\MonsterFactory.cs" />

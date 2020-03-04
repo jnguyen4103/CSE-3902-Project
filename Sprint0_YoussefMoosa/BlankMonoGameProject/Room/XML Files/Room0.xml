@@ -31,10 +31,10 @@
 
   <!-- Monsters -->
   <!-- Doors -->
-  -<Door Name="Wall" Side="Left" Locked ="False" Destroyable="False"/>
-  -<Door Name="OpenDoor" Side="Right" Locked ="False" Destroyable="False"/>
-  -<Door Name="KeyDoor" Side="Up" Locked ="False" Destroyable="False"/>
-  -<Door Name="ClosedDoor" Side="Down" Locked ="False" Destroyable="False"/>
+  -<Door LeadsTo="1" Name="Wall" Side="Left" Locked ="False" Destroyable="False"/>
+  -<Door LeadsTo="1" Name="OpenDoor" Side="Right" Locked ="False" Destroyable="False"/>
+  -<Door LeadsTo="1" Name="KeyDoor" Side="Up" Locked ="False" Destroyable="False"/>
+  -<Door LeadsTo="1" Name="ClosedDoor" Side="Down" Locked ="False" Destroyable="False"/>
 
 
 
