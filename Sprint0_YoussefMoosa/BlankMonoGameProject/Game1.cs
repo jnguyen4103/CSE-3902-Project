@@ -41,6 +41,7 @@ namespace Sprint03
         public List<Item> ItemsList = new List<Item>();
         public List<IEffect> EffectsList = new List<IEffect>();
         public List<Door> DoorList = new List<Door>(4);
+        public List<FRectangle> blocks = new List<FRectangle>();
 
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
         private ICommand[] keyboardCommands = new ICommand[11];
@@ -92,6 +93,7 @@ namespace Sprint03
             keyboardCommands[8] = new LinkAttack(this);
             keyboardCommands[9] = new DamageLink(this);
             keyboardCommands[10] = new IdleLink(this);
+            blocks.Add(new FRectangle(100f,150f,16,16));
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
@@ -127,7 +129,7 @@ namespace Sprint03
 
             SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
-
+           
             RFactory.LoadRoom(0);
             handler = new CollisionDetection(this);
 

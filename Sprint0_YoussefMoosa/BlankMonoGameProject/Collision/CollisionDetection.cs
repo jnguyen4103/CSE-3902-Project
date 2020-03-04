@@ -11,7 +11,7 @@ namespace Sprint03
         private List<Item> Items;
         private List<Monster> Monsters;
         public List<IEffect> Effects;
-        public List<Tile> Tiles;
+        public List<FRectangle> Blocks;
         private Game1 Game;
         private CollisionResolution ColRes;
 
@@ -21,7 +21,7 @@ namespace Sprint03
             this.Link = game.Link;
             this.Items = game.ItemsList;
             this.Effects = game.EffectsList;
-            // this.Tiles = game.TileList;
+            this.Blocks = game.blocks;
             Game = game;
             ColRes = new CollisionResolution(game);
         }
@@ -35,19 +35,33 @@ namespace Sprint03
             * 2 - Left
             * 3 - Right
             */
+            Console.WriteLine("Height "+ Collision.Height);
+            Console.WriteLine("Width " + Collision.Width);
+             if (Collision.Height < Collision.Width)
+            {
+                //Collision happend on the Top
+                Console.WriteLine(Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top);
+                if (Math.Round(Receiver.GetPosition.Y) <= Math.Round(Collision.Top) && Receiver.GetPosition.Y < Collision.Bottom && Receiver.GetPosition.Y + Receiver.GetSize.Y >= Collision.Bottom)
+                { returnVal = 0; }
 
-            if (Collision.Width < Collision.Height)
+                //Collision Happened on the bottom
+                else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top && Receiver.GetPosition.Y > Collision.Top )
+                { returnVal = 1; }
+                else { returnVal = 1; }
+
+            }
+            else if (Collision.Width < Collision.Height)
             {
                 //Collision happend on the Left
                 if (Receiver.GetPosition.X < Collision.Right && Math.Round(Receiver.GetPosition.X) == Math.Round(Collision.Left) && Receiver.GetPosition.Y <= Collision.Top
-                    && Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) >= Math.Round(Collision.Top))
+                    && Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) >= Math.Round(Collision.Top)&& Receiver.GetPosition.Y < Collision.Bottom)
                 { returnVal = 2; }
 
 
                 //Collision happened on the right 
                 else if (Receiver.GetPosition.X + Receiver.GetSize.X > Collision.Left &&
                     Math.Round(Receiver.GetPosition.X + Receiver.GetSize.X) == Math.Round(Collision.Right)
-                    && Receiver.GetPosition.Y <= Collision.Top
+                    &&  Receiver.GetPosition.Y < Collision.Bottom
                     && Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) >= Math.Round(Collision.Top))
                 { returnVal = 3; }
 
@@ -55,16 +69,7 @@ namespace Sprint03
             }
 
             //Our intersection happend on the top or the bottom 
-            else if (Collision.Height < Collision.Width)
-            {
-                //Collision happend on the Top
-                if (Receiver.GetPosition.Y == Collision.Top && Receiver.GetPosition.Y > Collision.Bottom)
-                { returnVal = 0; }
 
-                //Collision Happened on the bottom
-                else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top)
-                { returnVal = 1; }
-            }
             return returnVal;
         }
 
@@ -108,6 +113,12 @@ namespace Sprint03
             }
 
             // Link & Monster Collision
+         foreach(FRectangle box in Blocks) { 
+                if(linkHitbox.Intersects(box))
+                {
+                    direction = CollisionDirection(Link.SpriteLink, FRectangle.Intersection(linkHitbox, box));
+                    ColRes.StopSprite(Link.SpriteLink,box,direction);
+                }
             foreach (Monster monster in Monsters)
             {
                 // Monster vs. Link
@@ -160,6 +171,7 @@ namespace Sprint03
 
                 }
             }
+        }
         }
     }
 }

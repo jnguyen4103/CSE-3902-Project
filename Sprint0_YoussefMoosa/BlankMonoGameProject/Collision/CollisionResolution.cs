@@ -78,20 +78,21 @@ namespace Sprint03
             float rightOfRect = Block.Right;
             float topOfRect = Block.Top;
             float bottomOfRect = Block.Bottom;
-
             switch (direction)
             {
                 case 0:
-                    Sp.Position.Y = bottomOfRect;
+                    Sp.Position.Y += Sp.BaseSpeed; 
                     break;
                 case 1:
-                    Sp.Position.Y = topOfRect;
+                    Sp.Position.Y -=Sp.BaseSpeed;
                     break;
                 case 2:
-                    Sp.Position.X = rightOfRect;
+                    Sp.Position.X += Sp.BaseSpeed;
+                    break;
+                case 3:
+                    Sp.Position.X -= Sp.BaseSpeed;
                     break;
                 default:
-                    Sp.Position.X = leftOfRect;
                     break;
             }
         }
