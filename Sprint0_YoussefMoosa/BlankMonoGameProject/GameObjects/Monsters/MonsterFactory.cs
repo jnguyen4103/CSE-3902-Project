@@ -32,7 +32,7 @@ namespace Sprint03
             Stalfos.StateMachine = new StalfosSM(Stalfos, Game);
 
             // Spawning dat boii
-            Game.MonsterList.Add(Stalfos);
+            Game.CurrentRoom.Enemies.Add(Stalfos);
         }
     }
 }

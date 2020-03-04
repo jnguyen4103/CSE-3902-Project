@@ -18,9 +18,7 @@ namespace Sprint03
 
         public void LoadRoom(string room)
         {
-            if (Rooms[CurrenRoom].RoomLoadedAlready) { Rooms[CurrenRoom].UnloadRoom(); }
-            if(Rooms[room].RoomLoadedAlready) { Rooms[room].ReloadRoom(); }
-            else { Rooms[room].LoadRoom(); }
+            if(!Rooms[room].RoomLoadedAlready) { Rooms[room].LoadRoom(); }
             CurrenRoom = room;
             Game.CurrentRoom = Rooms[CurrenRoom];
         }

@@ -15,8 +15,8 @@
             Game.Link.StateMachine.DownState();
             Game.Link = new Link(Game.SpriteLink, Game);
             Game.Link.HP = Game.Link.MaxHP;
-            Game.MonsterList.Clear();
-            Game.ItemsList.Clear();
+            Game.CurrentRoom.Enemies.Clear();
+            Game.CurrentRoom.Items.Clear();
             Game.EffectsList.Clear();
             Game.RFactory.ResetRooms();
             Game.RFactory.LoadRoom("Room0");

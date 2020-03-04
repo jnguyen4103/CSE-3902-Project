@@ -8,8 +8,7 @@ namespace Sprint03
 
         FloorSprite Sprite { get; set; }
         void LoadRoom();
-        void UnloadRoom();
-        void ReloadRoom();
+        void Update();
         void Draw();
    }
 }

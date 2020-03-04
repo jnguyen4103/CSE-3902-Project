@@ -12,9 +12,9 @@ namespace Sprint03
      */
     public class Room: IRoom
     {
-        private List<Monster> Enemies;
-        private List<Item> Items;
-        private List<FRectangle> Blocks;
+        public List<Monster> Enemies = new List<Monster>();
+        public List<Item> Items = new List<Item>();
+        public List<FRectangle> Blocks = new List<FRectangle>();
         public Dictionary<string, Door> Doors = new Dictionary<string, Door>(4);
         private Game1 Game;
         private string File;
@@ -56,7 +56,7 @@ namespace Sprint03
                         case "Block":
                             Vector2 Position = ParseVector2(Reader.GetAttribute("Spawn"));
                             Vector2 Size = ParseVector2(Reader.GetAttribute("Size"));
-                            Game.Blocks.Add(new FRectangle(Position, Size));
+                            Blocks.Add(new FRectangle(Position, Size));
 
                             break;
 
@@ -69,20 +69,12 @@ namespace Sprint03
             Reader.Close();
         }
 
-        public void UnloadRoom()
+        public void Update()
         {
-            Enemies = new List<Monster>(Game.MonsterList);
-            Items = new List<Item>(Game.ItemsList);
-            Game.EffectsList.Clear();
-            Game.MonsterList.Clear();
-            Game.ItemsList.Clear();
-        }
-
-        public void ReloadRoom()
-        {
-            Game.MonsterList = new List<Monster>(Enemies);
-            Game.ItemsList = new List<Item>(Items);
-
+            foreach (Monster monster in Enemies)
+            {
+                monster.Update();
+            }
         }
 
         public void Draw()
@@ -92,6 +84,16 @@ namespace Sprint03
             Doors["Right"].Draw();
             Doors["Up"].Draw();
             Doors["Down"].Draw();
+
+            foreach(Monster monster in Enemies)
+            {
+                monster.Draw();
+            }
+
+            foreach(Item item in Items)
+            {
+                item.Draw();
+            }
 
         }
 

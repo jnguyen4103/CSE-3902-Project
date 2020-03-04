@@ -39,11 +39,9 @@ namespace Sprint03
 
         CollisionDetection handler;
 
-        public List<Monster> MonsterList = new List<Monster>();
-        public List<Item> ItemsList = new List<Item>();
+
         public List<IEffect> EffectsList = new List<IEffect>();
         public Room CurrentRoom;
-        public List<FRectangle> Blocks = new List<FRectangle>();
 
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
         private ICommand[] keyboardCommands = new ICommand[11];
@@ -160,12 +158,7 @@ namespace Sprint03
 
             // TODO: Add your update logic here
             Link.Update();
-            foreach (Monster monster in MonsterList)
-            {
-                monster.Update();
-            }
-
-
+            CurrentRoom.Update();
             handler.CollisionHandler();
             keyboardController.Update();
             mouseController.Update();
@@ -195,24 +188,7 @@ namespace Sprint03
                 }
             }
 
-            foreach (Monster monster in MonsterList.ToArray())
-            {
-                if(monster.Sprite.Colour == Color.Transparent)
-                {
-                    MonsterList.Remove(monster);
-                }
 
-                monster.Draw();
-            }
-
-            foreach(Item item in ItemsList.ToArray())
-            {
-                item.Draw();
-                if(item.Sprite.Colour == Color.Transparent)
-                {
-                    ItemsList.Remove(item);
-                }
-            }
 
             Link.Draw();
          
