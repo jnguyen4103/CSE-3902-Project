@@ -13,10 +13,7 @@ namespace Sprint03
         Vector2 GetPosition { get; }
         Vector2 GetSize { get; }
         void DrawSprite();
-        void Move();
-        void Animate();
         void ChangeSpriteAnimation(string newSpriteName);
-
         void KillSprite();
     }
 }

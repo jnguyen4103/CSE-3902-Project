@@ -12,12 +12,13 @@ namespace Sprint03
             this.Game = game;
             this.Batch = batch;
             this.Name = name;
+            IgnoresBoundaries = true;
             this.Size = game.SFactory.Sprites[name].Item2;
             this.Position = spawn;
             this.Texture = texture;
             this.BaseSpeed = 0.5f;
             this.TotalFrames = game.SFactory.Sprites[name].Item3;
-            this.FPS = 4;
+            this.FPS = 6;
             this.ChangeSpriteAnimation(name);
         }
 

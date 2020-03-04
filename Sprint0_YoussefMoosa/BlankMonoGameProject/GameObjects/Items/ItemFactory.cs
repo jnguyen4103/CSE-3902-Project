@@ -24,6 +24,9 @@ namespace Sprint03
             UseItem["Map"] = Map;
             UseItem["Rupee"] = Rupee;
             UseItem["Triforce"] = Triforce;
+            UseItem["Arrow"] = Arrow;
+            UseItem["Book"] = Book;
+            UseItem["Bow"] = Bow;
 
         }
         
@@ -80,6 +83,7 @@ namespace Sprint03
 
         private void Key()
         {
+            Game.KeyCounter++;
         }
 
         private void LionKey()
@@ -96,6 +100,21 @@ namespace Sprint03
         }
 
         private void Triforce()
+        {
+
+        }
+
+        private void Arrow()
+        {
+
+        }
+
+        private void Book()
+        {
+
+        }
+
+        private void Bow()
         {
 
         }

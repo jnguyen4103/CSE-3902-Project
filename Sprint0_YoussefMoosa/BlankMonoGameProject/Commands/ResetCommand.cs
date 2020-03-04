@@ -15,12 +15,11 @@
             Game.Link.StateMachine.DownState();
             Game.Link = new Link(Game.SpriteLink, Game);
             Game.Link.HP = Game.Link.MaxHP;
+            Game.MonsterList.Clear();
             Game.ItemsList.Clear();
             Game.EffectsList.Clear();
-            Game.MonsterList.Clear();
-            Game.IFactory.SpawnItem("Heart", Game.itemSpawnPosition);
-            Game.MFactory.Monsters["Stalfos"](Game.spawnPosition);
+            Game.RFactory.ResetRooms();
+            Game.RFactory.LoadRoom(0);
         }
     }
-
 }

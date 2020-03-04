@@ -17,16 +17,19 @@ namespace Sprint03
         //private List<object> lockedDoors;
         //private List<object> unlockedDoors;
         private Game1 Game;
-        private XmlReader Reader;
-        
+        private string File;
+
+        public bool RoomLoadedAlready { get; set; } = false;
+
         public Room(Game1 game, string XMLFile)
         {
             Game = game;
-            Reader = XmlReader.Create(XMLFile);
+            File = XMLFile;
         }
 
         public void LoadRoom()
         {
+            XmlReader Reader = XmlReader.Create(File);
             while (Reader.Read())
             {
                 if (Reader.NodeType == XmlNodeType.Element)
@@ -35,11 +38,16 @@ namespace Sprint03
                     {
                         // Parse Tag here...
                         case "Monster":
-                            Game.MFactory.Monsters[Reader.Value](ParseVector2(Reader.GetAttribute("spawnLocation")));
+                            Game.MFactory.Monsters[Reader.GetAttribute("Name")](ParseVector2(Reader.GetAttribute("Spawn")));
                             break;
 
                         case "Item":
-                            Game.IFactory.SpawnItem(Reader.Value, ParseVector2(Reader.GetAttribute("spawnLocation")));
+                            Game.IFactory.SpawnItem(Reader.GetAttribute("Name"), ParseVector2(Reader.GetAttribute("Spawn")));
+                            break;
+
+                        case "Door":
+                            Game.SFactory.CreateDoor(Reader.GetAttribute("Name"), Reader.GetAttribute("Side"), 
+                                Reader.GetAttribute("Locked").Equals("True"), Reader.GetAttribute("Destroyable").Equals("False"));
                             break;
 
                         default:
@@ -47,6 +55,7 @@ namespace Sprint03
                     }
                 }
             }
+            RoomLoadedAlready = true;
             Reader.Close();
         }
 
@@ -54,15 +63,10 @@ namespace Sprint03
         {
             Enemies = new List<Monster>(Game.MonsterList);
             Items = new List<Item>(Game.ItemsList);
+            Game.EffectsList.Clear();
             Game.MonsterList.Clear();
             Game.ItemsList.Clear();
 
-        }
-
-        public Vector2 ParseVector2(string coord)
-        {
-            string[] coordinates = coord.Split(new char[] { ' ' });
-            return new Vector2(Single.Parse(coordinates[0]), Single.Parse(coordinates[1]));
         }
 
         public void ReloadRoom()
@@ -70,6 +74,12 @@ namespace Sprint03
             Game.MonsterList = new List<Monster>(Enemies);
             Game.ItemsList = new List<Item>(Items);
 
+        }
+
+        private Vector2 ParseVector2(string coord)
+        {
+            string[] coordinates = coord.Split(new char[] { ' ' });
+            return new Vector2(Single.Parse(coordinates[0]), Single.Parse(coordinates[1]));
         }
     }
 }

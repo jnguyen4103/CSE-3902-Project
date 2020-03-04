@@ -60,6 +60,8 @@
     <Compile Include="Components\ITimer.cs" />
     <Compile Include="Components\MonoTime.cs" />
     <Compile Include="Components\MonoTimer.cs" />
+    <Compile Include="GameObjects\Blocks\Door.cs" />
+    <Compile Include="GameObjects\Blocks\DoorSprite.cs" />
     <Compile Include="GameObjects\Effects\Sprites\BeamExplosionSprite.cs" />
     <Compile Include="GameObjects\Effects\BeamExplosionEffect.cs" />
     <Compile Include="GameObjects\Monsters\MonsterFactory.cs" />
@@ -97,10 +99,11 @@
     <Compile Include="GameObjects\Tile\Tile.cs" />
     <Compile Include="Room\IRoom.cs" />
     <Compile Include="Room\Room.cs" />
-    <Compile Include="Room\RoomHandler.cs" />
+    <Compile Include="Room\RoomFactory.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="GameObjects\Items\ItemSprite.cs" />
     <Compile Include="GameObjects\Link\LinkSprite.cs" />
+    <Compile Include="Sprite\StaticSprite.cs" />
     <Compile Include="Sprite\Sprite.cs" />
     <Compile Include="Sprite\SpriteFactory.cs" />
     <Compile Include="GameObjects\Monsters\Monster.cs" />
@@ -121,10 +124,9 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="GameObjects\Blocks\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Room\XML Files\Room0.xml" />
     <Content Include="Room\XML Files\Room4.xml" />
     <Content Include="Room\XML Files\Room1.xml" />
     <Content Include="Room\XML Files\Room10.xml" />

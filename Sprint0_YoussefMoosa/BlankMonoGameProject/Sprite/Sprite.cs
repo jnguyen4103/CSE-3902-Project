@@ -153,7 +153,6 @@ namespace Sprint03
                     Position.X = Game.WalkingRect.X;
                 }
             }
-
         }
     }
 }

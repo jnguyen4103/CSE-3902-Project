@@ -38,7 +38,9 @@ namespace Sprint03
          * 
          */
 
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> Sprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(69);
+        private Game1 Game;
+
+        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> Sprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(78);
 
         // Al off the Sprites are size 16 by 16
         private readonly Vector2 Spritesize = new Vector2(16, 16);
@@ -50,12 +52,17 @@ namespace Sprint03
         private readonly Vector2 defaultItemSize = new Vector2(8, 16);
         private readonly Vector2 rotatedItemSize = new Vector2(16, 8);
 
+        // Door Size
+        private readonly Vector2 doorSize = new Vector2(32, 32);
+
 
         // Small Items & Effects
         private readonly Vector2 smallItemSize = new Vector2(8, 8);
 
-        public SpriteFactory()
+        public SpriteFactory(Game1 game)
         {
+            Game = game;
+
             // Iniitalizing all Link Sprites into a dictionary
             Sprites["WalkUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 40), Spritesize, 2);
             Sprites["WalkDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 40), Spritesize, 2);
@@ -110,7 +117,7 @@ namespace Sprint03
             Sprites["HeartContainer"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(16, 0, 16, 16), defaultMonsterSize, 1);
             Sprites["Clock"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(56, 0, 16, 16), defaultMonsterSize, 1);
             Sprites["Rupee"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 40), defaultItemSize, 2);
-            Sprites["BlueRupee"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 16, 8, 16), defaultItemSize, 1);
+            Sprites["BlueRupee"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 24, 8, 16), defaultItemSize, 1);
             Sprites["Map"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 8, 16), defaultItemSize, 1);
             Sprites["Boomerang"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 0, 8, 8), smallItemSize, 1);
             Sprites["Bomb"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 0, 8, 16), defaultItemSize, 1);
@@ -153,6 +160,27 @@ namespace Sprint03
             Sprites["Brick"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(192, 0, 16, 16), Spritesize, 1);
             Sprites["Steps"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(216, 0, 16, 16), Spritesize, 1);
 
+            // Door Sprites
+            Sprites["Wall"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 24, 32, 32), doorSize, 1);
+            Sprites["OpenDoor"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(40, 24, 32, 32), doorSize, 1);
+            Sprites["KeyDoor"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 24, 32, 32), doorSize, 1);
+            Sprites["ClosedDoor"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 24, 32, 32), doorSize, 1);
+            Sprites["DestroyedWall"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 24, 32, 32), doorSize, 1);
+
+            Sprites["WallHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 64, 32, 32), doorSize, 1);
+            Sprites["OpenDoorHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(40, 64, 32, 32), doorSize, 1);
+            Sprites["KeyDoorHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 64, 32, 32), doorSize, 1);
+            Sprites["ClosedDoorHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 64, 32, 32), doorSize, 1);
+            Sprites["DestroyedWallHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 64, 32, 32), doorSize, 1);
+
+
+        }
+
+        public void CreateDoor(string name, string side, bool locked, bool destroyable)
+        {
+            StaticSprite sprite = new DoorSprite(Game, name, side, Game.TileSpriteSheet, Game.spriteBatch);
+            Door door = new Door(Game, sprite, locked, destroyable);
+            Game.DoorList.Add(door);
         }
 
     }

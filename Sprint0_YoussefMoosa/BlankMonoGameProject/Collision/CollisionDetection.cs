@@ -88,7 +88,6 @@ namespace Sprint03
                     returnVal = 1;
                 }
             }
-            //Console.WriteLine("Value is "+returnVal);
             return returnVal;
         }
 
@@ -147,6 +146,8 @@ namespace Sprint03
                         }
                         else if (effect.Sprite.Name.Equals("BoomerangEffect"))
                         {
+                            Console.WriteLine("Boomerang Contact");
+
                             effect.Sprite.KillSprite();
                         }
 

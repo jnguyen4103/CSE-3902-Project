@@ -23,6 +23,7 @@ namespace Sprint03
         public ILink Link;
         public LinkSprite SpriteLink;
         public int RupeeCounter = 0;
+        public int KeyCounter = 0;
 
         // Sprite Sheets
         public Texture2D LinkSpriteSheet;
@@ -39,6 +40,7 @@ namespace Sprint03
         public List<Monster> MonsterList = new List<Monster>();
         public List<Item> ItemsList = new List<Item>();
         public List<IEffect> EffectsList = new List<IEffect>();
+        public List<Door> DoorList = new List<Door>(4);
 
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
         private ICommand[] keyboardCommands = new ICommand[11];
@@ -46,8 +48,6 @@ namespace Sprint03
         //(32,96). w = 192 H =112
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
-        public readonly Vector2 itemSpawnPosition = new Vector2(180, 164);
-        public readonly Vector2 spawnPosition = new Vector2(80, 144);
         public readonly Vector2 LinkSpawn = new Vector2(120, 192);
 
         public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
@@ -74,7 +74,7 @@ namespace Sprint03
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            SFactory = new SpriteFactory();
+            SFactory = new SpriteFactory(this);
             IFactory = new ItemFactory(this);
             MFactory = new MonsterFactory(this);
             RFactory = new RoomFactory(this);
@@ -128,8 +128,7 @@ namespace Sprint03
             SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
 
-            MFactory.Monsters["Stalfos"](spawnPosition);
-            IFactory.SpawnItem("Heart", itemSpawnPosition);
+            RFactory.LoadRoom(0);
             handler = new CollisionDetection(this);
 
 
@@ -174,9 +173,14 @@ namespace Sprint03
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            spriteBatch.Begin(transformMatrix: Matrix.CreateScale(4, 4, 1.0f));
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Matrix.CreateScale(4, 4, 1.0f));
 
             spriteBatch.Draw(Background, CurrentScreen, Color.White);
+
+            foreach (Door door in DoorList)
+            {
+                door.Draw();
+            }
 
             foreach (IEffect effect in EffectsList.ToArray())
             {
@@ -201,6 +205,7 @@ namespace Sprint03
             {
                 item.Draw();
             }
+
 
             Link.Draw();
 
