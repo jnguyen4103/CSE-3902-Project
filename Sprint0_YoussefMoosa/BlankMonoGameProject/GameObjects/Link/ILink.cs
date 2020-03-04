@@ -17,6 +17,7 @@ namespace Sprint03
         void Update();
         void Draw();
         void TakeDamage(int damage, int direction);
+        void StopLink();
         Link.LinkState GetState();
     }
 }

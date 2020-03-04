@@ -70,6 +70,14 @@ namespace Sprint03
                 }
             }
         }
+        public virtual void IdleState()
+        {
+            if(State != MonsterState.Damaged && State != MonsterState.Dead)
+            {
+                State = MonsterState.Idle;
+                StateMachine.IdleState();
+            }
+        }
 
         public void Update()
         {
