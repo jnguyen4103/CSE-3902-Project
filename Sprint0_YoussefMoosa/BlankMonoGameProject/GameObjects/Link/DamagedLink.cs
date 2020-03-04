@@ -122,5 +122,10 @@ namespace Sprint03
 
             return dir;
         }
+
+        public void StopLink()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

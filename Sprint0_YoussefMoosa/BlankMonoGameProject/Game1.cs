@@ -37,6 +37,7 @@ namespace Sprint03
         public List<Monster> MonsterList = new List<Monster>();
         public List<Item> ItemsList = new List<Item>();
         public List<IEffect> EffectsList = new List<IEffect>();
+        public List<FRectangle> BoundedBlocks = new List<FRectangle>();
 
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
         private ICommand[] keyboardCommands = new ICommand[11];
@@ -89,6 +90,7 @@ namespace Sprint03
             keyboardCommands[10] = new IdleLink(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
             MediaPlayer.Play(song);
+
             //  Uncomment the following line will also loop the song
             //  MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
@@ -125,6 +127,8 @@ namespace Sprint03
 
             MonsterList.Add(new Stalfos(new StalfosSprite(this, "StalfosWalk", MonsterSpriteSheet, spawnPosition, spriteBatch), this));
             ItemsList.Add(new Item(this, "Heart", "Heart", ItemSpriteSheet, itemSpawnPosition, spriteBatch));
+            BoundedBlocks.Add(new FRectangle(150f, 150f,16,16));
+            
             handler = new CollisionDetection(this);
 
 

@@ -95,5 +95,9 @@ namespace Sprint03
             return Link.LinkState.Damaged;
         }
 
+        public void StopLink()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

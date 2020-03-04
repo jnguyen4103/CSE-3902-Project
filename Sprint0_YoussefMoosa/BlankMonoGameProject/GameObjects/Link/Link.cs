@@ -76,6 +76,10 @@
             }
         }
 
+        public void StopLink()
+        {
+            LinkSM.IdleState();
+        }
         public void Draw()
         {
             SpriteLink.DrawSprite();

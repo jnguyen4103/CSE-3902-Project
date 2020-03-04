@@ -18,7 +18,7 @@ namespace Sprint03
 
         public void HurtLink(Monster monster, int direction)
         {
-            if (Game.Link.GetState() != Link.LinkState.Damaged 
+            if (Game.Link.GetState() != Link.LinkState.Damaged
                 && monster.State != Monster.MonsterState.Dead
                 && monster.State != Monster.MonsterState.Damaged)
             {
@@ -26,11 +26,20 @@ namespace Sprint03
             }
         }
 
-        
+        public void StopSprite(Sprite Sp, FRectangle WhatWeHit,int direction)
+        {
+            //Console.WriteLine("WE HIT"+direction);
+
+            if (Game.Link.GetState() != Link.LinkState.Damaged)
+            {
+                StayOffBlock(Sp, WhatWeHit,direction);
+            }
+        }
+
 
         public void DestroyEffect(IEffect effect)
         {
-            if(!effect.Sprite.Name.Equals("SwordBeamExplosion") && !effect.Sprite.Name.Equals("SwordSwing") && !effect.Sprite.Name.Equals("SwordSwingHorizontal"))
+            if (!effect.Sprite.Name.Equals("SwordBeamExplosion") && !effect.Sprite.Name.Equals("SwordSwing") && !effect.Sprite.Name.Equals("SwordSwingHorizontal"))
             {
                 effect.Sprite.KillSprite();
             }
@@ -54,5 +63,32 @@ namespace Sprint03
             item.ActivateItem();
         }
 
+        private void StayOffBlock(Sprite Sp, FRectangle Block,int direction)
+        {
+            float leftOfSprite = Sp.Position.X;
+            float rightOfSprite = Sp.Position.X + Sp.GetSize.X;
+            float topOfSprite = Sp.Position.Y;
+            float bottomOfSprite = Sp.Position.Y + Sp.GetSize.Y;
+            float leftOfRect = Block.Left;
+            float rightOfRect = Block.Right;
+            float topOfRect = Block.Top;
+            float bottomOfRect = Block.Bottom;
+
+            switch (direction)
+            {
+                case 0:
+                    Sp.Position.Y = bottomOfRect;
+                    break;
+                case 1:
+                    Sp.Position.Y = topOfRect;
+                    break;
+                case 2:
+                    Sp.Position.X = rightOfRect;
+                    break;
+                default:
+                    Sp.Position.X = leftOfRect;
+                    break;
+            }
+        }
     }
 }
