@@ -34,7 +34,7 @@ namespace Sprint03
                 { returnVal = 0; }
 
                 //Collision Happened on the bottom
-                else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) == Math.Round(Collision.Bottom) && Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top && Receiver.GetPosition.Y > Collision.Top)
+                else if (Math.Round(Receiver.GetPosition.Y + Receiver.GetSize.Y) >= Math.Round(Collision.Bottom) && Math.Round( Receiver.GetPosition.Y + Receiver.GetSize.Y )> Math.Round(Collision.Top))
                 { returnVal = 1; }
                 else { returnVal = 1; }
 
@@ -58,7 +58,7 @@ namespace Sprint03
             }
 
             //Our intersection happend on the top or the bottom 
-
+            Console.WriteLine(returnVal);
             return returnVal;
         }
 
