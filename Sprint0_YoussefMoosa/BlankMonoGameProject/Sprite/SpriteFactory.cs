@@ -85,28 +85,52 @@ namespace Sprint03
             Sprites["StalfosWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 40), defaultMonsterSize, 2);
             Sprites["StalfosDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 64, 16, 40), defaultMonsterSize, 2);
 
-            Sprites["GeeseWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["KeeseWallk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 40), defaultMonsterSize, 2);
 
             Sprites["GoriyasWalkDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 40), defaultMonsterSize, 2);
             Sprites["GoriyasWalkUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 0, 16, 40), defaultMonsterSize, 2);
-            Sprites["GoriyasWalkSide"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasWalkRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasWalkLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 64, 16, 40), defaultMonsterSize, 2);
+
 
             Sprites["GoriyasDamageUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 64, 16, 40), defaultMonsterSize, 2);
             Sprites["GoriyasDamageDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 64, 16, 40), defaultMonsterSize, 2);
-            Sprites["GoriyasDamageSide"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 64, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasDamageRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 64, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasDamageLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 88, 16, 40), defaultMonsterSize, 2);
+
 
             Sprites["BladeTrap"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 16), defaultMonsterSize, 1);
 
             Sprites["WallMaster"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 32), defaultMonsterSize, 2);
 
+            Sprites["Zol"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 48, 16, 32), defaultMonsterSize, 2);
+
+            Sprites["Rope"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 48, 16, 32), defaultMonsterSize, 2);
+
             Sprites["Gel"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 0, 8, 40), defaultItemSize, 2);
 
-            Sprites["WizzrobeUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(184, 0, 8, 40), defaultMonsterSize, 2);
-            Sprites["WizzrobeDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(208, 0, 8, 40), defaultMonsterSize, 2);
+            Sprites["WizzrobeUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(184, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["WizzrobeDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(208, 0, 16, 40), defaultMonsterSize, 2);
+
+            Sprites["DarknutUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 112, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 112, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 112, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 112, 16, 40), defaultMonsterSize, 2);
+
+            Sprites["DarknutDamagedUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 160, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutDamagedDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 160, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutDamagedRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 160, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutDamagedLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 160, 16, 40), defaultMonsterSize, 2);
+
+            Sprites["Gibo"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 112, 16, 40), defaultMonsterSize, 2);
 
             Sprites["AquamentusWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(232, 0, 24, 72), new Vector2(24, 32), 2);
             Sprites["AquamentusDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(232, 80, 24, 72), new Vector2(24, 32), 2);
             Sprites["AquamentusAttack"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(264, 0, 24, 72), new Vector2(24, 32), 2);
+
+
+
+
 
             Sprites["Death"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(296, 0, 16, 184), defaultMonsterSize, 8);
             Sprites["SpawningCloud"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(320, 0, 16, 64), defaultMonsterSize, 3);

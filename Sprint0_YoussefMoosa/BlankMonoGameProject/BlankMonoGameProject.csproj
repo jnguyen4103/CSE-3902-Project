@@ -125,7 +125,6 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Room\XML Files\ItemRoom.xml" />
     <Content Include="Room\XML Files\Room0.xml" />
@@ -147,6 +146,19 @@
     <Content Include="Room\XML Files\Room7.xml" />
     <Content Include="Room\XML Files\Room8.xml" />
     <Content Include="Room\XML Files\Room9.xml" />
+    <Content Include="Sprite Sheets\Background.png" />
+    <Content Include="Sprite Sheets\Dungeon1.png" />
+    <Content Include="Sprite Sheets\Effects Sprite Sheet.png" />
+    <Content Include="Sprite Sheets\Item Sprite Sheet.png" />
+    <Content Include="Sprite Sheets\Link Sprite Sheet.png" />
+    <Content Include="Sprite Sheets\Monster Sprite Sheet.png" />
+    <Content Include="Sprite Sheets\Padded\Death Animation.png" />
+    <Content Include="Sprite Sheets\Padded\Effects Sprite Sheet.png" />
+    <Content Include="Sprite Sheets\Padded\Item Sprite Sheet.png" />
+    <Content Include="Sprite Sheets\Padded\Link Sprite Sheet.png" />
+    <Content Include="Sprite Sheets\Padded\Monster Sprite Sheet.png" />
+    <Content Include="Sprite Sheets\Padded\Tile Sprite Sheet.png" />
+    <Content Include="Sprite Sheets\Tile Sprite Sheet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
