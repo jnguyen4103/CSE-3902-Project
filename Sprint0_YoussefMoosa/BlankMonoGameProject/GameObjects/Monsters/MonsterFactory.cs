@@ -15,6 +15,8 @@ namespace Sprint03
             Game = game;
             Monsters["Stalfos"] = SpawnStalfos;
             Monsters["Gel"] = SpawnGel;
+            Monsters["Keese"] = SpawnKeese;
+
 
         }
 
@@ -45,7 +47,7 @@ namespace Sprint03
 
         private Monster SpawnGel(Vector2 spawn)
         {
-            // Creating Sprite for Stalfos
+            // Creating Sprite for Gel
             Sprite GelSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
             GelSprite.FPS = 16;
             GelSprite.BaseSpeed = 0.64f;
@@ -59,6 +61,24 @@ namespace Sprint03
 
             // Spawning dat boii
             return Gel;
+        }
+
+        private Monster SpawnKeese(Vector2 spawn)
+        {
+            // Creating Sprite for Keese
+            Sprite KeeseSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            KeeseSprite.FPS = 16;
+            KeeseSprite.BaseSpeed = 0.64f;
+
+            // Setting up Monster object for Stalfos to hold stats
+            Monster Keese = new Monster(KeeseSprite, "Keese", Game);
+            Keese.hitpoints = 1;
+            Keese.maxHP = 1;
+            Keese.attackDamage = 1;
+            Keese.StateMachine = new KeeseSM(Keese, Game);
+
+            // Spawning dat boii
+            return Keese;
         }
     }
 }

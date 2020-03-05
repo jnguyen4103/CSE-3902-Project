@@ -10,6 +10,16 @@
   </Interior>
 
   <!--Monsters-->
+  -<Monster Name="Keese" Spawn="84 120"/>
+  -<Monster Name="Keese" Spawn="164 104"/>
+  -<Monster Name="Keese" Spawn="176 104"/>
+  -<Monster Name="Keese" Spawn="192 168"/>
+  -<Monster Name="Keese" Spawn="200 136"/>
+  -<Monster Name="Keese" Spawn="76 112"/>
+  -<Monster Name="Keese" Spawn="144 184"/>
+  -<Monster Name="Keese" Spawn="132 144"/>
+
+
   <!-- Items -->
   -<Item Name="Compass" Spawn="192 144"/>
 

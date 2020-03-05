@@ -67,6 +67,7 @@
     <Compile Include="GameObjects\Monsters\MonsterFactory.cs" />
     <Compile Include="GameObjects\Monsters\MonsterSprite.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\GelSM.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\KeeseSM.cs" />
     <Compile Include="GameObjects\Tile\NonStaticTile.cs" />
     <Compile Include="GameObjects\Tile\StaticTile.cs" />
     <Compile Include="GameObjects\Tile\TileSprite.cs" />

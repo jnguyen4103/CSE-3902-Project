@@ -23,9 +23,13 @@ namespace Sprint03
         public enum MonsterDirection
         {
             Up,
-            Down,
-            Left,
+            UpRight,
             Right,
+            DownRight,
+            Down,
+            DownLeft,
+            Left,
+            UpLeft
         }
 
         // Keep track of basic info about NPC
@@ -49,7 +53,7 @@ namespace Sprint03
             Sprite.DrawSprite();
         }
 
-        public void TakeDamage(int damage, int damageDirection)
+        public virtual void TakeDamage(int damage, int damageDirection)
         {
             if (State != MonsterState.Damaged 
                 && State != MonsterState.Dead
@@ -63,13 +67,13 @@ namespace Sprint03
                 else
                 {
                     Sprite.ChangeSpriteAnimation(Name + "Damaged");
-                    Console.WriteLine("Stalfos Damaged");
                     State = MonsterState.Damaged;
                     DamageDirection = damageDirection;
                     StateMachine.DamagedState(damageDirection);
                 }
             }
         }
+
         public void IdleState()
         {
             if(State != MonsterState.Damaged && State != MonsterState.Dead)

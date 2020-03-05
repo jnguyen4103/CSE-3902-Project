@@ -10,6 +10,9 @@
   </Interior>
   
   <!--Monsters-->
+  -<Monster Name="Keese" Spawn="44 104"/>
+  -<Monster Name="Keese" Spawn="124 136"/>
+  -<Monster Name="Keese" Spawn="156 176"/>
 
   <!-- Items -->
   -<Item Name="Key" Spawn="164 192"/>
