@@ -11,6 +11,9 @@
   
   <!--Monsters-->
   <!-- Items -->
+  -<Item Name="Key" Spawn="164 192"/>
+
+
   <!--Blocks -->
   <!-- Doors -->
   -<Door LeadsTo="Room0" Name="Wall" Side="Left" Destroyable="false"/>

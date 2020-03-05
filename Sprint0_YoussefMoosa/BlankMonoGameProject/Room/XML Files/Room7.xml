@@ -11,6 +11,9 @@
 
   <!--Monsters-->
   <!-- Items -->
+  -<Item Name="Compass" Spawn="192 144"/>
+
+  
   <!--Blocks -->
   -<Block Name="Block" Spawn="64 112" Size="16 16" />
   -<Block Name="Block" Spawn="176 112" Size="16 16" />

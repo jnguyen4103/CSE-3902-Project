@@ -11,6 +11,8 @@
 
   <!--Monsters-->
   <!-- Items -->
+  -<Item Name="Map" Spawn="196 144"/>
+
   <!--Blocks -->
   -<Block Name="Block" Spawn="48 112" Size="32 16" />
   -<Block Name="Block" Spawn="48 176" Size="32 16" />
