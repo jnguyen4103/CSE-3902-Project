@@ -112,15 +112,15 @@ namespace Sprint03
             Sprites["WizzrobeUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(184, 0, 16, 40), defaultMonsterSize, 2);
             Sprites["WizzrobeDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(208, 0, 16, 40), defaultMonsterSize, 2);
 
-            Sprites["DarknutUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 112, 16, 40), defaultMonsterSize, 2);
-            Sprites["DarknutDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 112, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 112, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 112, 16, 40), defaultMonsterSize, 2);
             Sprites["DarknutRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 112, 16, 40), defaultMonsterSize, 2);
             Sprites["DarknutLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 112, 16, 40), defaultMonsterSize, 2);
 
-            Sprites["DarknutDamagedUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 160, 16, 40), defaultMonsterSize, 2);
-            Sprites["DarknutDamagedDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 160, 16, 40), defaultMonsterSize, 2);
-            Sprites["DarknutDamagedRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 160, 16, 40), defaultMonsterSize, 2);
-            Sprites["DarknutDamagedLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 160, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutDownDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 160, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutUpDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 160, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutRightDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 160, 16, 40), defaultMonsterSize, 2);
+            Sprites["DarknutLeftDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 160, 16, 40), defaultMonsterSize, 2);
 
             Sprites["Gibo"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 112, 16, 40), defaultMonsterSize, 2);
 

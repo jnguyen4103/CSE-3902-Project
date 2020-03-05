@@ -66,6 +66,7 @@
     <Compile Include="GameObjects\Effects\BeamExplosionEffect.cs" />
     <Compile Include="GameObjects\Monsters\MonsterFactory.cs" />
     <Compile Include="GameObjects\Monsters\MonsterSprite.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\DarknutSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\GelSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\GoriyasSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\KeeseSM.cs" />
@@ -154,12 +155,6 @@
     <Content Include="Sprite Sheets\Item Sprite Sheet.png" />
     <Content Include="Sprite Sheets\Link Sprite Sheet.png" />
     <Content Include="Sprite Sheets\Monster Sprite Sheet.png" />
-    <Content Include="Sprite Sheets\Padded\Death Animation.png" />
-    <Content Include="Sprite Sheets\Padded\Effects Sprite Sheet.png" />
-    <Content Include="Sprite Sheets\Padded\Item Sprite Sheet.png" />
-    <Content Include="Sprite Sheets\Padded\Link Sprite Sheet.png" />
-    <Content Include="Sprite Sheets\Padded\Monster Sprite Sheet.png" />
-    <Content Include="Sprite Sheets\Padded\Tile Sprite Sheet.png" />
     <Content Include="Sprite Sheets\Tile Sprite Sheet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

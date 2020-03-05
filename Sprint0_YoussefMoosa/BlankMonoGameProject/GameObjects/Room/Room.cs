@@ -48,7 +48,7 @@ namespace Sprint03
                             break;
 
                         case "Item":
-                            if (Reader.GetAttribute("Name").Equals("Key"))
+                            if (Reader.GetAttribute("Name").Equals("Key") && Reader.GetAttribute("Hidden").Equals("true"))
                             {
                                 HiddenKey = ParseVector2(Reader.GetAttribute("Spawn")); 
                             }

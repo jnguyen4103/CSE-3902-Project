@@ -15,7 +15,7 @@
   -<Monster Name="Stalfos" Spawn="80 144"/>
   
   <!-- Items -->
-  -<Item Name="Key" Spawn="196 128"/>
+  -<Item Name="Key" Spawn="196 128" Hidden="true"/>
 
   <!--Blocks -->
   -<Block Name="Water" Spawn="32 96" Size="16 48" />

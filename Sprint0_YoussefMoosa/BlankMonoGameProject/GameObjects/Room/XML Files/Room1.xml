@@ -15,7 +15,7 @@
   -<Monster Name="Keese" Spawn="156 176"/>
 
   <!-- Items -->
-  -<Item Name="Key" Spawn="164 192"/>
+  -<Item Name="Key" Spawn="164 192" Hidden="true"/>
 
 
   <!--Blocks -->

@@ -12,7 +12,7 @@
   -<Item Name="Rupee" Spawn="35 192"/>
   -<Item Name="Clock" Spawn="64 192"/>
   -<Item Name="Book" Spawn="100 192"/>
-  -<Item Name="Key" Spawn="148 192"/>
+  -<Item Name="Key" Spawn="148 192" Hidden="false"/>
   -<Item Name="Arrow" Spawn="180 192"/>
   -<Item Name="HeartContainer" Spawn="208 192"/>
 

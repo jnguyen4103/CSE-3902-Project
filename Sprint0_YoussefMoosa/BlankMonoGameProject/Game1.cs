@@ -24,7 +24,7 @@ namespace Sprint03
         public ILink Link;
         public LinkSprite SpriteLink;
         public int RupeeCounter = 0;
-        public int KeyCounter = 0;
+        public int KeyCounter = 20;
 
         // Sprite Sheets
         public Texture2D LinkSpriteSheet;

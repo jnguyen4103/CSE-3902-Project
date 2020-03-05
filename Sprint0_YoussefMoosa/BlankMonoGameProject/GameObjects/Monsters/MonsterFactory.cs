@@ -17,6 +17,7 @@ namespace Sprint03
             Monsters["Gel"] = SpawnGel;
             Monsters["Keese"] = SpawnKeese;
             Monsters["Goriyas"] = SpawnGoriyas;
+            Monsters["Darknut"] = SpawnDarknut;
 
 
 
@@ -99,6 +100,24 @@ namespace Sprint03
 
             // Spawning dat boii
             return Goriyas;
+        }
+
+        private Monster SpawnDarknut(Vector2 spawn)
+        {
+            // Creating Sprite for Darknut
+            MonsterSprite DarknutSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            DarknutSprite.FPS = 8;
+            DarknutSprite.BaseSpeed = 0.64f;
+
+            // Setting up Monster object for Stalfos to hold stats
+            Monster Darknut = new Monster(DarknutSprite, "GoriyasDown", Game);
+            Darknut.hitpoints = 4;
+            Darknut.maxHP = 4;
+            Darknut.attackDamage = 2;
+            Darknut.StateMachine = new DarknutSM(Darknut, Game);
+
+            // Spawning dat boii
+            return Darknut;
         }
     }
 }

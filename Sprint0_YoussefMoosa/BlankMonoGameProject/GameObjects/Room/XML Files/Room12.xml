@@ -11,7 +11,7 @@
 
   <!--Monsters-->
   <!-- Items -->
-  -<Item Name="Key" Spawn="164 192" />
+  -<Item Name="Key" Spawn="164 192" Hidden="false"/>
   
   <!--Blocks -->
   -<Block Name="Block" Spawn="48 112" Size="16 16" />

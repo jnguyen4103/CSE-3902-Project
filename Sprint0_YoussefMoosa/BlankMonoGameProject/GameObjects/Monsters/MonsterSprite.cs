@@ -22,7 +22,7 @@ namespace Sprint03 {
 
         public override void Move()
         {
-            if(State != Monster.MonsterState.Idle)
+            if(State != Monster.MonsterState.Idle && State != Monster.MonsterState.Attacking)
             {
                 base.Move();
             }

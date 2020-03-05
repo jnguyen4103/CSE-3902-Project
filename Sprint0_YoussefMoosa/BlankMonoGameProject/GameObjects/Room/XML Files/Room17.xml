@@ -15,7 +15,7 @@
   -<Monster Name="Goriyas" Spawn="176 160" />
   
   <!-- Items -->
-  -<Item Name="Key" Spawn="132 112" />
+  -<Item Name="Key" Spawn="132 112" Hidden="true"/>
 
   
   <!--Blocks -->
