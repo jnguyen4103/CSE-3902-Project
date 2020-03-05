@@ -57,6 +57,23 @@ Goriya(boomerang panda bois)
 
 	--unlike stalfo has boomerang attack, will throw boomerang semi often. So about as often as the keese stop for a nap
 
+Blade Traps (beyblades / rectangles with pins coming out of them)
+	--deal one heart of damage
+	
+	--can not be killed
+	
+	--move only left, right, up, down
+	
+	--do not move at the same time; given a room where the corners are numbered 1 thorugh 4 starting top right and going 		clockwise - trap in corner 2 will always start moving slightly before traps 1 or 3, trap 1 will move before trap 	     4, trap 3 moves before trap 4.
+	
+	--should move slightly faster than stalfos, but not so fast link can't react and dodge or move into a lane, over 2 		blocks then out of the lane again. 
+	
+	--moves slower when retracting
+	
+	--stops moving and retracts after colliding with link or each other
+	
+	--collision detection is on the block part of the trap, not the spikes - the spikes move through the other traps and 		link
+
 $Item behavior$
 
 all seem to be picked up soon as link touches one of the pixels
