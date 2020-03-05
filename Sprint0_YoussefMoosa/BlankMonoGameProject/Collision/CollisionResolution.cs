@@ -65,27 +65,36 @@ namespace Sprint03
 
         private void StayOffBlock(Sprite Sp, FRectangle Block, int direction)
         {
-            float leftOfSprite = Sp.Position.X;
-            float rightOfSprite = Sp.Position.X + Sp.GetSize.X;
-            float topOfSprite = Sp.Position.Y;
-            float bottomOfSprite = Sp.Position.Y + Sp.GetSize.Y;
-            float leftOfRect = Block.Left;
-            float rightOfRect = Block.Right;
-            float topOfRect = Block.Top;
-            float bottomOfRect = Block.Bottom;
             switch (direction)
             {
                 case 0:
                     Sp.Position.Y += Sp.BaseSpeed;
+                    if (Sp.Position.X >= Block.Right)
+                    {
+                        Sp.Position.X -= Sp.BaseSpeed;
+                    }
+                    else if (Sp.Position.X <= Block.Left)
+                    {
+                        Sp.Position.X += Sp.BaseSpeed;
+                    }
                     break;
                 case 1:
                     Sp.Position.Y -= Sp.BaseSpeed;
+                    if (Sp.Position.X >= Block.Right)
+                    {
+                        Sp.Position.X -= Sp.BaseSpeed;
+                    }
+                    else if (Sp.Position.X <= Block.Left)
+                    {
+                        Sp.Position.X += Sp.BaseSpeed;
+                    }
                     break;
                 case 2:
                     Sp.Position.X += Sp.BaseSpeed;
                     break;
                 case 3:
                     Sp.Position.X -= Sp.BaseSpeed;
+   
                     break;
                 default:
                     break;
