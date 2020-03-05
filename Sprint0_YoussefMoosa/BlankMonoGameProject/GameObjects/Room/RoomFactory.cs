@@ -36,7 +36,7 @@ namespace Sprint03
 
         private void InitalizeRooms()
         {
-            string file = "../../../../Room/XML Files/";
+            string file = "../../../../GameObjects/Room/XML Files/";
             Rooms["Room0"] = new Room(Game, file + "Room0", "Room0");
             Rooms["Room1"] = new Room(Game, file + "Room1", "Room1");
             Rooms["Room2"] = new Room(Game, file + "Room2", "Room2");

@@ -35,7 +35,7 @@
 
 
   <!-- Doors -->
-  -<Door LeadsTo="Room17" Name="OpenDoor" Side="Up" Destroyable="false"/>
+  -<Door LeadsTo="Room17" Name="KeyDoor" Side="Up" Destroyable="false"/>
   -<Door LeadsTo="Room10" Name="OpenDoor" Side="Down" Destroyable="false"/>
   -<Door LeadsTo="Room10" Name="Wall" Side="Left" Destroyable="false"/>
   -<Door LeadsTo="Room12" Name="Wall" Side="Right" Destroyable="false"/>

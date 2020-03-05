@@ -15,6 +15,9 @@
   -<Monster Name="Goriyas" Spawn="176 160" />
   
   <!-- Items -->
+  -<Item Name="Key" Spawn="132 112" />
+
+  
   <!--Blocks -->
   -<Block Name="Water" Spawn="80 144" Size="96 16" />
   -<Block Name="Water" Spawn="48 112" Size="48 16" />
@@ -27,7 +30,7 @@
   <!-- Doors -->
   -<Door LeadsTo="Room17" Name="Wall" Side="Up" Destroyable="false"/>
   -<Door LeadsTo="Room13" Name="OpenDoor" Side="Down" Destroyable="false"/>
-  -<Door LeadsTo="Room16" Name="OpenDoor" Side="Left" Destroyable="false"/>
+  -<Door LeadsTo="Room16" Name="KeyDoor" Side="Left" Destroyable="false"/>
   -<Door LeadsTo="Room17" Name="Wall" Side="Right" Destroyable="false"/>
 
 

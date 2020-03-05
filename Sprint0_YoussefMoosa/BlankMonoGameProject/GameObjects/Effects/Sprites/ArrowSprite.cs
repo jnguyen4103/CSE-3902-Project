@@ -82,18 +82,27 @@ namespace Sprint03
                     break;
             }
         }
-
         public override void KillSprite()
         {
-            Timer++;
-            if(Timer == 1)
+            ChangeSpriteAnimation("ProjectileHit");
+            BaseSpeed = 0;
+        }
+
+        public override void DrawSprite()
+        {
+            if(!Name.Equals("ProjectileHit"))
             {
-                BaseSpeed = 0;
-                ChangeSpriteAnimation("ProjectileHit");
+                base.DrawSprite();
+
             }
-            else if (Timer >= Delay)
+            else
             {
-                Timer = 0;
+                Timer++;
+                base.DrawSprite();
+            }
+
+            if(Timer >= Delay)
+            {
                 base.KillSprite();
             }
         }

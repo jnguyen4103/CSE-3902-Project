@@ -79,7 +79,6 @@ namespace Sprint03
         {
             if (Name != newSpriteName) { CurrentFrame = 0; }
             Name = newSpriteName;
-            Console.WriteLine(newSpriteName);
             Tuple<Rectangle, Vector2, int> NewInfo = Game.SFactory.Sprites[newSpriteName];
             Size = NewInfo.Item2;
             DrawWindow = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y);

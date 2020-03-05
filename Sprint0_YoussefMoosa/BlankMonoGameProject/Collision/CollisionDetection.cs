@@ -25,12 +25,10 @@ namespace Sprint03
             * 2 - Left
             * 3 - Right
             */
-            Console.WriteLine("Height " + Collision.Height);
-            Console.WriteLine("Width " + Collision.Width);
+
             if (Collision.Height < Collision.Width)
             {
                 //Collision happend on the Top
-                Console.WriteLine(Receiver.GetPosition.Y + Receiver.GetSize.Y > Collision.Top);
                 if (Math.Round(Receiver.GetPosition.Y) <= Math.Round(Collision.Top) && Receiver.GetPosition.Y < Collision.Bottom && Receiver.GetPosition.Y + Receiver.GetSize.Y >= Collision.Bottom)
                 { returnVal = 0; }
 
@@ -59,7 +57,6 @@ namespace Sprint03
             }
 
             //Our intersection happend on the top or the bottom 
-            Console.WriteLine(returnVal);
             return returnVal;
         }
 
@@ -104,7 +101,6 @@ namespace Sprint03
                 if (linkHitbox.Intersects(itemHitbox))
                 {
                     ColRes.PickupItem(item);
-                    Console.WriteLine("Item Pickup " + item.Sprite.Name);
 
                 }
             }
@@ -119,7 +115,6 @@ namespace Sprint03
                 {
                     direction = CollisionDirection(Game.Link.SpriteLink, FRectangle.Intersection(monsterHitbox, linkHitbox));
                     ColRes.HurtLink(monster, direction);
-                    Console.WriteLine("Enemy Contact");
                 }
 
             }
@@ -134,7 +129,6 @@ namespace Sprint03
                 {
                     if (effect.IsCreator(Game.Link.SpriteLink) && effect.Sprite.Name.Equals("BoomerangEffect"))
                     {
-                        Console.WriteLine("Boomerang Contact");
                         Game.Link.StateMachine.CatchBoomerang(effect);
                     }
                     else if (!effect.IsCreator(Game.Link.SpriteLink))
@@ -142,7 +136,6 @@ namespace Sprint03
                         direction = CollisionDirection(Game.Link.SpriteLink, FRectangle.Intersection(effectHitbox, linkHitbox));
                         ColRes.DamageLinkEffect(effect.Damage, direction, effect);
                         effect.Sprite.KillSprite();
-                        Console.WriteLine("Link Effect Contact");
                     }
                 }
 
@@ -150,8 +143,6 @@ namespace Sprint03
                 // Effects & Monster Collision
                 foreach (Monster monster in Game.MonstersList)
                 {
-                    Console.WriteLine(effect.Sprite.Position.X);
-                    Console.WriteLine(monster.Sprite.Position.X);
 
                     monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
                     if (monsterHitbox.Intersects(effectHitbox))
@@ -160,12 +151,10 @@ namespace Sprint03
                         {
                             direction = CollisionDirection(monster.Sprite, FRectangle.Intersection(effectHitbox, monsterHitbox));
                             ColRes.DamageMonster(monster, direction, effect);
-                            Console.WriteLine("Enemy Effect Contact");
                         }
                         else if (monster.State != Monster.MonsterState.Attacking)
                         {
                             effect.Sprite.KillSprite();
-                            Game.EffectsList.Remove(effect);
                         }
                     }
                 }

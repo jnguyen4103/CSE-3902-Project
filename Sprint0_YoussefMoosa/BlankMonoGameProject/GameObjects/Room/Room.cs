@@ -94,12 +94,33 @@ namespace Sprint03
             Doors["Right"].Draw();
             Doors["Up"].Draw();
             Doors["Down"].Draw();
+            CheckClosedDoors();
+
         }
 
         private Vector2 ParseVector2(string coord)
         {
             string[] coordinates = coord.Split(new char[] { ' ' });
             return new Vector2(Single.Parse(coordinates[0]), Single.Parse(coordinates[1]));
+        }
+
+        private void CheckClosedDoors()
+        {
+            if(Game.MonstersList.Count == 0)
+            {
+                foreach (KeyValuePair<string, Door> door in Doors)
+                {
+                    if (door.Value.Sprite.Name.Equals("ClosedDoor"))
+                    {
+                        door.Value.Sprite.ChangeSpriteAnimation("OpenDoor");
+                    }
+                    else if(door.Value.Sprite.Name.Equals("ClosedDoorHorizontal"))
+                    {
+                        door.Value.Sprite.ChangeSpriteAnimation("OpenDoorHorizontal");
+
+                    }
+                }
+             }
         }
     }
 }

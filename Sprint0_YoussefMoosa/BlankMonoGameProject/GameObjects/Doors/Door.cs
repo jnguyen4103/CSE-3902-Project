@@ -34,7 +34,7 @@ namespace Sprint03
             }
         }
 
-        public void OpenDoor()
+        public void UnlockDoor()
         {
             if (Game.KeyCounter > 0)
             {
@@ -50,12 +50,20 @@ namespace Sprint03
 
         public void EnterDoor()
         {
-            if (Sprite.Name.Equals("OpenDoor") || Sprite.Name.Equals("OpenDoorHorizontal")
-                || Sprite.Name.Equals("DestroyedWall") || Sprite.Name.Equals("DestroyedWallHorizontal"))
+            if(Sprite.Name.Equals("KeyDoor"))
             {
-                Game.RFactory.LoadRoom(NextRoom);
-                PlaceLink();
+                UnlockDoor();
+            } else
+            {
+
+                if (Sprite.Name.Equals("OpenDoor") || Sprite.Name.Equals("OpenDoorHorizontal")
+                    || Sprite.Name.Equals("DestroyedWall") || Sprite.Name.Equals("DestroyedWallHorizontal"))
+                {
+                    Game.RFactory.LoadRoom(NextRoom);
+                    PlaceLink();
+                }
             }
+
         }
 
         private void PlaceLink()

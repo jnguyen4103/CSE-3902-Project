@@ -20,10 +20,11 @@
   <!-- Items -->
   <!--Blocks -->
   -<Block Name="Block" Spawn="112 128" Size="32 48" />
+  
   <!-- Doors -->
   -<Door LeadsTo="Room0" Name="Wall" Side="Left" Destroyable="false"/>
-  -<Door LeadsTo="Room6" Name="OpenDoor" Side="Right" Destroyable="false"/>
-  -<Door LeadsTo="Room9" Name="OpenDoor" Side="Up" Destroyable="false"/>
+  -<Door LeadsTo="Room6" Name="ClosedDoor" Side="Right" Destroyable="false"/>
+  -<Door LeadsTo="Room9" Name="KeyDoor" Side="Up" Destroyable="false"/>
   -<Door LeadsTo="Room0" Name="Wall" Side="Down" Destroyable="false"/>
 
 

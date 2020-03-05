@@ -67,7 +67,6 @@ namespace Sprint03
 
         public void DeadState()
         {
-            Console.WriteLine("Got rekt\nReviving Link!");
             Link.hitpoints = 6;
             IdleState();
         }

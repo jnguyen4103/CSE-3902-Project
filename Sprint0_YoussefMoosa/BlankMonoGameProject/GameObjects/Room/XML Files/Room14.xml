@@ -27,7 +27,7 @@
   -<Door LeadsTo="Room17" Name="Wall" Side="Up" Destroyable="false"/>
   -<Door LeadsTo="Room12" Name="OpenDoor" Side="Down" Destroyable="false"/>
   -<Door LeadsTo="Room10" Name="Wall" Side="Left" Destroyable="false"/>
-  -<Door LeadsTo="Room15" Name="OpenDoor" Side="Right" Destroyable="false"/>
+  -<Door LeadsTo="Room15" Name="ClosedDoor" Side="Right" Destroyable="false"/>
 
 
 </LevelData>
