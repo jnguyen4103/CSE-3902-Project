@@ -10,6 +10,10 @@
   </Interior>
 
   <!--Monsters-->
+  -<Monster Name="Stalfos" Spawn="112 112"/>
+  -<Monster Name="Stalfos" Spawn="192 144"/>
+  -<Monster Name="Stalfos" Spawn="48 160"/>
+  
   <!-- Items -->
   <!--Blocks -->
   -<Block Name="Block" Spawn="112 128" Size="32 48" />
