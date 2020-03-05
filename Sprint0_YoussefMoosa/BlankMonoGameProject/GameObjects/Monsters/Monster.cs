@@ -6,10 +6,10 @@ namespace Sprint03
     // Look at the Stalfos and Goriyas classes for commments about specific implementations
     public class Monster
     {
-        public Sprite Sprite;
+        public MonsterSprite Sprite;
         public IStateMachine StateMachine;
         protected Game1 Game;
-        private string Name;
+        public string Name;
         private int DamageDirection;
         public enum MonsterState
         {
@@ -39,7 +39,7 @@ namespace Sprint03
         public int maxHP;
         public int attackDamage;
 
-        public Monster(Sprite sprite, string name, Game1 game)
+        public Monster(MonsterSprite sprite, string name, Game1 game)
         {
             State = MonsterState.Spawning;
             Direction = MonsterDirection.Down;
@@ -85,6 +85,7 @@ namespace Sprint03
         public void Update()
         {
             // Calls respective behavior for each state
+            //Sprite.Update(State, Direction);
             switch (State)
             {
                 case (MonsterState.Spawning):

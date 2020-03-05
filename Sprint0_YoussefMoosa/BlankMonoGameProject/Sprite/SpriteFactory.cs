@@ -82,21 +82,21 @@ namespace Sprint03
 
 
             // Initializing all Monster Sprites into the dictionary
-            Sprites["StalfosWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["Stalfos"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 16, 40), defaultMonsterSize, 2);
             Sprites["StalfosDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 64, 16, 40), defaultMonsterSize, 2);
 
-            Sprites["KeeseWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["Keese"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 0, 16, 40), defaultMonsterSize, 2);
 
-            Sprites["GoriyasWalkDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 40), defaultMonsterSize, 2);
-            Sprites["GoriyasWalkUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 0, 16, 40), defaultMonsterSize, 2);
-            Sprites["GoriyasWalkRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 40), defaultMonsterSize, 2);
-            Sprites["GoriyasWalkLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 64, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 64, 16, 40), defaultMonsterSize, 2);
 
 
-            Sprites["GoriyasDamageUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 64, 16, 40), defaultMonsterSize, 2);
-            Sprites["GoriyasDamageDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 64, 16, 40), defaultMonsterSize, 2);
-            Sprites["GoriyasDamageRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 64, 16, 40), defaultMonsterSize, 2);
-            Sprites["GoriyasDamageLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 88, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasDownDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 64, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasUpDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 64, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasRightDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 64, 16, 40), defaultMonsterSize, 2);
+            Sprites["GoriyasLeftDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 88, 16, 40), defaultMonsterSize, 2);
 
 
             Sprites["BladeTrap"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 16), defaultMonsterSize, 1);
@@ -124,7 +124,7 @@ namespace Sprint03
 
             Sprites["Gibo"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 112, 16, 40), defaultMonsterSize, 2);
 
-            Sprites["AquamentusWalk"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(232, 0, 24, 72), new Vector2(24, 32), 2);
+            Sprites["Aquamentus"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(232, 0, 24, 72), new Vector2(24, 32), 2);
             Sprites["AquamentusDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(232, 80, 24, 72), new Vector2(24, 32), 2);
             Sprites["AquamentusAttack"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(264, 0, 24, 72), new Vector2(24, 32), 2);
 

@@ -16,6 +16,8 @@ namespace Sprint03
             Monsters["Stalfos"] = SpawnStalfos;
             Monsters["Gel"] = SpawnGel;
             Monsters["Keese"] = SpawnKeese;
+            Monsters["Goriyas"] = SpawnGoriyas;
+
 
 
         }
@@ -29,7 +31,7 @@ namespace Sprint03
         private Monster SpawnStalfos(Vector2 spawn)
         {
             // Creating Sprite for Stalfos
-            Sprite StalfosSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            MonsterSprite StalfosSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
             StalfosSprite.FPS = 8;
             StalfosSprite.BaseSpeed = 0.5f;
 
@@ -48,7 +50,7 @@ namespace Sprint03
         private Monster SpawnGel(Vector2 spawn)
         {
             // Creating Sprite for Gel
-            Sprite GelSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            MonsterSprite GelSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
             GelSprite.FPS = 16;
             GelSprite.BaseSpeed = 0.64f;
 
@@ -66,7 +68,7 @@ namespace Sprint03
         private Monster SpawnKeese(Vector2 spawn)
         {
             // Creating Sprite for Keese
-            Sprite KeeseSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            MonsterSprite KeeseSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
             KeeseSprite.FPS = 16;
             KeeseSprite.BaseSpeed = 0.64f;
 
@@ -79,6 +81,24 @@ namespace Sprint03
 
             // Spawning dat boii
             return Keese;
+        }
+
+        private Monster SpawnGoriyas(Vector2 spawn)
+        {
+            // Creating Sprite for Goriyas
+            MonsterSprite GoriyasSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            GoriyasSprite.FPS = 8;
+            GoriyasSprite.BaseSpeed = 0.5f;
+
+            // Setting up Monster object for Stalfos to hold stats
+            Monster Goriyas = new Monster(GoriyasSprite, "GoriyasDown", Game);
+            Goriyas.hitpoints = 2;
+            Goriyas.maxHP = 2;
+            Goriyas.attackDamage = 1;
+            Goriyas.StateMachine = new GoriyasSM(Goriyas, Game);
+
+            // Spawning dat boii
+            return Goriyas;
         }
     }
 }

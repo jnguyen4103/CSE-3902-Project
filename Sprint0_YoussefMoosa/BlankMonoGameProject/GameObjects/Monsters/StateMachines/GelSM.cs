@@ -9,7 +9,6 @@ namespace Sprint03
         {
             self = Gel;
             Game = game;
-            defaultSpriteName = "Gel";
         }
 
         public override void IdleState()

@@ -30,7 +30,7 @@ namespace Sprint03
             else if (Timer >= 60)
             {
                 Timer = 0;
-                self.Sprite.ChangeSpriteAnimation(defaultSpriteName);
+                self.Sprite.ChangeSpriteAnimation(self.Name);
                 self.Sprite.FPS = 8;
                 IdleState();
             }
@@ -65,11 +65,11 @@ namespace Sprint03
             {
                 case (0):
                     self.Sprite.CurrentSpeed.X = 0;
-                    self.Sprite.CurrentSpeed.Y = self.Sprite.BaseSpeed;
+                    self.Sprite.CurrentSpeed.Y = -self.Sprite.BaseSpeed;
                     break;
                 case (1):
                     self.Sprite.CurrentSpeed.X = 0;
-                    self.Sprite.CurrentSpeed.Y = -self.Sprite.BaseSpeed;
+                    self.Sprite.CurrentSpeed.Y = self.Sprite.BaseSpeed;
                     break;
                 case (2):
                     self.Sprite.CurrentSpeed.X = self.Sprite.BaseSpeed;
@@ -83,6 +83,8 @@ namespace Sprint03
                     break;
             }
         }
+
+        protected virtual void DirectionString() { }
     }
 
 }

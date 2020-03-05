@@ -10,6 +10,10 @@
   </Interior>
 
   <!--Monsters-->
+  -<Monster Name="Goriyas" Spawn="128 128" />
+  -<Monster Name="Goriyas" Spawn="176 98" />
+  -<Monster Name="Goriyas" Spawn="176 160" />
+  
   <!-- Items -->
   <!--Blocks -->
   -<Block Name="Water" Spawn="80 144" Size="96 16" />

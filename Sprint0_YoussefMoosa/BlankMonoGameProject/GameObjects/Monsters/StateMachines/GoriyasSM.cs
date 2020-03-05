@@ -2,21 +2,32 @@
 using System;
 namespace Sprint03
 {
-    public class StalfosSM : IStateMachine
+    public class GoriyasSM : IStateMachine
     {
+        IEffect Boomerang;
         private readonly int damgeDuration = 45;
+        private int AttackTimer = 0;
+        private int AttackThreshold = 5;
 
-
-        public StalfosSM(Monster Stalfos, Game1 game)
+        public GoriyasSM(Monster Goriyas, Game1 game)
         {
-            self = Stalfos;
+            self = Goriyas;
             Game = game;
         }
 
         public override void IdleState()
         {
-            self.State = Monster.MonsterState.Moving;
-            getRandomDirection();
+            if (AttackTimer >= AttackThreshold)
+            {
+                self.State = Monster.MonsterState.Attacking;
+                AttackTimer = 0;
+                AttackState();
+            }
+            else
+            {
+                getRandomDirection();
+                self.State = Monster.MonsterState.Moving;
+            }
         }
 
         public override void MoveState()
@@ -53,12 +64,15 @@ namespace Sprint03
                 }
                 WalkCounter--;
 
+
             }
             else
             {
                 self.State = Monster.MonsterState.Idle;
+                AttackTimer++;
             }
         }
+
 
         public override void DamagedState(int directionDamaged)
         {
@@ -77,10 +91,55 @@ namespace Sprint03
         }
 
 
+        public override void AttackState()
+        {
+            AttackTimer++;
+            if(AttackTimer == 1)
+            {
+                Boomerang = new BoomerangEffect(self.Sprite, Game, ConvertToLinkDirection(self.Direction), Game.EffectSpriteSheet, Game.spriteBatch);
+                Boomerang.CreateEffect();
+            }
+            else if (AttackTimer >= 32*AttackThreshold)
+            {
+                IdleState();
+
+            }
+        }
+
+        protected override void DirectionString()
+        {
+            string direction = "";
+            switch(self.Direction)
+            {
+                case (Monster.MonsterDirection.Up):
+                    direction = "Up";
+                    break;
+
+                case (Monster.MonsterDirection.Down):
+                    direction = "Down";
+                    break;
+
+                case (Monster.MonsterDirection.Left):
+                    direction = "Left";
+ 
+                    break;
+
+                case (Monster.MonsterDirection.Right):
+                    direction = "Right";
+                    break;
+
+                default:
+                    break;
+            }
+            self.Name = "Goriyas" + direction;
+        }
+
+
         private void getRandomDirection()
         {
             int randDirection = random.Next(1, 5);
-            WalkCounter = 30 * random.Next(2, 6);
+            WalkCounter = 25 * random.Next(1, 3);
+
             switch (randDirection)
             {
                 case (1):
@@ -98,7 +157,30 @@ namespace Sprint03
                 default:
                     break;
             }
+            DirectionString();
+            self.Sprite.ChangeSpriteAnimation(self.Name);
         }
 
+        private Link.LinkDirection ConvertToLinkDirection(Monster.MonsterDirection givenDirection)
+        {
+            Link.LinkDirection monsterLinkDirection;
+            switch (givenDirection)
+            {
+                case (Monster.MonsterDirection.Up):
+                    monsterLinkDirection = Link.LinkDirection.Up;
+                    break;
+                case (Monster.MonsterDirection.Right):
+                    monsterLinkDirection = Link.LinkDirection.Right;
+                    break;
+                case (Monster.MonsterDirection.Down):
+                    monsterLinkDirection = Link.LinkDirection.Down;
+                    break;
+                default:
+                    monsterLinkDirection = Link.LinkDirection.Left;
+                    break;
+            }
+
+            return monsterLinkDirection;
+        }
     }
 }
