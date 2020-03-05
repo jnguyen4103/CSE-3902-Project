@@ -44,12 +44,12 @@ namespace Sprint03
             Game = game;
         }
 
-        public virtual void Draw()
+        public void Draw()
         {
             Sprite.DrawSprite();
         }
 
-        public virtual void TakeDamage(int damage, int damageDirection)
+        public void TakeDamage(int damage, int damageDirection)
         {
             if (State != MonsterState.Damaged 
                 && State != MonsterState.Dead
@@ -70,11 +70,10 @@ namespace Sprint03
                 }
             }
         }
-        public virtual void IdleState()
+        public void IdleState()
         {
             if(State != MonsterState.Damaged && State != MonsterState.Dead)
             {
-                State = MonsterState.Idle;
                 StateMachine.IdleState();
             }
         }

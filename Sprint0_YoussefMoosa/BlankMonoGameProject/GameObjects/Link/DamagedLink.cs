@@ -21,7 +21,7 @@ namespace Sprint03
         private string directionSpriteName;
         private Game1 Game;
         int DamageTimer = 0;
-        int DamageDelay = 45;
+        int DamageDelay = 30;
 
 
         LinkStateMachine ILink.StateMachine
@@ -68,14 +68,8 @@ namespace Sprint03
         public void Update()
         {
             DamageTimer++;
+            SpriteLink.Update(Link.LinkState.Damaged, PushbackDirection);
 
-            if (DamageTimer < (DamageDelay/2))
-            {
-                SpriteLink.Update(Link.LinkState.Damaged, PushbackDirection);
-            } else
-            {
-                SpriteLink.BaseSpeed = 0;
-            }
             if (DamageTimer > DamageDelay)
             {
                 RemoveDecorator();

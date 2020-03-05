@@ -2,22 +2,26 @@
 using System;
 namespace Sprint03
 {
-    public class StalfosSM : IStateMachine
+    public class GelSM : IStateMachine
     {
-        private readonly int damgeDuration = 45;
-
-
-        public StalfosSM(Monster Stalfos, Game1 game)
+        private int sleep;
+        public GelSM(Monster Gel, Game1 game)
         {
-            self = Stalfos;
+            self = Gel;
             Game = game;
-            defaultSpriteName = "StalfosWalk";
+            defaultSpriteName = "Gel";
         }
 
         public override void IdleState()
         {
-            self.State = Monster.MonsterState.Moving;
-            getRandomDirection();
+            Timer++;
+            if (Timer >= sleep)
+            {
+                getRandomDirection();
+                self.State = Monster.MonsterState.Moving;
+                Timer = 0;
+
+            }  
         }
 
         public override void MoveState()
@@ -25,6 +29,8 @@ namespace Sprint03
             if (self.Sprite.Position.X >= Game.WalkingRect.Width || self.Sprite.Position.Y >= Game.WalkingRect.Height)
             {
                 WalkCounter = 0;
+                Timer = 0;
+                sleep = 0;
                 IdleState();
             }
 
@@ -54,34 +60,27 @@ namespace Sprint03
                 }
                 WalkCounter--;
 
+
             }
             else
             {
+                sleep = 45*random.Next(1, 5);
+                Timer = 0;
                 self.State = Monster.MonsterState.Idle;
             }
         }
 
+
         public override void DamagedState(int directionDamaged)
         {
             self.State = Monster.MonsterState.Damaged;
-            Timer++;
-            Pushback(directionDamaged);
-            if (Timer >= damgeDuration)
-            {
-                self.Sprite.CurrentSpeed.X = 0;
-                self.Sprite.CurrentSpeed.Y = 0;
-                Timer = 0;
-                IdleState();
-                self.Sprite.ChangeSpriteAnimation("StalfosWalk");
-
-            }
         }
-
 
         private void getRandomDirection()
         {
             int randDirection = random.Next(1, 5);
-            WalkCounter = 30 * random.Next(2, 6);
+            WalkCounter = 25*random.Next(1, 3);
+
             switch (randDirection)
             {
                 case (1):

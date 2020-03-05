@@ -14,6 +14,8 @@ namespace Sprint03
         {
             Game = game;
             Monsters["Stalfos"] = SpawnStalfos;
+            Monsters["Gel"] = SpawnGel;
+
         }
 
         public void SpawnMonster(string name, Vector2 spawn)
@@ -28,7 +30,6 @@ namespace Sprint03
             Sprite StalfosSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
             StalfosSprite.FPS = 8;
             StalfosSprite.BaseSpeed = 0.5f;
-            StalfosSprite.FPS = 4;
 
             // Setting up Monster object for Stalfos to hold stats
             Monster Stalfos = new Monster(StalfosSprite, "Stalfos", Game);
@@ -39,6 +40,25 @@ namespace Sprint03
 
             // Spawning dat boii
             return Stalfos;
+        }
+
+
+        private Monster SpawnGel(Vector2 spawn)
+        {
+            // Creating Sprite for Stalfos
+            Sprite GelSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            GelSprite.FPS = 16;
+            GelSprite.BaseSpeed = 0.64f;
+
+            // Setting up Monster object for Stalfos to hold stats
+            Monster Gel = new Monster(GelSprite, "Gel", Game);
+            Gel.hitpoints = 1;
+            Gel.maxHP = 1;
+            Gel.attackDamage = 1;
+            Gel.StateMachine = new GelSM(Gel, Game);
+
+            // Spawning dat boii
+            return Gel;
         }
     }
 }

@@ -10,6 +10,10 @@
   </Interior>
 
   <!--Monsters-->
+  -<Monster Name="Gel" Spawn="84 176"/>
+  -<Monster Name="Gel" Spawn="180 160"/>
+  -<Monster Name="Gel" Spawn="132 112"/>
+
   <!-- Items -->
   <!--Blocks -->
   -<Block Name="Block" Spawn="112 144" Size="16 16" />

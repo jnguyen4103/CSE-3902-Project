@@ -66,6 +66,7 @@
     <Compile Include="GameObjects\Effects\BeamExplosionEffect.cs" />
     <Compile Include="GameObjects\Monsters\MonsterFactory.cs" />
     <Compile Include="GameObjects\Monsters\MonsterSprite.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\GelSM.cs" />
     <Compile Include="GameObjects\Tile\NonStaticTile.cs" />
     <Compile Include="GameObjects\Tile\StaticTile.cs" />
     <Compile Include="GameObjects\Tile\TileSprite.cs" />
@@ -83,7 +84,7 @@
     <Compile Include="GameObjects\Link\DamagedLink.cs" />
     <Compile Include="GameObjects\Link\ILink.cs" />
     <Compile Include="GameObjects\Link\Link.cs" />
-    <Compile Include="GameObjects\Monsters\IStateMachine.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\IStateMachine.cs" />
     <Compile Include="GameObjects\Link\LinkStateMachine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
