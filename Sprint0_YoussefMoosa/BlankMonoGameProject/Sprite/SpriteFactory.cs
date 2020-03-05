@@ -188,7 +188,7 @@ namespace Sprint03
             Sprites["Room8"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(33, 387, 192, 112), floorSize, 1);
             Sprites["Room9"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(290, 387, 192, 112), floorSize, 1);
             Sprites["Room10"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(547, 387, 192, 112), floorSize, 1);
-            Sprites["Room11"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(804, 308, 192, 112), floorSize, 1);
+            Sprites["Room11"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(804, 387, 192, 112), floorSize, 1);
             Sprites["Room12"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(1061, 387, 192, 112), floorSize, 1);
             Sprites["Room13"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(547, 210, 192, 112), floorSize, 1);
             Sprites["Room14"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(1061, 210, 192, 112), floorSize, 1);

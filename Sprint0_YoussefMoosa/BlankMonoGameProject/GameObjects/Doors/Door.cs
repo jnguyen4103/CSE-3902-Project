@@ -63,10 +63,10 @@ namespace Sprint03
             switch (Side)
             {
                 case "Up":
-                    Game.Link.StateMachine.DownState();
+                    Game.Link.StateMachine.UpState();
                     Game.Link.StateMachine.IdleState();
                     Game.Link.SpriteLink.Position.X = 120;
-                    Game.Link.SpriteLink.Position.X = 192;
+                    Game.Link.SpriteLink.Position.Y = 192;
                     break;
 
 

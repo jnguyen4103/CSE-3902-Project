@@ -1,71 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-
 <LevelData>
 
   <!-- Information to draw the interior, walkable area of the room -->
   <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
+
   -<Interior>
-    -<UseExterior>True</UseExterior>
-    -<Rectangle>800,912,192,112</Rectangle>
+    <UseExterior>True</UseExterior>
+    <Rectangle>547,198,192,112</Rectangle>
   </Interior>
 
-  <!-- Collide-able tiles in the room -->
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
+  <!--Monsters-->
+  <!-- Items -->
+  <!--Blocks -->
+  -<Block Name="Block" Spawn="64 128" Size="32 48" />
+  -<Block Name="Block" Spawn="160 128" Size="32 48" />
 
-  <!-- Information on drawing and handling door events -->
-  -<Door>
-    -<Location>Up</Location>
-    -<Type>Wall</Type>
-  </Door>
-  -<Door>
-    -<Location>Down</Location>
-    -<Type>Wall</Type>
-  </Door>
-  -<Door>
-    -<Location>Right</Location>
-    -<Type>Wall</Type>
-  </Door>
-  -<Door>
-    -<Location>Left</Location>
-    -<Type>Open</Type>
-    -<NextRoom>Room1</NextRoom>
-  </Door>
 
-  <!-- Information on Link's spawn location-->
-  -<Link>
-    -<PreviousRoom>Room1</PreviousRoom>
-    -<Coords></Coords>
-  </Link>
+  <!-- Doors -->
+  -<Door LeadsTo="Room2" Name="OpenDoor" Side="Left" Destroyable="false"/>
+  -<Door LeadsTo="Room0" Name="Wall" Side="Right" Destroyable="false"/>
+  -<Door LeadsTo="Room0" Name="Wall" Side="Up" Destroyable="true"/>
+  -<Door LeadsTo="Room0" Name="Wall" Side="Down" Destroyable="false"/>
 
-  <!-- Information to draw enemies -->
-  -<Monster>
-    -<Name>Stalfos</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Stalfos</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Stalfos</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Stalfos</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Stalfos</Name>
-    -<Coords></Coords>
-  </Monster>
 
 </LevelData>

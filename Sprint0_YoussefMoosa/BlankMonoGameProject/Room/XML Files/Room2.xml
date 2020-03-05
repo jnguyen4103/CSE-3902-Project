@@ -1,30 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-
 <LevelData>
 
-  -<Room number ="1">
+  <!-- Information to draw the interior, walkable area of the room -->
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
 
-    <!-- Information to draw the interior, walkable area of the room -->
-    <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
-    -<Interior UseExterior="True" Rectangle="290,918,192,112"/>
+  -<Interior>
+    <UseExterior>True</UseExterior>
+    <Rectangle>547,198,192,112</Rectangle>
+  </Interior>
+  <!-- Items -->
 
-    <!-- Information on drawing and handling door events -->
-    -<Door Rectangle="0,72,32,32" Type="Wall" LeadsTo="None"/>
-    -<Door Rectangle="112,0,32,32" Type="Wall" LeadsTo="None"/>
-    -<Door Rectangle="224,72,32,32" Type="Open" LeadsTo="1"/>
-    -<Door Rectangle="112,144,32,32" Type="Wall" LeadsTo="None"/>
+  <!--Blocks -->
+  -<Block Name="Statue" Spawn="48 112" Size="16 16" />
+  -<Block Name="Statue" Spawn="96 112" Size="16 16" />
+  -<Block Name="Statue" Spawn="144 112" Size="16 16" />
+  -<Block Name="Statue" Spawn="192 112" Size="16 16" />
 
-    <!-- Information on Link's spawn location-->
-    -<Link PreviousRoom="1" Spawn="224,80"/>
+  -<Block Name="Statue" Spawn="48 144" Size="16 16" />
+  -<Block Name="Statue" Spawn="96 144" Size="16 16" />
+  -<Block Name="Statue" Spawn="144 144" Size="16 16" />
+  -<Block Name="Statue" Spawn="192 144" Size="16 16" />
 
-    <!-- Information to draw enemies -->
-    -<Monster Name="Keese" Spawn=""/>
-    -<Monster Name="Keese" Spawn=""/>
-    -<Monster Name="Keese" Spawn=""/>
+  -<Block Name="Statue" Spawn="48 176" Size="16 16" />
+  -<Block Name="Statue" Spawn="96 176" Size="16 16" />
+  -<Block Name="Statue" Spawn="144 176" Size="16 16" />
+  -<Block Name="Statue" Spawn="192 176" Size="16 16" />
 
-    <!-- Information to draw items -->
-    -<Item Name="Key" Spawn=""/>
 
-  </Room>
+
+  <!-- Doors -->
+  -<Door LeadsTo="Room1" Name="OpenDoor" Side="Left" Destroyable="false"/>
+  -<Door LeadsTo="Room3" Name="OpenDoor" Side="Right" Destroyable="false"/>
+  -<Door LeadsTo="Room4" Name="OpenDoor" Side="Up" Destroyable="false"/>
+  -<Door LeadsTo="Room0" Name="OpenDoor" Side="Down" Destroyable="false"/>
+
 
 </LevelData>

@@ -1,101 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-
 <LevelData>
 
   <!-- Information to draw the interior, walkable area of the room -->
-  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14-->
-  -<UseExterior>True</UseExterior>
-  -<Interior>544,384,192,112</Interior>
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
 
-  <!-- Collide-able tiles in the room -->
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
+  -<Interior>
+    <UseExterior>True</UseExterior>
+    <Rectangle>547,198,192,112</Rectangle>
+  </Interior>
 
-  <!-- Information on drawing and handling door events -->
-  -<Door>
-    -<Location>Left</Location>
-    -<Type>Open</Type>
-    -<NextRoom>Room9</NextRoom>
-  </Door>
-  -<Door>
-    -<Location>Up</Location>
-    -<Type>Open</Type>
-    -<NextRoom>Room13</NextRoom>
-  </Door>
-  -<Door>
-    -<Location>Right</Location>
-    -<Type>KeyLocked</Type>
-    -<NextRoom>Room11</NextRoom>
-  </Door>
-  -<Door>
-    -<Location>Down</Location>
-    -<Type>Bombable</Type>
-    -<NextRoom>Room6</NextRoom>
-  </Door>
+  <!--Monsters-->
+  <!-- Items -->
+  <!--Blocks -->
+  -<Block Name="Block" Spawn="48 112" Size="32 16" />
+  -<Block Name="Block" Spawn="48 176" Size="32 16" />
+  -<Block Name="Block" Spawn="176 112" Size="32 16" />
+  -<Block Name="Block" Spawn="176 176" Size="32 16" />
+  -<Block Name="Block" Spawn="112 148" Size="32 16" />
 
-  <!-- Information on Link's spawn location-->
-  -<Link>
-    -<PreviousRoom>Room9</PreviousRoom>
-    -<Coords></Coords>
-  </Link>
-  <Link>
-    -<PreviousRoom>Room13</PreviousRoom>
-    -<Coords></Coords>
-  </Link>
-  -<Link>
-    -<PreviousRoom>Room11</PreviousRoom>
-    -<Coords></Coords>
-  </Link>
 
-  <!-- Information to draw enemies -->
-  -<Monster>
-    -<Name>Gel</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Gel</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Gel</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Gel</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Gel</Name>
-    -<Coords></Coords>
-  </Monster>
+  <!-- Doors -->  
+  -<Door LeadsTo="Room13" Name="OpenDoor" Side="Up" Destroyable="false"/>
+  -<Door LeadsTo="Room6" Name="Wall" Side="Down" Destroyable="true"/>
+  -<Door LeadsTo="Room9" Name="OpenDoor" Side="Left" Destroyable="false"/>
+  -<Door LeadsTo="Room11" Name="OpenDoor" Side="Right" Destroyable="false"/>
 
-  <!-- Information to draw items -->
-  -<Item>
-    -<Name>Map</Name>
-    -<Coords></Coords>
-  </Item>
 
 </LevelData>

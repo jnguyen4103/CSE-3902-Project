@@ -128,6 +128,7 @@
   <ItemGroup>
     <Content Include="Room\XML Files\ItemRoom.xml" />
     <Content Include="Room\XML Files\Room0.xml" />
+    <Content Include="Room\XML Files\AllItems.xml" />
     <Content Include="Room\XML Files\Room4.xml" />
     <Content Include="Room\XML Files\Room1.xml" />
     <Content Include="Room\XML Files\Room10.xml" />
@@ -138,7 +139,6 @@
     <Content Include="Room\XML Files\Room15.xml" />
     <Content Include="Room\XML Files\Room16.xml" />
     <Content Include="Room\XML Files\Room17.xml" />
-    <Content Include="Room\XML Files\Room18.xml" />
     <Content Include="Room\XML Files\Room2.xml" />
     <Content Include="Room\XML Files\Room3.xml" />
     <Content Include="Room\XML Files\Room5.xml" />
