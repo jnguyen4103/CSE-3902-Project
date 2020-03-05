@@ -18,7 +18,7 @@
   -<Block Name="Block" Spawn="48 176" Size="32 16" />
   -<Block Name="Block" Spawn="176 112" Size="32 16" />
   -<Block Name="Block" Spawn="176 176" Size="32 16" />
-  -<Block Name="Block" Spawn="112 148" Size="32 16" />
+  -<Block Name="Block" Spawn="112 144" Size="32 16" />
 
 
   <!-- Doors -->  
