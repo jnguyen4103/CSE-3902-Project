@@ -32,7 +32,6 @@ namespace Sprint03
         public void LoadRoom()
         {
             Console.WriteLine(File);
-
             XmlReader Reader = XmlReader.Create(File);
             while (Reader.Read())
             {
@@ -41,7 +40,7 @@ namespace Sprint03
                     switch (Reader.Name)
                     {
                         case "Monster":
-                            Game.MFactory.Monsters[Reader.GetAttribute("Name")](ParseVector2(Reader.GetAttribute("Spawn")));
+                            Game.MFactory.SpawnMonster(Reader.GetAttribute("Name"), ParseVector2(Reader.GetAttribute("Spawn")));
                             break;
 
                         case "Item":
@@ -56,7 +55,7 @@ namespace Sprint03
                         case "Block":
                             Vector2 Position = ParseVector2(Reader.GetAttribute("Spawn"));
                             Vector2 Size = ParseVector2(Reader.GetAttribute("Size"));
-                            Game.Blocks.Add(new FRectangle(Position, Size));
+                            Game.BlocksList.Add(new FRectangle(Position, Size));
 
                             break;
 
@@ -71,17 +70,20 @@ namespace Sprint03
 
         public void UnloadRoom()
         {
-            Enemies = new List<Monster>(Game.MonsterList);
+            Enemies = new List<Monster>(Game.MonstersList);
             Items = new List<Item>(Game.ItemsList);
+            Blocks = new List<FRectangle>(Game.BlocksList);
             Game.EffectsList.Clear();
-            Game.MonsterList.Clear();
+            Game.MonstersList.Clear();
             Game.ItemsList.Clear();
+            Game.BlocksList.Clear();
         }
 
         public void ReloadRoom()
         {
-            Game.MonsterList = new List<Monster>(Enemies);
+            Game.MonstersList = new List<Monster>(Enemies);
             Game.ItemsList = new List<Item>(Items);
+            Game.BlocksList = new List<FRectangle>(Blocks);
 
         }
 
@@ -92,7 +94,6 @@ namespace Sprint03
             Doors["Right"].Draw();
             Doors["Up"].Draw();
             Doors["Down"].Draw();
-
         }
 
         private Vector2 ParseVector2(string coord)

@@ -1,97 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-
 <LevelData>
 
   <!-- Information to draw the interior, walkable area of the room -->
-  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14-->
-  -<UseExterior>True</UseExterior>
-  -<Interior>800,560,192,112</Interior>
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
 
-  <!-- Collide-able tiles in the room -->
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
-  -<Tile>
-    -<Name>Block</Name>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
+  -<Interior>
+    <UseExterior>True</UseExterior>
+    <Rectangle>547,198,192,112</Rectangle>
+  </Interior>
 
-  <!-- Information on drawing and handling door events -->
-  -<Door>
-    -<Location>Left</Location>
-    -<Type>Open</Type>
-    -<NextRoom>Room6</NextRoom>
-  </Door>
-  -<Door>
-    -<Location>Down</Location>
-    -<Type>Wall</Type>
-  </Door>
-  -<Door>
-    -<Location>Up</Location>
-    -<Type>Bombable</Type>
-    -<NextRoom>Room11</NextRoom>
-  </Door>
-  -<Door>
-    -<Location>Right</Location>
-    -<Type>Wall</Type>
-  </Door>
+  <!--Monsters-->
+  <!-- Items -->
+  -<Item Name="Compass" Spawn="192 144"/>
 
-  <!-- Information on Link's spawn location-->
-  -<Link>
-    -<PreviousRoom>Room6</PreviousRoom>
-    -<Coords></Coords>
-  </Link>
+  
+  <!--Blocks -->
+  -<Block Name="Block" Spawn="64 112" Size="16 16" />
+  -<Block Name="Block" Spawn="176 112" Size="16 16" />
 
-  <!-- Information to draw enemies -->
-  -<Monster>
-    -<Name>Keese</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Keese</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Keese</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Keese</Name>
-    -<Coords></Coords>
-  </Monster>-<Monster>
-    -<Name>Keese</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Keese</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Keese</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Keese</Name>
-    -<Coords></Coords>
-  </Monster>
+  -<Block Name="Block" Spawn="64 176" Size="16 16" />
+  -<Block Name="Block" Spawn="176 176" Size="16 16" />
 
-  <!-- Information to draw items -->
-  -<Item>
-    -<Name>Compass</Name>
-    -<Coords></Coords>
-  </Item>
+
+  <!-- Doors -->
+  -<Door LeadsTo="Room6" Name="OpenDoor" Side="Left" Destroyable="false"/>
+  -<Door LeadsTo="Room0" Name="Wall" Side="Right" Destroyable="false"/>
+  -<Door LeadsTo="Room11" Name="Wall" Side="Up" Destroyable="true"/>
+  -<Door LeadsTo="Room4" Name="Wall" Side="Down" Destroyable="false"/>
+
 
 </LevelData>

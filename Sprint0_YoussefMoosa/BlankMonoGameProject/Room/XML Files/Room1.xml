@@ -8,15 +8,16 @@
     <UseExterior>True</UseExterior>
     <Rectangle>547,198,192,112</Rectangle>
   </Interior>
+  
+  <!--Monsters-->
   <!-- Items -->
-  -<Monster Name="Stalfos" Spawn="35 192"/>
-  -<Monster Name="Stalfos" Spawn="64 192"/>
-  -<Item Name="Heart" Spawn="148 164"/>
+  -<Item Name="Key" Spawn="164 192"/>
 
-  <!-- Monsters -->
+
+  <!--Blocks -->
   <!-- Doors -->
   -<Door LeadsTo="Room0" Name="Wall" Side="Left" Destroyable="false"/>
-  -<Door LeadsTo="Room0" Name="OpenDoor" Side="Right" Destroyable="false"/>
+  -<Door LeadsTo="Room2" Name="OpenDoor" Side="Right" Destroyable="false"/>
   -<Door LeadsTo="Room0" Name="Wall" Side="Up" Destroyable="false"/>
   -<Door LeadsTo="Room0" Name="Wall" Side="Down" Destroyable="false"/>
 

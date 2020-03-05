@@ -41,7 +41,7 @@ namespace Sprint03
             directionSpriteName = oldSpriteName;
             Direction = _direction;
             Sprite.FPS = 12;
-            LifeSpan = (60/Sprite.FPS) * 4;
+            LifeSpan = (60/Sprite.FPS) * 5;
             SwordAttack = new SwordEffect(_link.SpriteLink, game, _direction, game.EffectSpriteSheet, game.spriteBatch);
             SwordBeam = new SwordBeamEffect(_link.SpriteLink, game, _direction, game.EffectSpriteSheet, game.spriteBatch);
 
@@ -69,7 +69,7 @@ namespace Sprint03
             {
                 SwordAttack.CreateEffect();
             }
-            else if (AttackTimer == (LifeSpan/2) + 1)
+            else if (AttackTimer == (LifeSpan/2) + Sprite.FPS)
             {
                 Sprite.ChangeSpriteAnimation(directionSpriteName);
 

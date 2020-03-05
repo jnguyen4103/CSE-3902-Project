@@ -3,54 +3,20 @@
 
   <!-- Information to draw the interior, walkable area of the room -->
   <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
+
   -<Interior>
-    -<UseExterior>True</UseExterior>
-    -<Rectangle>33,387,192,112</Rectangle>
+    <UseExterior>True</UseExterior>
+    <Rectangle>547,198,192,112</Rectangle>
   </Interior>
 
-  <!-- Collide-able tiles in the room -->
-  -<Tile>
-    -<Type>Static</Type>
-    -<Rectangle></Rectangle>
-  </Tile>
+  <!--Monsters-->
+  <!-- Items -->
+  <!--Blocks -->
+  <!-- Doors -->
+  -<Door LeadsTo="Room0" Name="Wall" Side="Left" Destroyable="false"/>
+  -<Door LeadsTo="Room9" Name="OpenDoor" Side="Right" Destroyable="false"/>
+  -<Door LeadsTo="Room6" Name="Wall" Side="Up" Destroyable="false"/>
+  -<Door LeadsTo="Room2" Name="Wall" Side="Down" Destroyable="false"/>
 
-  <!-- Information on drawing and handling door events -->
-  -<Door>
-    -<Location>Left</Location>
-    -<Type>Wall</Type>
-  </Door>
-  -<Door>
-    -<Location>Up</Location>
-    -<Type>Wall</Type>
-  </Door>
-  -<Door>
-    -<Location>Right</Location>
-    -<Type>Open</Type>
-    -<NextRoom>Room9</NextRoom>
-  </Door>
-  -<Door>
-    -<Location>Down</Location>
-    -<Type>Wall</Type>
-  </Door>
-
-  <!-- Information on Link's spawn location-->
-  -<Link>
-    -<PreviousRoom>Room9</PreviousRoom>
-    -<Coords></Coords>
-  </Link>
-
-  <!-- Information to draw enemies -->
-  -<Monster>
-    -<Name>Fire</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>OldMan</Name>
-    -<Coords></Coords>
-  </Monster>
-  -<Monster>
-    -<Name>Fire</Name>
-    -<Coords></Coords>
-  </Monster>
 
 </LevelData>

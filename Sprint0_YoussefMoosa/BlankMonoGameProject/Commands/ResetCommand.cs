@@ -13,11 +13,11 @@
         {
             Game.Link.SpriteLink.Position = Game.LinkSpawn;
             Game.Link.StateMachine.DownState();
+            Game.Link.StateMachine.IdleState();
             Game.Link = new Link(Game.SpriteLink, Game);
             Game.Link.HP = Game.Link.MaxHP;
-            Game.MonsterList.Clear();
-            Game.ItemsList.Clear();
-            Game.EffectsList.Clear();
+            Game.SpriteLink.BaseSpeed = 1f;
+            Game.CurrentRoom.UnloadRoom();
             Game.RFactory.ResetRooms();
             Game.RFactory.LoadRoom("Room0");
         }

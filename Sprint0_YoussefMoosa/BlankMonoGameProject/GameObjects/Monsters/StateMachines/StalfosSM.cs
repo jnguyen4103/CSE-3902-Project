@@ -6,7 +6,7 @@ namespace Sprint03
     {
         private Game1 Game;
         private Monster self;
-        private Random random = new Random();
+        private static Random random = new Random();
         private int WalkCounter = 0;
         private int Timer = 0;
         private readonly int damgeDuration = 45;
@@ -156,6 +156,7 @@ namespace Sprint03
             // moves at a diagonal
             int randDirection = random.Next(1, 5);
             WalkCounter = 30 * random.Next(2, 6);
+
 
             switch (randDirection)
             {
