@@ -12,21 +12,21 @@ Stalfos(skeleton)
 
 	--Do not move to a random position. Instead they seem to change direction to an open block at random time intervals
 		though these random intervals seem to be constrained to about 3 intervals of 2,3,4 seconds or more plausible
-		is they change direction after they have traversed a certain amount of blocks and each time they turn this amount
+		is they change direction after they have traversed a certain amount of blocks and each time they turn this 		amount
 		is changed.
 
-		**open block refers to blocks link can also move to with the exception of the door block link appears in when entering
+		**open block refers to blocks link can also move to with the exception of the door block link appears in 		when entering
 		a room
 
-		**running into a wall did not seem to affect their pathing sequence. So it was more like 'if wall, turn to open block'
-		and that was it. Their turning behavior was not affected, they would sometimes turn right after turning away from a wall
+		**running into a wall did not seem to affect their pathing sequence. So it was more like 'if wall, turn to 		open block'
+		and that was it. Their turning behavior was not affected, they would sometimes turn right after turning away 		from a wall
 		or corner and other times walk most of the way across the screen.
 
-		**would probably be easiest to set a certain amount of blocks or pixels for the stalfos to traverse before changing direction
+		**would probably be easiest to set a certain amount of blocks or pixels for the stalfos to traverse before 		changing direction
 
-		**overall movement should be random but consistently random enough that a player could get used to it and feel like they could predict it
+		**overall movement should be random but consistently random enough that a player could get used to it and 		feel like they could predict it
 
-	--is not uncommon to become 'stuck' in a corner, that is they would often turn into corners then turn soon after into a wall
+	--is not uncommon to become 'stuck' in a corner, that is they would often turn into corners then turn soon after 	into a wall
 
 	--when hit by link seem to be pushed back about 5 blocks
 
@@ -36,12 +36,12 @@ Keese(bats)
 	--have a start up animation of sorts. Start in an idle or sleeping state (idle is open wings, sleep is folded wings)
 		as the keese starts moving it's animation will speed up to go from slow flapping to fast flapping
 
-	--seem to have similar move set to stalfo in that they change their direction after traversing so many tiles or after
+	--seem to have similar move set to stalfo in that they change their direction after traversing so many tiles or 	after
 		some amount of time, hard to tell which. Different though is they can move diaganolly.
 
-	--in adition to speeding up and slowing down animation when they are in their slowest moving state but not idle they move slower
-		than the stalfo but when they reach max animation speed they move faster and change direction more often, not uncommon to
-		see one fly in a circle or make a hook/half oval turn via multiple diagonal turns with a seperation of about 1.5 blocks between
+	--in adition to speeding up and slowing down animation when they are in their slowest moving state but not idle they 		move slower
+		than the stalfo but when they reach max animation speed they move faster and change direction more often, 		not uncommon to
+		see one fly in a circle or make a hook/half oval turn via multiple diagonal turns with a seperation of about 		1.5 blocks between
 		each turn
 
 	--unlike stalfo they occasionally go into a sleep/idle state, usually every 6-12 seconds (roughly)
@@ -73,6 +73,16 @@ Blade Traps (beyblades / rectangles with pins coming out of them)
 	--stops moving and retracts after colliding with link or each other
 	
 	--collision detection is on the block part of the trap, not the spikes - the spikes move through the other traps and 		link
+Aquamentus (dragon boi)
+	--takes 6 hits to kill ( so same health as link basically)
+	
+	--each fireball deals half heart of damage, same if you touch him
+	
+	--starts the encountre close to the exit door then moves forward until is in front of where the heart container 	spawns; whole fight moves left and right while keeping facing same direction - only moves as far as barrier blocks
+	so about 3 blocks in front of heart containter, stays in same row too. 
+	
+	--fireballs move to the left of aquamentus in cone pattern starting as one from his mouth and end up having about 		1.5 blocks of space between them by the time they reach the wall. If aquamentus dies while the fireballs are 			in flight they stop spreading out but keep moving horizontally
+
 
 $Item behavior$
 
