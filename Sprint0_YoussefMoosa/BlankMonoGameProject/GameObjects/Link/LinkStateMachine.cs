@@ -1,7 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-
-namespace Sprint03
+﻿namespace Sprint03
 {
     public class LinkStateMachine
     {
@@ -67,8 +64,8 @@ namespace Sprint03
 
         public void DeadState()
         {
-            Link.hitpoints = 6;
             IdleState();
+            Link.Game.keyboardCommands[7].Execute();
         }
 
 

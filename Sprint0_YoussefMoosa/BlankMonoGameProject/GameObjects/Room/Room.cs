@@ -18,6 +18,9 @@ namespace Sprint03
         public Dictionary<string, Door> Doors = new Dictionary<string, Door>(4);
         private Game1 Game;
         private string File;
+        private Vector2 HiddenKey;
+        private bool HasEnemies = false;
+        private bool EnemiesDead;
 
         public bool RoomLoadedAlready { get; set; } = false;
         public FloorSprite Sprite { get; set; }
@@ -41,10 +44,18 @@ namespace Sprint03
                     {
                         case "Monster":
                             Game.MFactory.SpawnMonster(Reader.GetAttribute("Name"), ParseVector2(Reader.GetAttribute("Spawn")));
+                            HasEnemies = true;
                             break;
 
                         case "Item":
-                            Game.IFactory.SpawnItem(Reader.GetAttribute("Name"), ParseVector2(Reader.GetAttribute("Spawn")));
+                            if (Reader.GetAttribute("Name").Equals("Key"))
+                            {
+                                HiddenKey = ParseVector2(Reader.GetAttribute("Spawn")); 
+                            }
+                            else
+                            {
+                                Game.IFactory.SpawnItem(Reader.GetAttribute("Name"), ParseVector2(Reader.GetAttribute("Spawn")));
+                            }
                             break;
 
                         case "Door":
@@ -64,6 +75,7 @@ namespace Sprint03
                     }
                 }
             }
+            EnemiesDead = false;
             RoomLoadedAlready = true;
             Reader.Close();
         }
@@ -89,13 +101,38 @@ namespace Sprint03
 
         public void Draw()
         {
+            Update();
             Sprite.DrawSprite();
             Doors["Left"].Draw();
             Doors["Right"].Draw();
             Doors["Up"].Draw();
             Doors["Down"].Draw();
-            CheckClosedDoors();
 
+        }
+
+        public void Update()
+        {
+            if (Game.MonstersList.Count == 0 && !EnemiesDead)
+            {
+                foreach (KeyValuePair<string, Door> door in Doors)
+                {
+                    if (door.Value.Sprite.Name.Equals("ClosedDoor"))
+                    {
+                        door.Value.Sprite.ChangeSpriteAnimation("OpenDoor");
+                    }
+                    else if (door.Value.Sprite.Name.Equals("ClosedDoorHorizontal"))
+                    {
+                        door.Value.Sprite.ChangeSpriteAnimation("OpenDoorHorizontal");
+
+                    }
+                }
+
+                if(HasEnemies && HiddenKey.X != 0 && HiddenKey.Y != 0)
+                {
+                    Game.IFactory.SpawnItem("Key", HiddenKey);
+                }
+                EnemiesDead = true;
+            }
         }
 
         private Vector2 ParseVector2(string coord)
@@ -104,23 +141,5 @@ namespace Sprint03
             return new Vector2(Single.Parse(coordinates[0]), Single.Parse(coordinates[1]));
         }
 
-        private void CheckClosedDoors()
-        {
-            if(Game.MonstersList.Count == 0)
-            {
-                foreach (KeyValuePair<string, Door> door in Doors)
-                {
-                    if (door.Value.Sprite.Name.Equals("ClosedDoor"))
-                    {
-                        door.Value.Sprite.ChangeSpriteAnimation("OpenDoor");
-                    }
-                    else if(door.Value.Sprite.Name.Equals("ClosedDoorHorizontal"))
-                    {
-                        door.Value.Sprite.ChangeSpriteAnimation("OpenDoorHorizontal");
-
-                    }
-                }
-             }
-        }
     }
 }

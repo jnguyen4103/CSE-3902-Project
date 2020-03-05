@@ -47,7 +47,7 @@ namespace Sprint03
         public Room CurrentRoom;
 
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
-        private ICommand[] keyboardCommands = new ICommand[11];
+        public ICommand[] keyboardCommands = new ICommand[11];
         private KeyboardController keyboardController;
         private MouseController mouseController;
 

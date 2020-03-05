@@ -106,7 +106,7 @@ namespace Sprint03
             }
 
             // Link & Monster Collision
-            foreach (Monster monster in Game.MonstersList)
+            foreach (Monster monster in Game.MonstersList.ToArray())
             {
                 // Monster vs. Link
                 monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);

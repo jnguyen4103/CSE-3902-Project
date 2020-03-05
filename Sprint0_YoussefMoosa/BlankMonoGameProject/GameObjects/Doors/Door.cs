@@ -36,10 +36,14 @@ namespace Sprint03
 
         public void UnlockDoor()
         {
-            if (Game.KeyCounter > 0)
+            if (Game.KeyCounter > 0 && Sprite.Name.Equals("KeyDoor"))
             {
                 Game.KeyCounter--;
                 Sprite.ChangeSpriteAnimation("OpenDoor");
+            } else if(Game.KeyCounter > 0 && Sprite.Name.Equals("KeyDoorHorizontal"))
+            {
+                Game.KeyCounter--;
+                Sprite.ChangeSpriteAnimation("OpenDoorHorizontal");
             }
         }
 
@@ -50,7 +54,7 @@ namespace Sprint03
 
         public void EnterDoor()
         {
-            if(Sprite.Name.Equals("KeyDoor"))
+            if(Sprite.Name.Equals("KeyDoor") || Sprite.Name.Equals("KeyDoorHorizontal"))
             {
                 UnlockDoor();
             } else
