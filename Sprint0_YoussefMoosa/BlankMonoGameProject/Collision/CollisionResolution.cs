@@ -28,12 +28,7 @@ namespace Sprint03
 
         public void StopSprite(Sprite Sp, FRectangle WhatWeHit,int direction)
         {
-            //Console.WriteLine("WE HIT"+direction);
-
-            if (Game.Link.GetState() != Link.LinkState.Damaged)
-            {
-                StayOffBlock(Sp, WhatWeHit,direction);
-            }
+            StayOffBlock(Sp, WhatWeHit,direction);
         }
 
 
