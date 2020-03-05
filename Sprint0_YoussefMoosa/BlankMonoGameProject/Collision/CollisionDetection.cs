@@ -82,6 +82,15 @@ namespace Sprint03
                     direction = CollisionDirection(Game.Link.SpriteLink, FRectangle.Intersection(linkHitbox, box));
                     ColRes.StopSprite(Game.Link.SpriteLink, box, direction);
                 }
+                foreach(Monster monster in Game.MonstersList)
+                {
+                    monsterHitbox = new FRectangle(monster.Sprite.Position.X, monster.Sprite.Position.Y, (int)monster.Sprite.GetSize.X, (int)monster.Sprite.GetSize.Y);
+                    if (monsterHitbox.Intersects(box))
+                    {
+                        direction = CollisionDirection(monster.Sprite, FRectangle.Intersection(monsterHitbox, box));
+                        ColRes.StopSprite(monster.Sprite, box, direction);
+                    }
+                }
             }
 
 
