@@ -7,7 +7,7 @@ Group Ocarina
 <b>Sprint #3</b>
 
    Program Controls:
-   W-Link go up
+   W-Link go up <br />
    A-Link go left
    S-Link go down
    D-Link go right
