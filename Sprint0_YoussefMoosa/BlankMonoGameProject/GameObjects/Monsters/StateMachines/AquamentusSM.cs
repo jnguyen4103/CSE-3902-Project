@@ -2,23 +2,34 @@
 using System;
 namespace Sprint03
 {
-    public class GoriyasSM : IStateMachine
+    public class AquamentusSM : IStateMachine
     {
-        IEffect Boomerang;
-        private readonly int damgeDuration = 45;
+        IEffect FireBallTop;
+        IEffect FireBallMiddle;
+        IEffect FireBallBottom;
+        private readonly int damageDuration = 45;
         private int AttackTimer = 0;
-        private int AttackThreshold = 5;
+        private int AttackThreshold = 4;
 
-        public GoriyasSM(Monster Goriyas, Game1 game)
+        public AquamentusSM(Monster Aquamentus, Game1 game)
         {
-            self = Goriyas;
+            self = Aquamentus;
             Game = game;
+            self.Direction = Monster.MonsterDirection.Left;
         }
 
         public override void IdleState()
         {
+
             if (AttackTimer >= AttackThreshold)
             {
+                Vector2 Speed = GetFireballSpeed();
+                FireBallTop = new FireballEffect(self.Sprite, Game, new Vector2(Speed.X, Speed.Y - 0.5f), Game.EffectSpriteSheet, Game.spriteBatch);
+                FireBallMiddle = new FireballEffect(self.Sprite, Game, Speed, Game.EffectSpriteSheet, Game.spriteBatch);
+                FireBallBottom = new FireballEffect(self.Sprite, Game, new Vector2(Speed.X, Speed.Y + 0.5f), Game.EffectSpriteSheet, Game.spriteBatch);
+                FireBallTop.CreateEffect();
+                FireBallMiddle.CreateEffect();
+                FireBallBottom.CreateEffect();
                 self.State = Monster.MonsterState.Attacking;
                 AttackState();
             }
@@ -62,13 +73,33 @@ namespace Sprint03
                         break;
                 }
                 WalkCounter--;
-
-
             }
             else
             {
+                IdleState();
                 self.State = Monster.MonsterState.Idle;
                 AttackTimer++;
+            }
+        }
+
+
+
+        public override void AttackState()
+        {
+            Timer++;
+            Console.WriteLine(Timer);
+
+            if (Timer == 1)
+            {
+                self.Sprite.ChangeSpriteAnimation("AquamentusAttack");
+            }
+            else if (Timer >= 4*self.Sprite.FPS)
+            {
+                self.Sprite.ChangeSpriteAnimation("Aquamentus");
+                AttackTimer = 0;
+                Timer = 0;
+                self.State = Monster.MonsterState.Idle;
+                IdleState();
             }
         }
 
@@ -78,7 +109,7 @@ namespace Sprint03
             self.State = Monster.MonsterState.Damaged;
             Timer++;
             Pushback(directionDamaged);
-            if (Timer >= damgeDuration)
+            if (Timer >= damageDuration)
             {
                 self.Sprite.CurrentSpeed.X = 0;
                 self.Sprite.CurrentSpeed.Y = 0;
@@ -89,57 +120,10 @@ namespace Sprint03
             }
         }
 
-
-        public override void AttackState()
-        {
-            Timer++;
-            if(Timer == 1)
-            {
-                Boomerang = new BoomerangEffect(self.Sprite, Game, ConvertToLinkDirection(self.Direction), Game.EffectSpriteSheet, Game.spriteBatch);
-                Boomerang.CreateEffect();
-            }
-            else if (Timer >= 32*AttackThreshold)
-            {
-                Timer = 0;
-                AttackTimer = 0;
-                IdleState();
-            }
-        }
-
-        protected override void DirectionString()
-        {
-            string direction = "";
-            switch(self.Direction)
-            {
-                case (Monster.MonsterDirection.Up):
-                    direction = "Up";
-                    break;
-
-                case (Monster.MonsterDirection.Down):
-                    direction = "Down";
-                    break;
-
-                case (Monster.MonsterDirection.Left):
-                    direction = "Left";
- 
-                    break;
-
-                case (Monster.MonsterDirection.Right):
-                    direction = "Right";
-                    break;
-
-                default:
-                    break;
-            }
-            self.Name = "Goriyas" + direction;
-        }
-
-
         private void getRandomDirection()
         {
             int randDirection = random.Next(1, 5);
-            WalkCounter = 25 * random.Next(1, 3);
-
+            WalkCounter = 8 * random.Next(2, 6);
             switch (randDirection)
             {
                 case (1):
@@ -157,30 +141,14 @@ namespace Sprint03
                 default:
                     break;
             }
-            DirectionString();
-            self.Sprite.ChangeSpriteAnimation(self.Name);
         }
 
-        private Link.LinkDirection ConvertToLinkDirection(Monster.MonsterDirection givenDirection)
+        private Vector2 GetFireballSpeed()
         {
-            Link.LinkDirection monsterLinkDirection;
-            switch (givenDirection)
-            {
-                case (Monster.MonsterDirection.Up):
-                    monsterLinkDirection = Link.LinkDirection.Up;
-                    break;
-                case (Monster.MonsterDirection.Right):
-                    monsterLinkDirection = Link.LinkDirection.Right;
-                    break;
-                case (Monster.MonsterDirection.Down):
-                    monsterLinkDirection = Link.LinkDirection.Down;
-                    break;
-                default:
-                    monsterLinkDirection = Link.LinkDirection.Left;
-                    break;
-            }
-
-            return monsterLinkDirection;
+            float xVel = (Game.Link.SpriteLink.Position.X - self.Sprite.Position.X) / 45;
+            float yVel = (Game.Link.SpriteLink.Position.Y - self.Sprite.Position.Y) / 45;
+            return new Vector2(xVel, yVel);
         }
+
     }
 }

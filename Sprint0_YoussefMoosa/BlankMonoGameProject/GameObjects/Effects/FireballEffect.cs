@@ -3,27 +3,36 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint03
 {
-    public class FireballEffect
+    public class FireballEffect: IEffect
     {
-        private Texture2D effectTexture;
-        private Game1 monoProcess;
-        private readonly SpriteBatch spriteBatch;
+        Sprite Creator;
+        Game1 Game;
+        Vector2 Direction;
+        Texture2D Texture;
+        SpriteBatch Batch;
 
-        public FireballEffect(Texture2D texture, SpriteBatch batch, Game1 monoInstance)
+        public Sprite Sprite { get; set; }
+        public int Damage { get; set; }
+
+        public FireballEffect(Sprite creator, Game1 game, Vector2 direction, Texture2D texture, SpriteBatch batch)
         {
-            effectTexture = texture;
-            spriteBatch = batch;
-            monoProcess = monoInstance;
+            Creator = creator;
+            Game = game;
+            Direction = direction;
+            Batch = batch;
+            Texture = texture;
+            Damage = 1;
         }
 
         public void CreateEffect()
         {
-            //monoProcess.EffectsList.Add(new FireballSprite(effectTexture, spriteBatch, position,  -1, 0));
-            //monoProcess.EffectsList.Add(new FireballSprite(effectTexture, spriteBatch, position, -1, -1));
-            //monoProcess.EffectsList.Add(new FireballSprite(effectTexture, spriteBatch, position, -1, 1));
-
+            Sprite = new FireballSprite(Creator, Game, Direction, Texture, Batch);
+            Game.EffectsList.Add(this);
         }
 
-
+        public bool IsCreator(Sprite sprite)
+        {
+            return (Creator.Equals(sprite));
+        }
     }
 }

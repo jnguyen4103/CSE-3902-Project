@@ -95,22 +95,22 @@ namespace Sprint03
             if (Game.Link.SpriteLink.Position.Y >= self.Sprite.Position.Y && yDiff > 8)
             {
                 self.Sprite.ChangeSpriteAnimation("DarknutDown");
-                self.Sprite.Position.Y += 2 * self.Sprite.BaseSpeed;
+                self.Sprite.Position.Y += self.Sprite.BaseSpeed;
             }
             else if (Game.Link.SpriteLink.Position.Y <= self.Sprite.Position.Y && yDiff > 8)
             {
                 self.Sprite.ChangeSpriteAnimation("DarknutUp");
-                self.Sprite.Position.Y -= 2 * self.Sprite.BaseSpeed;
+                self.Sprite.Position.Y -= self.Sprite.BaseSpeed;
             }
             else if (Game.Link.SpriteLink.Position.X > self.Sprite.Position.X && xDiff > 8)
             {
-                self.Sprite.Position.X += 2 * self.Sprite.BaseSpeed;
+                self.Sprite.Position.X += self.Sprite.BaseSpeed;
                 self.Sprite.ChangeSpriteAnimation("DarknutRight");
             }
             else if (Game.Link.SpriteLink.Position.X <= self.Sprite.Position.X && xDiff > 8)
             {
                 self.Sprite.ChangeSpriteAnimation("DarknutLeft");
-                self.Sprite.Position.X -= 2 * self.Sprite.BaseSpeed;
+                self.Sprite.Position.X -= self.Sprite.BaseSpeed;
             }
 
 

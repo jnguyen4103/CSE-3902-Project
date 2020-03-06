@@ -62,10 +62,12 @@
     <Compile Include="Components\MonoTimer.cs" />
     <Compile Include="GameObjects\Doors\Door.cs" />
     <Compile Include="GameObjects\Doors\DoorSprite.cs" />
+    <Compile Include="GameObjects\Effects\Sprites\FireballSprite.cs" />
     <Compile Include="GameObjects\Effects\Sprites\BeamExplosionSprite.cs" />
     <Compile Include="GameObjects\Effects\BeamExplosionEffect.cs" />
     <Compile Include="GameObjects\Monsters\MonsterFactory.cs" />
     <Compile Include="GameObjects\Monsters\MonsterSprite.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\AquamentusSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\DarknutSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\GelSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\GoriyasSM.cs" />

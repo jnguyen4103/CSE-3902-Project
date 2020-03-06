@@ -93,6 +93,10 @@ namespace Sprint03
                     StateMachine.SpawnState();
                     break;
 
+                case (MonsterState.Attacking):
+                    StateMachine.AttackState();
+                    break;
+ 
                 case (MonsterState.Idle):
                     StateMachine.IdleState();
                     break;

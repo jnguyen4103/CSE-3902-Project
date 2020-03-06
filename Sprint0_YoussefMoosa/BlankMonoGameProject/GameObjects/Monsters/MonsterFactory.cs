@@ -19,7 +19,7 @@ namespace Sprint03
             Monsters["Goriyas"] = SpawnGoriyas;
             Monsters["Darknut"] = SpawnDarknut;
             Monsters["BladeTrap"] = SpawnBladeTrap;
-
+            Monsters["Aquamentus"] = SpawnAquamentus;
 
 
         }
@@ -135,6 +135,24 @@ namespace Sprint03
 
             // Spawning dat boii
             return BladeTrap;
+        }
+
+        private Monster SpawnAquamentus(Vector2 spawn)
+        {
+            // Creating Sprite for Aquamentus
+            MonsterSprite AquamentusSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            AquamentusSprite.FPS = 8;
+            AquamentusSprite.BaseSpeed = 0.25f;
+
+            // Setting up Monster object for Aquamentus to hold stats
+            Monster Aquamentus = new Monster(AquamentusSprite, "Aquamentus", Game);
+            Aquamentus.hitpoints = 4;
+            Aquamentus.maxHP = 4;
+            Aquamentus.attackDamage = 2;
+            Aquamentus.StateMachine = new AquamentusSM(Aquamentus, Game);
+
+            // Spawning dat boii
+            return Aquamentus;
         }
     }
 }

@@ -10,6 +10,8 @@
   </Interior>
 
   <!--Monsters-->
+  -<Monster Name="Aquamentus" Spawn="160 128" />
+
   <!-- Items -->
   <!--Blocks -->
   -<Block Name="Block" Spawn="144 96" Size="16 48" />
