@@ -91,10 +91,25 @@ namespace Sprint03
                     break;
                 case 2:
                     Sp.Position.X += Sp.BaseSpeed;
+                    if (Sp.Position.Y >= Block.Bottom)
+                    {
+                       Sp.Position.Y -= Sp.BaseSpeed;
+                    }
+                    else if (Sp.Position.Y <= Block.Top)
+                    {
+                        Sp.Position.Y += Sp.BaseSpeed;
+                    }
                     break;
                 case 3:
                     Sp.Position.X -= Sp.BaseSpeed;
-   
+                    if (Sp.Position.Y >= Block.Bottom)
+                    {
+                        Sp.Position.Y -= Sp.BaseSpeed;
+                    }
+                    else if (Sp.Position.Y <= Block.Top)
+                    {
+                        Sp.Position.Y += Sp.BaseSpeed;
+                    }
                     break;
                 default:
                     break;
