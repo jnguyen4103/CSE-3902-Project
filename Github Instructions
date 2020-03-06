@@ -11,6 +11,18 @@ Use command: git clone --single-branch --branch <branch_name> <repo_url>
 5. When you’re happy with your code and everything is working, add your changes to the staging area
 git add .
 
+Alternatively, if you know exactly what code you created or code you changed,
+You can specify that file which contains the code and add that. Example,
+to add 'Github Instruction Revisions' from your current directory, type
+
+git add './Github Instruction Revisions'
+
+Note that the pathname is the same as its UNIX counterpart,
+so think stdlinux if you're stuck on how this works.
+
+This can avoid a lot of conflicts when it comes to pushing and pulling
+code. It also solves the problem of accidentally changing VSCode settings.
+
 6. Commit the changes from the staging area
 git commit -m “Comment here”
 

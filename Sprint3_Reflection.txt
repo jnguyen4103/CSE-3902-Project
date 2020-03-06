@@ -1,0 +1,62 @@
+Sprint Reflection
+
+Group: Ocarina
+Class: 9:10-10:05
+
+The team performed much better this sprint than it did
+in the previous sprint. As can be seen in the burndown
+chart, the group had better pacing. The reason why
+the slope was fairly flat in the first few days was
+because we were working on refactoring the previous 
+code for that weekend, and so there wasn't a whole lot
+of room to add new features. After that, the group was
+well and ready to go into the current sprint.
+
+One thing which has attributed to our improvement is that
+we recently implemented deadlines and assigned tasks to people
+into our task board. There's still room for improvement, but the
+current improvements really raised the level of accountability,
+communication, and reliability within the group regardless. 
+Another is that we did a bit more research by actually playing the
+Legend of Zelda game on an NES emulator and by looking up some
+videos on how to do collisions (links after the end of reflection).
+Again, still room for improvement, but the current improvement is
+nothing to complain about. Finally, another improvement was that we 
+really amped up our communication. People were talking
+on the Discord group chat and updating that much more than
+previously, which gave a sense of real-time organization synergizing
+with long term organization, such as in task boards.
+
+All of the above points are things that we
+should continue to do in the future.
+
+As for points of improvement, there is the old software saying 
+"The first 90% of a project takes 90% of the time, and the last 
+10% takes 90% of the time", so it perhaps would have been more 
+optimal to see the burndown chart slope down more at the beginning and
+taper off at the end. Another point is that it would be better
+to keep more up to date on one another, as there's sometimes the
+tendency for 4-5 people to really get it together and grind out
+the work for a few days and leave the other 1-2 people in the dust
+which, while it doesn't affect how fast the burndown chart slopes down,
+it puts a disproportionate amount of work on people, decreasing synergy
+and making it harder and more frustrating to sustain.
+
+As for plans to improve on those points, we haven't made any plans
+yet. We'll probably research more about the next part of the project
+over spring break, form rough requirements in our head individually,
+and regroup to discuss how we want to further organize and split up
+the work. This should certainly help us with improving organization
+and making sure that people have equal and tangible goals.
+
+Finally, there were 0 changes in this sprint which were
+detrimental to the group. Every change seemed to be for the better,
+which is rather lucky and we're all grateful for that.
+
+End of reflection
+
+links:
+
+https://www.youtube.com/watch?v=A_tdffN7s1w
+https://www.youtube.com/watch?v=CV8P9aq2gQo
+
