@@ -11,9 +11,9 @@
 
   <!--Monsters-->
   -<Monster Name="Gel" Spawn="68 96"/>
-  -<Monster Name="Gel" Spawn="164 96"/>
+  -<Monster Name="Zol" Spawn="164 96"/>
   -<Monster Name="Gel" Spawn="84 128"/>
-  -<Monster Name="Gel" Spawn="84 176"/>
+  -<Monster Name="Zol" Spawn="84 176"/>
   -<Monster Name="Gel" Spawn="164 128"/>
 
   <!-- Items -->

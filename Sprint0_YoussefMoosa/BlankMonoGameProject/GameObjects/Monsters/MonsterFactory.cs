@@ -20,6 +20,8 @@ namespace Sprint03
             Monsters["Darknut"] = SpawnDarknut;
             Monsters["BladeTrap"] = SpawnBladeTrap;
             Monsters["Aquamentus"] = SpawnAquamentus;
+            Monsters["Zol"] = SpawnZol;
+
 
 
         }
@@ -153,6 +155,24 @@ namespace Sprint03
 
             // Spawning dat boii
             return Aquamentus;
+        }
+
+        private Monster SpawnZol(Vector2 spawn)
+        {
+            // Creating Sprite for Aquamentus
+            MonsterSprite ZolSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            ZolSprite.FPS = 8;
+            ZolSprite.BaseSpeed = 0.64f;
+
+            // Setting up Monster object for Aquamentus to hold stats
+            Monster Zol = new Monster(ZolSprite, "Zol", Game);
+            Zol.hitpoints = 2;
+            Zol.maxHP = 2;
+            Zol.attackDamage = 2;
+            Zol.StateMachine = new ZolSM(Zol, Game);
+
+            // Spawning dat boii
+            return Zol;
         }
     }
 }

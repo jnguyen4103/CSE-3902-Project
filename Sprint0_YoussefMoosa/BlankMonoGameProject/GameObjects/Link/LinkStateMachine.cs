@@ -95,7 +95,7 @@
             if (Link.State == Link.LinkState.Moving || Link.State == Link.LinkState.Idle)
             {
                 Link.State = Link.LinkState.UsingSecondary;
-                IEffect Bomb = new BombEffect(Link.SpriteLink, Link.Game, Link.Direction, Link.Game.EffectSpriteSheet, Link.Game.spriteBatch);
+                IEffect Bomb = new BombEffect(Link.SpriteLink, Link.Game, Link.Game.EffectSpriteSheet, Link.Game.spriteBatch);
                 Link.Game.Link = new UseSecondaryLink(Link, Link.Game, Link.SpriteLink.Name, Link.Direction, Bomb);
             }
         }

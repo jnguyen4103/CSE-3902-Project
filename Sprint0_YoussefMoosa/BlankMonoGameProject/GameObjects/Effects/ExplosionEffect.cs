@@ -9,7 +9,7 @@ namespace Sprint03
         Game1 Game;
         Texture2D Texture;
         SpriteBatch Batch;
-        Vector2 Spawn;
+        public Vector2 Spawn;
 
         public Sprite Sprite { get; set; }
         public int Damage { get; set; }

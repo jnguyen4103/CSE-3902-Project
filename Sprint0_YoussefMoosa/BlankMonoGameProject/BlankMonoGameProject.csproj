@@ -78,6 +78,7 @@
     <Compile Include="GameObjects\Monsters\StateMachines\GoriyasSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\KeeseSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\BladeTrap.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\ZolSM.cs" />
     <Compile Include="GameObjects\Tile\NonStaticTile.cs" />
     <Compile Include="GameObjects\Tile\StaticTile.cs" />
     <Compile Include="GameObjects\Tile\TileSprite.cs" />

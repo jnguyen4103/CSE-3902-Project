@@ -40,7 +40,7 @@ namespace Sprint03
 
         private Game1 Game;
 
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> Sprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(112);
+        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> Sprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(113);
 
         // Al off the Sprites are size 16 by 16
         private readonly Vector2 Spritesize = new Vector2(16, 16);
@@ -101,11 +101,12 @@ namespace Sprint03
 
             Sprites["BladeTrap"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(120, 0, 16, 16), defaultMonsterSize, 1);
 
-            Sprites["WallMaster"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 32), defaultMonsterSize, 2);
+            Sprites["WallMaster"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 16, 40), defaultMonsterSize, 2);
 
-            Sprites["Zol"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 48, 16, 32), defaultMonsterSize, 2);
+            Sprites["Zol"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 48, 16, 40), defaultMonsterSize, 2);
+            Sprites["ZolDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 96, 16, 40), defaultMonsterSize, 2);
 
-            Sprites["Rope"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 48, 16, 32), defaultMonsterSize, 2);
+            Sprites["Rope"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 48, 16, 40), defaultMonsterSize, 2);
 
             Sprites["Gel"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(168, 0, 8, 40), defaultItemSize, 2);
 

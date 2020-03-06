@@ -11,7 +11,6 @@ namespace Sprint03
     class BombEffect : IEffect
     {
         Sprite Creator;
-        Link.LinkDirection Direction;
         Game1 Game;
         Texture2D Texture;
         SpriteBatch Batch;
@@ -19,10 +18,9 @@ namespace Sprint03
         public Sprite Sprite { get; set; }
         public int Damage { get; set; }
 
-        public BombEffect(Sprite creator, Game1 game, Link.LinkDirection direction, Texture2D texture, SpriteBatch batch)
+        public BombEffect(Sprite creator, Game1 game, Texture2D texture, SpriteBatch batch)
         {
             Creator = creator;
-            Direction = direction;
             Game = game;
             Batch = batch;
             Texture = texture;

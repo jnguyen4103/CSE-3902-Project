@@ -12,7 +12,7 @@
   <!--Monsters-->
   -<Monster Name="Gel" Spawn="84 176"/>
   -<Monster Name="Gel" Spawn="180 160"/>
-  -<Monster Name="Gel" Spawn="132 112"/>
+  -<Monster Name="Zol" Spawn="132 112"/>
 
   <!-- Items -->
   <!--Blocks -->
