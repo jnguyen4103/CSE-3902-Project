@@ -1,4 +1,0 @@
-﻿[*.cs]
-
-# CA9999: Analyzer version mismatch
-dotnet_diagnostic.CA9999.severity = error
