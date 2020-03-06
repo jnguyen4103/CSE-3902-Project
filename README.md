@@ -16,16 +16,14 @@
    E-Damage link <br />
    H-IdleLink <br />  
    X-Kills all monsters <br />
+   Mouse Clicks on Doors will teleport you to the room on the other side of that door <br />
   
    
    ###### Descriptions of known bugs(fixed/ nonfixed):
    1.If a collision occurs between Link and a Monster at the corner of a monster there is a chance link will move downward in a very particular pixel. <br />
    2. Monsters & Link clipping through blocks while being damaged. <br />
-   3. SwordBeam explosing hurting Link. <br />
-   4. Link getting hit with his own Sword. <br /> 
-   5. Arrow sprites not being drawn correctly. <br />
-   6. Rotating sprites changes collision detection. <br />
-   7. Monsters being able to path through walls. <br />
-   8. Sometimes the death animation will be skipped and monsters will instantly die. <br />
+   3. Rotating sprites changes collision detection. <br />
+   4. Monsters being able to path through walls. <br />
+   5. Sometimes the death animation will be skipped and monsters will instantly die. <br />
    
    ###### Details of tools and processes used: 
