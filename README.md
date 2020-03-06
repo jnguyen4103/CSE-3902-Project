@@ -19,7 +19,7 @@
    Mouse Clicks on Doors will teleport you to the room on the other side of that door <br />
   
    
-   ###### Descriptions of known bugs(fixed/ nonfixed):
+   ###### Descriptions of currently known bugs:
    1.If a collision occurs between Link and a Monster at the corner of a monster there is a chance link will move downward in a very particular pixel. <br />
    2. Monsters & Link clipping through blocks while being damaged. <br />
    3. Rotating sprites changes collision detection. <br />
@@ -27,3 +27,4 @@
    5. Sometimes the death animation will be skipped and monsters will instantly die. <br />
    
    ###### Details of tools and processes used: 
+   Fx Cop Analyzers was used to analyze our entire project and it returned 0 errors and 0 warnings!
