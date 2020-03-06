@@ -70,6 +70,7 @@
     <Compile Include="GameObjects\Monsters\StateMachines\GelSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\GoriyasSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\KeeseSM.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\BladeTrap.cs" />
     <Compile Include="GameObjects\Tile\NonStaticTile.cs" />
     <Compile Include="GameObjects\Tile\StaticTile.cs" />
     <Compile Include="GameObjects\Tile\TileSprite.cs" />
@@ -132,6 +133,7 @@
     <Content Include="GameObjects\Room\XML Files\ItemRoom.xml" />
     <Content Include="GameObjects\Room\XML Files\Room0.xml" />
     <Content Include="GameObjects\Room\XML Files\AllItems.xml" />
+    <Content Include="GameObjects\Room\XML Files\Arena.xml" />
     <Content Include="GameObjects\Room\XML Files\Room4.xml" />
     <Content Include="GameObjects\Room\XML Files\Room1.xml" />
     <Content Include="GameObjects\Room\XML Files\Room10.xml" />

@@ -57,7 +57,8 @@ namespace Sprint03
         {
             if (State != MonsterState.Damaged 
                 && State != MonsterState.Dead
-                && State != MonsterState.Spawning)
+                && State != MonsterState.Spawning
+                && !Name.Equals("BladeTrap"))
             {
                 hitpoints -= damage;
                 if (hitpoints <= 0)
@@ -74,7 +75,7 @@ namespace Sprint03
             }
         }
 
-        public void IdleState()
+        public virtual void IdleState()
         {
             if(State != MonsterState.Damaged && State != MonsterState.Dead)
             {

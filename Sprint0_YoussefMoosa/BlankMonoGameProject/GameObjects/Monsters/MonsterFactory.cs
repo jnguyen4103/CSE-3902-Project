@@ -18,6 +18,7 @@ namespace Sprint03
             Monsters["Keese"] = SpawnKeese;
             Monsters["Goriyas"] = SpawnGoriyas;
             Monsters["Darknut"] = SpawnDarknut;
+            Monsters["BladeTrap"] = SpawnBladeTrap;
 
 
 
@@ -110,7 +111,7 @@ namespace Sprint03
             DarknutSprite.BaseSpeed = 0.64f;
 
             // Setting up Monster object for Stalfos to hold stats
-            Monster Darknut = new Monster(DarknutSprite, "GoriyasDown", Game);
+            Monster Darknut = new Monster(DarknutSprite, "DarknutDown", Game);
             Darknut.hitpoints = 4;
             Darknut.maxHP = 4;
             Darknut.attackDamage = 2;
@@ -118,6 +119,22 @@ namespace Sprint03
 
             // Spawning dat boii
             return Darknut;
+        }
+
+        private Monster SpawnBladeTrap(Vector2 spawn)
+        {
+            // Creating Sprite for Darknut
+            MonsterSprite BladeTrapSprite = new MonsterSprite(Game, "BladeTrap", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
+            BladeTrapSprite.BaseSpeed = 0f;
+            BladeTrapSprite.IgnoresBoundaries = true;
+
+            // Setting up Monster object for Stalfos to hold stats
+            Monster BladeTrap = new Monster(BladeTrapSprite, "BladeTrap", Game);
+            BladeTrap.attackDamage = 2;
+            BladeTrap.StateMachine = new BladeTrapSM(BladeTrap, Game);
+
+            // Spawning dat boii
+            return BladeTrap;
         }
     }
 }

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelData>
+
+  <!-- Information to draw the interior, walkable area of the room -->
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
+
+  -<Interior>
+    <UseExterior>True</UseExterior>
+    <Rectangle>547,198,192,112</Rectangle>
+  </Interior>
+  
+  <!--Monsters-->
+
+
+
+  <!-- Items -->
+
+
+  <!--Blocks -->
+  <!-- Doors -->
+  -<Door LeadsTo="Room0" Name="Wall" Side="Left" Destroyable="false"/>
+  -<Door LeadsTo="Room2" Name="Wall" Side="Right" Destroyable="false"/>
+  -<Door LeadsTo="Room0" Name="OpenDoor" Side="Up" Destroyable="false"/>
+  -<Door LeadsTo="Room0" Name="Wall" Side="Down" Destroyable="false"/>
+
+
+</LevelData>
