@@ -24,7 +24,7 @@ namespace Sprint03
         public ILink Link;
         public LinkSprite SpriteLink;
         public int RupeeCounter = 0;
-        public int KeyCounter = 20;
+        public int KeyCounter = 0;
 
         // Sprite Sheets
         public Texture2D LinkSpriteSheet;
@@ -46,7 +46,7 @@ namespace Sprint03
         public List<IEffect> EffectsList = new List<IEffect>();
         public Room CurrentRoom;
 
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.H };
+        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.X };
         public ICommand[] keyboardCommands = new ICommand[11];
         private KeyboardController keyboardController;
         private MouseController mouseController;
@@ -97,7 +97,7 @@ namespace Sprint03
             keyboardCommands[7] = new ResetCommand(this);
             keyboardCommands[8] = new LinkAttack(this);
             keyboardCommands[9] = new DamageLink(this);
-            keyboardCommands[10] = new IdleLink(this);
+            keyboardCommands[10] = new KillAllCommand(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
             mouseController = new MouseController(this);
             MediaPlayer.Play(song);

@@ -46,12 +46,12 @@
     <Compile Include="Commands\Attacks\LinkUseBoomerang.cs" />
     <Compile Include="Commands\DamageLink.cs" />
     <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Commands\Movement\IdleLink.cs" />
     <Compile Include="Commands\Movement\LinkWalkDown.cs" />
     <Compile Include="Commands\Movement\LinkWalkLeft.cs" />
     <Compile Include="Commands\Movement\LinkWalkRight.cs" />
     <Compile Include="Commands\Movement\LinkWalkUp.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
+    <Compile Include="Commands\KillAllCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
