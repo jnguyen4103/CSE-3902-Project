@@ -43,6 +43,7 @@
     <Compile Include="Collision\FRectangle.cs" />
     <Compile Include="Commands\Attacks\LinkAttack.cs" />
     <Compile Include="Commands\Attacks\LinkUseArrow.cs" />
+    <Compile Include="Commands\Attacks\LinkUseBomb.cs" />
     <Compile Include="Commands\Attacks\LinkUseBoomerang.cs" />
     <Compile Include="Commands\DamageLink.cs" />
     <Compile Include="Commands\ICommand.cs" />
@@ -62,6 +63,10 @@
     <Compile Include="Components\MonoTimer.cs" />
     <Compile Include="GameObjects\Doors\Door.cs" />
     <Compile Include="GameObjects\Doors\DoorSprite.cs" />
+    <Compile Include="GameObjects\Effects\BombEffect.cs" />
+    <Compile Include="GameObjects\Effects\ExplosionEffect.cs" />
+    <Compile Include="GameObjects\Effects\Sprites\BombSprite.cs" />
+    <Compile Include="GameObjects\Effects\Sprites\ExplosionSprite.cs" />
     <Compile Include="GameObjects\Effects\Sprites\FireballSprite.cs" />
     <Compile Include="GameObjects\Effects\Sprites\BeamExplosionSprite.cs" />
     <Compile Include="GameObjects\Effects\BeamExplosionEffect.cs" />

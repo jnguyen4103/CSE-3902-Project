@@ -46,8 +46,8 @@ namespace Sprint03
         public List<IEffect> EffectsList = new List<IEffect>();
         public Room CurrentRoom;
 
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.X };
-        public ICommand[] keyboardCommands = new ICommand[11];
+        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.X, Keys.D3 };
+        public ICommand[] keyboardCommands = new ICommand[12];
         private KeyboardController keyboardController;
         private MouseController mouseController;
 
@@ -98,6 +98,7 @@ namespace Sprint03
             keyboardCommands[8] = new LinkAttack(this);
             keyboardCommands[9] = new DamageLink(this);
             keyboardCommands[10] = new KillAllCommand(this);
+            keyboardCommands[11] = new LinkUseBomb(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
             mouseController = new MouseController(this);
             MediaPlayer.Play(song);
