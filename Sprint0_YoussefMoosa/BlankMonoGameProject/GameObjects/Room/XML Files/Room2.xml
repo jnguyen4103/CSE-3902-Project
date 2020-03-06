@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelData>
+
+  <!-- Information to draw the interior, walkable area of the room -->
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
+
+  -<Interior>
+    <UseExterior>True</UseExterior>
+    <Rectangle>547,198,192,112</Rectangle>
+  </Interior>
+  <!-- Items -->
+
+  <!--Blocks -->
+  -<Block Name="Statue" Spawn="48 112" Size="16 16" />
+  -<Block Name="Statue" Spawn="96 112" Size="16 16" />
+  -<Block Name="Statue" Spawn="144 112" Size="16 16" />
+  -<Block Name="Statue" Spawn="192 112" Size="16 16" />
+
+  -<Block Name="Statue" Spawn="48 144" Size="16 16" />
+  -<Block Name="Statue" Spawn="96 144" Size="16 16" />
+  -<Block Name="Statue" Spawn="144 144" Size="16 16" />
+  -<Block Name="Statue" Spawn="192 144" Size="16 16" />
+
+  -<Block Name="Statue" Spawn="48 176" Size="16 16" />
+  -<Block Name="Statue" Spawn="96 176" Size="16 16" />
+  -<Block Name="Statue" Spawn="144 176" Size="16 16" />
+  -<Block Name="Statue" Spawn="192 176" Size="16 16" />
+
+
+
+  <!-- Doors -->
+  -<Door LeadsTo="Room1" Name="OpenDoor" Side="Left" Destroyable="false"/>
+  -<Door LeadsTo="Room3" Name="OpenDoor" Side="Right" Destroyable="false"/>
+  -<Door LeadsTo="Room4" Name="KeyDoor" Side="Up" Destroyable="false"/>
+  -<Door LeadsTo="Room0" Name="OpenDoor" Side="Down" Destroyable="false"/>
+
+
+</LevelData>

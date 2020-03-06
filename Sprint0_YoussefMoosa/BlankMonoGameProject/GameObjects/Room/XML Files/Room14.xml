@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelData>
+
+  <!-- Information to draw the interior, walkable area of the room -->
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
+
+  -<Interior>
+    <UseExterior>True</UseExterior>
+    <Rectangle>547,198,192,112</Rectangle>
+  </Interior>
+
+  <!--Monsters-->
+  -<Monster Name="Aquamentus" Spawn="160 128" />
+
+  <!-- Items -->
+  <!--Blocks -->
+  -<Block Name="Block" Spawn="144 96" Size="16 48" />
+  -<Block Name="Block" Spawn="176 112" Size="16 32" />
+  -<Block Name="Block" Spawn="192 128" Size="16 32" />
+  -<Block Name="Block" Spawn="192 160" Size="16 32" />
+  -<Block Name="Block" Spawn="176 176" Size="16 32" />
+  -<Block Name="Block" Spawn="144 192" Size="16 48" />
+
+
+
+
+
+  <!-- Doors -->
+  -<Door LeadsTo="Room17" Name="Wall" Side="Up" Destroyable="false"/>
+  -<Door LeadsTo="Room12" Name="OpenDoor" Side="Down" Destroyable="false"/>
+  -<Door LeadsTo="Room10" Name="Wall" Side="Left" Destroyable="false"/>
+  -<Door LeadsTo="Room15" Name="ClosedDoor" Side="Right" Destroyable="false"/>
+
+
+</LevelData>

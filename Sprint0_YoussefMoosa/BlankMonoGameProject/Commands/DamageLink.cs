@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Sprint02
+namespace Sprint03
 {
     class DamageLink : ICommand
     {
@@ -14,7 +14,7 @@ namespace Sprint02
 
         public void Execute()
         {
-            monoProcess.Link.StateMachine.DamagedState();
+            monoProcess.Link.TakeDamage(5, 2);
         }
     }
 }

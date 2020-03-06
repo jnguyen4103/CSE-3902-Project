@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelData>
+
+  <!-- Information to draw the interior, walkable area of the room -->
+  <!-- The boolean UseExterior allows the game to load in the regular exterior for all rooms except Room14 -->
+
+  -<Interior>
+    <UseExterior>True</UseExterior>
+    <Rectangle>547,198,192,112</Rectangle>
+  </Interior>
+  
+  <!--Blocks -->
+  -<Block Name="Statue" Spawn="80 96" Size="16 16" />
+  -<Block Name="Block" Spawn="160 96" Size="16 16" />
+  
+  <!--Monsters -->
+
+
+  <!-- Items -->
+  -<Item Name="Rupee" Spawn="35 192"/>
+  -<Item Name="Clock" Spawn="64 192"/>
+  -<Item Name="Book" Spawn="100 192"/>
+  -<Item Name="Key" Spawn="148 192" Hidden="false"/>
+  -<Item Name="Arrow" Spawn="180 192"/>
+  -<Item Name="HeartContainer" Spawn="208 192"/>
+
+
+  -<Item Name="Triforce" Spawn="208 160"/>
+  -<Item Name="LionKey" Spawn="212 128" />
+  -<Item Name="Map" Spawn="212 96"/>
+
+
+  -<Item Name="Bow" Spawn="36 128"/>
+  -<Item Name="BlueRupee" Spawn="36 96"/>
+  -<Item Name="Boomerang" Spawn="36 164"/>
+
+  -<Item Name="Compass" Spawn="64 96"/>
+  -<Item Name="Bomb" Spawn="180 96"/>
+  -<Item Name="Heart" Spawn="124 148"/>
+
+
+
+  <!-- Doors -->
+  -<Door LeadsTo="Room1" Name="Wall" Side="Left" Destroyable="false"/>
+  -<Door LeadsTo="Room1" Name="Wall" Side="Right" Destroyable="false"/>
+  -<Door LeadsTo="Room2" Name="KeyDoor" Side="Up" Destroyable="false"/>
+  -<Door LeadsTo="Arena" Name="OpenDoor" Side="Down" Destroyable="false"/>
+</LevelData>

@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using System;
 using System.Collections.Generic;
 
-namespace Sprint02
+namespace Sprint03
 {
     /// <summary>
     /// This is the main type for your game.
@@ -11,76 +13,61 @@ namespace Sprint02
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
+
+        public SpriteFactory SFactory;
+        public ItemFactory IFactory;
+        public MonsterFactory MFactory;
+        public RoomFactory RFactory;
 
         // Link Object & Sprite
         public ILink Link;
         public LinkSprite SpriteLink;
+        public int RupeeCounter = 0;
+        public int KeyCounter = 0;
 
-        /* Link SpriteSheet Breakdown
-         * Each element in the array is a rectangle which covers
-         * all the frame for one type of sprite animation
-         * Element 0 : Walking Up
-         * Element 1: Walking Down
-         * Element 2: Walking Right
-         * Element 3: Walking Left
-         * Element 4: Hurt Walking Up
-         * Element 5: Hurt Walking Down
-         * Element 6: Hurt Walking Right
-         * Element 7: Hurt Walking Left
-         * Element 8: Attacking Up (Needs flipped)
-         * Element 9: Attacking Down
-         * Element 10: Attacking Right (Needs flipped for left attacking)
-         */
-        public Rectangle[] LinkAnimationFrames = new Rectangle[11];
+        // Sprite Sheets
+        public Texture2D LinkSpriteSheet;
+        public Texture2D MonsterSpriteSheet;
+        public Texture2D ItemSpriteSheet;
+        public Texture2D EffectSpriteSheet;
+        public Texture2D TileSpriteSheet;
+        public Texture2D Background;
+        public Texture2D Dungeon;
+
+        public Song song;
 
 
-        // Monster is the current NPC displayed
-        public NPC Monster { get; set; }
+        public CollisionDetection handler;
 
-        /* MonsterList has a list of all the monsters so Monster can just be swapped for a NPC on the list
-         * Element 0: Stalfos
-         * Element 1: Geese
-         * Element 2: Gel
-         * Element 3: Aquamentus
-         * Element 4: Fairy
-         * Element 5: Goriyas
-         */
-        public NPC[] MonsterList = new NPC[6];
-        public int currentMonsterPosition = 0;
+        public List<Monster> MonstersList = new List<Monster>();
+        public List<Item> ItemsList = new List<Item>();
+        public List<FRectangle> BlocksList = new List<FRectangle>();
+        public List<IEffect> EffectsList = new List<IEffect>();
+        public Room CurrentRoom;
 
-
-        // ItemList keeps track of all the items and allows the command to just swap which item is displayed
-        public ItemFactory Item { get; set; }
-        public ItemFactory[] ItemList = new ItemFactory[13];
-        public int currentItemPosition = 0;
-
-        /* Each effect (items used or NPC projectile attacks) have an effect which spawns the sprite.
-         * The sprite is loaded into an effects List which then is drawn in the Draw() method
-         * Whenever an effect is created, a new sprite is added to the EffectsList
-         */
-        public List<ISprite> EffectsList = new List<ISprite>();
-
-        // A list of all the secondary weapons Link can use (only boomerang is implemented)
-        public IEffect[] LinkSecondaries = new IEffect[1];
-
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.O, Keys.P, Keys.U, Keys.I, Keys.Q, Keys.D1, Keys.R, Keys.Z, Keys.E };
-        private ICommand[] keyboardCommands = new ICommand[13];
+        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Q, Keys.D1, Keys.D2, Keys.R, Keys.Z, Keys.E, Keys.X, Keys.D3 };
+        public ICommand[] keyboardCommands = new ICommand[12];
         private KeyboardController keyboardController;
+        private MouseController mouseController;
+
+        //(32,96). w = 192 H =112
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
-        public readonly Vector2 itemSpawnPosition = new Vector2(100, 240);
-        public readonly Vector2 spawnPosition = new Vector2(400, 240);
-        public readonly Vector2 LinkSpawn = new Vector2(600f, 100f);
+        public readonly Vector2 LinkSpawn = new Vector2(120, 192);
 
-        public Vector2 screenDimensions = new Vector2(800.0f, 480.0f);
-
+        public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
+        public float ScreenScale = 4.0f;
+        public Rectangle CurrentScreen = new Rectangle(0, 0, 256, 240);
+        public Rectangle WalkingRect = new Rectangle(32, 96, 208, 191);
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            graphics.PreferredBackBufferWidth = (int)screenDimensions.X;
+            graphics.PreferredBackBufferHeight = (int)screenDimensions.Y;
 
 
         }
@@ -94,43 +81,39 @@ namespace Sprint02
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            SFactory = new SpriteFactory(this);
+            IFactory = new ItemFactory(this);
+            MFactory = new MonsterFactory(this);
+            this.song = Content.Load<Song>("musicForGame");
 
             // Adding all of the commands into the keyboard controller
             keyboardCommands[0] = new LinkWalkUp(this);
             keyboardCommands[1] = new LinkWalkDown(this);
             keyboardCommands[2] = new LinkWalkLeft(this);
             keyboardCommands[3] = new LinkWalkRight(this);
-            keyboardCommands[4] = new IncrementNPC(this);
-            keyboardCommands[5] = new DecrementNPC(this);
-            keyboardCommands[6] = new IncrementItem(this);
-            keyboardCommands[7] = new DecrementItem(this);
-            keyboardCommands[8] = new QuitCommand(this);
-            keyboardCommands[9] = new LinkUseBoomerang(this);
-            keyboardCommands[10] = new ResetCommand(this);
-            keyboardCommands[11] = new LinkAttack(this);
-            keyboardCommands[12] = new DamageLink(this);
-
-            // Setting all of the elements in the Animation array to their proper locations on Link's sprite sheet
-            // ILink Link will use these
-            LinkAnimationFrames[0] = new Rectangle(0, 0, 16, 32);
-            LinkAnimationFrames[1] = new Rectangle(16, 0, 16, 32);
-            LinkAnimationFrames[2] = new Rectangle(32, 0, 16, 32);
-            LinkAnimationFrames[3] = new Rectangle(48, 0, 16, 32);
-
-            // ILink DamagedLink will use these
-            LinkAnimationFrames[4] = new Rectangle(64, 0, 16, 32);
-            LinkAnimationFrames[5] = new Rectangle(80, 0, 16, 32);
-            LinkAnimationFrames[6] = new Rectangle(96, 0, 16, 32);
-            LinkAnimationFrames[7] = new Rectangle(112, 0, 16, 32);
-
-            // ILink AttackingLink will use these
-            LinkAnimationFrames[8] = new Rectangle(128, 0, 16, 44);
-            LinkAnimationFrames[9] = new Rectangle(144, 0, 16, 44);
-            LinkAnimationFrames[10] = new Rectangle(160, 0, 28, 32);
-
-            keyboardController = new KeyboardController(keyboardKeys, keyboardCommands);
-
+            keyboardCommands[4] = new QuitCommand(this);
+            keyboardCommands[5] = new LinkUseBoomerang(this);
+            keyboardCommands[6] = new LinkUseArrow(this);
+            keyboardCommands[7] = new ResetCommand(this);
+            keyboardCommands[8] = new LinkAttack(this);
+            keyboardCommands[9] = new DamageLink(this);
+            keyboardCommands[10] = new KillAllCommand(this);
+            keyboardCommands[11] = new LinkUseBomb(this);
+            keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
+            mouseController = new MouseController(this);
+            MediaPlayer.Play(song);
+            MediaPlayer.Volume = 0.1f;
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
             base.Initialize();
+        }
+
+        void MediaPlayer_MediaStateChanged(object sender, System.
+                                        EventArgs e)
+        {
+            // 0.0f is silent, 1.0f is full volume
+            MediaPlayer.Volume -= 0.1f;
+            MediaPlayer.Play(song);
         }
 
         /// <summary>
@@ -139,42 +122,25 @@ namespace Sprint02
         /// </summary>
         protected override void LoadContent()
         {
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Creating Link and loading in his effects so he can use them when the command is called
-            SpriteLink = new LinkSprite(Content.Load<Texture2D>("LinkSpriteSheet"), LinkSpawn, spriteBatch, LinkAnimationFrames);
-            LinkSecondaries[0] = new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this);
-            Link = new Link(SpriteLink, LinkSecondaries, this);
+            LinkSpriteSheet = Content.Load<Texture2D>("Link Sprite Sheet");
+            MonsterSpriteSheet = Content.Load<Texture2D>("Monster Sprite Sheet");
+            ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
+            EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
+            TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
+            Background = Content.Load<Texture2D>("Background");
+            Dungeon = Content.Load<Texture2D>("Dungeon1");
+            SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, LinkSpawn, spriteBatch);
+            Link = new Link(SpriteLink, this);
+            RFactory = new RoomFactory(this);
+            RFactory.LoadRoom("Arena");
+            handler = new CollisionDetection(this);
 
 
-
-            // Loading in the monster list
-            MonsterList[0] = new Stalfos(new StalfosSprite(Content.Load<Texture2D>("StalfosDefault"), spawnPosition, screenDimensions, spriteBatch));
-            MonsterList[1] = new Gel(new GelSprite(Content.Load<Texture2D>("GelDefault"), spawnPosition, screenDimensions, spriteBatch));
-            MonsterList[2] = new Geese(new GeeseSprite(Content.Load<Texture2D>("GeeseDefault"), spawnPosition, screenDimensions, spriteBatch));
-            MonsterList[3] = new Aquamentus(new AquamentusSprite(Content.Load<Texture2D>("AquamentusDefault"), spawnPosition, screenDimensions, spriteBatch), new FireballEffect(Content.Load<Texture2D>("AquamentusFireball"), spriteBatch, this));
-            MonsterList[4] = new Fairy(new FairySprite(Content.Load<Texture2D>("FairyDefault"), spawnPosition, screenDimensions, spriteBatch));
-            MonsterList[5] = new Goriyas(new GoriyasSprite(Content.Load<Texture2D>("GoriyasDefault"), spawnPosition, screenDimensions, spriteBatch), new BoomerangEffect(Content.Load<Texture2D>("BoomerangEffect"), spriteBatch, this));
-
-            // Loading in the items list
-            ItemList[0] = new RedHeart(Content.Load<Texture2D>("RedHeart"), itemSpawnPosition, spriteBatch);
-            ItemList[1] = new HeartContainer(Content.Load<Texture2D>("HeartContainer"), itemSpawnPosition, spriteBatch);
-            ItemList[2] = new Bomb(Content.Load<Texture2D>("Bomb"), itemSpawnPosition, spriteBatch);
-            ItemList[3] = new Clock(Content.Load<Texture2D>("Clock"), itemSpawnPosition, spriteBatch);
-            ItemList[4] = new Map(Content.Load<Texture2D>("Map"), itemSpawnPosition, spriteBatch);
-            ItemList[5] = new Compass(Content.Load<Texture2D>("Compass"), itemSpawnPosition, spriteBatch);
-            ItemList[6] = new YellowRupee(Content.Load<Texture2D>("YellowRupee"), itemSpawnPosition, spriteBatch);
-            ItemList[7] = new BlueRupee(Content.Load<Texture2D>("BlueRupee"), itemSpawnPosition, spriteBatch);
-            ItemList[8] = new YellowTriforce(Content.Load<Texture2D>("YellowTriforce"), itemSpawnPosition, spriteBatch);
-            ItemList[9] = new Bow(Content.Load<Texture2D>("Bow"), itemSpawnPosition, spriteBatch);
-            ItemList[10] = new Boomerang(Content.Load<Texture2D>("Boomerang"), itemSpawnPosition, spriteBatch);
-            ItemList[11] = new Key(Content.Load<Texture2D>("Key"), itemSpawnPosition, spriteBatch);
-            ItemList[12] = new LionKey(Content.Load<Texture2D>("LionKey"), itemSpawnPosition, spriteBatch);
-
-            // Defining the first monster and item so they can be drawn later on
-            Monster = MonsterList[0];
-            Item = ItemList[0];
 
         }
 
@@ -194,10 +160,16 @@ namespace Sprint02
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            Link.Update();
 
+            foreach(Monster monster in MonstersList)
+            {
+                monster.Update();
+            }
 
-            // TODO: Add your update logic here
+            handler.CollisionHandler();
             keyboardController.Update();
+            mouseController.Update();
             base.Update(gameTime);
         }
 
@@ -208,18 +180,38 @@ namespace Sprint02
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Matrix.CreateScale(ScreenScale, ScreenScale, 1.0f));
+            spriteBatch.Draw(Background, CurrentScreen, Color.White);
+            CurrentRoom.Draw();
 
-
-            spriteBatch.Begin();
-            Monster.Draw();
-            Item.DrawItem();
-            Link.Draw();
-
-            foreach (ISprite effect in EffectsList)
+            foreach (IEffect effect in EffectsList.ToArray())
             {
-                effect.DrawSprite();
+                effect.Sprite.DrawSprite();
+                if (effect.Sprite.Colour == Color.Transparent)
+                {
+                    EffectsList.Remove(effect);
+                }
             }
 
+            foreach (Monster monster in MonstersList.ToArray())
+            {
+                monster.Sprite.DrawSprite();
+                if (monster.Sprite.Colour == Color.Transparent)
+                {
+                    MonstersList.Remove(monster);
+                }
+            }
+
+            foreach (Item item in ItemsList.ToArray())
+            {
+                item.Sprite.DrawSprite();
+                if (item.Sprite.Colour == Color.Transparent)
+                {
+                    ItemsList.Remove(item);
+                }
+            }
+
+            Link.Draw();
             spriteBatch.End();
 
             base.Draw(gameTime);

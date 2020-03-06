@@ -1,27 +1,25 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
-namespace Sprint02
+﻿namespace Sprint03
 {
     class ResetCommand : ICommand
     {
-        private readonly Game1 monoProcess;
+        private readonly Game1 Game;
 
-        public ResetCommand(Game1 monoInstance)
+        public ResetCommand(Game1 game)
         {
-            monoProcess = monoInstance;
+            Game = game;
         }
 
         public void Execute()
         {
-            monoProcess.Link.SpriteLink.position = monoProcess.LinkSpawn;
-            monoProcess.Link.StateMachine.DownState();
-            monoProcess.Monster = monoProcess.MonsterList[0];
-            monoProcess.Monster.Sprite.UpdatePosition(monoProcess.spawnPosition);
-            monoProcess.Item = monoProcess.ItemList[0];
-            monoProcess.EffectsList.Clear();
+            Game.Link.SpriteLink.Position = Game.LinkSpawn;
+            Game.Link.StateMachine.DownState();
+            Game.Link.StateMachine.IdleState();
+            Game.Link = new Link(Game.SpriteLink, Game);
+            Game.Link.HP = Game.Link.MaxHP;
+            Game.SpriteLink.BaseSpeed = 1f;
+            Game.CurrentRoom.UnloadRoom();
+            Game.RFactory.ResetRooms();
+            Game.RFactory.LoadRoom("Room0");
         }
     }
-
 }

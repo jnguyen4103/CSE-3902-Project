@@ -27,7 +27,7 @@ namespace Sprint02
 
         public static void Update(GameTime gameTime)
         {
-            MonoTime.gameTime = gameTime;
+            //this.gameTime = gameTime;
         }
     }
 }
