@@ -14,10 +14,9 @@
    R-Reset game <br />
    Z-Link attack <br />
    E-Damage link <br />
-   H-IdleLink <br />
-   
+   H-IdleLink <br />  
    X-Kills all monsters <br />
-   3-Use bomb <br />
+  
    
    ###### Descriptions of known bugs(fixed/ nonfixed):
    1.If a collision occurs between Link and a Monster at the corner of a monster there is a chance link will move downward in a very particular pixel. <br />
