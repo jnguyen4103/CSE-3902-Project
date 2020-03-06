@@ -9,7 +9,7 @@ namespace Sprint03
         
         Sprite Creator;
         int Timer = 0;
-        int Delay = 85;
+        int Delay = 25;
 
         public ExplosionSprite(Sprite creator, Game1 game, Vector2 spawn, Texture2D texture, SpriteBatch batch)
         {
@@ -17,7 +17,7 @@ namespace Sprint03
             Name = "ExplosionEffect";
             IgnoresBoundaries = true;
             Game = game;
-            FPS = 2;
+            FPS = 6;
             Position = spawn;
             Batch = batch;
             Texture = texture;

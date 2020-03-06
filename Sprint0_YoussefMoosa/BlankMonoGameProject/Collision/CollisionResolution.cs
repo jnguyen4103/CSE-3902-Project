@@ -43,7 +43,7 @@ namespace Sprint03
 
         public void DamageMonster(Monster monster, int direction, IEffect effect)
         {
-            if(!effect.Sprite.Name.Equals("SwordBeamExplosion"))
+            if(!effect.Sprite.Name.Equals("SwordBeamExplosion") && !effect.Sprite.Name.Equals("BombEffect"))
             {
                 monster.TakeDamage(effect.Damage, direction);
                 DestroyEffect(effect);
