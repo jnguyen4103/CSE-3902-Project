@@ -1,0 +1,13 @@
+File being reviewed: BombEffect.cs
+Author of file: John Nguyen
+Date: 3/6/2020
+Focus: Readability
+Time to review: 10 minutes
+
+Nice and short concrete class, very good readability. I like how white space is managed, makes my eyes happy. Even though I didn't know / 
+think about needing an IsCreator method the naming convention and parameters make it easy for me to tell at a glance what the method does
+and what it would be used for. 
+
+I would like to see comments in the constructor mentioning why damage is initialized to zero, seems odd to me. especially since there are
+comments in the CreateEffect() method which are helpful but don't seem as necessary to me as explaining why certain values are initialized 
+to the values they are initialized to (like damage = 0). 
