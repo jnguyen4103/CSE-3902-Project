@@ -1,0 +1,13 @@
+File being reviewed: AquamentusSM.cs
+Author of file: Grant Gabel
+Date: 3/6/2020
+Focus: Readability
+Time to review: 15 minutes
+
+Overall the code is well written and has clear variable and method names that makes it easy to read and follow. Grant did a good job
+separating out all of Aquamentus' behavior so it's easy to track what each method call would correspond to how Aquamentus behaves. As I'm 
+reading through the code, I can envision what Aquamentus is doing with each method call and even though there are few comments, I can understand
+what this class is supposed to be doing.
+
+Right now there are some weird behaviors that Aquamentus is experiencing but it's in line with a known bug that we have and are trying to work
+on. Aquamentus can clip through walls when he gets hurt but I don't believe that it has anything to do with how this class is written.
