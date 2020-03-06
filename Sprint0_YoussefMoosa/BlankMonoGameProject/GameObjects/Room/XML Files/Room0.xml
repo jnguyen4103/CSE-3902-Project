@@ -44,5 +44,5 @@
   -<Door LeadsTo="Room1" Name="Wall" Side="Left" Destroyable="false"/>
   -<Door LeadsTo="Room1" Name="Wall" Side="Right" Destroyable="false"/>
   -<Door LeadsTo="Room2" Name="KeyDoor" Side="Up" Destroyable="false"/>
-  -<Door LeadsTo="Room1" Name="ClosedDoor" Side="Down" Destroyable="false"/>
+  -<Door LeadsTo="Arena" Name="OpenDoor" Side="Down" Destroyable="false"/>
 </LevelData>

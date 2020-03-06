@@ -136,7 +136,7 @@ namespace Sprint03
             SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, LinkSpawn, spriteBatch);
             Link = new Link(SpriteLink, this);
             RFactory = new RoomFactory(this);
-            RFactory.LoadRoom("Room0");
+            RFactory.LoadRoom("Arena");
             handler = new CollisionDetection(this);
 
 

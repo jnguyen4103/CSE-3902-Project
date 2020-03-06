@@ -40,7 +40,7 @@ namespace Sprint03
 
         private Game1 Game;
 
-        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> Sprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(111);
+        public readonly Dictionary<String, Tuple<Rectangle, Vector2, int>> Sprites = new Dictionary<string, Tuple<Rectangle, Vector2, int>>(112);
 
         // Al off the Sprites are size 16 by 16
         private readonly Vector2 Spritesize = new Vector2(16, 16);
@@ -223,6 +223,8 @@ namespace Sprint03
 
             // Must be drawn over doors
             Sprites["ItemRoom"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(1, 1, 256, 162), new Vector2(256, 162), 1);
+            Sprites["Arena"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(290, 918, 192, 112), floorSize, 1);
+
         }
     }
 }

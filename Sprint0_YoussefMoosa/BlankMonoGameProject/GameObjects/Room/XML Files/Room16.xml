@@ -10,6 +10,11 @@
   </Interior>
 
   <!--Monsters-->
+  -<Monster Name="BladeTrap" Spawn="32 96"/>
+  -<Monster Name="BladeTrap" Spawn="32 192"/>
+  -<Monster Name="BladeTrap" Spawn="208 96"/>
+  -<Monster Name="BladeTrap" Spawn="208 192"/>
+  
   <!-- Items -->
   <!--Blocks -->
   -<Block Name="Block" Spawn="128 112" Size="16 64" />

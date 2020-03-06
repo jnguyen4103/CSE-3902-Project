@@ -6,7 +6,7 @@ namespace Sprint03
 {
     public class RoomFactory
     {
-        private Dictionary<string, Room> Rooms = new Dictionary<string, Room>(19);
+        private Dictionary<string, Room> Rooms = new Dictionary<string, Room>(20);
         private Game1 Game;
         private string CurrenRoom;
         public RoomFactory(Game1 game)
@@ -56,6 +56,7 @@ namespace Sprint03
             Rooms["Room16"] = new Room(Game, file + "Room16", "Room16");
             Rooms["Room17"] = new Room(Game, file + "Room17", "Room17");
             Rooms["ItemRoom"] = new Room(Game, file + "ItemRoom", "ItemRoom");
+            Rooms["Arena"] = new Room(Game, file + "Arena", "Arena");
 
 
         }
