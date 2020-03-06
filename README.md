@@ -10,6 +10,7 @@
    Q-Quit game <br />
    D1-(Num key 1 above alphabet keys)- Link use Boomrang <br />
    D2-(Num key 2 above alphabet keys)- Link use Arrow <br />
+   D3-(Num key 3 above alphabet keys)- Link use Bomb <br />
    R-Reset game <br />
    Z-Link attack <br />
    E-Damage link <br />
