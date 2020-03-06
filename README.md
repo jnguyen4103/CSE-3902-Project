@@ -6,14 +6,14 @@ Group Ocarina
    
 <b>Sprint #3</b>
 
-   Program Controls:
+   Program Controls: <br />
    W-Link go up <br />
-   A-Link go left
-   S-Link go down
-   D-Link go right
+   A-Link go left <br />
+   S-Link go down <br />
+   D-Link go right <br />
    
-   R-Reset Game
-   Q-Quit Game
+   R-Reset Game <br />
+   Q-Quit Game <br />
 
    Descriptions of known bugs:
    1. If a collision occurs between Link and a Monster at the corner of a monster there is a chance link will move downward in a very particular pixel.
