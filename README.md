@@ -14,7 +14,7 @@
    R-Reset game <br />
    Z-Link attack <br />
    E-Damage link <br />
-   H-IdleLink <br />  
+   H-IdleLink  
    X-Kills all monsters <br />
    Mouse Clicks on Doors will teleport you to the room on the other side of that door <br />
   
