@@ -2,9 +2,10 @@ Sprint Number #3
 Author of the code review: Nicholas Negrete
 File being reviewed: Room.cs
 Author of file: Stephen Hogg
-Date of the code review: 3/6/2020
+Date of the code review: 3/5/2020
 Focus: Maintainability
 Time to review: 13 minutes
+
 Specific Comments: 
 The class overall looks great. 
 The fields are all hidden away from the client.
