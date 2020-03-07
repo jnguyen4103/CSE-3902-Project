@@ -1,1 +1,11 @@
+Sprint Number #3
+Author of the code review: Nicholas Negrete
+File being reviewed: Room.cs
+Author of file: Stephen Hogg
+Date of the code review: 3/5/2020
+Focus: Readability
+Time to review: 10 minutes
 
+Specific Comments: 
+Everything seems to be readable the variable names are all self documenting, and the logic in the class is not hard to follow, 
+and everything in the class makes sense on why you would have it.
