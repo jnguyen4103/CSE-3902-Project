@@ -1,10 +1,11 @@
-﻿using System;
+/* Contributors
+* Stephen Hogg
+*/
+using System;
 using Microsoft.Xna.Framework;
 
 namespace Sprint03
 {
-    // Abstract class allows for code reuse since a lot of NPC's share similar variables
-    // Look at the Stalfos and Goriyas classes for commments about specific implementations
     public class Monster: IGameObject
     {
 
