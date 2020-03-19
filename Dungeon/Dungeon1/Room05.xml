@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RoomData>
+
+	<!--Location -->
+	-<Location Point="272 560" />
+	
+	<!--Walls -->
+	-<Wall Point="272 560" Size="32 256" />
+  -<Wall Point="272 704" Size="256 32" />
+  -<Wall Point="496 656" Size="32 80" />
+  -<Wall Point="496 560" Size="32 80" />
+  -<Wall Point="408 560" Size="120 32" />
+  -<Wall Point="272 560" Size="120 32" />
+
+
+  <!--Blocks -->
+	-<Block Point="384 624" Size="32 48" />
+
+  
+	<!--Monsters -->
+  -<Monster Name="Keese" Spawn="352 624" />
+  -<Monster Name="Keese" Spawn="416 656" />
+  -<Monster Name="Keese" Spawn="400 608" />
+  -<Monster Name="Keese" Spawn="448 672" />
+  -<Monster Name="Zol" Spawn="336 640" />
+
+
+
+  <!-- Items -->
+
+
+
+	<!-- Doors -->
+  -<ClosedDoor Point="496 632" Side="Right" ConnectsTo="Room06"/>
+
+  <!-- Transitions -->
+  -<ScreenTransition Point="536 640" Size="16 16" LeadsTo="Room06" />
+  -<ScreenTransition Point="392 536" Size="16 16" LeadsTo="Room09" />
+
+</RoomData>

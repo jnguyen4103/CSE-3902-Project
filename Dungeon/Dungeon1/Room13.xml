@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RoomData>
+
+	<!--Location -->
+	-<Location Point="528 208" />
+	
+	<!--Walls -->
+  -<Wall Point="528 208" Size="32 176" />
+  -<Wall Point="528 208" Size="120 32" />
+  -<Wall Point="664 208" Size="120 32" />
+  -<Wall Point="752 208" Size="32 176" />
+  -<Wall Point="528 352" Size="120 32" />
+  -<Wall Point="664 352" Size="120 32" />
+
+
+  <!--Blocks -->
+  -<Block Point="560 240" Size="16 32" />
+  -<Block Point="576 240" Size="64 16" />
+  -<Block Point="624 256" Size="16 64" />
+  -<Block Point="640 304" Size="16 16" />
+  
+  -<Block Point="560 304" Size="16 48" />
+  -<Block Point="576 336" Size="64 16" />
+  -<Block Point="592 272" Size="16 64" />
+
+  -<Block Point="656 272" Size="32 16" />
+  -<Block Point="672 288" Size="16 64" />
+  -<Block Point="688 336" Size="64 16" />
+  -<Block Point="736 304" Size="16 32" />
+
+  -<Block Point="672 240" Size="80 16" />
+  -<Block Point="704 256" Size="16 64" />
+  -<Block Point="736 256" Size="16 32" />
+
+  <!-- Movable Blocks-->
+
+  <!--Monsters -->
+  -<Monster Name="Stalfos" Spawn="720 272" />
+  -<Monster Name="Stalfos" Spawn="640 272" />
+  -<Monster Name="Stalfos" Spawn="608 288" />
+  -<Monster Name="Zol" Spawn="704 320" />
+
+
+  <!-- Items -->
+  -<HiddenItem Name="Key" Spawn="724 272" />
+
+
+	<!-- Doors -->
+  -<LockedDoor Point="640 208" Side="Up" ConnectsTo="Room17"/>
+
+  <!-- Transitions -->
+  -<ScreenTransition Point="648 392" Size="16 16" LeadsTo="Room10" />
+  -<ScreenTransition Point="648 184" Size="16 16" LeadsTo="Room17" />
+
+</RoomData>

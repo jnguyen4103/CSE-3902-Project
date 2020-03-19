@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RoomData>
+
+	<!--Location -->
+	-<Location Point="528 912" />
+	
+	<!--Walls -->
+	-<Wall Point="528 1056" Size="119 32" />
+  -<Wall Point="664 1056" Size="120 32" />
+  -<Wall Point="752 1008" Size="32 64" />
+	-<Wall Point="752 912" Size="32 80" />
+	-<Wall Point="664 912" Size="120 32" />
+	-<Wall Point="528 912" Size="120 32" />
+	-<Wall Point="528 912" Size="32 80" />
+	-<Wall Point="528 1008" Size="32 80" />
+
+
+	<!--Blocks -->
+	-<Block Point="576 960" Size="16 16" />
+	-<Block Point="624 960" Size="16 16" />
+	-<Block Point="672 960" Size="16 16" />
+	-<Block Point="720 960" Size="16 16" />
+
+  -<Block Point="576 992" Size="16 16" />
+	-<Block Point="624 992" Size="16 16" />
+	-<Block Point="672 992" Size="16 16" />
+	-<Block Point="720 992" Size="16 16" />
+  
+  -<Block Point="576 1024" Size="16 16" />
+	-<Block Point="624 1024" Size="16 16" />
+	-<Block Point="672 1024" Size="16 16" />
+	-<Block Point="720 1024" Size="16 16" />
+  
+	<!--Monsters -->
+  <!-- Items -->
+
+
+
+	<!-- Doors -->
+  -<LockedDoor Point="640 912" Side="Up" ConnectsTo="Room04"/>
+
+
+  <!-- Transitions -->
+  -<ScreenTransition Point="648 1096" Size="16 16" LeadsTo="Room0" />
+  -<ScreenTransition Point="504 992" Size="16 16" LeadsTo="Room01" />
+  -<ScreenTransition Point="792 992" Size="16 16" LeadsTo="Room03" />
+  -<ScreenTransition Point="648 888" Size="16 16" LeadsTo="Room04" />
+  
+</RoomData>
