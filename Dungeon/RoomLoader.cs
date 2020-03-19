@@ -1,4 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+/* Contributors
+* Stephen Hogg
+* Youssef Moosa
+*/
+using Microsoft.Xna.Framework;
 using System;
 using System.Xml;
 
