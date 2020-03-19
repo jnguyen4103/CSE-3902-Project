@@ -1,4 +1,7 @@
-﻿using System;
+/* Contributors
+* Stephen Hogg
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,9 +21,7 @@ namespace Sprint03
             Dead
 
         }
-
-        // Allows for a GameObject to have both Up and Left as a Direction
-        //[Flags]
+        
         public enum Direction
         {
             Up,
