@@ -1,4 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+/* Contributors
+* Nico Negrete
+* Stephen Hogg
+*/
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint03
