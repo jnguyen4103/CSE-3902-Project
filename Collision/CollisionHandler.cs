@@ -1,4 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+/* Contributors
+* Stephen Hogg
+* Nico Negrete
+*/
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
