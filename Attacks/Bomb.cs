@@ -1,4 +1,8 @@
-﻿using System;
+/* Contributors
+*  John Nguyen
+* Stephen Hogg
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
