@@ -1,4 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+/* Contributors
+* Stephen Hogg
+*/
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 namespace Sprint03
