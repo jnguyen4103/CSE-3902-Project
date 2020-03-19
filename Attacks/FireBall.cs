@@ -1,5 +1,5 @@
 /* Contributors
-* Stephen Hogg
+* Nico Negrete
 */
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
