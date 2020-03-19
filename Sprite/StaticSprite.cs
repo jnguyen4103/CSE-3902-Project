@@ -1,12 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+/* Contributors
+* Stephen Hogg
+*/
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace Sprint03
 {
-    // Abstract class allows for easy reuse of methods and variables
-    // that all NPCSprites share
-    // Look at Stalfos and Goriyas for comments on their NPC Sprite implementation
     public class StaticSprite: ISprite
     {
          Game1 Game;
