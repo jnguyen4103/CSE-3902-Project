@@ -1,17 +1,10 @@
 Sprint Number #3
 Author of the code review: Xueying Liang
-File being reviewed: IRoom.cs
+File being reviewed: Camera2D.cs
 Author of file: Youssef Moosa
 Date of the code review: 3/6/2020
 Focus: Maintainability
 Time to review: 15 minutes
 
-This interface is a pretty good example which has relatively smaller size, and 4 methods that later all the rooms will <br />
-base on. In terms of complexity, it is not complex and can be easily understand. The consistency and structure are also <br />
-very useful and concise for later sprints. There are no stylistic warnings as of this interface at all which proofs <br />
-that there’s not much improvement we can do on it. <br />
-
-A hypothetical change I would make to this class is that: I might added another method related to door for each room. <br />
-For example, something like void OpenDoor() that only opens locked door, and void WalkThrough() that only walks <br />
-through opened door. But door opening is handled somewhere else in our project and if I want to make this change <br />
-to IRoom interface, I have to override some other things as well.
+This is very maintainable, unique and useful way for scrolling in between the rooms.
+With short methods like Update(), Transition() and Set Position(), this file does not need much reactor later on and can be reused easily. I wrote a lot of XML files and the idea of camera came before we did any XML files so that it really helped with the process of viewing the dungeon as a whole.
