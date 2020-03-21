@@ -33,5 +33,3 @@ However, there are things which could improve readability.
   FPS variable which is confusing to someone who hasn't been exposed to the code before.
 
   ** I know the FPS variable was in IStateMachine, which wasn't Grant's responsibility.
-
-

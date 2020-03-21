@@ -1,0 +1,75 @@
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\BlankMonoGameProject.exe
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\BlankMonoGameProject.pdb
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.csprojAssemblyReference.cache
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.csproj.CoreCompileInputs.cache
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.csproj.CopyComplete
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.exe
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.pdb
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Effects Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Item Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Link Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.Properties.Resources.resources
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.csproj.GenerateResource.cache
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Tile Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Background.xnb
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\Content\musicForGame.wma
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\Content\musicForGame.xnb
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Monster Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Dungeon1_Door_Frames.xnb
+C:\Users\Stephen\source\repos\CSE-3902-Project-Monster\Sprint0_YoussefMoosa\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Dungeon1_Main.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Background.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Dungeon1_Door_Frames.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Dungeon1_Main.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Effects Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Item Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Link Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Monster Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\musicForGame.wma
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\musicForGame.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Tile Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\BlankMonoGameProject.exe
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\BlankMonoGameProject.pdb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.Properties.Resources.resources
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.csproj.GenerateResource.cache
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.csproj.CoreCompileInputs.cache
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.csproj.CopyComplete
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.exe
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.pdb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Donald Trump Sprite Sheet.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\HUD Extras.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\HUD.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\Link Pepe.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\bin\Windows\x86\Debug\Content\You Died.xnb
+C:\Users\Stephen\source\repos\Legend-of-Zelda-Director-s-Cut\Legend of Zelda\BlankMonoGameProject\obj\x86\Debug\BlankMonoGameProject.csprojAssemblyReference.cache

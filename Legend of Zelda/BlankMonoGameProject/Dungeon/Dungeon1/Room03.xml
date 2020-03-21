@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RoomData>
+
+	<!--Location -->
+	-<Location Point="784 912" />
+	
+	<!--Walls -->
+  -<Wall Point="784 912" Size="256 32" />
+  -<Wall Point="784 912" Size="32 80" />
+  -<Wall Point="784 1056" Size="256 32" />
+  -<Wall Point="784 1008" Size="32 80" />
+  -<Wall Point="1008 912" Size="32 176" />
+
+	<!--Blocks -->
+	-<Block Point="848 976" Size="32 48" />
+	-<Block Point="944 976" Size="32 48" />
+
+  
+	<!--Monsters -->
+  -<Monster Name="Stalfos" Spawn="896 976" />
+  -<Monster Name="Stalfos" Spawn="960 960" />
+  -<Monster Name="Stalfos" Spawn="912 1008" />
+  -<Monster Name="Zol" Spawn="992 992" />
+
+  <!-- Items -->
+  -<HiddenItem Name="Key" Spawn="868 1024" />
+
+  <!-- Doors -->
+  
+  <!-- Transitions -->
+  -<ScreenTransition Point="760 992" Size="16 16" LeadsTo="Room02" />
+
+  
+</RoomData>

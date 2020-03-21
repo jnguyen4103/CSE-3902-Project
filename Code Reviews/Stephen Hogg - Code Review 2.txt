@@ -1,0 +1,22 @@
+Author of Review:                        Stephen Hogg
+Date of Review:                          3/19/2020
+Sprint #:                                3
+Name of File Being Reviewed:             RoomLoader.cs
+Author of File Being Reviewed:           Youssef Moosa (And partly me)
+Focus:                                   Maintainability
+
+I chose this specific file for my maintainability review since I actually had to maintain the code and add
+new code to it.
+
+Firstly, the switch statement that cycles through each node name makes it really easy to write XML and add
+a case statement for any object you're trying to create via XML.
+
+The addition of private methods at the bottom that convert strings to various objects needed to create
+an object is a nice addition since it's reusable and easy to add more methods for other datatypes.
+
+My main concern about the Reader is if we have objects that don't need a specific spawn point, so if we were to
+give a room a shader and use the XML to create the shader, what would be an easy way to do that instead of
+creating multiple tags. This could be with my unfamiliary with XML, or just the limitation of other sections
+of our code showing through.
+
+Overall, the code is easy to understand and add changes that wouldn't have cascading effects and cause issues down the line.

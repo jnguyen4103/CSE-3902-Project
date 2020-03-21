@@ -1,0 +1,14 @@
+Sprint Number #3
+Author of the code review: Nicholas Negrete
+File being reviewed: Room.cs
+Author of file: Stephen Hogg
+Date of the code review: 3/5/2020
+Focus: Maintainability
+Time to review: 13 minutes
+
+Specific Comments: 
+The class overall looks great. 
+The fields are all hidden away from the client.
+The methods all are short and get the job done, no overused code.
+The class does not give access to methods that the client will not need. 
+Great work! 

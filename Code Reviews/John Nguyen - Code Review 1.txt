@@ -1,0 +1,14 @@
+File being reviewed: Item.cs
+Author of file: Xueying Liang
+Date: 3/6/2020
+Focus: Maintainability
+Time to review: 10 minutes
+
+Overall, the Item class is kept simple which has made it easy to use and expand when more functionality is needed, like picking up and item 
+and making it disappear form the game window. The code is readable and even without comments, a glance at it lets the reader know what this 
+class is supposed to be doing. This makes the code more maintainable for us in the future.
+
+My concern with this is that this class knows about the game class which means that it knows about pretty much everything else. This makes 
+coupling for this class really tight and might come back and bite us later. A suggestion I have if we ever refactor this class is to make it
+only know about Link since he is the primary user of items. I will look further into this and see if there is an easy way we can implement that
+given all the work we have done so far.

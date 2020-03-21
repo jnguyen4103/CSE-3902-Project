@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/Background.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/Donald Trump Sprite Sheet.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/Dungeon1_Door_Frames.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/Dungeon1_Main.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/Effects Sprite Sheet.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/HUD Extras.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/HUD.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/Item Sprite Sheet.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/Link Pepe.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/Link Sprite Sheet.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/Monster Sprite Sheet.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/musicForGame.mp3</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/Tile Sprite Sheet.png</File>
+    <File>C:/Users/Stephen/source/repos/Legend-of-Zelda-Director-s-Cut/Legend of Zelda/BlankMonoGameProject/Content/You Died.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
