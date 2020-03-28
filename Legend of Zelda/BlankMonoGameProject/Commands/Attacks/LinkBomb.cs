@@ -14,6 +14,7 @@ namespace Sprint03
         public void Execute()
         {
             Game.Link.SecondaryAttack("Bomb");
+            Game.soundEffects[2].Play();
             Game.Link.CanMove = false;
 
         }

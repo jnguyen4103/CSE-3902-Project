@@ -30,6 +30,7 @@ namespace Sprint03
             Creator = creator;
             Position = position;
             Damage = 2;
+            Game.soundEffects[1].Play();
 
         }
 

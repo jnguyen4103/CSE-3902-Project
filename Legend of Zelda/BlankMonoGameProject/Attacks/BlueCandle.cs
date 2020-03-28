@@ -22,7 +22,28 @@ namespace Sprint03
         private int Timer = 0;
         private int TravelDistance = 64;
         private int Lifespan = 300;
-
+        /*
+* addes sound Effects
+* 0.LOZ_Arrow_Boomerang
+* 1 LOZ_Bomb_Blow
+* 2 LOZ_Bomb_Drop
+* 3 LOZ_Boss_Scream1
+* 4 LOZ_Candle
+* 5 LOZ_Door_Unlock
+* 6 LOZ_Enemy_Die
+* 7 LOZ_Enemy_Hit
+* 8 LOZ_Fanfare
+* 9 LOZ_Get_Heart
+* 10 LOZ_Get_Item
+* 11 LOZ_Get_Rupee
+* 12 LOZ_Key_Appear
+* 13 LOZ_Link_Die
+* 14 LOZ_Link_Hurt
+* 15 LOZ_Secret
+* 16 LOZ_Stairs
+* 17 LOZ_Sword_Shoot
+* 18 LOZ_Sword_Slash
+*/
         public BlueCandle(Game1 game, IGameObject creator, States.Direction direction)
         {
             Game = game;
@@ -30,6 +51,7 @@ namespace Sprint03
             Position = Creator.Position;
             Direction = direction;
             Damage = 1;
+      
         }
 
         public void Attack()

@@ -41,6 +41,8 @@ namespace Sprint03
             Sprite.Layer = 0.95f;
             CanMove = false;
             Sprite.FPS = 3;
+
+            game.soundEffects[13].Play();
             LinkPepe = game.Content.Load<Texture2D>("Link Pepe");
             YouDied = game.Content.Load<Texture2D>("You Died");
             Timer = 0;

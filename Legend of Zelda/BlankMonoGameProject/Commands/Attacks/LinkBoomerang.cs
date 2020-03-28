@@ -14,6 +14,7 @@ namespace Sprint03
         public void Execute()
         {
             Game.Link.SecondaryAttack("Boomerang");
+            Game.soundEffects[0].CreateInstance().Play();
             Game.Link.CanMove = false;
         }
     }
