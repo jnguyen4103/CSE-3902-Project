@@ -31,6 +31,10 @@ namespace Sprint03
         {
         
       
+  
+
+
+            if (!Sprite.Colour.Equals(Color.Transparent)) { Game.IFactory.UseItem[ItemName](); }
             switch (ItemName)
             {
                 case "Rupee":
@@ -46,11 +50,9 @@ namespace Sprint03
                     break;
                 default:
                     Game.soundEffects[10].Play();
+                    Sprite.Remove();
                     break;
             }
-
-
-            if (!Sprite.Colour.Equals(Color.Transparent)) { Game.IFactory.UseItem[ItemName]();        }
         }
 
         public void Draw()
