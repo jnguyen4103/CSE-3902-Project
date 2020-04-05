@@ -30,27 +30,27 @@ namespace Sprint03
         public void ActivateItem()
         {
         
-            if (!Sprite.Colour.Equals(Color.Transparent)) { Game.IFactory.UseItem[ItemName](); }
-            Sprite.Remove();
+      
             switch (ItemName)
             {
                 case "Rupee":
                     Game.soundEffects[11].Play();
+                    Sprite.Remove();
                     break;
                 case "Heart":
                     Game.soundEffects[9].Play();
+                    Sprite.Remove();
+                    break;
+                case "Triforce":
+                    Sprite.UpdatePosition(new Vector2(Game.Link.Position.X, Game.Link.Position.Y - 16));
                     break;
                 default:
                     Game.soundEffects[10].Play();
                     break;
             }
 
-            if(ItemName == "Triforce")
-            {
-                Sprite.UpdatePosition(new Vector2(Game.Link.Position.X,Game.Link.Position.Y-16));
-            }
-            if (!Sprite.Colour.Equals(Color.Transparent)) { Game.IFactory.UseItem[ItemName](); }
-          //  Sprite.Remove();
+
+            if (!Sprite.Colour.Equals(Color.Transparent)) { Game.IFactory.UseItem[ItemName]();        }
         }
 
         public void Draw()
