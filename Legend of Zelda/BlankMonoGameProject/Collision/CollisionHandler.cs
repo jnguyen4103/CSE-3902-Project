@@ -94,9 +94,11 @@ namespace Sprint03
             
         }
 
-        public static void ItemPickup(Item item)
+        public static void ItemPickup(IItem item,ILink link)
         {
             item.ActivateItem();
+            link.PickupItem();
+
         }
 
         public static void TrapHitWall(ITrap trap, Rectangle block)

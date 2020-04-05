@@ -27,8 +27,12 @@ namespace Sprint03
 
         public void ActivateItem()
         {
+            if(ItemName == "Triforce")
+            {
+                Sprite.UpdatePosition(new Vector2(Game.Link.Position.X,Game.Link.Position.Y-16));
+            }
             if (!Sprite.Colour.Equals(Color.Transparent)) { Game.IFactory.UseItem[ItemName](); }
-            Sprite.Remove();
+          //  Sprite.Remove();
         }
 
         public void Draw()

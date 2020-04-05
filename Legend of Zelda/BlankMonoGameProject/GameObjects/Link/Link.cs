@@ -40,6 +40,13 @@ namespace Sprint03
 
         }
 
+        public void PickupItem()
+        {
+       
+            StateMachine.PickupState();
+            State = States.LinkState.Pickup;
+        }
+
         public void TakeDamage(States.Direction directionHit, int damage)
         {
             if(State != States.LinkState.Damaged)
@@ -119,8 +126,8 @@ namespace Sprint03
             Hitbox = new Rectangle((int)Position.X + 2, (int)Position.Y + 4, (int)Sprite.Size.X - 4, (int)Sprite.Size.Y - 4);
             switch (State)
             {
-                case (States.LinkState.Idle):
-                    StateMachine.IdleState();
+                case (States.LinkState.Pickup):
+                    StateMachine.PickupState();
                     break;
 
                 case (States.LinkState.Attacking):
@@ -154,6 +161,7 @@ namespace Sprint03
         public void Draw()
         {
             Sprite.DrawSprite();
+            
         }
     }
 }

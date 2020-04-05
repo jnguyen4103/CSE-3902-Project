@@ -2,6 +2,8 @@
 * Stephen Hogg
 */
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +14,7 @@ namespace Sprint03
         private Game1 Game;
         public Dictionary<string, Action> UseItem = new Dictionary<string, Action>(14);
         public Dictionary<string, Action> DroppableItems = new Dictionary<string, Action>(5);
+   
         public ItemFactory(Game1 game)
         {
             Game = game;
@@ -38,6 +41,7 @@ namespace Sprint03
             DroppableItems["Rupee"] = Rupee;
             DroppableItems["BlueRupee"] = BlueRupee;
             DroppableItems["Clock"] = Clock;
+
 
         }
 
@@ -168,6 +172,9 @@ namespace Sprint03
 
         private void Triforce()
         {
+            
+          
+            
 
         }
 
