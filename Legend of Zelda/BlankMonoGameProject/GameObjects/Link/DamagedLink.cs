@@ -61,6 +61,12 @@ namespace Sprint03
         {
             // I dunno, maybe sometime later
         }
+        public void PickupItem()
+        {
+            /*
+             * Cannot PickUPItem  
+            */
+        }
 
         public void ChangeDirection(States.Direction direction)
         {

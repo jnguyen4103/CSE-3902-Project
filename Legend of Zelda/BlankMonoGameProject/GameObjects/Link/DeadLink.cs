@@ -109,5 +109,12 @@ namespace Sprint03
             ICommand reset = new Reset(Game);
             reset.Execute();
         }
+
+        public void PickupItem()
+        {
+            /*
+             * Cannot PickUPItem  
+            */
+        }
     }
 }

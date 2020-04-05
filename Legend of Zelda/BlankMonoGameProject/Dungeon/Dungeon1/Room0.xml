@@ -22,6 +22,7 @@
   <!--Monsters -->
 
   <!-- Items -->
+   -<Item Name="Triforce" Spawn="625 1155" />
 
 
 

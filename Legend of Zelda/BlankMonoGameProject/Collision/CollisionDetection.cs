@@ -179,7 +179,7 @@ namespace Sprint03
             {
                 if(item.Hitbox.Intersects(Game.Link.Hitbox))
                 {
-                    item.ActivateItem();
+                    CollisionHandler.ItemPickup(item, Game.Link);
                 }
             }
         }

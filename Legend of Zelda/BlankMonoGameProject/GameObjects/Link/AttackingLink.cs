@@ -45,7 +45,12 @@ namespace Sprint03
             SwordAttack = new Sword(Game, this);
 
         }
-
+        public void PickupItem()
+        {
+            /*
+             * Cannot PickUPItem  
+            */
+        }
         public void TakeDamage(States.Direction directionHit, int damage)
         {
             RemoveDecorator();

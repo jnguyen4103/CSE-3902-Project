@@ -29,7 +29,7 @@ namespace Sprint03
 
         public void ActivateItem()
         {
-         
+        
             if (!Sprite.Colour.Equals(Color.Transparent)) { Game.IFactory.UseItem[ItemName](); }
             Sprite.Remove();
             switch (ItemName)
@@ -44,6 +44,13 @@ namespace Sprint03
                     Game.soundEffects[10].Play();
                     break;
             }
+
+            if(ItemName == "Triforce")
+            {
+                Sprite.UpdatePosition(new Vector2(Game.Link.Position.X,Game.Link.Position.Y-16));
+            }
+            if (!Sprite.Colour.Equals(Color.Transparent)) { Game.IFactory.UseItem[ItemName](); }
+          //  Sprite.Remove();
         }
 
         public void Draw()

@@ -17,6 +17,7 @@ namespace Sprint03
         public SpriteBatch spriteBatch;
         public Camera2D Camera;
         public HUD hud;
+        
 
         public SpriteFactory SFactory;
         public ItemFactory IFactory;
@@ -64,6 +65,7 @@ namespace Sprint03
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+        
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = (int)screenDimensions.X;
@@ -84,8 +86,8 @@ namespace Sprint03
             SFactory = new SpriteFactory();
             IFactory = new ItemFactory(this);
             Detection = new CollisionDetection(this);
-            this.song = Content.Load<Song>("musicForGame");
             soundEffects = new List<SoundEffect>();
+
 
             
             // Adding all of the commands into the keyboard controller
@@ -102,14 +104,11 @@ namespace Sprint03
             keyboardCommands[10] = new Quit(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
-            MediaPlayer.Play(song);
-            MediaPlayer.Volume = 0.0f;
-            MediaPlayer.IsRepeating = true;
-            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+
             base.Initialize();
         }
 
-        void MediaPlayer_MediaStateChanged(object sender, System.
+         void MediaPlayer_MediaStateChanged(object sender, System.
                                         EventArgs e)
         {
             // 0.0f is silent, 1.0f is full volume
@@ -121,9 +120,11 @@ namespace Sprint03
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
+
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
             LinkSpriteSheet = Content.Load<Texture2D>("Donald Trump Sprite Sheet");
             MonsterSpriteSheet = Content.Load<Texture2D>("Monster Sprite Sheet");
             ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
@@ -177,8 +178,22 @@ namespace Sprint03
             SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, spriteBatch);
             Link = new Link(this, SpriteLink, LinkSpawn);
             hud = new HUD(this);
+            this.song = Content.Load<Song>("musicForGame");
+            MediaPlayer.Play(song);
+            MediaPlayer.Volume = 0.1f;
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
 
             Dungeon01 = new Dungeon(this, DefaultDungeon);
+        }
+
+        public void changeSong()
+        {
+            this.song = Content.Load<Song>("winningGameSong");
+            MediaPlayer.Play(song);
+            MediaPlayer.Volume = 0.8f;
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
         }
 
         /// <summary>
@@ -197,6 +212,7 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+
             Link.Update();
             Camera.Update();
             Dungeon01.Update();

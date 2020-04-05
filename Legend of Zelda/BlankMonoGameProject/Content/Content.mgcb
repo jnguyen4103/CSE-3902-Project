@@ -283,6 +283,24 @@
 /processorParam:TextureFormat=Color
 /build:Tile Sprite Sheet.png
 
+#begin WinningGame.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:WinningGame.png
+
+#begin winningGameSong.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:winningGameSong.mp3
+
 #begin You Died.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -294,4 +312,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:You Died.png
+
+#begin YOU WON.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:YOU WON.png
 

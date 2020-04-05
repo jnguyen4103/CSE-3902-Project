@@ -50,6 +50,11 @@ namespace Sprint03
             Game.Link = new DeadLink(Game, Link);
         }
 
+        public void PickupState()
+        {
+            Game.Link = new PickupLink(Game, Link);
+        }
+
         // Method only here since inventory doesn't exist
         private IAttack GetSecondaryAttack(string attackName)
         {

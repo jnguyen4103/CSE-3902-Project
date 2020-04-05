@@ -52,6 +52,7 @@
     <Compile Include="GameObjects\Items\Fairy.cs" />
     <Compile Include="GameObjects\Items\IItem.cs" />
     <Compile Include="GameObjects\Link\DeadLink.cs" />
+    <Compile Include="GameObjects\Link\PickupLink.cs" />
     <Compile Include="GameObjects\Traps\BladeTrap.cs" />
     <Compile Include="Camera\Camera2D.cs" />
     <Compile Include="Collision\CollisionDetection.cs" />

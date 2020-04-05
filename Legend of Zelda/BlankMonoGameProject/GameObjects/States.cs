@@ -40,7 +40,8 @@ namespace Sprint03
             Attacking,
             SecondaryAttack,
             Damaged,
-            Dead
+            Dead,
+            Pickup
         }
 
     }

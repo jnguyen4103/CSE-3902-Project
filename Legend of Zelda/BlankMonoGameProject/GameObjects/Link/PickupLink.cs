@@ -1,7 +1,6 @@
-﻿/* Contributors
-* Stephen Hogg
-*/
+﻿
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sprint03
 {
-    public class SecondaryAttackLink : ILink
+    public class PickupLink : ILink
     {
         public Rectangle Hitbox { get; set; }
         public Vector2 Position { get; set; }
@@ -22,23 +21,31 @@ namespace Sprint03
         public int MaxHP { get; set; }
         public float BaseSpeed { get; set; } = 1f;
         public bool CanMove { get; set; } = false;
-
+        private Texture2D YOUWON;
+        private Texture2D TriForcePepe;
+        
 
         private Game1 Game;
         private Link decoratedLink;
+        private IAttack SwordAttack;
         private int Timer = 0;
-        private int StopDuration = 15;
-
-        public SecondaryAttackLink(Game1 game, Link link)
+        private int PickupDuration = 4;
+        private int wonScreenDelay = 48;
+        public PickupLink(Game1 game, Link link)
         {
             Game = game;
             decoratedLink = link;
             Sprite = decoratedLink.Sprite;
+            Sprite.FPS = 12;
             Hitbox = decoratedLink.Hitbox;
             Position = decoratedLink.Position;
             Direction = decoratedLink.Direction;
             HP = decoratedLink.HP;
             MaxHP = decoratedLink.MaxHP;
+            SwordAttack = new Sword(Game, this);
+            TriForcePepe = game.Content.Load<Texture2D>("WinningGame");
+            YOUWON = game.Content.Load<Texture2D>("YOU WON");
+            Game.changeSong();
 
         }
 
@@ -50,14 +57,9 @@ namespace Sprint03
 
         public void Attack()
         {
-            // Does nothing
+            //Perhaps have a special attack on double press
         }
-        public void PickupItem()
-        {
-            /*
-             * Cannot PickUPItem  
-            */
-        }
+
         public void SecondaryAttack(string attackName)
         {
             // Does nothing
@@ -76,17 +78,35 @@ namespace Sprint03
 
         public void Update()
         {
-            Hitbox = new Rectangle((int)Position.X + 2, (int)Position.Y + 4, (int)Sprite.Size.X - 4, (int)Sprite.Size.Y - 4);
             Timer++;
-            if (Timer >= StopDuration)
+            if (Timer >= PickupDuration)
             {
-                RemoveDecorator();
+                Sprite.ChangeSpriteAnimation("Pickup");
+                Sprite.FPS = 2;
             }
-        }
+            if (Timer >= wonScreenDelay)
+            {
+                Game.hud.HideHud();
+            }
 
+        }
+        public void PickupItem()
+        {
+            /*
+             * Cannot PickUPItem  
+            */
+        }
         public void Draw()
         {
+           
             Sprite.DrawSprite();
+            if (Timer >= wonScreenDelay)
+            {
+       
+                Game.spriteBatch.Draw(YOUWON, new Vector2(Game.Dungeon01.ActiveRoom.Position.X, Game.Dungeon01.ActiveRoom.Position.Y + 100), null, Color.White * 0.85f, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
+                Game.spriteBatch.Draw(TriForcePepe, new Vector2(Game.Dungeon01.ActiveRoom.Position.X, Game.Dungeon01.ActiveRoom.Position.Y - 64), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.99f);
+
+            }
         }
 
 
