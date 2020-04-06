@@ -22,7 +22,7 @@ The Link sprint was replaced with a Donald Trump sprite who fights with a red li
 The HUD takes count of the keys, bombs and rupees Link collects as well as his health
 and the map. Not all of the HUD is implemented but some of it to allow use for the pickups.
 
-Custom monsters have been added:
+Custom monsters have been added
 Zol: Explodes on death or when it gets near Link
 Lynel: Throws a sword beam at Link or charges him if he gets close
 Darknut: Walks to Link's last location and charges Link when he gets close
