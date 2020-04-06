@@ -38,6 +38,7 @@ namespace Sprint03
         public Texture2D DungeonDoorFrames;
 
         public Song song;
+        public bool Paused = false;
 
         // Random for everything
         public static Random random = new Random();
@@ -46,7 +47,7 @@ namespace Sprint03
         public string DefaultDungeon = "../../../../Dungeon/Dungeon1/Dungeon01.txt";
         public CollisionDetection Detection;
         
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q };
+        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P };
         public ICommand[] keyboardCommands = new ICommand[12];
         private KeyboardController keyboardController;
         //private MouseController mouseController;
@@ -97,6 +98,7 @@ namespace Sprint03
             keyboardCommands[8] = new LinkBoomerang(this);
             keyboardCommands[9] = new Reset(this);
             keyboardCommands[10] = new Quit(this);
+            keyboardCommands[11] = new Pause(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
             MediaPlayer.Play(song);
@@ -152,12 +154,15 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            Link.Update();
-            Camera.Update();
-            Dungeon01.Update();
-            Detection.Update();
+            if (!Paused)
+            {
+                Link.Update();
+                Dungeon01.Update();
+                Camera.Update();
+                Detection.Update();
+                base.Update(gameTime);
+            }
             keyboardController.Update();
-            base.Update(gameTime);
         }
 
         /// <summary>
@@ -166,18 +171,20 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
-                samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+            if (!Paused)
+            {
+                GraphicsDevice.Clear(Color.Black);
+                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
+                    samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
 
-            spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
-            Dungeon01.Draw();
-            Link.Draw();
-            spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
-            hud.Draw();
-            spriteBatch.End();
-
-            base.Draw(gameTime);
+                spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
+                Dungeon01.Draw();
+                Link.Draw();
+                spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
+                hud.Draw();
+                spriteBatch.End();
+                base.Draw(gameTime);
+            }
         }
     }
 }

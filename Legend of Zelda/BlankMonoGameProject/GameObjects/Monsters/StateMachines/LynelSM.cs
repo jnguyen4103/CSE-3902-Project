@@ -73,42 +73,45 @@ namespace Sprint03
 
         public void AttackState()
         {
-            if (Math.Abs(Self.Position.X - Game.Link.Position.X) < Math.Abs(Self.Position.Y - Game.Link.Position.Y))
+            if (!Game.Paused)
             {
-                if (Game.Link.Position.Y < Self.Position.Y)
+                if (Math.Abs(Self.Position.X - Game.Link.Position.X) < Math.Abs(Self.Position.Y - Game.Link.Position.Y))
                 {
-                    Velocity.Y = -2f;
-                    Path.X = Self.Position.X;
-                    Path.Y = Self.Position.Y - 64;
-                    Self.Sprite.ChangeSpriteAnimation("LynelUp");
-                    Self.Direction = States.Direction.Up;
+                    if (Game.Link.Position.Y < Self.Position.Y)
+                    {
+                        Velocity.Y = -2f;
+                        Path.X = Self.Position.X;
+                        Path.Y = Self.Position.Y - 64;
+                        Self.Sprite.ChangeSpriteAnimation("LynelUp");
+                        Self.Direction = States.Direction.Up;
+                    }
+                    else if (Game.Link.Position.Y > Self.Position.Y)
+                    {
+                        Velocity.Y = 2f;
+                        Path.X = Self.Position.X;
+                        Path.Y = Self.Position.Y + 80;
+                        Self.Sprite.ChangeSpriteAnimation("LynelDown");
+                        Self.Direction = States.Direction.Down;
+                    }
                 }
-                else if (Game.Link.Position.Y > Self.Position.Y)
+                else
                 {
-                    Velocity.Y = 2f;
-                    Path.X = Self.Position.X;
-                    Path.Y = Self.Position.Y + 80;
-                    Self.Sprite.ChangeSpriteAnimation("LynelDown");
-                    Self.Direction = States.Direction.Down;
-                }
-            }
-            else
-            {
-                if (Game.Link.Position.X < Self.Position.X)
-                {
-                    Velocity.X = -2f;
-                    Path.X = Self.Position.X - 64;
-                    Path.Y = Self.Position.Y;
-                    Self.Sprite.ChangeSpriteAnimation("LynelLeft");
-                    Self.Direction = States.Direction.Left;
-                }
-                else if (Game.Link.Position.X > Self.Position.X)
-                {
-                    Velocity.X = 2f;
-                    Path.X = Self.Position.X + 80;
-                    Path.Y = Self.Position.Y;
-                    Self.Sprite.ChangeSpriteAnimation("LynelRight");
-                    Self.Direction = States.Direction.Right;
+                    if (Game.Link.Position.X < Self.Position.X)
+                    {
+                        Velocity.X = -2f;
+                        Path.X = Self.Position.X - 64;
+                        Path.Y = Self.Position.Y;
+                        Self.Sprite.ChangeSpriteAnimation("LynelLeft");
+                        Self.Direction = States.Direction.Left;
+                    }
+                    else if (Game.Link.Position.X > Self.Position.X)
+                    {
+                        Velocity.X = 2f;
+                        Path.X = Self.Position.X + 80;
+                        Path.Y = Self.Position.Y;
+                        Self.Sprite.ChangeSpriteAnimation("LynelRight");
+                        Self.Direction = States.Direction.Right;
+                    }
                 }
             }
             Self.State = States.MonsterState.Moving;

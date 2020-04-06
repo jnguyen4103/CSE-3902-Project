@@ -12,6 +12,7 @@ namespace Sprint03
         Game1 Game;
         IDictionary<Keys, ICommand> keyMappings;
         private bool AttackTriggered = false;
+        private bool PauseTriggered = false;
         private int Timer = 60;
         private int SecondaryAttackDelay = 60;
 
@@ -36,48 +37,56 @@ namespace Sprint03
             }
 
             if (keyState.IsKeyUp(Keys.Z)) { AttackTriggered = false; }
+            if (keyState.IsKeyUp(Keys.P)) { PauseTriggered = false; }
             if (Timer < SecondaryAttackDelay) { Timer++; }
 
-
-            foreach (Keys k in pressed)
+            if (!Game.Paused)
             {
-
-                if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && Game.Link.CanMove && Game.Link.State != States.LinkState.Damaged && Game.Link.State != States.LinkState.Dead)
+                foreach (Keys k in pressed)
                 {
+                    if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && Game.Link.CanMove && Game.Link.State != States.LinkState.Damaged && Game.Link.State != States.LinkState.Dead)
+                    {
 
-                    if (k == Keys.W || k == Keys.S)
+                        if (k == Keys.W || k == Keys.S)
+                        {
+                            keyMappings[k].Execute();
+                        }
+                        else if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.S))
+                        {
+                            keyMappings[k].Execute();
+                        }
+                        Game.Link.State = States.LinkState.Moving;
+                    }
+
+
+                    if (k == Keys.Z && !AttackTriggered)
                     {
+                        AttackTriggered = true;
                         keyMappings[k].Execute();
                     }
-                    else if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.S))
+
+                    if (keyMappings.ContainsKey(k))
                     {
-                        keyMappings[k].Execute();
+                        // Without this if statement the game wil allow animation cancelling
+                        if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X)
+                        {
+                            keyMappings[k].Execute();
+
+                        }
+                        if ((k == Keys.D1 || k == Keys.D2 || k == Keys.D3 || k == Keys.D4) && Timer == SecondaryAttackDelay)
+                        {
+                            Timer = 0;
+                            keyMappings[k].Execute();
+                        }
+
                     }
-                    Game.Link.State = States.LinkState.Moving;
                 }
+            }
 
-
-                if(k == Keys.Z && !AttackTriggered)
-                {
-                    AttackTriggered = true;
-                    keyMappings[k].Execute();
-                }
-
-                if (keyMappings.ContainsKey(k))
-                {
-                    // Without this if statement the game wil allow animation cancelling
-                    if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X)
-                    {
-                        keyMappings[k].Execute();
-
-                    }
-                    if ((k == Keys.D1 || k == Keys.D2 || k == Keys.D3 || k == Keys.D4) && Timer == SecondaryAttackDelay)
-                    {
-                        Timer = 0;
-                        keyMappings[k].Execute();
-                    }
-
-                }
+            if (keyState.IsKeyDown(Keys.P) && !PauseTriggered)
+            {
+                PauseTriggered = true;
+                keyMappings[Keys.P].Execute();
             }
         }
     }

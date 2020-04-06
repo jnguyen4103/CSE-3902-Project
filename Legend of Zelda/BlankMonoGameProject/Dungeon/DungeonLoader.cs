@@ -35,7 +35,7 @@ namespace Sprint03
             }
             else
             {
-                if (!game.Link.CanMove)
+                if (!game.Link.CanMove && game.Paused != true)
                 {
                     game.Link.CanMove = true;
                 }

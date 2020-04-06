@@ -56,7 +56,7 @@ namespace Sprint03
             if (TotalFrames > 1)
             {
                 GameFrame++;
-                if ((60 / FPS <= GameFrame))
+                if (FPS != 0 && (60 / FPS <= GameFrame))
                 {
                     GameFrame = 0;
                     CurrentFrame++;
