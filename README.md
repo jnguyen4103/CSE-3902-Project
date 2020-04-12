@@ -5,7 +5,7 @@
 ### Our group members are: Xueying Liang, Nicholas Negrete, Grant Gabel, Youssef Moosa and John Nguyen.
 
 ## General Information
-### Controls
+### Program Controls
 Keybindings<br/>
 Q : Quit the game <br/>
 R : Reset the game<br/>
@@ -34,11 +34,11 @@ Zol: Explodes on death or when it gets near Link<br/>
 Lynel: Throws a sword beam at Link or charges him if he gets close<br/>
 Darknut: Walks to Link's last location and charges Link when he gets close<br/>
 
-### Known Bugs:
+### Description of Known Bugs:
 When the game resets the sound of effect that is played is slightly altered for a couple of seconds then goes back to normal. 
 Resetting the game does not change the song back to the original. It appears as thought link doesn't go through all of the frames of animation when picking up an item.
 
-### Additions:
+### Additional Tools, Processes Used:
 There is no mouse controller since the room transitions are implemented so one can walk from<br/>
 room to room just by entering the doorway.<br/>
 
