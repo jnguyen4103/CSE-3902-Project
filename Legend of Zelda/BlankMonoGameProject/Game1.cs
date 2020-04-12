@@ -121,7 +121,7 @@ namespace Sprint03
             keyboardCommands[9] = new Reset(this);
             keyboardCommands[10] = new Quit(this);
             keyboardCommands[11] = new Pause(this);
-            keyboardCommands[12] = new InInventory(this);
+            keyboardCommands[12] = new EnterInventory(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
             // Starting music
