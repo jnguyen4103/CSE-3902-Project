@@ -1,9 +1,10 @@
-# CSE 3902
-# Sprint 04 README
-# Team Ocarina
-## This is a group project completed for CSE 3902 project course, during the process, each sprite project is making effort towards the complete game. 
-## Our group members are: Xueying Liang, Nicholas Negrete, Grant Gabel, Youssef Moosa and John Nguyen.
+## CSE 3902
+## Sprint 04 README
+## Team Ocarina
+### This is a group project completed for CSE 3902 project course, during the process, each sprite project is making effort towards the complete game. 
+### Our group members are: Xueying Liang, Nicholas Negrete, Grant Gabel, Youssef Moosa and John Nguyen.
 
+## General Information
 ### Controls
 Keybindings<br/>
 Q : Quit the game <br/>
@@ -20,10 +21,13 @@ Attacks:<br/>
 3 - Blue Candle<br/>
 4 - Boomerang<br/>
 
-### Custom monsters:
+### Custom Monsters:
 Zol: Explodes on death or when it gets near Link<br/>
 Lynel: Throws a sword beam at Link or charges him if he gets close<br/>
 Darknut: Walks to Link's last location and charges Link when he gets close<br/>
+
+### Known Bugs:
+
 
 ### Additions:
 There is no mouse controller since the room transitions are implemented so one can walk from<br/>
