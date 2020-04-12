@@ -12,13 +12,20 @@ namespace Sprint03
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        public SpriteBatch spriteBatch;
-        public Camera2D Camera;
-        public HUD hud;
 
+        // Required for monogame
+        GraphicsDeviceManager graphics;
+
+        // SpriteBatch & Sprite Factory
+        public SpriteBatch spriteBatch;
         public SpriteFactory SFactory;
         public ItemFactory IFactory;
+
+        // Camera
+        public Camera2D Camera;
+
+        // HUD
+        public HUD hud;
 
         // Link Object & Sprite
         public ILink Link;
@@ -37,26 +44,36 @@ namespace Sprint03
         public Texture2D DungeonMain;
         public Texture2D DungeonDoorFrames;
 
+        // Song
         public Song song;
-        public bool Paused = false;
 
-        // Random for everything
+        // if game is paused or if user is in inventory screen
+        public bool Paused = false;
+        public bool InInventory = false;
+
+        // Random number generator variable for game wide use
         public static Random random = new Random();
 
+        // Loading dungeon info
         public Dungeon Dungeon01;
         public string DefaultDungeon = "../../../../Dungeon/Dungeon1/Dungeon01.txt";
+
+        // Collision Detector
         public CollisionDetection Detection;
         
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P };
-        public ICommand[] keyboardCommands = new ICommand[12];
-        private KeyboardController keyboardController;
+        // Controller
+        //  TODO: add return/enter button to be assigned to inventory screen transition
+        public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Enter };
+        public ICommand[] keyboardCommands = new ICommand[13];
+        public KeyboardController keyboardController;
         //private MouseController mouseController;
         
         //(32,96). w = 192 H =112
 
-        // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
+        // Spawn positions of Link so they can be used in the Reset command
         public readonly Vector2 LinkSpawn = new Vector2(640, 1200);
 
+        // Screen dimensions
         public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
         public float ScreenScale = 4.0f;
 
@@ -67,8 +84,6 @@ namespace Sprint03
             IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = (int)screenDimensions.X;
             graphics.PreferredBackBufferHeight = (int)screenDimensions.Y;
-
-
         }
 
         /// <summary>
@@ -79,10 +94,17 @@ namespace Sprint03
         /// </summary>
         protected override void Initialize()
         {
+            //Camera
             Camera = new Camera2D(this, GraphicsDevice.Viewport);
+
+            // Factories - item and sprite
             SFactory = new SpriteFactory();
             IFactory = new ItemFactory(this);
+
+            // Collision Detector
             Detection = new CollisionDetection(this);
+
+            // Music
             this.song = Content.Load<Song>("musicForGame");
 
             
@@ -99,17 +121,21 @@ namespace Sprint03
             keyboardCommands[9] = new Reset(this);
             keyboardCommands[10] = new Quit(this);
             keyboardCommands[11] = new Pause(this);
+            keyboardCommands[12] = new InInventory(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
+            // Starting music
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.0f;
             MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+
+            // Game base
+
             base.Initialize();
         }
 
-        void MediaPlayer_MediaStateChanged(object sender, System.
-                                        EventArgs e)
+        void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
         {
             // 0.0f is silent, 1.0f is full volume
             MediaPlayer.Volume -= 0.1f;
@@ -122,19 +148,25 @@ namespace Sprint03
         /// </summary>
         protected override void LoadContent()
         {
+            // Sprites
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteSheet = Content.Load<Texture2D>("Donald Trump Sprite Sheet");
             MonsterSpriteSheet = Content.Load<Texture2D>("Monster Sprite Sheet");
             ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
             TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
+
+            // Dungeon
             DungeonMain = Content.Load<Texture2D>("Dungeon1_Main");
             DungeonDoorFrames = Content.Load<Texture2D>("Dungeon1_Door_Frames");
 
+            // TODO: these feel out of place here in loadcontent - any way we can move them?
+            // Initialize link & HUD
             SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, spriteBatch);
             Link = new Link(this, SpriteLink, LinkSpawn);
             hud = new HUD(this);
 
+            // Initialize dungeon
             Dungeon01 = new Dungeon(this, DefaultDungeon);
         }
 
@@ -144,7 +176,6 @@ namespace Sprint03
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
         /// <summary>
