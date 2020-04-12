@@ -25,9 +25,9 @@ Attacks:<br/>
 ## Regular Monster:
 Stalfos: The skeleton which takes 2 hits to die.<br/>
 Goriya: <br/>
-Aquamentus: The green dragon which only faces one direction. <br/>
-Gel:<br/>
-Blade Traps: <br/>
+Aquamentus: The green dragon which only faces one direction. Fires 3 fire balls at link <br/>
+Gel: Moves  <br/>
+Blade Traps: when link is detected above/below or left/right of the trap the trap activates and pursues closes the distance <br/>
 
 ## Custom Monsters:
 Zol: Explodes on death or when it gets near Link<br/>
@@ -35,13 +35,16 @@ Lynel: Throws a sword beam at Link or charges him if he gets close<br/>
 Darknut: Walks to Link's last location and charges Link when he gets close<br/>
 
 ### Known Bugs:
-
+When the game resets the sound of effect that is played is slightly altered for a couple of seconds then goes back to normal. 
+Resetting the game does not change the song back to the original. It appears as thought link doesn't go through all of the frames of animation when picking up an item.
 
 ### Additions:
 There is no mouse controller since the room transitions are implemented so one can walk from<br/>
 room to room just by entering the doorway.<br/>
 
-The Link sprint was replaced with a Donald Trump sprite who fights with a red lightsaber.<br/>
+The Link sprint was replaced with a Donald Trump sprite who fights with a red lightsaber this can be changed though by the following line LinkSpriteSheet = Content.Load<Texture2D>("Link Sprite Sheet"); or if you like using donald 
+ LinkSpriteSheet = Content.Load<Texture2D>("Donald Trump Sprite Sheet");
+.<br/>
 The HUD takes count of the keys, bombs and rupees Link collects as well as his health<br/>
 and the map. Not all of the HUD is implemented but some of it to allow use for the pickups.<br/>
 
