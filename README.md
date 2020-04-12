@@ -16,10 +16,10 @@ S : Move Link down<br/>
 D : Move Link right<br/>
 
 Attacks:<br/>
-1 - Bomb<br/>
-2 - Arrow<br/>
-3 - Blue Candle<br/>
-4 - Boomerang<br/>
+1 - Use Bomb<br/>
+2 - Use Arrow<br/>
+3 - Use Blue Candle<br/>
+4 - Use Boomerang<br/>
 
 ### Custom Monsters:
 Zol: Explodes on death or when it gets near Link<br/>
