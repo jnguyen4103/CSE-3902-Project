@@ -21,15 +21,15 @@ Attacks:<br/>
 3 - Use Blue Candle<br/>
 4 - Use Boomerang<br/>
 
-### Enemies:
-## Regular Monster:
+## Enemies:
+### Regular Monster:
 Stalfos: The skeleton which takes 2 hits to die.<br/>
 Goriya: Will move and throw boomerangs, can damage link by either running into him or hitting him  with a boomerang <br/>
 Aquamentus: The green dragon which only faces one direction. Fires 3 fire balls at link <br/>
 Gel: Moves and deals  1 damage   <br/>
 Blade Traps: when link is detected above/below or left/right of the trap the trap activates and pursues closes the distance <br/>
 
-## Custom Monsters:
+### Custom Monsters:
 Zol: Explodes on death or when it gets near Link<br/>
 Lynel: Throws a sword beam at Link or charges him if he gets close<br/>
 Darknut: Walks to Link's last location and charges Link when he gets close<br/>
@@ -43,8 +43,7 @@ There is no mouse controller since the room transitions are implemented so one c
 room to room just by entering the doorway.<br/>
 
 The Link sprint was replaced with a Donald Trump sprite who fights with a red lightsaber this can be changed though by the following line LinkSpriteSheet = Content.Load<Texture2D>("Link Sprite Sheet"); or if you like using donald 
- LinkSpriteSheet = Content.Load<Texture2D>("Donald Trump Sprite Sheet");
-.<br/>
+ LinkSpriteSheet = Content.Load<Texture2D>("Donald Trump Sprite Sheet");.<br/>
 The HUD takes count of the keys, bombs and rupees Link collects as well as his health<br/>
 and the map. Not all of the HUD is implemented but some of it to allow use for the pickups.<br/>
 
