@@ -40,7 +40,8 @@ Darknut: Walks to Link's last location and charges Link when he gets close.<br/>
  <li>When the game resets the sound of effect that is played is slightly altered for a couple of seconds then goes back to normal.</li> 
  <li>Resetting the game does not change the song back to the original.</li>
  <li>It appears as thought link doesn't go through all of the frames of animation when picking up an item.</li>
- </ul>
+ <li>If you shoot an arrow at an exploding bomb, the explosion will damage you even though explosions from your own bombs should not damage your character.</li>
+</ul>
 
 ### Additional Tools, Processes Used:
 The Link sprint was replaced with a Donald Trump sprite who fights with a red lightsaber.<br/>
