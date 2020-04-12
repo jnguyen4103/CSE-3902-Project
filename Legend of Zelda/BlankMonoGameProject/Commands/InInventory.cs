@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* Contributors:
+ * Grant Gabel
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,6 +72,9 @@ namespace Sprint03
             if (Game.InInventory)
             {
                 setToDefaultKeyMapping();
+            } else 
+            {
+                setToInventoryKeyMapping();
             }
 
             Game.InInventory = !Game.InInventory;
@@ -76,6 +83,11 @@ namespace Sprint03
         private void setToDefaultKeyMapping()
         {
             Game.keyboardController = new KeyboardController(Game, Game.keyboardKeys, activeCommands);
+        }
+
+        private void setToInventoryKeyMapping()
+        {
+            Game.keyboardController = new KeyboardController(Game, Game.keyboardKeys, inventoryCommands);
         }
     }
 }

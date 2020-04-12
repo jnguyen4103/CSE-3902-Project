@@ -44,41 +44,44 @@ namespace Sprint03
             {
                 foreach (Keys k in pressed)
                 {
-                    if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && Game.Link.CanMove && Game.Link.State != States.LinkState.Damaged && Game.Link.State != States.LinkState.Dead)
+                    if (keyMappings[k] != null)
                     {
-
-                        if (k == Keys.W || k == Keys.S)
+                        if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && Game.Link.CanMove && Game.Link.State != States.LinkState.Damaged && Game.Link.State != States.LinkState.Dead)
                         {
-                            keyMappings[k].Execute();
+
+                            if (k == Keys.W || k == Keys.S)
+                            {
+                                keyMappings[k].Execute();
+                            }
+                            else if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.S))
+                            {
+                                keyMappings[k].Execute();
+                            }
+                            Game.Link.State = States.LinkState.Moving;
                         }
-                        else if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.S))
+
+
+                        if (k == Keys.Z && !AttackTriggered)
                         {
-                            keyMappings[k].Execute();
-                        }
-                        Game.Link.State = States.LinkState.Moving;
-                    }
-
-
-                    if (k == Keys.Z && !AttackTriggered)
-                    {
-                        AttackTriggered = true;
-                        keyMappings[k].Execute();
-                    }
-
-                    if (keyMappings.ContainsKey(k))
-                    {
-                        // Without this if statement the game wil allow animation cancelling
-                        if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X)
-                        {
-                            keyMappings[k].Execute();
-
-                        }
-                        if ((k == Keys.D1 || k == Keys.D2 || k == Keys.D3 || k == Keys.D4) && Timer == SecondaryAttackDelay)
-                        {
-                            Timer = 0;
+                            AttackTriggered = true;
                             keyMappings[k].Execute();
                         }
 
+                        if (keyMappings.ContainsKey(k))
+                        {
+                            // Without this if statement the game wil allow animation cancelling
+                            if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X)
+                            {
+                                keyMappings[k].Execute();
+
+                            }
+                            if ((k == Keys.D1 || k == Keys.D2 || k == Keys.D3 || k == Keys.D4) && Timer == SecondaryAttackDelay)
+                            {
+                                Timer = 0;
+                                keyMappings[k].Execute();
+                            }
+
+                        }
                     }
                 }
             }
