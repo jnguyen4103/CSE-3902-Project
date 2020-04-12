@@ -9,6 +9,7 @@
 Keybindings<br/>
 Q : Quit the game <br/>
 R : Reset the game<br/>
+P : Pause the game<br/>
 
 W : Move Link up<br/>
 A : Move Link left<br/>
