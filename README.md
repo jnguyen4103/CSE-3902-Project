@@ -21,7 +21,15 @@ Attacks:<br/>
 3 - Use Blue Candle<br/>
 4 - Use Boomerang<br/>
 
-### Custom Monsters:
+### Enemies:
+## Regular Monster:
+Stalfos: The skeleton which takes 2 hits to die.<br/>
+Goriya: <br/>
+Aquamentus: The green dragon which only faces one direction. <br/>
+Gel:<br/>
+Blade Traps: <br/>
+
+## Custom Monsters:
 Zol: Explodes on death or when it gets near Link<br/>
 Lynel: Throws a sword beam at Link or charges him if he gets close<br/>
 Darknut: Walks to Link's last location and charges Link when he gets close<br/>
