@@ -10,6 +10,7 @@ Keybindings<br/>
 Q : Quit the game <br/>
 R : Reset the game<br/>
 P : Pause the game<br/>
+Enter : Enter inventory screen <br/>
 
 W : Move Link up<br/>
 A : Move Link left<br/>
@@ -49,6 +50,9 @@ Darknut: Walks to Link's last location and charges Link when he gets close.<br/>
  <li> When the game first start, the keys in the inventory system was showing as 12 instead of 0. (Resolved) 
  <li> When transitioning into the next Dungeon(Dungeon2) no transition or barriers have been implemented yet goal for sprint5 is to have a new dungeon operational functionality as well.
  </li> 
+ <li>inventory screen is not transitioned to - it simply appears </li>
+ <li>inventory map does nto show rooms explored - beleived to be a layering issue</li>
+ <li>inventory screen command triggers and untriggers itself - sometimes when pressing the enter key to enter the inventory screen you will enter and exit the inventory screen in the same instance</li>
 </ul>
 
 ### Additional Tools, Processes Used:
