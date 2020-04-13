@@ -5,24 +5,30 @@ File being reviewed: PickupLink.cs
 Author of file: Nico Negrete
 Date of the code review: 4/13/2020
 Focus: Readability
-Time to review: 30 minutes
+Time to review: 35 minutes
 
 Specific comments on what is readable and what is not:
 
-* 1. Commenting and Documentation makes a file more readable. 
+* 1. Commenting and documentation makes a file more readable. 
 There are some comments there for some methods, but comments should be more clear on what specific
-method is doing. There is no Documentation presented in the file and if we want to improve it's 
-readability, we can consider writing up some documentations for methods.
+method is doing. It is hard to describe it so I will left an example for it. In the method PicupItem(),
+the comment says "Cannot PickupItem", I think it is a little confusing and might need to explain why 
+items can not be picked up. There is no Documentation presented in the file and if we want to improve 
+it's readability, we can consider writing up some documentations for methods.
 
-* 2. Consistent Indentation makes a file more readable. 
+* 2. Consistent indentation makes a file more readable. 
 And in this file all methods does have consistent indentation which helps improve readability.
+It is another factor that makes the file readable. 
 
-* The logic is also pretty straight forward, constraints, preconditions and its contextual information
-is easy to understand. DeadLink.cs basically resets the whole game if a player is dead. And it is listed 
-in the method called DeadLink().
+* 3. Code grouping makes a file more readable. 
+I noticed in this file public variables and private variables are grouped separately(mostly). But 
+"YOUWON" and "TriForcePepe" are two private variables that were grouped together with the public
+variables which is not as readable. 
 
-* On another note, there are a lot more methods that are not necessarily in use and the method body is
-empty seems redundent and not as efficient. We should consider reviewing and revising soon to make this
-file shorter and more effective.
+* 4. Consistent naming scheme makes a file more readable. 
+All method names follow the naming convention of using "PascalCase" makes this file readable.
+
+* 5. Avoid deep nesting makes a file more readable. 
+In this file there is no sign of deep nesting and it is readable from this point of view.
   
 
