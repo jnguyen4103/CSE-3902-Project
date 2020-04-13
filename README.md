@@ -53,7 +53,7 @@ Darknut: Walks to Link's last location and charges Link when he gets close.<br/>
 
 ### Additional Tools, Processes Used:
 The Link sprint was replaced with a Donald Trump sprite who fights with a red lightsaber.<br/>
-We choose to do this as an extra feature in our code. <br/>
+We choose to do this as an extra feature in our game. <br/>
 This can be changed though by the following line LinkSpriteSheet = Content.Load<Texture2D>("Link Sprite Sheet");<br/>
 Or if you like using donald LinkSpriteSheet = Content.Load<Texture2D>("Donald Trump Sprite Sheet");<br/>
 The HUD takes count of the keys, bombs and rupees Link collects as well as his healthand the map. <br/>
