@@ -14,6 +14,7 @@ namespace Sprint03
         private bool AttackTriggered = false;
         private int Timer = 60;
         private int SecondaryAttackDelay = 60;
+        private bool escapePreviouslyPressed = false;
 
        public KeyboardController(Game1 game, Keys[] keys, ICommand[] commands)
         {
@@ -78,7 +79,13 @@ namespace Sprint03
                     }
 
                 }
+
+                if (k == Keys.Escape && !escapePreviouslyPressed)
+                {
+                    keyMappings[k].Execute();
+                }
             }
+            escapePreviouslyPressed = Keyboard.GetState().IsKeyDown(Keys.Escape);
         }
     }
 }

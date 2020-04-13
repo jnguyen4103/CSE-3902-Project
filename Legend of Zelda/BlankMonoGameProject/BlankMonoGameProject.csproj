@@ -48,6 +48,7 @@
     <Compile Include="Attacks\Explosion.cs" />
     <Compile Include="Attacks\IAttack.cs" />
     <Compile Include="Attacks\Sword.cs" />
+    <Compile Include="Commands\InventoryScreenCmd.cs" />
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="GameObjects\Items\Fairy.cs" />
     <Compile Include="GameObjects\Items\IItem.cs" />

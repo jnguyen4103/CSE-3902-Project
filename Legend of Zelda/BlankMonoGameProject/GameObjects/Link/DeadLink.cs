@@ -95,9 +95,11 @@ namespace Sprint03
             Sprite.DrawSprite();
             if(Timer >= DeathScreenDelay)
             {
+                /*
                 Game.spriteBatch.Draw(YouDied, new Vector2(Game.Dungeon01.ActiveRoom.Position.X, Game.Dungeon01.ActiveRoom.Position.Y + 100), null, Color.White * 0.85f, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
                 Game.spriteBatch.Draw(LinkPepe, new Vector2(Game.Dungeon01.ActiveRoom.Position.X, Game.Dungeon01.ActiveRoom.Position.Y - 64), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.99f);
-
+                */
+                (new Reset(Game)).Execute();
             }
         }
 

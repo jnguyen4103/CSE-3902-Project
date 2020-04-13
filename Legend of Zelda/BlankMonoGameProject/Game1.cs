@@ -46,7 +46,12 @@ namespace Sprint03
         public string DefaultDungeon = "../../../../Dungeon/Dungeon1/Dungeon01.txt";
         public CollisionDetection Detection;
         
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q };
+        private Keys[] keyboardKeys = 
+        { 
+            Keys.W, Keys.S, Keys.A, Keys.D, 
+            Keys.Z, Keys.D1, Keys.D2, Keys.D3, 
+            Keys.D4, Keys.R, Keys.Q, Keys.Escape
+        };
         public ICommand[] keyboardCommands = new ICommand[12];
         private KeyboardController keyboardController;
         //private MouseController mouseController;
@@ -58,6 +63,10 @@ namespace Sprint03
 
         public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
         public float ScreenScale = 4.0f;
+
+        // Current Update and Draw contexts
+        public Action updateCtx;
+        public Action drawCtx; 
 
         public Game1()
         {
@@ -97,12 +106,17 @@ namespace Sprint03
             keyboardCommands[8] = new LinkBoomerang(this);
             keyboardCommands[9] = new Reset(this);
             keyboardCommands[10] = new Quit(this);
+            keyboardCommands[11] = new InventoryScreenCmd(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.0f;
             MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+
+            updateCtx = DungeonUpdate;
+            drawCtx = DungeonDraw;
+
             base.Initialize();
         }
 
@@ -142,8 +156,68 @@ namespace Sprint03
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            // TODO: Unload any non ContentManager content herew
         }
+
+        public void DungeonUpdate()
+        {
+            Link.Update();
+            Camera.Update();
+            Dungeon01.Update();
+            Detection.Update();
+            keyboardController.Update();
+        }
+
+        public void DungeonDraw()
+        {
+            GraphicsDevice.Clear(Color.Black);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
+            samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+
+            spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
+            Dungeon01.Draw();
+            Link.Draw();
+            spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
+            hud.Draw();
+            spriteBatch.End();
+        }
+
+        public Vector2 cameraPrev;
+
+        public void DungeonToInventoryTransitionUpdate()
+        {
+            Camera.Position.Y += 10f;
+            if (Camera.Position.Y > cameraPrev.Y + 680f)
+            {
+                updateCtx = InventoryUpdate;
+            }
+        }
+
+        public void InventoryToDungeonTransitionUpdate()
+        {
+            Camera.Position.Y -= 10f;
+            if (Camera.Position.Y < cameraPrev.Y - 680f)
+            {
+                updateCtx = DungeonUpdate;
+                drawCtx = DungeonDraw;
+            }
+        }
+
+        public void InventoryUpdate()
+        {
+            keyboardController.Update();
+        }
+
+        public void InventoryDraw()
+        {
+            GraphicsDevice.Clear(Color.Black);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
+            samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+            hud.Draw();
+
+            spriteBatch.End();
+        }
+
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -152,11 +226,8 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            Link.Update();
-            Camera.Update();
-            Dungeon01.Update();
-            Detection.Update();
-            keyboardController.Update();
+            updateCtx();
+
             base.Update(gameTime);
         }
 
@@ -166,16 +237,7 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
-                samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
-
-            spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
-            Dungeon01.Draw();
-            Link.Draw();
-            spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
-            hud.Draw();
-            spriteBatch.End();
+            drawCtx();
 
             base.Draw(gameTime);
         }
