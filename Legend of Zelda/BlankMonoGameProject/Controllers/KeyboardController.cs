@@ -96,7 +96,8 @@ namespace Sprint03
                 foreach (Keys k in pressed)
                 {
                     if (keyMappings.ContainsKey(k))
-                    { 
+                    {
+                        /*
                         if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D))
                         {
                             if (k == Keys.W || k == Keys.S)
@@ -109,7 +110,6 @@ namespace Sprint03
                             }
                         }
 
-
                         if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X )
                         {
                             keyMappings[k].Execute();
@@ -121,7 +121,8 @@ namespace Sprint03
                             InventoryTriggered = true;
                             keyMappings[k].Execute();
                         }
-
+                        */
+                        keyMappings[k].Execute();
                     }
                 }
             }

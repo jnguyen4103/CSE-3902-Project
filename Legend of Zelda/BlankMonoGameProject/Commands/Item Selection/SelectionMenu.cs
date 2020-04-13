@@ -11,11 +11,13 @@ namespace Sprint03
         private int sSquareY = 188;
         private Texture2D sqTex;
         private SpriteBatch batch;
+        private Game1 debug;
 
         public SelectionMenu(Game1 game)
         {
             sqTex = game.ItemSpriteSheet;
             batch = game.spriteBatch;
+            debug = game;
         }
 
         public void SelectionUp() 

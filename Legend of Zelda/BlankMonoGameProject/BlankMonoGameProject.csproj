@@ -50,6 +50,7 @@
     <Compile Include="Attacks\Sword.cs" />
     <Compile Include="Bag\VisualBag.cs" />
     <Compile Include="Commands\Camera\CameraUp.cs" />
+    <Compile Include="Commands\Item Selection\SelectionMenu.cs" />
     <Compile Include="Commands\Pass.cs" />
     <Compile Include="Commands\ExitInventory.cs" />
     <Compile Include="Commands\EnterInventory.cs" />
