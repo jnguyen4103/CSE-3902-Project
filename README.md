@@ -24,7 +24,7 @@ Attacks:<br/>
 4 - Use Boomerang<br/>
 
 ## Enemies:
-### Regular Monster:
+### Regular Monsters:
 Stalfos: The skeleton which takes 2 hits to die.<br/>
 Goriya: Will move and throw boomerangs, can damage link by either running into him or hitting him  with a boomerang.<br/>
 Aquamentus: The green dragon which only faces one direction. Fires 3 fire balls at link. <br/>
