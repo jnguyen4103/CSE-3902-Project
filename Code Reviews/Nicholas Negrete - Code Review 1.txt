@@ -1,14 +1,12 @@
 Sprint Number #3
 Author of the code review: Nicholas Negrete
-File being reviewed: Room.cs
-Author of file: Stephen Hogg
-Date of the code review: 3/5/2020
+File being reviewed: Pause.cs
+Author of file: John Nguyen
+Date of the code review: 4/12/2020
 Focus: Maintainability
-Time to review: 13 minutes
+Time to review: 15 minutes
 
 Specific Comments: 
-The class overall looks great. 
-The fields are all hidden away from the client.
-The methods all are short and get the job done, no overused code.
-The class does not give access to methods that the client will not need. 
-Great work! 
+This is overall a very simple yet very deceptive class. The functionality of the class is theoretically to stop all of the 
+movement of all sprites in the game, with this current implementation you would have to go throughout every sprite that moves and stop it, 
+in their own class. In order to improve this we could make a PauseHandler class, we would then make a PauseHandler object in the game class and every update tick update the PauseHandler. If the PauseHandler was updated and the game was paused we could just check every GameObject in the class with a foreach loop over a list of Gameobjects and stop their movements this way instead of going through each object and stopping them this way. 
