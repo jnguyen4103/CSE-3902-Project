@@ -1,15 +1,28 @@
   
 Sprint Number #4
 Author of the code review: Xueying Liang
-File being reviewed: Reset.cs
-Author of file: Stephen Hogg
-Date of the code review: 3/6/2020
+File being reviewed: PickupLink.cs
+Author of file: Nico Negrete
+Date of the code review: 4/13/2020
 Focus: Readability
-Time to review: 15 minutes
+Time to review: 30 minutes
 
-This class in general is readable and easy to understand. It is also very useful which makes the code easier to read and understand. Also helps the debug process <br />
-go smoother. This is as far as consistency. <br />
-Stephen has refactored this code so that it now just update different variables in a clear and readable way.
+Specific comments on what is readable and what is not:
 
+* 1. Commenting and Documentation makes a file more readable. 
+There are some comments there for some methods, but comments should be more clear on what specific
+method is doing. There is no Documentation presented in the file and if we want to improve it's 
+readability, we can consider writing up some documentations for methods.
 
-As well as accidental errors and structural errors, there are none in this class. The performance of writing a reset command which extends from ICommand and rewrite some of its method is very useful and readable.
+* 2. Consistent Indentation makes a file more readable. 
+And in this file all methods does have consistent indentation which helps improve readability.
+
+* The logic is also pretty straight forward, constraints, preconditions and its contextual information
+is easy to understand. DeadLink.cs basically resets the whole game if a player is dead. And it is listed 
+in the method called DeadLink().
+
+* On another note, there are a lot more methods that are not necessarily in use and the method body is
+empty seems redundent and not as efficient. We should consider reviewing and revising soon to make this
+file shorter and more effective.
+  
+
