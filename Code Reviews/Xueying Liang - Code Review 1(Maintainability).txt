@@ -1,0 +1,40 @@
+Sprint Number #4
+Author of the code review: Xueying Liang
+File being reviewed: DeadLink.cs
+Author of file: Youssef Moosa
+Date of the code review: 4/13/2020
+Focus: Maintainability(Code quality)
+Time to review: 30 minutes
+
+Specific comments on code quality:
+
+* In terms of code quality, this file is efficient. It achieved maintainability by code organization
+and adequate comments. Youssef update this file from previous Sprint in order to update reset
+funcionality. With the structure of this file, it is pretty easy to understand and reuse it when
+needed. 
+
+* There are several short methods like TakeDamage(), Attack(), SecondaryAttack(), ChangeDirection(),
+Stop(), Update(), Draw(), and DeathBed(). Small methods are seperate of each other that only does
+one thing at a time. If we want to update or reuse one specific funcionality later, then we can
+edit that particular method related to the functionality we are using. 
+
+* The logic is also pretty straight forward, constraints, preconditions and its contextual information
+is easy to understand. DeadLink.cs basically resets the whole game if a player is dead. And it is listed 
+in the method called DeadLink().
+
+* On another note, there are a lot more methods that are not necessarily in use and the method body is
+empty seems redundent and not as efficient. We should consider reviewing and revising soon to make this
+file shorter and more effective.
+  
+A hypothetical change to make to the game related to file being reviewed and how the current 
+implementation could or could not easily support that change:
+
+* One hypotherical change I can think of is in DeadLink() method, directly call the command to reset 
+the whole game after a player died. It logically makes sense, but the current implementation has seperated
+command and even seperated a lot more method that has their one and only one job to do at time, and would
+not support the hypothetical change that I just raised. And in comparison, the implementation we had right 
+now is better than my hypothetical change. This also related to code quality issues, called reset command 
+in the method DeadLink() would not be as maintainable as the current implementation. Because then we are
+doing 2 things at the same time and violated the initial intension that we want to do one thing in one 
+method. 
+
