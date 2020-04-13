@@ -35,20 +35,20 @@ Zol: Explodes on death or when it gets near Link.<br/>
 Lynel: Throws a sword beam at Link or charges him if he gets close.<br/>
 Darknut: Walks to Link's last location and charges Link when he gets close.<br/>
 
-### Description of Known Bugs:
+### Description of Known Bug(Including Some Resolved Ones):
 <ul>
  <li>When the game resets the sound of effect that is played is slightly altered for a couple of seconds then goes back to normal.</li> 
  <li>Resetting the game does not change the song back to the original.</li>
  <li>It appears as thought link doesn't go through all of the frames of animation when picking up an item.</li>
  <li>If you shoot an arrow at an exploding bomb, the explosion will damage you even though explosions from your own bombs should not damage your character.
  <li>If a monster walks through a door it can knock you back into the previous room and can potentially lock you out of the room 
-  you were trying to go into. The monsters will then proceed to freak out and move much faster
- <li> The fire next to the old man if it kills you can cause errors in the code. Still testing to figure out why.
+  you were trying to go into(If it is a room that needs a key to enter). The monsters will then proceed to freak out and move much faster.
+ <li> The fire next to the old man if it kills you, it can cause errors in the code. Still testing to figure out why.
  <li> Slight issue with the bomb count in the HUD not going down properly. (Resolved)
  <li> The interactions between the Merchant and the Old Man have not yet been implemented, however implementation will be completed and functional for spritn05.
- <li> When transitioning into the next Dungeon(Dungeon2) no transition or barriers  have been implemented yet goal for sprint5 is to have a new dungeon operational as well.
- </li>
- 
+ <li> When the game first start, the keys in the inventory system was showing as 12 instead of 0. (Resolved) 
+ <li> When transitioning into the next Dungeon(Dungeon2) no transition or barriers have been implemented yet goal for sprint5 is to have a new dungeon operational functionality as well.
+ </li> 
 </ul>
 
 ### Additional Tools, Processes Used:
@@ -60,5 +60,7 @@ The HUD takes count of the keys, bombs and rupees Link collects as well as his h
 Not all of the HUD is implemented but some of it to allow use for the pickups.<br/>
  
 ## Tools Used:
-(For Burndown Chart:)<br/>
+### For Burndown Chart:<br/>
+
+### For FxCop Analyzers:<br/>
 
