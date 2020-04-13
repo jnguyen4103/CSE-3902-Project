@@ -127,6 +127,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dungeon\Dungeon2\Dungeon02.txt" />
     <Content Include="Dungeon\Dungeon1\Dungeon01.txt" />
     <Content Include="Dungeon\Dungeon1\Room01.xml" />
     <Content Include="Dungeon\Dungeon1\Room03.xml" />
@@ -145,6 +146,24 @@
     <Content Include="Dungeon\Dungeon1\Room06.xml" />
     <Content Include="Dungeon\Dungeon1\Room04.xml" />
     <Content Include="Dungeon\Dungeon1\Room02.xml" />
+    <Content Include="Dungeon\Dungeon2\Room0.xml" />
+    <Content Include="Dungeon\Dungeon2\Room01.xml" />
+    <Content Include="Dungeon\Dungeon2\Room02.xml" />
+    <Content Include="Dungeon\Dungeon2\Room03.xml" />
+    <Content Include="Dungeon\Dungeon2\Room04.xml" />
+    <Content Include="Dungeon\Dungeon2\Room05.xml" />
+    <Content Include="Dungeon\Dungeon2\Room06.xml" />
+    <Content Include="Dungeon\Dungeon2\Room07.xml" />
+    <Content Include="Dungeon\Dungeon2\Room08.xml" />
+    <Content Include="Dungeon\Dungeon2\Room09.xml" />
+    <Content Include="Dungeon\Dungeon2\Room10.xml" />
+    <Content Include="Dungeon\Dungeon2\Room11.xml" />
+    <Content Include="Dungeon\Dungeon2\Room12.xml" />
+    <Content Include="Dungeon\Dungeon2\Room13.xml" />
+    <Content Include="Dungeon\Dungeon2\Room14.xml" />
+    <Content Include="Dungeon\Dungeon2\Room15.xml" />
+    <Content Include="Dungeon\Dungeon2\Room16.xml" />
+    <Content Include="Dungeon\Dungeon2\Room17.xml" />
     <Content Include="Sprite Sheets\Background.png" />
     <Content Include="Sprite Sheets\Dungeon1.png" />
     <Content Include="Sprite Sheets\Effects Sprite Sheet.png" />
@@ -159,6 +178,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

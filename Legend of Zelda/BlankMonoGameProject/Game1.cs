@@ -27,7 +27,7 @@ namespace Sprint03
         public LinkSprite SpriteLink;
         public bool ClockActivated = false;
         public int RupeeCounter = 0;
-        public int KeyCounter = 12;
+        public int KeyCounter = 0;
         public int BombCounter = 0;
 
         // Sprite Sheets
@@ -45,7 +45,7 @@ namespace Sprint03
         // Random for everything
         public static Random random = new Random();
 
-        public Dungeon Dungeon01;
+        public Dungeon CurrDungeon;
         public string DefaultDungeon = "../../../../Dungeon/Dungeon1/Dungeon01.txt";
         public CollisionDetection Detection;
         
@@ -57,7 +57,7 @@ namespace Sprint03
         //(32,96). w = 192 H =112
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
-        public readonly Vector2 LinkSpawn = new Vector2(640, 1200);
+        public  Vector2 LinkSpawn = new Vector2(640, 1200);
 
         public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
         public float ScreenScale = 4.0f;
@@ -125,7 +125,7 @@ namespace Sprint03
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            LinkSpriteSheet = Content.Load<Texture2D>("Donald Trump Sprite Sheet");
+            LinkSpriteSheet = Content.Load<Texture2D>("Link Sprite Sheet");
             MonsterSpriteSheet = Content.Load<Texture2D>("Monster Sprite Sheet");
             ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
@@ -184,7 +184,7 @@ namespace Sprint03
             MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
 
-            Dungeon01 = new Dungeon(this, DefaultDungeon);
+            CurrDungeon = new Dungeon(this, DefaultDungeon);
         }
 
         public void changeSong()
@@ -215,7 +215,7 @@ namespace Sprint03
 
             Link.Update();
             Camera.Update();
-            Dungeon01.Update();
+            CurrDungeon.Update();
             Detection.Update();
             keyboardController.Update();
             base.Update(gameTime);
@@ -232,7 +232,7 @@ namespace Sprint03
                 samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
 
             spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
-            Dungeon01.Draw();
+            CurrDungeon.Draw();
             Link.Draw();
             spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
             hud.Draw();

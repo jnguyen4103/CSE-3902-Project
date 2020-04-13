@@ -30,6 +30,7 @@ namespace Sprint03
         private IAttack SwordAttack;
         private int Timer = 0;
         private int PickupDuration = 4;
+        private Reset r;
         private int wonScreenDelay = 48;
         public PickupLink(Game1 game, Link link)
         {
@@ -42,10 +43,10 @@ namespace Sprint03
             Direction = decoratedLink.Direction;
             HP = decoratedLink.HP;
             MaxHP = decoratedLink.MaxHP;
-            SwordAttack = new Sword(Game, this);
-            TriForcePepe = game.Content.Load<Texture2D>("WinningGame");
-            YOUWON = game.Content.Load<Texture2D>("YOU WON");
-            Game.changeSong();
+            r = new Reset(Game);
+            /*            TriForcePepe = game.Content.Load<Texture2D>("WinningGame");
+                        YOUWON = game.Content.Load<Texture2D>("YOU WON");*/
+            // Game.changeSong();
 
         }
 
@@ -82,11 +83,22 @@ namespace Sprint03
             if (Timer >= PickupDuration)
             {
                 Sprite.ChangeSpriteAnimation("Pickup");
-                Sprite.FPS = 2;
+                Console.WriteLine("ope") ;
+                Sprite.FPS = 4;
             }
             if (Timer >= wonScreenDelay)
             {
-                Game.hud.HideHud();
+
+                //    Game.hud.HideHud();
+                r.Execute();
+                RemoveDecorator();
+                Game.LinkSpawn = new Vector2(375, 1358);
+                Game.Link.StateMachine.IdleState();
+                Game.CurrDungeon = new Dungeon(Game, "../../../../Dungeon/Dungeon2/Dungeon02.txt");
+                Game.DungeonMain = Game.Content.Load<Texture2D>("Dungeon2_Main");
+                Game.Camera.Transition(Game.CurrDungeon.Rooms["Room0"].Position);
+                Game.DungeonDoorFrames = Game.Content.Load<Texture2D>("Dungeon2_DoorFrames");
+
             }
 
         }
@@ -100,13 +112,13 @@ namespace Sprint03
         {
            
             Sprite.DrawSprite();
-            if (Timer >= wonScreenDelay)
+/*            if (Timer >= wonScreenDelay)
             {
        
-                Game.spriteBatch.Draw(YOUWON, new Vector2(Game.Dungeon01.ActiveRoom.Position.X, Game.Dungeon01.ActiveRoom.Position.Y + 100), null, Color.White * 0.85f, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
-                Game.spriteBatch.Draw(TriForcePepe, new Vector2(Game.Dungeon01.ActiveRoom.Position.X, Game.Dungeon01.ActiveRoom.Position.Y - 64), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.99f);
+                Game.spriteBatch.Draw(YOUWON, new Vector2(Game.CurrDungeon.ActiveRoom.Position.X, Game.CurrDungeon.ActiveRoom.Position.Y + 100), null, Color.White * 0.85f, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
+                Game.spriteBatch.Draw(TriForcePepe, new Vector2(Game.CurrDungeon.ActiveRoom.Position.X, Game.CurrDungeon.ActiveRoom.Position.Y - 64), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.99f);
 
-            }
+            }*/
         }
 
 
