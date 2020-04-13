@@ -101,6 +101,12 @@
     <Compile Include="HUD\HUD.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\DarknutSM.cs" />
     <Compile Include="GameObjects\Traps\ITrap.cs" />
+    <Compile Include="Commands\Item Selection\ISelectionMenu.cs" />
+    <Compile Include="Commands\Item Selection\MenuSelectionChoice.cs" />
+    <Compile Include="Commands\Item Selection\MenuSelectionUp.cs" />
+    <Compile Include="Commands\Item Selection\MenuSelectionDown.cs" />
+    <Compile Include="Commands\Item Selection\MenuSelectionLeft.cs" />
+    <Compile Include="Commands\Item Selection\MenuSelectionRight.cs" />
     <Compile Include="Sprite\MonsterSprite.cs" />
     <Compile Include="GameObjects\Items\Item.cs" />
     <Compile Include="GameObjects\Items\ItemFactory.cs" />
