@@ -220,6 +220,8 @@ namespace Sprint03
             Sprites["8"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 32, 8, 8), smallItemSize, 1);
             Sprites["9"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 32, 8, 8), smallItemSize, 1);
 
+            Sprites["SelectSquare"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 48, 16, 16), defaultItemSize, 1);
+
             /* Room Types:
              * example: left, right, up, down (this is a room with openings on all 4 sides, each direction denotes an opening)
              * 

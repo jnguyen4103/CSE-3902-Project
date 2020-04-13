@@ -82,6 +82,9 @@ namespace Sprint03
         public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
         public float ScreenScale = 4.0f;
 
+        public VisualBag vsbag;
+        public SelectionMenu sel;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -135,6 +138,9 @@ namespace Sprint03
             MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
 
+            vsbag = new VisualBag();
+            
+
             // Game base
 
             base.Initialize();
@@ -174,6 +180,8 @@ namespace Sprint03
 
             // Initialize dungeon
             Dungeon01 = new Dungeon(this, DefaultDungeon);
+
+            sel = new SelectionMenu(this);
         }
 
         /// <summary>
@@ -208,11 +216,14 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+
             if (!Paused)
             {
                 GraphicsDevice.Clear(Color.Black);
                 spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
                     samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+
+                
 
                 spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
                 Dungeon01.Draw();
@@ -230,10 +241,13 @@ namespace Sprint03
             {
                 GraphicsDevice.Clear(Color.Black);
                 spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
-                spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
-                spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
                 inv.Draw();
                 spriteBatch.End();
+
+                spriteBatch.Begin();
+                sel.Draw();
+                spriteBatch.End();
+
                 base.Draw(gameTime);
             }
 
