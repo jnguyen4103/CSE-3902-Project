@@ -53,7 +53,6 @@
     <Compile Include="Commands\Pass.cs" />
     <Compile Include="Commands\ExitInventory.cs" />
     <Compile Include="Commands\EnterInventory.cs" />
-    <Compile Include="Commands\Item Selection\SelectionMenu.cs" />
     <Compile Include="Commands\Pause.cs" />
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="GameObjects\Items\Fairy.cs" />
