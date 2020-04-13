@@ -92,11 +92,14 @@ namespace Sprint03
             }
 
             // Inventory Map Draw and Update loop
+            Vector2 updatedMapRoomPos;
             for (int i = 0; i < Game.roomsExplored.Length; i++)
             {
                 if (Game.roomsExplored[i] == 1)
                 {
-                    MapRooms[i].Position += location;
+                    updatedMapRoomPos = MapRooms[i].Position;
+                    updatedMapRoomPos += location;
+                    MapRooms[i].UpdatePosition(updatedMapRoomPos);
                     MapRooms[i].DrawSprite();
                 }
             }
@@ -190,7 +193,7 @@ namespace Sprint03
             MainInventory.Layer = 0.95f;
 
             MiniMap = new StaticSprite(Game, "Dungeon01Map", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MiniMap.Layer = 1f;
+            MiniMap.Layer = .96f;
             MiniMap.Colour = Color.Black;
 
             WeaponA = new StaticSprite(Game, "RedLightsaber", Vector2.Zero, Game.EffectSpriteSheet, Game.spriteBatch);

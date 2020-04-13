@@ -14,6 +14,7 @@ namespace Sprint03
         IDictionary<Keys, ICommand> keyMappings;
         private bool AttackTriggered = false;
         private bool PauseTriggered = false;
+        private bool InventoryTriggered = false;
         private int Timer = 60;
         private int SecondaryAttackDelay = 60;
 
@@ -39,15 +40,14 @@ namespace Sprint03
 
             if (keyState.IsKeyUp(Keys.Z)) { AttackTriggered = false; }
             if (keyState.IsKeyUp(Keys.P) ) { PauseTriggered = false; }
+            if (keyState.IsKeyUp(Keys.Enter) && !Game.InInventory) { InventoryTriggered = false; }
             if (Timer < SecondaryAttackDelay) { Timer++; }
 
-            if (!Game.Paused)
+            if (!Game.Paused && !Game.InInventory && !InventoryTriggered)
             {
                 foreach (Keys k in pressed)
                 {
 
-                    //keyMappings[k].Execute();
-                    
                         if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && Game.Link.CanMove && Game.Link.State != States.LinkState.Damaged && Game.Link.State != States.LinkState.Dead)
                         {
 
@@ -72,7 +72,7 @@ namespace Sprint03
                         if (keyMappings.ContainsKey(k))
                         {
                             // Without this if statement the game wil allow animation cancelling
-                            if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X || k==Keys.Enter)
+                            if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X )
                             {
                                 keyMappings[k].Execute();
 
@@ -82,35 +82,47 @@ namespace Sprint03
                                 Timer = 0;
                                 keyMappings[k].Execute();
                             }
+                            if (k == Keys.Enter && !InventoryTriggered)
+                            {
+                                keyMappings[k].Execute();
+                                InventoryTriggered = true;
+                            }
 
                         }
                     
                 }
-            }else if (Game.InInventory)
+            }else if (Game.InInventory && !InventoryTriggered)
             {
-                foreach(Keys k in pressed)
+                foreach (Keys k in pressed)
                 {
-                    if ( (k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) )
-                    {
-                        if (k == Keys.W || k == Keys.S)
-                        {
-                            keyMappings[k].Execute();
-                        }
-                        else if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.S))
-                        {
-                            keyMappings[k].Execute();
-                        }
-                    }
-
                     if (keyMappings.ContainsKey(k))
-                    {
-                        if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X || k == Keys.Enter)
+                    { 
+                        if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D))
+                        {
+                            if (k == Keys.W || k == Keys.S)
+                            {
+                                keyMappings[k].Execute();
+                            }
+                            else if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.S))
+                            {
+                                keyMappings[k].Execute();
+                            }
+                        }
+
+
+                        if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X )
                         {
                             keyMappings[k].Execute();
 
                         }
-                    }
 
+                        if (keyState.IsKeyDown(Keys.Enter) && !InventoryTriggered)
+                        {
+                            InventoryTriggered = true;
+                            keyMappings[k].Execute();
+                        }
+
+                    }
                 }
             }
 
