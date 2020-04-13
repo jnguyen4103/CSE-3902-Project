@@ -40,8 +40,10 @@ namespace Sprint03
 
         public void Execute()
         {
+            Game.Paused = true;
             Game.InInventory = true;
-            setToInventoryKeyMapping();
+            //setToInventoryKeyMapping();
+
         }
 
         private void setToInventoryKeyMapping()

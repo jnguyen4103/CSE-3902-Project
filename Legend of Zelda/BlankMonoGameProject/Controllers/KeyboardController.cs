@@ -44,8 +44,8 @@ namespace Sprint03
             {
                 foreach (Keys k in pressed)
                 {
-                    if (keyMappings[k] != null)
-                    {
+                    keyMappings[k].Execute();
+                    
                         if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && Game.Link.CanMove && Game.Link.State != States.LinkState.Damaged && Game.Link.State != States.LinkState.Dead)
                         {
 
@@ -82,7 +82,7 @@ namespace Sprint03
                             }
 
                         }
-                    }
+                    
                 }
             }
 

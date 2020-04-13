@@ -48,6 +48,7 @@
     <Compile Include="Attacks\Explosion.cs" />
     <Compile Include="Attacks\IAttack.cs" />
     <Compile Include="Attacks\Sword.cs" />
+    <Compile Include="Commands\Camera\CameraUp.cs" />
     <Compile Include="Commands\ExitInventory.cs" />
     <Compile Include="Commands\EnterInventory.cs" />
     <Compile Include="Commands\Pause.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="GameObjects\Monsters\StateMachines\ZolSM.cs" />
     <Compile Include="GameObjects\MovableBlock.cs" />
     <Compile Include="GameObjects\States.cs" />
+    <Compile Include="Inventory\Inventory.cs" />
     <Compile Include="HUD\HUD.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\DarknutSM.cs" />
     <Compile Include="GameObjects\Traps\ITrap.cs" />

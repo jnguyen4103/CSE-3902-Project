@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BlankMonoGameProject.Commands.Camera;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -27,10 +28,13 @@ namespace Sprint03
         // HUD
         public HUD hud;
 
+        // Inventory
+        public Inventory inv;
+
         // Link Object & Sprite
         public ILink Link;
         public LinkSprite SpriteLink;
-        public bool ClockActivated = false;
+        public bool ClockItemActivated = false;
         public int RupeeCounter = 0;
         public int KeyCounter = 12;
         public int BombCounter = 0;
@@ -63,7 +67,7 @@ namespace Sprint03
         
         // Controller
         //  TODO: add return/enter button to be assigned to inventory screen transition
-        public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Enter };
+        public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Up };
         public ICommand[] keyboardCommands = new ICommand[13];
         public KeyboardController keyboardController;
         //private MouseController mouseController;
@@ -165,6 +169,7 @@ namespace Sprint03
             SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, spriteBatch);
             Link = new Link(this, SpriteLink, LinkSpawn);
             hud = new HUD(this);
+            inv = new Inventory(this);
 
             // Initialize dungeon
             Dungeon01 = new Dungeon(this, DefaultDungeon);
@@ -213,9 +218,24 @@ namespace Sprint03
                 Link.Draw();
                 spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
                 hud.Draw();
+                if (InInventory)
+                {
+                    inv.Draw();
+                }
                 spriteBatch.End();
                 base.Draw(gameTime);
             }
+            if(InInventory)
+            {
+                GraphicsDevice.Clear(Color.Black);
+                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+                spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
+                spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
+                inv.Draw();
+                spriteBatch.End();
+                base.Draw(gameTime);
+            }
+
         }
     }
 }

@@ -100,7 +100,7 @@ namespace Sprint03
 
         private void Clock()
         {
-            Game.ClockActivated = true;
+            Game.ClockItemActivated = true;
             foreach(Monster monster in Game.Dungeon01.Monsters)
             {
                 monster.CanDamage = false;
