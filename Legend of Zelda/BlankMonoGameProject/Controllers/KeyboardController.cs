@@ -1,6 +1,7 @@
 ﻿/* Contributors
 * Stephen Hogg
 * Youssef Moosa
+* Grant Gabel
 */
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
@@ -37,14 +38,15 @@ namespace Sprint03
             }
 
             if (keyState.IsKeyUp(Keys.Z)) { AttackTriggered = false; }
-            if (keyState.IsKeyUp(Keys.P)) { PauseTriggered = false; }
+            if (keyState.IsKeyUp(Keys.P) ) { PauseTriggered = false; }
             if (Timer < SecondaryAttackDelay) { Timer++; }
 
             if (!Game.Paused)
             {
                 foreach (Keys k in pressed)
                 {
-                    keyMappings[k].Execute();
+
+                    //keyMappings[k].Execute();
                     
                         if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) && Game.Link.CanMove && Game.Link.State != States.LinkState.Damaged && Game.Link.State != States.LinkState.Dead)
                         {
@@ -70,7 +72,7 @@ namespace Sprint03
                         if (keyMappings.ContainsKey(k))
                         {
                             // Without this if statement the game wil allow animation cancelling
-                            if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X)
+                            if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X || k==Keys.Enter)
                             {
                                 keyMappings[k].Execute();
 
@@ -84,12 +86,39 @@ namespace Sprint03
                         }
                     
                 }
+            }else if (Game.InInventory)
+            {
+                foreach(Keys k in pressed)
+                {
+                    if ( (k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D) )
+                    {
+                        if (k == Keys.W || k == Keys.S)
+                        {
+                            keyMappings[k].Execute();
+                        }
+                        else if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.S))
+                        {
+                            keyMappings[k].Execute();
+                        }
+                    }
+
+                    if (keyMappings.ContainsKey(k))
+                    {
+                        if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X || k == Keys.Enter)
+                        {
+                            keyMappings[k].Execute();
+
+                        }
+                    }
+
+                }
             }
 
             if (keyState.IsKeyDown(Keys.P) && !PauseTriggered)
             {
                 PauseTriggered = true;
                 keyMappings[Keys.P].Execute();
+                
             }
         }
     }

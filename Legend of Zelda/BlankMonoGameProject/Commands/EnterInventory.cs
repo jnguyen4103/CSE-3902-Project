@@ -22,20 +22,7 @@ namespace Sprint03
         {
             Game = game;
 
-            // assigning commands for when in inventory screen
-            //inventoryCommands[0] = new MoveCursorUp(Game);
-            //inventoryCommands[1] = new MoveCursorDown(Game);
-            //inventoryCommands[2] = new MoveCursorLeft(Game);
-            //inventoryCommands[3] = new MoveCursorRight(Game);
-            //inventoryCommands[4] = new SelectCurrentItem(Game);
-            //inventoryCommands[5] = null;
-            //inventoryCommands[6] = null;
-            //inventoryCommands[7] = null;
-            //inventoryCommands[8] = null;
-            //inventoryCommands[9] = null;
-            //inventoryCommands[10] = new Quit(Game);
-            //inventoryCommands[11] = null;
-            //inventoryCommands[12] = new ExitInventory(Game);
+
         }
 
         public void Execute()
@@ -48,6 +35,20 @@ namespace Sprint03
 
         private void setToInventoryKeyMapping()
         {
+            // assigning commands for when in inventory screen
+            //inventoryCommands[0] = new MoveCursorUp(Game);
+            //inventoryCommands[1] = new MoveCursorDown(Game);
+            //inventoryCommands[2] = new MoveCursorLeft(Game);
+            //inventoryCommands[3] = new MoveCursorRight(Game);
+            //inventoryCommands[4] = new SelectCurrentItem(Game);
+            inventoryCommands[5] = null;
+            inventoryCommands[6] = null;
+            inventoryCommands[7] = null;
+            inventoryCommands[8] = null;
+            inventoryCommands[9] = null;
+            inventoryCommands[10] = new Quit(Game);
+            inventoryCommands[11] = null;
+            inventoryCommands[12] = new ExitInventory(Game);
             Game.keyboardController = new KeyboardController(Game, Game.keyboardKeys, inventoryCommands);
         }
     }

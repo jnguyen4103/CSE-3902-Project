@@ -30,6 +30,7 @@ namespace Sprint03
 
         // Inventory
         public Inventory inv;
+        public int[] roomsExplored = { 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 };
 
         // Link Object & Sprite
         public ILink Link;
@@ -67,7 +68,7 @@ namespace Sprint03
         
         // Controller
         //  TODO: add return/enter button to be assigned to inventory screen transition
-        public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Up };
+        public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Enter };
         public ICommand[] keyboardCommands = new ICommand[13];
         public KeyboardController keyboardController;
         //private MouseController mouseController;

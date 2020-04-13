@@ -22,26 +22,27 @@ namespace Sprint03
             this.Game = game;
 
             // assigning commands for when actively playing game
-            activeCommands[0] = new LinkWalkUp(this.Game);
-            activeCommands[1] = new LinkWalkDown(this.Game);
-            activeCommands[2] = new LinkWalkLeft(this.Game);
-            activeCommands[3] = new LinkWalkRight(this.Game);
-            activeCommands[4] = new LinkAttack(this.Game);
-            activeCommands[5] = new LinkBomb(this.Game);
-            activeCommands[6] = new LinkArrow(this.Game);
-            activeCommands[7] = new LinkCandle(this.Game);
-            activeCommands[8] = new LinkBoomerang(this.Game);
-            activeCommands[9] = new Reset(this.Game);
-            activeCommands[10] = new Quit(this.Game);
-            activeCommands[11] = new Pause(this.Game);
-            activeCommands[12] = new EnterInventory(this.Game);
+            //activeCommands[0] = new LinkWalkUp(this.Game);
+            //activeCommands[1] = new LinkWalkDown(this.Game);
+            //activeCommands[2] = new LinkWalkLeft(this.Game);
+            //activeCommands[3] = new LinkWalkRight(this.Game);
+            //activeCommands[4] = new LinkAttack(this.Game);
+            //activeCommands[5] = new LinkBomb(this.Game);
+            //activeCommands[6] = new LinkArrow(this.Game);
+            //activeCommands[7] = new LinkCandle(this.Game);
+            //activeCommands[8] = new LinkBoomerang(this.Game);
+            //activeCommands[9] = new Reset(this.Game);
+            //activeCommands[10] = new Quit(this.Game);
+            //activeCommands[11] = new Pause(this.Game);
+            //activeCommands[12] = new EnterInventory(this.Game);
 
         }
 
         public void Execute()
         {
+            Game.Paused = false;
             Game.InInventory = false;
-            setToDefaultKeyMapping();
+            //setToDefaultKeyMapping();
         }
 
         private void setToDefaultKeyMapping()
