@@ -1,13 +1,11 @@
   
 Sprint Number #3
 Author of the code review: Nicholas Negrete
-File being reviewed: StalphosSM.cs
-Author of file: Stephen Hogg
-Date of the code review: 3/5/2020
+File being reviewed: Inventory.cs
+Author of file: Grant Gabel
+Date of the code review: 4/12/2020
 Focus: Readability
 Time to review: 10 minutes
 
 Specific Comments: 
-Everything seems to be readable the variable names are all self documenting, and the logic in the class is not hard to follow, 
-and everything in the class makes sense on why you would have it. Naming convention was uniform as well as having the code itself spaced 
-in an organic way. Comments were nice but shouldn't be necessary because of the set up of the file. (The way vairables were named and how theyd what was happening in a method)
+Some of the variable names seem to be inconsistent with the writing style, some variables seem to start with uppercase letters while others just seem to start off with lower case, sort of a small thing but I beileve it is noticeable and can lead to small annoying complicatiosn later on. Things that need to be together are seperated by two new lines I think this makes it easier to read. Some of the if statements seem to have more new lines that necessary maybe get rid of some of those, and unnecessary comments, the code should be documenting itself with the variable names. Also I feel as though we can combine some of the StaticSprites together and deal with say a list of weapons rather than WeaponA and WeaponB.
