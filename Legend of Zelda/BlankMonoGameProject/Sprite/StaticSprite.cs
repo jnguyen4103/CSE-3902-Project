@@ -18,7 +18,7 @@ namespace Sprint03
         // Sprite Drawing Info
         protected SpriteBatch Batch;
         protected Texture2D Texture;
-        protected Vector2 Position;
+        public Vector2 Position;
         protected Rectangle DrawWindow;
         public SpriteEffects SpriteEffect = SpriteEffects.None;
         protected float Rotation = 0;

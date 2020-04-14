@@ -22,8 +22,7 @@ namespace Sprint03
         public int HP { get; set; }
         public int MaxHP { get; set; }
         public float BaseSpeed { get; set; } = 1f;
-        public bool CanMove { get; set; } = false;
-
+        public bool CanMove { get; set; } = true;
 
         private Game1 Game;
         private Link decoratedLink;
@@ -172,7 +171,6 @@ namespace Sprint03
             decoratedLink.Position = Position;
             decoratedLink.Hitbox = Hitbox;
             Game.Link = decoratedLink;
-            Game.Link.CanMove = true;
 
         }
     }

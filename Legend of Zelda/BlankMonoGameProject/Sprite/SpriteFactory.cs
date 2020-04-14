@@ -224,6 +224,40 @@ namespace Sprint03
             Sprites["8"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 32, 8, 8), smallItemSize, 1);
             Sprites["9"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 32, 8, 8), smallItemSize, 1);
 
+            /* Room Types:
+             * example: left, right, up, down (this is a room with openings on all 4 sides, each direction denotes an opening)
+             * 
+             * a: left
+             * b: left, right
+             * c: left, down
+             * d: left, up
+             * e: left, up, right
+             * f: left, right, down
+             * g: left, up, down
+             * h: left, up, right, down
+             * i: right
+             * j: right, up
+             * k: right, down
+             * l: right, up, down
+             * m: down
+             * n: down, up
+             * o: up
+             */
+            Sprites["MapRoomTypeA"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 32, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeB"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeC"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 0, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeD"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 16, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeE"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 32, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeF"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 16, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeG"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 48, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeH"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 48, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeI"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 16, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeJ"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 0, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeK"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 32, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeL"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 48, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeM"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 16, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeN"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 48, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeO"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 32, 8, 8), smallItemSize, 1);
         }
     }
 }

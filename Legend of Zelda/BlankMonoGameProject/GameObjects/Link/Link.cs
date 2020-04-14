@@ -25,7 +25,6 @@ namespace Sprint03
         public bool CanMove { get; set; } = true;
         public int frameCount = 0;
 
-
         private Game1 Game;
         private string directionName;
         private string secondaryName;
@@ -72,7 +71,7 @@ namespace Sprint03
 
         public void Attack()
         {
-            if(State == States.LinkState.Idle || State == States.LinkState.Moving)
+            if ((State == States.LinkState.Idle || State == States.LinkState.Moving))
             {
                 State = States.LinkState.Attacking;
                 Sprite.ChangeSpriteAnimation("Attack" + directionName);
@@ -81,7 +80,7 @@ namespace Sprint03
 
         public void SecondaryAttack(string attackName)
         {
-            if (State == States.LinkState.Idle || State == States.LinkState.Moving)
+            if ((State == States.LinkState.Idle || State == States.LinkState.Moving))
             {
                 State = States.LinkState.SecondaryAttack;
                 secondaryName = attackName;
