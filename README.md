@@ -5,6 +5,7 @@
 ### Our group members are: Xueying Liang, Nicholas Negrete, Grant Gabel, Youssef Moosa and John Nguyen.
 
 ## General Information
+The taskboard for Sprint4 can be found under the "Projects" tab
 ### Program Controls
 Keybindings<br/>
 Q : Quit the game <br/>
