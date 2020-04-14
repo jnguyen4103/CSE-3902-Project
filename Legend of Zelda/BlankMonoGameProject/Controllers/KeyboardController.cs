@@ -71,9 +71,13 @@ namespace Sprint03
                         keyMappings[k].Execute();
 
                     }
-                    if ((k == Keys.D1 || k == Keys.D2 || k == Keys.D3 || k == Keys.D4) && Timer == SecondaryAttackDelay)
+                    if (( k == Keys.D2 || k == Keys.D3 || k == Keys.D4) && Timer == SecondaryAttackDelay)
                     {
                         Timer = 0;
+                        keyMappings[k].Execute();
+                    }
+                    if(k == Keys.D1 && Game.BombCounter >0)
+                    {
                         keyMappings[k].Execute();
                     }
 

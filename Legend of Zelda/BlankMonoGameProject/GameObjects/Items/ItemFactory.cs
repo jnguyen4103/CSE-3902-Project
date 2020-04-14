@@ -2,6 +2,8 @@
 * Stephen Hogg
 */
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +14,7 @@ namespace Sprint03
         private Game1 Game;
         public Dictionary<string, Action> UseItem = new Dictionary<string, Action>(14);
         public Dictionary<string, Action> DroppableItems = new Dictionary<string, Action>(5);
+   
         public ItemFactory(Game1 game)
         {
             Game = game;
@@ -32,6 +35,9 @@ namespace Sprint03
             UseItem["Arrow"] = Arrow;
             UseItem["Book"] = Book;
             UseItem["Bow"] = Bow;
+            UseItem["OldMan"] = OldMan;
+            UseItem["Merchant"] = Merchant;
+            UseItem["OldManFire"] = OldManFire;
 
             DroppableItems["Bomb"] = BombItem;
             DroppableItems["Heart"] = Heart;
@@ -39,12 +45,15 @@ namespace Sprint03
             DroppableItems["BlueRupee"] = BlueRupee;
             DroppableItems["Clock"] = Clock;
 
+
         }
+
 
         public Item SpawnItem(string itemName, Vector2 spawn)
         {
             return new Item(Game, itemName, itemName, spawn);
         }
+        
         public Fairy SpawnFairy(string itemName, Vector2 spawn)
         {
             return new Fairy(Game, itemName, itemName, spawn);
@@ -57,23 +66,23 @@ namespace Sprint03
                 int roll = Game1.random.Next(1, 101);
                 if (roll < 30)
                 {
-                    Game.Dungeon01.Items.Add(new Item(Game, "Heart", "Heart", spawn));
+                    Game.CurrDungeon.Items.Add(new Item(Game, "Heart", "Heart", spawn));
                 }
                 else if (roll < 60)
                 {
-                    Game.Dungeon01.Items.Add(new Item(Game, "Rupee", "Rupee", spawn));
+                    Game.CurrDungeon.Items.Add(new Item(Game, "Rupee", "Rupee", spawn));
                 }
                 else if (roll < 75)
                 {
-                    Game.Dungeon01.Items.Add(new Item(Game, "BlueRupee", "BlueRupee", spawn));
+                    Game.CurrDungeon.Items.Add(new Item(Game, "BlueRupee", "BlueRupee", spawn));
                 }
                 else if (roll < 90)
                 {
-                    Game.Dungeon01.Items.Add(new Item(Game, "Bomb", "Bomb", spawn));
+                    Game.CurrDungeon.Items.Add(new Item(Game, "Bomb", "Bomb", spawn));
                 }
                 else if (roll < 101)
                 {
-                    Game.Dungeon01.Items.Add(new Item(Game, "Clock", "Clock", spawn));
+                    Game.CurrDungeon.Items.Add(new Item(Game, "Clock", "Clock", spawn));
                 }
             }
         }
@@ -82,6 +91,20 @@ namespace Sprint03
         {
             Game.RupeeCounter += 5;
             Game.hud.UpdateRupeeCounter(Game.RupeeCounter);
+        }
+
+        private void OldMan()
+        {
+            Console.WriteLine("USED OLDMAN");
+        }
+        private void Merchant()
+        {
+            Console.WriteLine("USED MERCHANT");
+        }
+
+        private void OldManFire()
+        {
+
         }
 
         private void BombItem()
@@ -101,7 +124,7 @@ namespace Sprint03
         private void Clock()
         {
             Game.ClockActivated = true;
-            foreach(Monster monster in Game.Dungeon01.Monsters)
+            foreach(Monster monster in Game.CurrDungeon.Monsters)
             {
                 monster.CanDamage = false;
             }
@@ -168,6 +191,9 @@ namespace Sprint03
 
         private void Triforce()
         {
+            
+          
+            
 
         }
 

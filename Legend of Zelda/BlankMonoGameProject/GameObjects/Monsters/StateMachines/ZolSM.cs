@@ -85,6 +85,7 @@ namespace Sprint03
             if (Timer == 1)
             {
                 Self.Sprite.ChangeSpriteAnimation("ZolDamaged");
+                Game.soundEffects[7].Play();
                 SetKnockbackVelocity();
             }
             if (Timer < StunDelay)

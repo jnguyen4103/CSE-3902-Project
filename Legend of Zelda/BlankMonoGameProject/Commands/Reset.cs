@@ -24,7 +24,7 @@ namespace Sprint03
             Game.KeyCounter = 0;
             Game.BombCounter = 0;
             Game.hud = new HUD(Game);
-            DungeonLoader.ResetLevel(Game, Game.Dungeon01);
+            DungeonLoader.ResetLevel(Game, Game.CurrDungeon);
         }
     }
 }
