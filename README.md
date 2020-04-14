@@ -29,7 +29,7 @@ D : Move red rectangle right)<br/>
 Attacks:<br/>
 1 - Use Bomb<br/>
 2 - Use Arrow<br/>
-3 - Use Blue Candle<br/>
+3 - Use Fireball<br/>
 4 - Use Boomerang<br/>
 
 ## Enemies:
