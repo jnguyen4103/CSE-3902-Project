@@ -17,5 +17,7 @@ namespace Sprint03
         void SelectionLeft();
         void SelectionRight();
         void Choose();
+
+        void Draw();
     }
 }

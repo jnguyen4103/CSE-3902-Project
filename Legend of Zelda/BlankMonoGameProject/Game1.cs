@@ -83,6 +83,9 @@ namespace Sprint03
         public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
         public float ScreenScale = 4.0f;
 
+        public VisualBag vsbag;
+        public SelectionMenu sel;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -130,6 +133,11 @@ namespace Sprint03
             keyboardCommands[12] = new EnterInventory(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
+
+            vsbag = new VisualBag();
+            
+
+            // Game base
 
             base.Initialize();
         }
@@ -208,6 +216,7 @@ namespace Sprint03
             Link = new Link(this, SpriteLink, LinkSpawn);
             hud = new HUD(this);
             inv = new Inventory(this);
+            sel = new SelectionMenu(this);
             this.song = Content.Load<Song>("musicForGame");
             MediaPlayer.Play(song);
             MediaPlayer.Volume = 0.1f;
@@ -258,11 +267,14 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+
             if (!Paused)
             {
                 GraphicsDevice.Clear(Color.Black);
                 spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
                     samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+
+                
 
                 spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
                 CurrDungeon.Draw();
@@ -280,10 +292,13 @@ namespace Sprint03
             {
                 GraphicsDevice.Clear(Color.Black);
                 spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
-                spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
-                spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
                 inv.Draw();
                 spriteBatch.End();
+
+                spriteBatch.Begin();
+                sel.Draw();
+                spriteBatch.End();
+
                 base.Draw(gameTime);
             }
 
