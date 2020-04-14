@@ -1,13 +1,17 @@
-File being reviewed: BombEffect.cs
+Sprint Number: 4
+Author of code review: Grant Gabel
+File being reviewed: Pause.cs
 Author of file: John Nguyen
-Date: 3/6/2020
-Focus: Readability
+Date: 4/13/20
+Focus: Maintainability
 Time to review: 10 minutes
 
-Nice and short concrete class, very good readability. I like how white space is managed, makes my eyes happy. Even though I didn't know / 
-think about needing an IsCreator method the naming convention and parameters make it easy for me to tell at a glance what the method does
-and what it would be used for. 
+While the command on it's own is quite maintainable due to the minimilistic nature, because the fuctionality is spread far and
+wide throughout the whole game - with pause functionality appearing in the Update() method in the main game file as well as
+in the keyboard controller even though neither of these are referenced in the pause command. I believe this code is not very maintainable.
+One would have to track down every mention of the word pause in all the game files and figure out if they needed to change it if they
+wanted to change the nature of pause in any way. 
 
-I would like to see comments in the constructor mentioning why damage is initialized to zero, seems odd to me. especially since there are
-comments in the CreateEffect() method which are helpful but don't seem as necessary to me as explaining why certain values are initialized 
-to the values they are initialized to (like damage = 0). 
+I would like to see at least comments on where else / what else pause is affecting. Ideally I would love to see it so all the pause
+functionality is handled inside the command - calls and all (even if the calls are something like "monsters.pause()" or "link.pause()".
+But this would require a huge rework of the code as a whole and is probably not a good use of time at this point in the project. 
