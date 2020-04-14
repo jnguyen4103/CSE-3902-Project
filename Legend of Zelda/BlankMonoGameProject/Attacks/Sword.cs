@@ -38,7 +38,7 @@ namespace Sprint03
             Sprite.SpriteEffect = swordInfo.Item2;
             Sprite.Layer = 0.25f;
             Sprite.FPS = 12;
-            Game.Dungeon01.Attacks.Add(this);
+            Game.CurrDungeon.Attacks.Add(this);
         }
 
         public void OnHit()
@@ -76,23 +76,23 @@ namespace Sprint03
             {
                 case (States.Direction.Down):
                     Position = new Vector2(Creator.Position.X + 6, Creator.Position.Y + 12);
-                    name = "RedLightsaber";
+                    name = "SwordSwing";
                     sEffect = SpriteEffects.FlipVertically;
                     break;
 
                 case (States.Direction.Up):
                     Position = new Vector2(Creator.Position.X + 3, Creator.Position.Y - 12);
-                    name = "RedLightsaber";
+                    name = "SwordSwing";
                     break;
 
                 case (States.Direction.Left):
                     Position = new Vector2(Creator.Position.X - 12, Creator.Position.Y + 6);
-                    name = "RedLightsaberHorizontal";
+                    name = "SwordSwingHorizontal";
                     break;
 
                 case (States.Direction.Right):
                     Position = new Vector2(Creator.Position.X + 12, Creator.Position.Y + 6);
-                    name = "RedLightsaberHorizontal";
+                    name = "SwordSwingHorizontal";
                     sEffect = SpriteEffects.FlipHorizontally;
                     break;
 

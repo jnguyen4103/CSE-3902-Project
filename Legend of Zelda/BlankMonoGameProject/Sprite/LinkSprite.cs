@@ -23,6 +23,8 @@ namespace Sprint03
         public SpriteEffects SpriteEffect = SpriteEffects.None;
         protected float Rotation = 0;
         public float Layer = 0.6f;
+        private Texture2D YOUWON;
+        private Texture2D TriForcePepe;
         public Color Colour { get; set; } = Color.White;
 
         // Animation & Moving Info
@@ -46,6 +48,8 @@ namespace Sprint03
             TotalFrames = spriteInfo.Item3;
             FPS = 8;
             ChangeSpriteAnimation(name);
+            TriForcePepe = game.Content.Load<Texture2D>("WinningGame");
+            YOUWON = game.Content.Load<Texture2D>("YOU WON");
         }
 
         public void UpdatePosition(Vector2 position)
@@ -90,6 +94,8 @@ namespace Sprint03
             InitalAnimationY = spriteInfo.Item1.Y;
             AnimationWindow = new Rectangle(spriteInfo.Item1.X, spriteInfo.Item1.Y * CurrentFrame, (int)spriteInfo.Item2.X, (int)spriteInfo.Item2.Y);
             TotalFrames = spriteInfo.Item3;
+
+
         }
 
         public void Remove()

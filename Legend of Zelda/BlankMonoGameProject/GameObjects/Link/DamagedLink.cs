@@ -12,6 +12,7 @@ namespace Sprint03
 {
     public class DamagedLink: ILink
     {
+
         public Rectangle Hitbox { get; set; }
         public Vector2 Position { get; set; }
         public LinkSprite Sprite { get; set; }
@@ -40,6 +41,7 @@ namespace Sprint03
             Hitbox = decoratedLink.Hitbox;
             Position = decoratedLink.Position;
             Direction = decoratedLink.Direction;
+            Game.soundEffects[14].Play();
             FindVelocity();
 
         }
@@ -57,6 +59,12 @@ namespace Sprint03
         public void SecondaryAttack(string attackName)
         {
             // I dunno, maybe sometime later
+        }
+        public void PickupItem()
+        {
+            /*
+             * Cannot PickUPItem  
+            */
         }
 
         public void ChangeDirection(States.Direction direction)
@@ -98,9 +106,12 @@ namespace Sprint03
 
         public void Update()
         {
+     
             Hitbox = new Rectangle((int)Position.X + 2, (int)Position.Y + 4, (int)Sprite.Size.X - 4, (int)Sprite.Size.Y - 4);
             DamagedTimer++;
-            if(DamagedTimer <= StunnedDuration && !HitBoundary) { Knockback(); }
+            if(DamagedTimer <= StunnedDuration && !HitBoundary) { 
+                Knockback();
+            }
 
             if (DamagedTimer >= DamagedDuration) { RemoveDecorator(); }
         }

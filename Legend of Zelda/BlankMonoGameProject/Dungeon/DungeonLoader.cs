@@ -75,7 +75,7 @@ namespace Sprint03
         {
             Timer = TransitionDelay;
             Loading = false;
-            game.Dungeon01 = new Dungeon(game, game.DefaultDungeon);
+            game.CurrDungeon = new Dungeon(game, game.DefaultDungeon);
         }
 
         private static void Load(Dungeon level, Room room)

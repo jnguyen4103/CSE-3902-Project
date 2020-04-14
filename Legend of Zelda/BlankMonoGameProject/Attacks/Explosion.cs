@@ -30,6 +30,7 @@ namespace Sprint03
             Creator = creator;
             Position = position;
             Damage = 2;
+            Game.soundEffects[1].Play();
 
         }
 
@@ -38,7 +39,7 @@ namespace Sprint03
             Sprite = new StaticSprite(Game, "GreyExplosionEffect", Position, Game.EffectSpriteSheet, Game.spriteBatch);
             Sprite.FPS = 2;
             Sprite.Layer = 0.9f;
-            Game.Dungeon01.Attacks.Add(this);
+            Game.CurrDungeon.Attacks.Add(this);
         }
 
         public void OnHit()

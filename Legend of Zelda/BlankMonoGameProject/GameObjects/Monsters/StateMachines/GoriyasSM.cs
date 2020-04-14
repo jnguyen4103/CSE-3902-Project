@@ -78,6 +78,7 @@ namespace Sprint03
             {
                 IAttack boomerang = new Boomerang(Game, Self, Self.Direction);
                 boomerang.Attack();
+                Game.soundEffects[0].Play();
                 AttackCounter = 0;
             }
             else if (Timer >= AttackDelay)
@@ -93,6 +94,8 @@ namespace Sprint03
             Timer++;
             if (Timer == 1)
             {
+
+                Game.soundEffects[7].Play();
                 Self.Sprite.ChangeSpriteAnimation("Goriyas" + direction + "Damaged");
                 SetKnockbackVelocity();
             }
@@ -116,6 +119,7 @@ namespace Sprint03
             if (Timer == 1)
             {
                 Self.Sprite.ChangeSpriteAnimation("Death");
+                Game.soundEffects[6].Play();
                 Reset();
             }
             else if (Timer > DeathDelay)
@@ -123,6 +127,7 @@ namespace Sprint03
                 Game.IFactory.DropItem(Self.Position);
                 Timer = 0;
                 Self.Sprite.Remove();
+
             }
         }
 
