@@ -82,6 +82,10 @@ namespace Sprint03
                                 Timer = 0;
                                 keyMappings[k].Execute();
                             }
+                            if (k == Keys.D1 && Game.BombCounter > 0)
+                            {
+                                keyMappings[k].Execute();
+                            }
                             if (k == Keys.Enter && !InventoryTriggered)
                             {
                                 keyMappings[k].Execute();
