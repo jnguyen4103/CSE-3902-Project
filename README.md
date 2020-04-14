@@ -13,12 +13,18 @@ Q : Quit the game <br/>
 R : Reset the game<br/>
 P : Pause the game<br/>
 Enter : Enter and exit the inventory screen <br/>
-M : Select an item in the menu
+M : Select an item in the menu<br/>
 
 W : Move Link up<br/>
 A : Move Link left<br/>
 S : Move Link down<br/>
 D : Move Link right<br/>
+
+(Also in inventory screen:
+W : Move red rectangle up<br/>
+A : Move red rectangle left<br/>
+S : Move red rectangle down<br/>
+D : Move red rectangle right)<br/>
 
 Attacks:<br/>
 1 - Use Bomb<br/>
