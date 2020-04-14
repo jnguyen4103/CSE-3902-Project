@@ -1,0 +1,38 @@
+Author of Code Review: Youssef Moosa
+Date of Code Review:   4/13/19
+Sprint:                4
+Name of .cs file:      ISelectionMenu.cs
+Author of .cs file:    Xueying Liang
+
+Specific Comments on Code Quality:
+
+* Selection menu is a very specific thing which has a very
+  specific implementation that isn't very polymorphic.
+  Even if it were, it'd be better to switch to a new
+  menu context, so to speak. Making an interface for it 
+  adds indirection where it's not needed, which adds more 
+  boilerplate code that hurts rather than helps.
+
+  ** To change this means to drop the interface, and
+     have the commands related to it take the SelectionMenu
+     instead of ISelectionMenu.
+
+* The keyboard controller has gotten ugly enough to warrant the
+  fact that it might be better to leave keyboard controller to
+  update the game, but have a separate update mechanism in
+  the selection menu which takes action based on input solely
+  int there.
+
+  ** Yes, that means if we change the input scheme for the
+     game, we have to change it for here, too. However, I still
+     think it'd be less complicated to do even that, nonetheless.
+
+* A lot of things seem to depend on Game1. It's a shame
+  that so many classes, including this one, have their
+  grimy hands on it. I understand it was an early design
+  happenstance that's too late to change now, but for the
+  sake of noting disadvantageous circumstances, that's one of them.
+
+  ** I have no easy way to change this.
+ 
+
