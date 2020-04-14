@@ -5,13 +5,15 @@
 ### Our group members are: Xueying Liang, Nicholas Negrete, Grant Gabel, Youssef Moosa and John Nguyen.
 
 ## General Information
-The taskboard for Sprint4 can be found under the "Projects" tab
+The taskboard for Sprint #4 can be found under the "Projects" tab.
+
 ### Program Controls
 Keybindings<br/>
 Q : Quit the game <br/>
 R : Reset the game<br/>
 P : Pause the game<br/>
-Enter : Enter inventory screen <br/>
+Enter : Enter and exit the inventory screen <br/>
+M : Select an item in the menu
 
 W : Move Link up<br/>
 A : Move Link left<br/>
@@ -53,6 +55,7 @@ Darknut: Walks to Link's last location and charges Link when he gets close.<br/>
  <li>Inventory screen is not transitioned to - it simply appears. </li>
  <li>Inventory map does not show rooms explored - beleived to be a layering issue.</li>
  <li>Inventory screen command triggers and untriggers itself - sometimes when pressing the enter key to enter the inventory screen you will enter and exit the inventory screen in the same instance.</li>
+ <li>Item Selection portion did not work properly- believed to be a merge conflict with inventory screenthat intertwined between each other.</li>
 </ul>
 
 ### Additional Tools, Processes Used:
@@ -64,7 +67,9 @@ The HUD takes count of the keys, bombs and rupees Link collects as well as his h
 Not all of the HUD is implemented but some of it to allow use for the pickups.<br/>
  
 ## Tools Used:
-### For Burndown Chart:<br/>
+### For Burndown Chart:
+Used as the basis for Sprint reflection.<br/>
 
-### For FxCop Analyzers:<br/>
+### For FxCop Analyzers: 
+Used FxCop near the end of the Sprint #4 to check if there is any way to improve the code quality of the work.<br/>
 
