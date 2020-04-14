@@ -19,6 +19,9 @@ namespace Sprint03
         public int MaxHP;
         public int AttackDamage;
 
+        // Private copies of basic info about NPC used to unpause them
+        private float BaseSpeedRestore;
+
         public States.MonsterState State;
         public States.Direction Direction;
          
@@ -65,9 +68,17 @@ namespace Sprint03
             }
         }
 
-        public void Stop()
+        public void Pause()
         {
             State = States.MonsterState.Idle;
+            BaseSpeedRestore = BaseSpeed;
+            BaseSpeed = 0f;
+        }
+
+        public void Unpause()
+        {
+            State = States.MonsterState.Idle;
+            BaseSpeed = BaseSpeedRestore;
         }
 
         public void Update()

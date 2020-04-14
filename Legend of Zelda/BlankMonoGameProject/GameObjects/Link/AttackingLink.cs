@@ -23,7 +23,6 @@ namespace Sprint03
         public float BaseSpeed { get; set; } = 1f;
         public bool CanMove { get; set; } = false;
 
-
         private Game1 Game;
         private Link decoratedLink;
         private IAttack SwordAttack;
