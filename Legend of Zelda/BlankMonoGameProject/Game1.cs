@@ -25,7 +25,7 @@ namespace Sprint03
         public ItemFactory IFactory;
 
         // GameState
-        IGameState CurrentGameState;
+        public IGameState CurrentGameState;
 
         // Camera
         public Camera2D Camera;
@@ -255,10 +255,9 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-
+            keyboardController.Update();
             CurrentGameState.Update();
             base.Update(gameTime);
-            keyboardController.Update();
 
             //if (!Paused)
             //{
