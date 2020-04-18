@@ -1,4 +1,5 @@
 ﻿using BlankMonoGameProject.Commands.Camera;
+using BlankMonoGameProject.GameState;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
@@ -22,6 +23,9 @@ namespace Sprint03
         public SpriteBatch spriteBatch;
         public SpriteFactory SFactory;
         public ItemFactory IFactory;
+
+        // GameState
+        IGameState CurrentGameState;
 
         // Camera
         public Camera2D Camera;
@@ -135,10 +139,11 @@ namespace Sprint03
 
 
             vsbag = new VisualBag();
-            
+
+            //Game State
+            CurrentGameState = new GamePlayingState(this);
 
             // Game base
-
             base.Initialize();
         }
 
@@ -250,15 +255,20 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (!Paused)
-            {
-                Link.Update();
-                CurrDungeon.Update();
-                Camera.Update();
-                Detection.Update();
-                base.Update(gameTime);
-            }
+
+            CurrentGameState.Update();
+            base.Update(gameTime);
             keyboardController.Update();
+
+            //if (!Paused)
+            //{
+            //    Link.Update();
+            //    CurrDungeon.Update();
+            //    Camera.Update();
+            //    Detection.Update();
+            //    base.Update(gameTime);
+            //}
+            //keyboardController.Update();
         }
 
         /// <summary>
@@ -267,40 +277,47 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.Clear(Color.Black);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
 
-            if (!Paused)
-            {
-                GraphicsDevice.Clear(Color.Black);
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
-                    samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+            CurrentGameState.Draw();
+
+            spriteBatch.End();
+            base.Draw(gameTime);
+
+            //if (!Paused)
+            //{
+            //    GraphicsDevice.Clear(Color.Black);
+            //    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
+            //        samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
 
                 
 
-                spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
-                CurrDungeon.Draw();
-                Link.Draw();
-                spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
-                hud.Draw();
-                if (InInventory)
-                {
-                    inv.Draw();
-                }
-                spriteBatch.End();
-                base.Draw(gameTime);
-            }
-            if(InInventory)
-            {
-                GraphicsDevice.Clear(Color.Black);
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
-                inv.Draw();
-                spriteBatch.End();
+            //    spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
+            //    CurrDungeon.Draw();
+            //    Link.Draw();
+            //    spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
+            //    hud.Draw();
+            //    if (InInventory)
+            //    {
+            //        inv.Draw();
+            //    }
+            //    spriteBatch.End();
+            //    base.Draw(gameTime);
+            //}
+            //if(InInventory)
+            //{
+            //    GraphicsDevice.Clear(Color.Black);
+            //    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+            //    inv.Draw();
+            //    spriteBatch.End();
 
-                spriteBatch.Begin();
-                sel.Draw();
-                spriteBatch.End();
+            //    spriteBatch.Begin();
+            //    sel.Draw();
+            //    spriteBatch.End();
 
-                base.Draw(gameTime);
-            }
+            //    base.Draw(gameTime);
+            //}
 
         }
     }
