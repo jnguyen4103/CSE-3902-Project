@@ -19,6 +19,7 @@ W : Move Link up<br/>
 A : Move Link left<br/>
 S : Move Link down<br/>
 D : Move Link right<br/>
+Z : Link Swing Sword 
 
 (Also in inventory screen:
 W : Move red rectangle up<br/>
