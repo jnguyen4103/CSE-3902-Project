@@ -23,6 +23,7 @@ namespace BlankMonoGameProject.GameState
 
 		public void TransitionToState()
 		{
+			// TODO: add camera movement/transition
 			Game.GameEnumState = States.GameState.GameInventoryState;
 		}
 
