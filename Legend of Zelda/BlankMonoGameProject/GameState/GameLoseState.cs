@@ -21,6 +21,11 @@ namespace BlankMonoGameProject.GameState
 			Game = game;
 		}
 
+		public void TransitionToState()
+		{
+			Game.GameEnumState = States.GameState.GameLoseState;
+		}
+
 		public void Draw()
 		{
 			Game.spriteBatch.Draw(Game.DungeonMain, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);

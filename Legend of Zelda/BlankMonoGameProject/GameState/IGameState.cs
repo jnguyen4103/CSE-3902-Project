@@ -11,6 +11,7 @@ namespace BlankMonoGameProject.GameState
 {
 	public interface IGameState
 	{
+		void TransitionToState();
 		void Update();
 		void Draw();
 	}

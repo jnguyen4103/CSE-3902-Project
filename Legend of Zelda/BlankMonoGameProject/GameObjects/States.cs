@@ -44,5 +44,14 @@ namespace Sprint03
             Pickup
         }
 
+        public enum GameState
+        {
+            GamePlayingState,
+            GamePausedState,
+            GameInventoryState,
+            GameWinState,
+            GameLoseState
+        }
+
     }
 }

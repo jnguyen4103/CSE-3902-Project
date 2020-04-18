@@ -26,6 +26,7 @@ namespace Sprint03
 
         // GameState
         public IGameState CurrentGameState;
+        public States.GameState GameEnumState;                   // theoretically easier to have this than check "CurrentGameState.Equals(...)"
 
         // Camera
         public Camera2D Camera;
@@ -142,6 +143,7 @@ namespace Sprint03
 
             //Game State
             CurrentGameState = new GamePlayingState(this);
+            GameEnumState = States.GameState.GamePlayingState;
 
             // Game base
             base.Initialize();
