@@ -39,7 +39,7 @@
 
 
   <!-- Doors -->
-  -<LockedDoor Point="640 912" Side="Up" ConnectsTo="Room04"/>
+  -<EventDoor Point="640 912" Side="Up" ConnectsTo="Room04"/>
 
 
   <!-- Transitions -->

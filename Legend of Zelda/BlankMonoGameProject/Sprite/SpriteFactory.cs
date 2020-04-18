@@ -49,7 +49,7 @@ namespace Sprint03
             Sprites["AttackDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(192, 0, 16, 88), Spritesize, 4);
             Sprites["AttackRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(216, 0, 16, 88), Spritesize, 4);
             Sprites["AttackLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(240, 0, 16, 88), Spritesize, 4);
-            Sprites["Pickup"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(288, 0, 16, 40), Spritesize, 2);
+            Sprites["Pickup"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(288, 0, 16, 40), Spritesize, 4);
             Sprites["DeathSpin"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(312, 0, 16, 208), Spritesize, 9);
             Sprites["LinkDeath"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(336, 0, 16, 64), Spritesize, 4);
 

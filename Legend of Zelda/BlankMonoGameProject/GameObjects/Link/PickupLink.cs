@@ -29,7 +29,7 @@ namespace Sprint03
         private Link decoratedLink;
         private IAttack SwordAttack;
         private int Timer = 0;
-        private int PickupDuration = 4;
+        private int PickupDuration = 1;
         private Reset r;
         private int wonScreenDelay = 48;
         public PickupLink(Game1 game, Link link)
@@ -37,13 +37,15 @@ namespace Sprint03
             Game = game;
             decoratedLink = link;
             Sprite = decoratedLink.Sprite;
-            Sprite.FPS = 12;
+            Sprite.FPS = 4;
             Hitbox = decoratedLink.Hitbox;
             Position = decoratedLink.Position;
             Direction = decoratedLink.Direction;
             HP = decoratedLink.HP;
             MaxHP = decoratedLink.MaxHP;
             r = new Reset(Game);
+            Sprite.ChangeSpriteAnimation("Pickup");
+
             /*            TriForcePepe = game.Content.Load<Texture2D>("WinningGame");
                         YOUWON = game.Content.Load<Texture2D>("YOU WON");*/
             // Game.changeSong();
@@ -80,12 +82,7 @@ namespace Sprint03
         public void Update()
         {
             Timer++;
-            if (Timer >= PickupDuration)
-            {
-                Sprite.ChangeSpriteAnimation("Pickup");
-                Console.WriteLine("ope") ;
-                Sprite.FPS = 16;
-            }
+            
             if (Timer >= wonScreenDelay)
             {
 
