@@ -2,7 +2,7 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="528 736" />
+	-<Location Point="516 1048" />
 	
 	<!--Walls -->
 	-<Wall Point="528 736" Size="32 256" />
@@ -14,10 +14,27 @@
 
 
   <!--Blocks -->
-	-<Block Point="640 800" Size="32 48" />
+	-<Block Point="562 1095" Size="18 18" />
+  -<Block Point="562 1127" Size="18 18" />
+  -<Block Point="562 1159" Size="18 18" />
 
+  -<Block Point="594 1095" Size="18 18" />
+  -<Block Point="594 1127" Size="18 18" />
+  -<Block Point="594 1159" Size="18 18" />
+
+  -<Block Point="626 1095" Size="36 18" />
+  -<Block Point="626 1127" Size="36 18" />
+  -<Block Point="626 1159" Size="36 18" />
+
+  -<Block Point="674 1095" Size="18 18" />
+  -<Block Point="674 1127" Size="18 18" />
+  -<Block Point="674 1159" Size="18 18" />
+
+  -<Block Point="706 1095" Size="18 18" />
+  -<Block Point="706 1127" Size="18 18" />
+  -<Block Point="706 1159" Size="18 18" />
   
-	<!--Monsters -->
+  <!--Monsters -->
   -<Monster Name="Lynel" Spawn="608 800" />
   -<Monster Name="Stalfos" Spawn="688 816" />
   -<Monster Name="Zol" Spawn="656 784" />
@@ -29,7 +46,7 @@
 	<!-- Doors -->
   
   <!-- Transitions -->
-  -<ScreenTransition Point="648 920" Size="16 16" LeadsTo="Room02" />
+  -<ScreenTransition Point="643 1239" Size="16 16" LeadsTo="Room01" />
   -<ScreenTransition Point="648 712" Size="16 16" LeadsTo="Room06" />
 
 </RoomData>

@@ -2,7 +2,7 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="528 912" />
+	-<Location Point="2 1048" />
 	
 	<!--Walls -->
 	-<Wall Point="528 1056" Size="119 32" />

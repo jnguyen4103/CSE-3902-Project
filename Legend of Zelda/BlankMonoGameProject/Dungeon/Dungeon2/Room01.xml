@@ -2,34 +2,33 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="272 912" />
+	-<Location Point="516 1224" />
 	
 	<!--Walls -->
-	-<Wall Point="272 912" Size="256 32" />
-  -<Wall Point="272 912" Size="32 176" />
-  -<Wall Point="272 1056" Size="256 32" />
-  -<Wall Point="496 1008" Size="32 80" />
-  -<Wall Point="496 912" Size="32 80" />
-
-
+  -<Wall Point="516 1224" Size="32 80" />
+  -<Wall Point="516 1318" Size="32 75" />
+  -<Wall Point="738 1224" Size="32 150" />
+  -<Wall Point="547 1368" Size="256 32" />
+  -<Wall Point="524 1224" Size="110 32" />
+  -<Wall Point="653 1224" Size="100 32" />
 
 
   <!--Blocks -->
   
 	<!--Monsters -->
-  -<Monster Name="Keese" Spawn="352 976" />
-  -<Monster Name="Keese" Spawn="400 1008" />
-  -<Monster Name="Darknut" Spawn="416 960" />
+  -<Monster Name="Keese" Spawn="670 1293" />
+  -<Monster Name="Keese" Spawn="600 1300" />
+  -<Monster Name="Darknut" Spawn="700 1350" />
 
 
   <!-- Items -->
-  -<HiddenItem Name="Key" Spawn="436 1040" />
 
 
 	<!-- Doors -->
   
   <!-- Transitions -->
-  -<ScreenTransition Point="536 992" Size="16 16" LeadsTo="Room02" />
+  -<ScreenTransition Point="500 1310" Size="16 16" LeadsTo="Room0" />
+  -<ScreenTransition Point="643 1210" Size="16 16" LeadsTo="Room04" />
 
-  
+
 </RoomData>

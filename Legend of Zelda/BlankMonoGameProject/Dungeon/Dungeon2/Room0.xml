@@ -2,27 +2,39 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="256 1230" />
+	-<Location Point="258 1224" />
 	
 	<!--Walls -->
-	-<Wall Point="528 1088" Size="32 176" />
-  -<Wall Point="528 1088" Size="120 32" />
-  -<Wall Point="752 1088" Size="32 176" />
-	-<Wall Point="664 1088" Size="120 32" />
-	-<Wall Point="528 1232" Size="256 32" />
+	-<Wall Point="258 1224" Size="32 176" />
+  -<Wall Point="258 1224" Size="120 32" />
+  -<Wall Point="395 1224" Size="120 32" />
+  -<Wall Point="482 1224" Size="32 80" />
+  -<Wall Point="482 1318" Size="32 75" />
+  -<Wall Point="258 1370" Size="256 32" />
 
 
 	<!--Blocks -->
-  -<Block Point="608 1120" Size="16 16" />
-  -<Block Point="688 1120" Size="16 16" />
+  -<Block Point="306 1271" Size="16 16" />
+  -<Block Point="306 1303" Size="16 16" />
+  -<Block Point="306 1335" Size="16 16" />
+  
+  -<Block Point="354 1271" Size="16 16" />
+  -<Block Point="354 1303" Size="16 16" />
+  -<Block Point="354 1335" Size="16 16" />
+  
+  -<Block Point="402 1271" Size="16 16" />
+  -<Block Point="402 1303" Size="16 16" />
+  -<Block Point="402 1335" Size="16 16" />
+
+  -<Block Point="450 1271" Size="16 16" />
+  -<Block Point="450 1303" Size="16 16" />
+  -<Block Point="450 1335" Size="16 16" />
   
   <!-- Movable Blocks-->
-  -<MovableBlock Point="608 1152" Direction="Left" />
-
   <!--Monsters -->
 
   <!-- Items -->
-   -<Item Name="Triforce" Spawn="625 1155" />
+   -<Item Name="Bomb" Spawn="379 1322" />
 
 
   <!-- Traps -->
@@ -31,6 +43,7 @@
   <!-- Doors -->
   
   <!-- Transitions -->
-  -<ScreenTransition Point="648 1064" Size="16 16" LeadsTo="Room02" />
-  
+  -<ScreenTransition Point="379 1207" Size="16 16" LeadsTo="Room03" />
+  -<ScreenTransition Point="528 1310" Size="16 16" LeadsTo="Room01" />
+
 </RoomData>

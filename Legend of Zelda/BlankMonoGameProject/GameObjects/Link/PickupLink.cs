@@ -84,7 +84,7 @@ namespace Sprint03
             {
                 Sprite.ChangeSpriteAnimation("Pickup");
                 Console.WriteLine("ope") ;
-                Sprite.FPS = 4;
+                Sprite.FPS = 16;
             }
             if (Timer >= wonScreenDelay)
             {
@@ -96,6 +96,7 @@ namespace Sprint03
                 Game.Link.StateMachine.IdleState();
                 Game.CurrDungeon = new Dungeon(Game, "../../../../Dungeon/Dungeon2/Dungeon02.txt");
                 Game.DungeonMain = Game.Content.Load<Texture2D>("Dungeon2_Main");
+                Game.TileSpriteSheet = Game.Content.Load<Texture2D>("Dungeon2_Tiles");
                 Game.Camera.Transition(Game.CurrDungeon.Rooms["Room0"].Position);
                 Game.DungeonDoorFrames = Game.Content.Load<Texture2D>("Dungeon2_DoorFrames");
 
