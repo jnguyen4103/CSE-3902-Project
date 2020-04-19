@@ -42,9 +42,9 @@ namespace Sprint03
             else if (Timer >= SpawnDelay)
             {
                 Timer = 0;
-                Self.Sprite.ChangeSpriteAnimation("DodongoDown");
+                Self.Sprite.ChangeSpriteAnimation("DoDongoDown");
                 Reset();
-                Self.Sprite.FPS = 8;
+                Self.Sprite.FPS = 4;
                 Self.State = States.MonsterState.Idle;
             }
         }

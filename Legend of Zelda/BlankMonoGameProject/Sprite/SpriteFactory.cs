@@ -109,13 +109,13 @@ namespace Sprint03
             Sprites["LynelLeftDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 256, 16, 40), defaultMonsterSize, 2);
 
 
-            Sprites["DoDongoDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(103, 208, 16, 40), defaultMonsterSize, 2);
-            Sprites["DoDongoUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 208, 16, 40), defaultMonsterSize, 2);
+            Sprites["DoDongoDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(103, 208, 16, 40), defaultMonsterSize, 4);
+            Sprites["DoDongoUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 208, 16, 40), defaultMonsterSize, 4);
             Sprites["DoDongoRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(150, 208, 16, 40), largeMonsterSize, 2);
             Sprites["DoDongoLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(187, 208, 16, 40), largeMonsterSize, 2);
 
-            Sprites["DoDongoDownDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(102, 256, 16, 40), defaultMonsterSize, 2);
-            Sprites["DoDongoUpDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(127, 256, 16, 40), defaultMonsterSize, 2);
+            Sprites["DoDongoDownDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(103, 304, 16, 40), defaultMonsterSize, 2);
+            Sprites["DoDongoUpDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(127, 304, 16, 40), defaultMonsterSize, 2);
             Sprites["DoDongoRightDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(151, 256, 16, 40), dodongoDamage, 2);
             Sprites["DoDongoLeftDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(191, 256, 16, 40), dodongoDamage, 2);
 
