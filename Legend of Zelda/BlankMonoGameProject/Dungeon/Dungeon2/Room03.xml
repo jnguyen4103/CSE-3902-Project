@@ -24,7 +24,7 @@
   -<Block Point="434 1159" Size="18 18" />
 
   <!--Monsters -->
-  -<Monster Name="Stalfos" Spawn="371 1129" />
+  -<Monster Name="Rope" Spawn="371 1129" />
 
   <!-- Items -->
 

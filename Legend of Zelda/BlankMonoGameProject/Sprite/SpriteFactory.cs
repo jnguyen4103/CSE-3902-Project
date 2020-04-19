@@ -19,6 +19,8 @@ namespace Sprint03
 
         // Most of the Sprites are size 16 by 16, new vectors will be made for special cases
         private readonly Vector2 defaultMonsterSize = new Vector2(16, 16);
+        private readonly Vector2 largeMonsterSize = new Vector2(28, 16);
+        private readonly Vector2 dodongoDamage = new Vector2(32,16);
         private readonly Vector2 offSet = new Vector2(0, 4);
 
         // Most effects and items are 8 by 16 size
@@ -105,6 +107,25 @@ namespace Sprint03
             Sprites["LynelUpDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 256, 16, 40), defaultMonsterSize, 2);
             Sprites["LynelRightDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 256, 16, 40), defaultMonsterSize, 2);
             Sprites["LynelLeftDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(72, 256, 16, 40), defaultMonsterSize, 2);
+
+
+            Sprites["DoDongoDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(103, 208, 16, 40), defaultMonsterSize, 2);
+            Sprites["DoDongoUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 208, 16, 40), defaultMonsterSize, 2);
+            Sprites["DoDongoRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(150, 208, 16, 40), largeMonsterSize, 2);
+            Sprites["DoDongoLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(187, 208, 16, 40), largeMonsterSize, 2);
+
+            Sprites["DoDongoDownDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(102, 256, 16, 40), defaultMonsterSize, 2);
+            Sprites["DoDongoUpDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(127, 256, 16, 40), defaultMonsterSize, 2);
+            Sprites["DoDongoRightDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(151, 256, 16, 40), dodongoDamage, 2);
+            Sprites["DoDongoLeftDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(191, 256, 16, 40), dodongoDamage, 2);
+
+
+            Sprites["RopeRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 304, 16, 40), defaultMonsterSize, 2);
+            Sprites["RopeLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(24, 305, 16, 40), defaultMonsterSize, 2);
+            Sprites["RopeLeftDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(23, 350, 16, 40), defaultMonsterSize, 2);
+            Sprites["RopeRightDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 349, 16, 40), defaultMonsterSize, 2);
+
+
 
             Sprites["Gibo"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 112, 16, 40), defaultMonsterSize, 2);
 

@@ -25,6 +25,9 @@ namespace Sprint03
             //Monsters["BladeTrap"] = SpawnBladeTrap;
             Monsters["Aquamentus"] = SpawnAquamentus;
             Monsters["Zol"] = SpawnZol;
+            Monsters["DoDongo"] = SpawnDoDongo;
+            Monsters["Rope"] = SpawnRope;
+
 
 
 
@@ -177,27 +180,40 @@ namespace Sprint03
 
             return Zol;
         }
+        private Monster SpawnRope(Vector2 spawn)
+        {
+            // Creating Sprite for Lynel
+            MonsterSprite RopeSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, Game.spriteBatch);
+            RopeSprite.FPS = 8;
 
-        /*
-                private Monster SpawnBladeTrap(Vector2 spawn)
-                {
-                    // Creating Sprite for Darknut
-                    MonsterSprite BladeTrapSprite = new MonsterSprite(Game, "BladeTrap", Game.MonsterSpriteSheet, spawn, Game.spriteBatch);
-                    BladeTrapSprite.BaseSpeed = 0f;
-                    BladeTrapSprite.IgnoresBoundaries = true;
+            // Setting up Monster object for Stalfos to hold stats
+            Monster Rope = new Monster(RopeSprite, spawn, "RopeRight", Game);
+            Rope.BaseSpeed = 0.5f;
+            Rope.HP = 4;
+            Rope.MaxHP = 4;
+            Rope.AttackDamage = 1;
+            Rope.StateMachine = new RopeSM(Rope, Game);
 
-                    // Setting up Monster object for Stalfos to hold stats
-                    Monster BladeTrap = new Monster(BladeTrapSprite, "BladeTrap", Game);
-                    BladeTrap.attackDamage = 2;
-                    BladeTrap.StateMachine = new BladeTrapSM(BladeTrap, Game);
+            // Spawning dat boii
+            return Rope;
+        }
+        private Monster SpawnDoDongo(Vector2 spawn)
+        {
+            // Creating Sprite for Lynel
+            MonsterSprite DodongoSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, Game.spriteBatch);
+            DodongoSprite.FPS = 4;
 
-                    // Spawning dat boii
-                    return BladeTrap;
-                }
+            // Setting up Monster object for Stalfos to hold stats
+            Monster Dodongo = new Monster(DodongoSprite, spawn, "DoDongoRight", Game);
+            Dodongo.BaseSpeed = 0.5f;
+            Dodongo.HP = 4;
+            Dodongo.MaxHP = 4;
+            Dodongo.AttackDamage = 1;
+            Dodongo.StateMachine = new DodongoSM(Dodongo, Game);
 
+            // Spawning dat boii
+            return Dodongo;
+        }
 
-
-
-            */
     }
 }
