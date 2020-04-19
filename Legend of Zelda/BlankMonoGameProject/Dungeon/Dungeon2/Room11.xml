@@ -5,41 +5,39 @@
 	-<Location Point="770 520" />
 	
 	<!--Walls -->
-  -<Wall Point="784 384" Size="256 32" />
-  -<Wall Point="784 384" Size="32 80" />
-  -<Wall Point="784 480" Size="32 80" />
-  -<Wall Point="1008 384" Size="32 80" />
-  -<Wall Point="1008 480" Size="32 80" />
-  -<Wall Point="784 528" Size="120 32" />
-  -<Wall Point="920 528" Size="120 32" />
+  -<Wall Point="770 520" Size="120 32" />
+  -<Wall Point="770 520" Size="32 80" />
+  
+  -<Wall Point="770 616" Size="32 80" />
+  -<Wall Point="770 663" Size="121 80" />
+  
+  -<Wall Point="907 664" Size="120 32" />
+  -<Wall Point="994 520" Size="32 259" />
+  
+  -<Wall Point="907 520" Size="120 34" />
 
 
   <!--Blocks -->
-  -<Block Point="848 448" Size="16 16" />
-  -<Block Point="848 480" Size="16 16" />
-  -<Block Point="960 448" Size="16 16" />
-  -<Block Point="960 480" Size="16 16" />
+
 
   <!-- Movable Blocks-->
 
   <!--Monsters -->
-  -<Monster Name="Goriyas" Spawn="928 448" />
-  -<Monster Name="Goriyas" Spawn="880 496" />
-  -<Monster Name="Goriyas" Spawn="944 496" />
-  -<Monster Name="Stalfos" Spawn="912 464" />
+
+  -<Monster Name="Stalfos" Spawn="878 595" />
 
 
   <!-- Items -->
-  -<HiddenItem Name="Boomerang" Spawn="932 436" />
+  -<HiddenItem Name="Bomb" Spawn="878 595" />
   
 	<!-- Doors -->
-  -<LockedDoor Point="784 456" Side="Left" ConnectsTo="Room10"/>
-  -<DestroyableWall Point="896 528" Side="Down" ConnectsTo="Room07"/>
+  -<DestroyableWall Point="891 664" Side="Down" ConnectsTo="Room09"/>
+  -<DestroyableWall Point="881 521" Side="Up" ConnectsTo="Room13"/>
 
 
   <!-- Transitions -->
-  -<ScreenTransition Point="760 464" Size="16 16" LeadsTo="Room10" />
-  -<ScreenTransition Point="904 568" Size="16 16" LeadsTo="Room07" />
-  -<ScreenTransition Point="1048 464" Size="16 16" LeadsTo="Room12" />
+  -<ScreenTransition Point="755 608" Size="16 16" LeadsTo="Room10" />
+  -<ScreenTransition Point="898 710" Size="16 16" LeadsTo="Room09" />
+  -<ScreenTransition Point="898 504" Size="16 16" LeadsTo="Room13" />
 
 </RoomData>

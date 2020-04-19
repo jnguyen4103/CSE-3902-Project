@@ -2,49 +2,42 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="514 514" />
+	-<Location Point="514 518" />
 	
 	<!--Walls -->
-  -<Wall Point="528 384" Size="120 32" />
-  -<Wall Point="664 384" Size="120 32" />
-  -<Wall Point="528 384" Size="32 80" />
-  -<Wall Point="528 480" Size="32 80" />
-  -<Wall Point="752 384" Size="32 80" />
-  -<Wall Point="752 480" Size="32 80" />
-  -<Wall Point="528 528" Size="120 32" />
-  -<Wall Point="664 528" Size="120 32" />
+  -<Wall Point="514 518" Size="34 256" />
+  -<Wall Point="514 664" Size="120 32" />
+  
+  -<Wall Point="651 664" Size="120 32" />
+  -<Wall Point="739 616" Size="32 120" />
+  
+  -<Wall Point="738 518" Size="32 82" />
+  -<Wall Point="651 518" Size="90 32" />
+  
+  -<Wall Point="514 518" Size="120 32" />
 
 
   <!--Blocks -->
-  -<Block Point="576 432" Size="32 16" />
-  -<Block Point="704 432" Size="32 16" />
-  -<Block Point="640 464" Size="32 16" />
-  -<Block Point="576 496" Size="32 16" />
-  -<Block Point="704 496" Size="32 16" />
+
 
   <!-- Movable Blocks-->
 
   <!--Monsters -->
-  -<Monster Name="Gel" Spawn="656 448" />
-  -<Monster Name="Gel" Spawn="608 496" />
-  -<Monster Name="Gel" Spawn="688 480" />
-  -<Monster Name="Lynel" Spawn="656 416" />
-  -<Monster Name="Darknut" Spawn="704 512" />
+
+  -<Monster Name="Gel" Spawn="626 603" />
 
 
   <!-- Items -->
-  -<Item Name="Map" Spawn="724 464" />
+  -<Item Name="Heart" Spawn="626 615" />
 
 
 	<!-- Doors -->
-  -<DestroyableWall Point="640 528" Side="Down" ConnectsTo="Room06"/>
-  -<LockedDoor Point="752 456" Side="Right" ConnectsTo="Room11"/>
 
 
   <!-- Transitions -->
-  -<ScreenTransition Point="504 464" Size="16 16" LeadsTo="Room09" />
-  -<ScreenTransition Point="648 360" Size="16 16" LeadsTo="Room13" />
-  -<ScreenTransition Point="792 464" Size="16 16" LeadsTo="Room11" />
-  -<ScreenTransition Point="648 568" Size="16 16" LeadsTo="Room06" />
+  -<ScreenTransition Point="642 711" Size="16 16" LeadsTo="Room08" />
+  -<ScreenTransition Point="785 609" Size="16 16" LeadsTo="Room11" />
+
+  -<ScreenTransition Point="646 504" Size="16 16" LeadsTo="Room12" />
 
 </RoomData>

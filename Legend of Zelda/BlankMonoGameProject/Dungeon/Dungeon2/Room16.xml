@@ -2,35 +2,25 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="272 32" />
+	-<Location Point="516 0" />
 	
 	<!--Walls -->
-  -<Wall Point="272 32" Size="256 32" />
-  -<Wall Point="32 176" Size="256 32" />
-  -<Wall Point="272 176" Size="256 32" />
-  -<Wall Point="496 32" Size="32 80" />
-  -<Wall Point="496 128" Size="32 80" />
+  -<Wall Point="516 0" Size="256 30" />
+  -<Wall Point="516 0" Size="32 72" />
+  -<Wall Point="516 88" Size="32 100" />
+  -<Wall Point="516 136" Size="121 80" />
+  -<Wall Point="738 0" Size="32 256" />
 
 
   <!--Blocks -->
-  -<Block Point="400 80" Size="16 16" />
-  -<Block Point="384 96" Size="16 16" />
-  -<Block Point="416 96" Size="16 16" />
-  -<Block Point="432 112" Size="16 16" />
-  -<Block Point="384 128" Size="16 16" />
-  -<Block Point="416 128" Size="16 16" />
-  -<Block Point="400 144" Size="16 16" />
+
 
 
   <!-- Movable Blocks-->
-  -<MovableBlock Point="368 112" Direction="Up" />
 
 
   <!--Monsters -->
-  -<BladeTrap Spawn="304 64" />
-  -<BladeTrap Spawn="480 64" />
-  -<BladeTrap Spawn="304 160" />
-  -<BladeTrap Spawn="480 160" />
+
 
   <!-- Items -->
 
@@ -39,6 +29,7 @@
 	<!-- Doors -->
   
   <!-- Transitions -->
-  -<ScreenTransition Point="536 112" Size="16 16" LeadsTo="Room17" />
+  -<ScreenTransition Point="499 80" Size="16 16" LeadsTo="Room17" />
+  -<ScreenTransition Point="642 183" Size="16 16" LeadsTo="Room14" />
 
 </RoomData>
