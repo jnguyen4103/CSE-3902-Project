@@ -2,39 +2,40 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="272 560" />
+	-<Location Point="770 1048" />
 	
 	<!--Walls -->
-	-<Wall Point="272 560" Size="32 256" />
-  -<Wall Point="272 704" Size="256 32" />
-  -<Wall Point="496 656" Size="32 80" />
-  -<Wall Point="496 560" Size="32 80" />
-  -<Wall Point="408 560" Size="120 32" />
-  -<Wall Point="272 560" Size="120 32" />
+
+  -<Wall Point="770 1048" Size="121 32" />
+  -<Wall Point="770 1048" Size="32 80" />
+  -<Wall Point="770 1145" Size="32 80" />
+  -<Wall Point="770 1190" Size="256 80" />
+  -<Wall Point="992 1048" Size="80 256" />
+  -<Wall Point="907 1064" Size="256 16" />
 
 
   <!--Blocks -->
-	-<Block Point="384 624" Size="32 48" />
+	-<Block Point="882 1111" Size="36 50" />
+  
 
   
 	<!--Monsters -->
-  -<Monster Name="Keese" Spawn="352 624" />
-  -<Monster Name="Keese" Spawn="416 656" />
-  -<Monster Name="Keese" Spawn="400 608" />
-  -<Monster Name="Keese" Spawn="448 672" />
+
   -<Monster Name="Zol" Spawn="336 640" />
 
 
 
   <!-- Items -->
+  -<Item Name="Bomb" Spawn = "834 1127"/>
 
 
 
-	<!-- Doors -->
-  -<ClosedDoor Point="496 632" Side="Right" ConnectsTo="Room06"/>
-
+  <!-- Doors -->
+  -<DestroyableWall Point="883 1049" Side="Up" ConnectsTo="Room07"/>
+  
   <!-- Transitions -->
-  -<ScreenTransition Point="536 640" Size="16 16" LeadsTo="Room06" />
-  -<ScreenTransition Point="392 536" Size="16 16" LeadsTo="Room09" />
+  -<ScreenTransition Point="735 1135" Size="16 16" LeadsTo="Room04" />
+  -<ScreenTransition Point="898 1035" Size="16 16" LeadsTo="Room07" />
+
 
 </RoomData>

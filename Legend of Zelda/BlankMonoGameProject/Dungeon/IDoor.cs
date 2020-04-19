@@ -129,6 +129,7 @@ namespace Sprint03
 
         private void CreateSprite()
         {
+
             Sprite = new StaticSprite(Game, "ClosedDoor" + Side, Position, Game.TileSpriteSheet, Game.spriteBatch);
             Sprite.Colour = Color.TransparentBlack;
             Sprite.Layer = 0.5f;

@@ -70,7 +70,7 @@ namespace Sprint03
             IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = (int)screenDimensions.X;
             graphics.PreferredBackBufferHeight = (int)screenDimensions.Y;
-
+           
 
         }
 
@@ -194,6 +194,18 @@ namespace Sprint03
             MediaPlayer.Volume = 0.8f;
             MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
+        }
+
+        public void changeDungeon2()
+        {
+            LinkSpawn = new Vector2(375, 1358);
+            Link.StateMachine.IdleState();
+            DungeonMain = Content.Load<Texture2D>("Dungeon2_Main");
+            TileSpriteSheet = Content.Load<Texture2D>("Dungeon2_Tiles");
+            Camera.Transition(CurrDungeon.Rooms["Room0"].Position);
+            DungeonDoorFrames = Content.Load<Texture2D>("Dungeon2_DoorFrames");
+            CurrDungeon = new Dungeon(this, "../../../../Dungeon/Dungeon2/Dungeon02.txt");
+
         }
 
         /// <summary>

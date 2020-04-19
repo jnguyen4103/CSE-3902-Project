@@ -24,17 +24,17 @@
   -<Block Point="434 1159" Size="18 18" />
 
   <!--Monsters -->
-  -<Monster Name="Stalfos" Spawn="896 976" />
-  -<Monster Name="Stalfos" Spawn="960 960" />
-  -<Monster Name="Stalfos" Spawn="912 1008" />
-  -<Monster Name="Zol" Spawn="992 992" />
+  -<Monster Name="Stalfos" Spawn="371 1129" />
 
   <!-- Items -->
 
   <!-- Doors -->
-  
+  -<ClosedDoor Point="257 1119" Side="Left" ConnectsTo="Room02"/>
+
+
   <!-- Transitions -->
   -<ScreenTransition Point="243 1135" Size="16 16" LeadsTo="Room02" />
+  -<ScreenTransition Point="528 1135" Size="16 16" LeadsTo="Room04" />
 
-  
+
 </RoomData>

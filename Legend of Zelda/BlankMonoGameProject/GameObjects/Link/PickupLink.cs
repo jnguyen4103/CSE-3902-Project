@@ -89,14 +89,7 @@ namespace Sprint03
                 //    Game.hud.HideHud();
                 r.Execute();
                 RemoveDecorator();
-                Game.LinkSpawn = new Vector2(375, 1358);
-                Game.Link.StateMachine.IdleState();
-                Game.CurrDungeon = new Dungeon(Game, "../../../../Dungeon/Dungeon2/Dungeon02.txt");
-                Game.DungeonMain = Game.Content.Load<Texture2D>("Dungeon2_Main");
-                Game.TileSpriteSheet = Game.Content.Load<Texture2D>("Dungeon2_Tiles");
-                Game.Camera.Transition(Game.CurrDungeon.Rooms["Room0"].Position);
-                Game.DungeonDoorFrames = Game.Content.Load<Texture2D>("Dungeon2_DoorFrames");
-
+                Game.changeDungeon2();
             }
 
         }

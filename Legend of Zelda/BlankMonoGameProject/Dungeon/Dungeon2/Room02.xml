@@ -21,11 +21,10 @@
 
 
 	<!-- Doors -->
-  -<LockedDoor Point="226 1127" Side="Right" ConnectsTo="Room03"/>
 
 
   <!-- Transitions -->
 
-  -<ScreenTransition Point="792 992" Size="16 16" LeadsTo="Room03" />
+  -<ScreenTransition Point="270 1134" Size="16 16" LeadsTo="Room03" />
   
 </RoomData>

@@ -2,40 +2,42 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="784 560" />
+	-<Location Point="770 870" />
 	
 	<!--Walls -->
-  -<Wall Point="784 560" Size="120 32" />
-  -<Wall Point="920 560" Size="120 32" />
-  -<Wall Point="784 560" Size="32 80" />
-  -<Wall Point="784 656" Size="32 80" />
-  -<Wall Point="1008 560" Size="32 176" />
-  -<Wall Point="784 704" Size="256 32" />
+  -<Wall Point="770 874" Size="34 80" />
+  -<Wall Point="770 1015" Size="121 36" />
+  -<Wall Point="770 970" Size="34 80" />
+  
+  -<Wall Point="908 1017" Size="256 80" />
+  -<Wall Point="995 870" Size="32 176" />
+  -<Wall Point="770 870" Size="121 36" />
+  -<Wall Point="909 870" Size="121 36" />
+
 
 
   <!--Blocks -->
-	-<Block Point="848 608" Size="16 16" />
-  -<Block Point="848 672" Size="16 16" />
-  -<Block Point="960 608" Size="16 16" />
-  -<Block Point="960 672" Size="16 16" />
+	-<Block Point="834 919" Size="18 18" />
+  -<Block Point="834 983" Size="18 18" />
+  -<Block Point="946 983" Size="18 18" />
+  -<Block Point="946 919" Size="18 18" />
 
   <!--Monsters -->
-  -<Monster Name="Lynel" Spawn="912 608" />
-  -<Monster Name="Lynel" Spawn="928 656" />
-  -<Monster Name="Keese" Spawn="864 656" />
-  -<Monster Name="Keese" Spawn="848 608" />
-  -<Monster Name="Keese" Spawn="912 640" />
+
 
   <!-- Items -->
-  -<Item Name="Compass" Spawn="976 640" />
+  -<Item Name="Bomb" Spawn="898 952" />
 
 
 	<!-- Doors -->
-  -<DestroyableWall Point="896 560" Side="Up" ConnectsTo="Room11"/>
+  -<DestroyableWall Point="883 1016" Side="Down" ConnectsTo="Room05"/>
+  -<DestroyableWall Point="883 873" Side="Up" ConnectsTo="Room09"/>
+
 
   <!-- Transitions -->
-  -<ScreenTransition Point="760 640" Size="16 16" LeadsTo="Room06" />
-  -<ScreenTransition Point="904 536" Size="16 16" LeadsTo="Room11" />
+  -<ScreenTransition Point="755 960" Size="16 16" LeadsTo="Room06" />
+  -<ScreenTransition Point="898 1062" Size="16 16" LeadsTo="Room05" />
+  -<ScreenTransition Point="897 856" Size="16 16" LeadsTo="Room09" />
 
 
 </RoomData>
