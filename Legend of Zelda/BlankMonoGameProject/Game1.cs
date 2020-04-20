@@ -59,6 +59,7 @@ namespace Sprint03
         public Texture2D TileSpriteSheet;
         public Texture2D DungeonMain;
         public Texture2D DungeonDoorFrames;
+        public Texture2D InventoryScreen;
 
         // Song
         public Song song;
@@ -182,6 +183,7 @@ namespace Sprint03
             ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
             TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
+
 
             // Dungeon
             DungeonMain = Content.Load<Texture2D>("Dungeon1_Main");

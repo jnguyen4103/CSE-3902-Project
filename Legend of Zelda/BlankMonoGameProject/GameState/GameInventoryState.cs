@@ -55,6 +55,8 @@ namespace BlankMonoGameProject.GameState
 			//Game.CurrDungeon.Draw();
 			//Game.Link.Draw();
 			Game.spriteBatch.Draw(Game.DungeonDoorFrames, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
+
+
 			//Game.hud.Draw();
 			Game.inv.Draw();
 		}
