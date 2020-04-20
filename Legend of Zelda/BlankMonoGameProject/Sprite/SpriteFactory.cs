@@ -22,6 +22,7 @@ namespace Sprint03
         private readonly Vector2 largeMonsterSize = new Vector2(28, 16);
         private readonly Vector2 dodongoDamage = new Vector2(32,16);
         private readonly Vector2 offSet = new Vector2(0, 4);
+        private readonly Vector2 skullSize = new Vector2(12,12);
 
         // Most effects and items are 8 by 16 size
         private readonly Vector2 defaultItemSize = new Vector2(8, 16);
@@ -163,6 +164,7 @@ namespace Sprint03
             Sprites["OldMan"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(269, 0, 16, 16), defaultMonsterSize+offSet, 1);
             Sprites["OldManFire"]= new Tuple<Rectangle, Vector2, int>(new Rectangle(293, 0, 16, 16), defaultMonsterSize + offSet , 2);
             Sprites["Merchant"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(269, 24, 16, 16), defaultMonsterSize+offSet, 1);
+            Sprites["Skull"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 64, 16, 16), skullSize, 2);
 
             // Initializing all Effects Sprites into the dictionary
             Sprites["Sword"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 16), defaultItemSize, 1);

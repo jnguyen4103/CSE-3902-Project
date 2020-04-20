@@ -29,6 +29,8 @@ namespace Sprint03
         public int RupeeCounter = 0;
         public int KeyCounter = 0;
         public int BombCounter = 0;
+        public int TriforceCounter = 0;
+        public int SkullCounter = 0;
 
         // Sprite Sheets
         public Texture2D LinkSpriteSheet;
@@ -48,6 +50,8 @@ namespace Sprint03
         public Dungeon CurrDungeon;
         public string DefaultDungeon = "../../../../Dungeon/Dungeon1/Dungeon01.txt";
         public CollisionDetection Detection;
+
+
         
         private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q };
         public ICommand[] keyboardCommands = new ICommand[12];
@@ -108,7 +112,7 @@ namespace Sprint03
             base.Initialize();
         }
 
-         void MediaPlayer_MediaStateChanged(object sender, System.
+        public    void MediaPlayer_MediaStateChanged(object sender, System.
                                         EventArgs e)
         {
             // 0.0f is silent, 1.0f is full volume
@@ -187,26 +191,7 @@ namespace Sprint03
             CurrDungeon = new Dungeon(this, DefaultDungeon);
         }
 
-        public void changeSong()
-        {
-            this.song = Content.Load<Song>("winningGameSong");
-            MediaPlayer.Play(song);
-            MediaPlayer.Volume = 0.8f;
-            MediaPlayer.IsRepeating = true;
-            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
-        }
 
-        public void changeDungeon2()
-        {
-            LinkSpawn = new Vector2(375, 1358);
-            Link.StateMachine.IdleState();
-            DungeonMain = Content.Load<Texture2D>("Dungeon2_Main");
-            TileSpriteSheet = Content.Load<Texture2D>("Dungeon2_Tiles");
-            Camera.Transition(CurrDungeon.Rooms["Room0"].Position);
-            DungeonDoorFrames = Content.Load<Texture2D>("Dungeon2_DoorFrames");
-            CurrDungeon = new Dungeon(this, "../../../../Dungeon/Dungeon2/Dungeon02.txt");
-
-        }
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload

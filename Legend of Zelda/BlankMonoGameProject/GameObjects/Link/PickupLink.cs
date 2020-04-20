@@ -23,6 +23,7 @@ namespace Sprint03
         public bool CanMove { get; set; } = false;
         private Texture2D YOUWON;
         private Texture2D TriForcePepe;
+        private GameChanger gameChanger;
         
 
         private Game1 Game;
@@ -44,6 +45,7 @@ namespace Sprint03
             HP = decoratedLink.HP;
             MaxHP = decoratedLink.MaxHP;
             r = new Reset(Game);
+            gameChanger = new GameChanger(Game);
             Sprite.ChangeSpriteAnimation("Pickup");
 
             /*            TriForcePepe = game.Content.Load<Texture2D>("WinningGame");
@@ -82,14 +84,23 @@ namespace Sprint03
         public void Update()
         {
             Timer++;
+            Console.WriteLine(Game.TriforceCounter);
             
-            if (Timer >= wonScreenDelay)
+            if (Timer >= wonScreenDelay && (Game.TriforceCounter %48 <2 && Game.SkullCounter ==0))
             {
 
                 //    Game.hud.HideHud();
                 r.Execute();
                 RemoveDecorator();
-                Game.changeDungeon2();
+                gameChanger.changeSong2();
+                gameChanger.changeDungeon2();
+            }
+            else if(Timer >= wonScreenDelay&& Game.SkullCounter %48!=1)
+            {
+                gameChanger.changeSong3();
+                r.Execute();
+                RemoveDecorator();
+                gameChanger.changeDungeon2();
             }
 
         }

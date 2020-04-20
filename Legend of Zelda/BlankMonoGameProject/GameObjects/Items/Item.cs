@@ -53,6 +53,9 @@ namespace Sprint03
                 case "OldManFire":
                     CollisionHandler.LinkHitBlock(Game.Link, new Rectangle((int)Position.X, (int)Position.Y, (int)Sprite.Size.X, (int)Sprite.Size.Y));
                     break;
+                case "Skull":
+                    Sprite.UpdatePosition(new Vector2(Game.Link.Position.X, Game.Link.Position.Y - 16));
+                    break;
                 default:
                     Game.soundEffects[10].Play();
                     Sprite.Remove();

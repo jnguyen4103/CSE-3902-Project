@@ -49,6 +49,7 @@
     <Compile Include="Attacks\IAttack.cs" />
     <Compile Include="Attacks\Sword.cs" />
     <Compile Include="Commands\Quit.cs" />
+    <Compile Include="GameObjects\GameChanger.cs" />
     <Compile Include="GameObjects\Items\Fairy.cs" />
     <Compile Include="GameObjects\Items\IItem.cs" />
     <Compile Include="GameObjects\Link\DeadLink.cs" />
