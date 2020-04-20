@@ -15,6 +15,8 @@ namespace BlankMonoGameProject.GameState
 	class GamePlayingState : IGameState
 	{
 		Game1 Game;
+		bool IGameState.isTransitioning { get => isTransition; }
+		private bool isTransition = false;
 
 		public GamePlayingState(Game1 game)
 		{

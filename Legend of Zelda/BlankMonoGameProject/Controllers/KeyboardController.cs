@@ -14,7 +14,6 @@ namespace Sprint03
         IDictionary<Keys, ICommand> keyMappings;
         private bool AttackTriggered = false;
         private bool PauseTriggered = false;
-        private bool InventoryTriggered = false;
         private int Timer = 60;
         private int SecondaryAttackDelay = 60;
 
@@ -40,10 +39,10 @@ namespace Sprint03
 
             if (keyState.IsKeyUp(Keys.Z)) { AttackTriggered = false; }
             if (keyState.IsKeyUp(Keys.P) ) { PauseTriggered = false; }
-            if (keyState.IsKeyUp(Keys.Enter) && !Game.InInventory) { InventoryTriggered = false; }
             if (Timer < SecondaryAttackDelay) { Timer++; }
 
-            if (!Game.Paused && !Game.InInventory && !InventoryTriggered)
+            // keep as one if statement with else if statements so don't have to worry about a variable being set and un set in one call
+            if (Game.GameEnumState.Equals(States.GameState.GamePlayingState))
             {
                 foreach (Keys k in pressed)
                 {
@@ -86,20 +85,23 @@ namespace Sprint03
                             {
                                 keyMappings[k].Execute();
                             }
-                            if (k == Keys.Enter && !InventoryTriggered)
+                            // TODO: if problems with going in and out of inventory possible add extra condition here
+                            if (k == Keys.Enter)
                             {
-                                keyMappings[k].Execute();
-                                InventoryTriggered = true;
+                                Game.CurrentGameState = Game.InventoryState;
+                                Game.GameEnumState = States.GameState.GameInventoryState;
+                                Game.CurrentGameState.TransitionToState();
                             }
 
                         }
                     
                 }
-            }else if (Game.InInventory && !InventoryTriggered)
+            }
+            else if (Game.GameEnumState.Equals(States.GameState.GameInventoryState) && !Game.CurrentGameState.isTransitioning)
             {
                 foreach (Keys k in pressed)
                 {
-                    if (keyMappings.ContainsKey(k))
+                    if (keyMappings.ContainsKey(k) && k != Keys.Enter)
                     {
                         /*
                         if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D))
@@ -130,8 +132,7 @@ namespace Sprint03
                     }
                 }
             }
-
-            if (keyState.IsKeyDown(Keys.P) && !PauseTriggered)
+            else if (keyState.IsKeyDown(Keys.P) && !PauseTriggered)
             {
                 PauseTriggered = true;
                 keyMappings[Keys.P].Execute();

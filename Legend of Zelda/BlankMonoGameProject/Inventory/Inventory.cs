@@ -40,19 +40,19 @@ namespace Sprint03
             inventoryExtras = Game.Content.Load<Texture2D>("HUD Extras");
 
             SetupHUDSprites();
-            UpdateCurrentHealth(Game.Link.HP);
-            UpdateKeyCounter(Game.KeyCounter);
-            UpdateRupeeCounter(Game.RupeeCounter);
-            UpdateBombCounter(Game.BombCounter);
+            //UpdateCurrentHealth(Game.Link.HP);
+            //UpdateKeyCounter(Game.KeyCounter);
+            //UpdateRupeeCounter(Game.RupeeCounter);
+            //UpdateBombCounter(Game.BombCounter);
 
         }
         public void Draw()
         {
             initialCameraPosition = Game.Camera.Position;
-            Vector2 location = new Vector2(initialCameraPosition.X / Game.ScreenScale, (initialCameraPosition.Y - offset * Game.ScreenScale) / Game.ScreenScale);
+            Vector2 location = new Vector2(initialCameraPosition.X / Game.ScreenScale, (initialCameraPosition.Y -  offset  ) / Game.ScreenScale);
             MainInventory.UpdatePosition(location);
             MainInventory.DrawSprite();
-            MiniMap.UpdatePosition(new Vector2(initialCameraPosition.X / Game.ScreenScale + 16, ((initialCameraPosition.Y - Game.ScreenScale * offset) / Game.ScreenScale) + 192));
+            MiniMap.UpdatePosition(new Vector2(initialCameraPosition.X / Game.ScreenScale, ((initialCameraPosition.Y - offset) / Game.ScreenScale) ));
             MiniMap.DrawSprite();
             WeaponA.UpdatePosition(new Vector2(location.X + 152f, location.Y + 208f));
             WeaponA.DrawSprite();

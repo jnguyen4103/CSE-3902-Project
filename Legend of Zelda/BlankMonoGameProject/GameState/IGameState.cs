@@ -11,6 +11,7 @@ namespace BlankMonoGameProject.GameState
 {
 	public interface IGameState
 	{
+		bool isTransitioning { get; }
 		void TransitionToState();
 		void Update();
 		void Draw();
