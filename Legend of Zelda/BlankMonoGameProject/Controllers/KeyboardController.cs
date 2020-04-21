@@ -16,6 +16,7 @@ namespace Sprint03
         private bool PauseTriggered = false;
         private int Timer = 60;
         private int SecondaryAttackDelay = 60;
+        private int InventoryMenuSwitchDelay = 60;
 
        public KeyboardController(Game1 game, Keys[] keys, ICommand[] commands)
         {
@@ -40,6 +41,7 @@ namespace Sprint03
             if (keyState.IsKeyUp(Keys.Z)) { AttackTriggered = false; }
             if (keyState.IsKeyUp(Keys.P) ) { PauseTriggered = false; }
             if (Timer < SecondaryAttackDelay) { Timer++; }
+            if (Timer < InventoryMenuSwitchDelay) { Timer++; }
 
             // keep as one if statement with else if statements so don't have to worry about a variable being set and un set in one call
             if (Game.GameEnumState.Equals(States.GameState.GamePlayingState))
@@ -86,8 +88,9 @@ namespace Sprint03
                                 keyMappings[k].Execute();
                             }
                             // TODO: if problems with going in and out of inventory possible add extra condition here
-                            if (k == Keys.Enter)
+                            if (k == Keys.Enter && Timer == InventoryMenuSwitchDelay)
                             {
+                                Timer = 0;
                                 Game.CurrentGameState = Game.InventoryState;
                                 Game.GameEnumState = States.GameState.GameInventoryState;
                                 Game.CurrentGameState.TransitionToState();
@@ -101,7 +104,7 @@ namespace Sprint03
             {
                 foreach (Keys k in pressed)
                 {
-                    if (keyMappings.ContainsKey(k) && k != Keys.Enter)
+                    if (keyMappings.ContainsKey(k) && Timer == InventoryMenuSwitchDelay)
                     {
                         /*
                         if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D))

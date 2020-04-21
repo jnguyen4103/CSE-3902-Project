@@ -183,7 +183,7 @@ namespace Sprint03
             ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
             TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
-
+            InventoryScreen = Content.Load<Texture2D>("HUD");
 
             // Dungeon
             DungeonMain = Content.Load<Texture2D>("Dungeon1_Main");
