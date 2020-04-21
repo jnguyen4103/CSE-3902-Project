@@ -13,9 +13,12 @@ namespace Sprint03
         private Game1 Game;
         private readonly Texture2D inventoryScreen;
         private readonly Texture2D inventoryExtras;
-        public Vector2 Size;
+        public Vector2 Size = new Vector2(256, 240);
 
-        private float offset = 2;
+        private float offset = 12;
+        private float miniMapOffsetX = 64;
+        private float miniMapOffsetY = 51;
+        private Vector2 mainMapRoomOffset;
         private Vector2 initialCameraPosition;
 
         public StaticSprite MainInventory;
@@ -36,7 +39,6 @@ namespace Sprint03
         public Inventory(Game1 game)
         {
             Game = game;
-            Size = new Vector2(256, 240);
             inventoryScreen = Game.Content.Load<Texture2D>("HUD");
             inventoryExtras = Game.Content.Load<Texture2D>("HUD Extras");
 
@@ -45,6 +47,7 @@ namespace Sprint03
             UpdateKeyCounter(Game.KeyCounter);
             UpdateRupeeCounter(Game.RupeeCounter);
             UpdateBombCounter(Game.BombCounter);
+            UpdateMap();
 
         }
         public void Draw()
@@ -53,7 +56,8 @@ namespace Sprint03
             Vector2 location = new Vector2(initialCameraPosition.X / Game.ScreenScale, (initialCameraPosition.Y -  offset  ) / Game.ScreenScale);
             MainInventory.UpdatePosition(location);
             MainInventory.DrawSprite();
-            MiniMap.UpdatePosition(new Vector2(initialCameraPosition.X / Game.ScreenScale, ((initialCameraPosition.Y + ((Size.Y - offset) * Game.ScreenScale)) / Game.ScreenScale) ));
+            miniMapOffsetY = Size.Y - miniMapOffsetY;
+            MiniMap.UpdatePosition(new Vector2((initialCameraPosition.X + miniMapOffsetX) / Game.ScreenScale, ((initialCameraPosition.Y + (miniMapOffsetY * Game.ScreenScale)) / Game.ScreenScale) ));
             MiniMap.DrawSprite();
             //WeaponA.UpdatePosition(new Vector2(location.X + 152f, location.Y + 208f));
             //WeaponA.DrawSprite();
@@ -95,13 +99,14 @@ namespace Sprint03
             // Inventory Map Draw and Update loop
             for (int i = 0; i < Game.roomsExplored.Length; i++)
             {
-                if (Game.roomsExplored[i] == 1)
-                {
-                    updatedMapRoomPos = MapRooms[i].Position;
-                    updatedMapRoomPos += location;
+                
+                
+                    mainMapRoomOffset = MapRooms[i].Position;
+                    updatedMapRoomPos = new Vector2( ( initialCameraPosition.X + (mainMapRoomOffset.X * Game.ScreenScale) ) / Game.ScreenScale, (initialCameraPosition.Y + (mainMapRoomOffset.Y * Game.ScreenScale)) / Game.ScreenScale);
                     MapRooms[i].UpdatePosition(updatedMapRoomPos);
+                MapRooms[i].Colour = Color.White;
                     MapRooms[i].DrawSprite();
-                }
+                
             }
         }
 
@@ -184,16 +189,16 @@ namespace Sprint03
 
         public void UpdateMap()
         {
-            Map.Colour = Color.White;
+            MiniMap.Colour = Color.White;
         }
 
         private void SetupHUDSprites()
         {
             MainInventory = new StaticSprite(Game, "HUD", Vector2.Zero, inventoryScreen, Game.spriteBatch);
-            MainInventory.Layer = 0.95f;
+            MainInventory.Layer = 0.90f;
 
             MiniMap = new StaticSprite(Game, "Dungeon01Map", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MiniMap.Layer = .96f;
+            MiniMap.Layer = 0.91f;
             MiniMap.Colour = Color.Black;
 
             //WeaponA = new StaticSprite(Game, "RedLightsaber", Vector2.Zero, Game.EffectSpriteSheet, Game.spriteBatch);
@@ -204,7 +209,7 @@ namespace Sprint03
             for(int i = 0; i < LifeBar.Length; i++)
             {
                 LifeBar[i] = new StaticSprite(Game, "EmptyHeart", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-                LifeBar[i].Layer = 0.98f;
+                LifeBar[i].Layer = 0.92f;
                 if(i > 2)
                 {
                     LifeBar[i].Colour = Color.Black;
@@ -215,119 +220,173 @@ namespace Sprint03
             for (int i = 0; i < LifeBar.Length; i++)
             {
                 CurrentLife[i] = new StaticSprite(Game, "FullHeart", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-                CurrentLife[i].Layer = 1f;
+                CurrentLife[i].Layer = 0.93f;
             }
 
             Rupees = new StaticSprite[2];
             Rupees[0] = new StaticSprite(Game, "0", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            Rupees[0].Layer = 1f;
+            Rupees[0].Layer = 0.93f;
             Rupees[1] = new StaticSprite(Game, "0", Vector2.Zero, inventoryExtras, Game.spriteBatch);
             Rupees[1].Colour = Color.Black;
-            Rupees[1].Layer = 1f;
+            Rupees[1].Layer = 0.93f;
 
             Keys = new StaticSprite[2];
             Keys[0] = new StaticSprite(Game, "0", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            Keys[0].Layer = 1f;
+            Keys[0].Layer = 0.93f;
             Keys[1] = new StaticSprite(Game, "0", Vector2.Zero, inventoryExtras, Game.spriteBatch);
             Keys[1].Colour = Color.Black;
-            Keys[1].Layer = 1f;
+            Keys[1].Layer = 0.93f;
 
             Bombs = new StaticSprite[2];
             Bombs[0] = new StaticSprite(Game, "0", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            Bombs[0].Layer = 1f;
+            Bombs[0].Layer = 0.93f;
             Bombs[1] = new StaticSprite(Game, "0", Vector2.Zero, inventoryExtras, Game.spriteBatch);
             Bombs[1].Colour = Color.Black;
-            Bombs[1].Layer = 1f;
+            Bombs[1].Layer = 0.93f;
 
 
-            MapRooms[0] = new StaticSprite(Game, "MapRoomTypeO", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[0].Layer = 1f;
-            MapRooms[0].TotalFrames = 1;
+            MapRooms[0] = new StaticSprite(Game, "MapRoomTypeO", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 1f,
+                TotalFrames = 1
+            };
             MapRooms[0].UpdatePosition(new Vector2(152, 160));
 
-            MapRooms[1] = new StaticSprite(Game, "MapRoomTypeI", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[1].Layer = 1f;
-            MapRooms[1].TotalFrames = 1;
+            MapRooms[1] = new StaticSprite(Game, "MapRoomTypeI", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.95f,
+                TotalFrames = 1
+            };
             MapRooms[1].UpdatePosition(new Vector2(144, 152));
 
-            MapRooms[2] = new StaticSprite(Game, "MapRoomTypeH", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[2].Layer = 1f;
-            MapRooms[2].TotalFrames = 1;
+            MapRooms[2] = new StaticSprite(Game, "MapRoomTypeH", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.95f,
+                TotalFrames = 1
+            };
             MapRooms[2].UpdatePosition(new Vector2(152, 152));
 
-            MapRooms[3] = new StaticSprite(Game, "MapRoomTypeA", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[3].Layer = 1f;
-            MapRooms[3].TotalFrames = 1;
+            MapRooms[3] = new StaticSprite(Game, "MapRoomTypeA", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[3].UpdatePosition(new Vector2(160, 152));
 
-            MapRooms[4] = new StaticSprite(Game, "MapRoomTypeN", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[4].Layer = 1f;
-            MapRooms[4].TotalFrames = 1;
+            MapRooms[4] = new StaticSprite(Game, "MapRoomTypeN", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[4].UpdatePosition(new Vector2(152, 144));
 
-            MapRooms[5] = new StaticSprite(Game, "MapRoomTypeJ", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[5].Layer = 1f;
-            MapRooms[5].TotalFrames = 1;
+            MapRooms[5] = new StaticSprite(Game, "MapRoomTypeJ", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[5].UpdatePosition(new Vector2(144, 136));
 
-            MapRooms[6] = new StaticSprite(Game, "MapRoomTypeH", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[6].Layer = 1f;
-            MapRooms[6].TotalFrames = 1;
+            MapRooms[6] = new StaticSprite(Game, "MapRoomTypeH", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[6].UpdatePosition(new Vector2(152, 136));
 
-            MapRooms[7] = new StaticSprite(Game, "MapRoomTypeD", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[7].Layer = 1f;
-            MapRooms[7].TotalFrames = 1;
+            MapRooms[7] = new StaticSprite(Game, "MapRoomTypeD", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[7].UpdatePosition(new Vector2(160, 136));
 
-            MapRooms[8] = new StaticSprite(Game, "MapRoomTypeI", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[8].Layer = 1f;
-            MapRooms[8].TotalFrames = 1;
+            MapRooms[8] = new StaticSprite(Game, "MapRoomTypeI", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[8].UpdatePosition(new Vector2(136, 128));
 
-            MapRooms[9] = new StaticSprite(Game, "MapRoomTypeF", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[9].Layer = 1f;
-            MapRooms[9].TotalFrames = 1;
+            MapRooms[9] = new StaticSprite(Game, "MapRoomTypeF", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[9].UpdatePosition(new Vector2(144, 128));
 
-            MapRooms[10] = new StaticSprite(Game, "MapRoomTypeH", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[10].Layer = 1f;
-            MapRooms[10].TotalFrames = 1;
+            MapRooms[10] = new StaticSprite(Game, "MapRoomTypeH", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[10].UpdatePosition(new Vector2(152, 128));
 
-            MapRooms[11] = new StaticSprite(Game, "MapRoomTypeF", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[11].Layer = 1f;
-            MapRooms[11].TotalFrames = 1;
+            MapRooms[11] = new StaticSprite(Game, "MapRoomTypeF", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[11].UpdatePosition(new Vector2(160, 128));
 
-            MapRooms[12] = new StaticSprite(Game, "MapRoomTypeD", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[12].Layer = 1f;
-            MapRooms[12].TotalFrames = 1;
+            MapRooms[12] = new StaticSprite(Game, "MapRoomTypeD", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[12].UpdatePosition(new Vector2(168, 128));
 
-            MapRooms[13] = new StaticSprite(Game, "MapRoomTypeN", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[13].Layer = 1f;
-            MapRooms[13].TotalFrames = 1;
+            MapRooms[13] = new StaticSprite(Game, "MapRoomTypeN", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[13].UpdatePosition(new Vector2(152, 120));
 
-            MapRooms[14] = new StaticSprite(Game, "MapRoomTypeK", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[14].Layer = 1f;
-            MapRooms[14].TotalFrames = 1;
+            MapRooms[14] = new StaticSprite(Game, "MapRoomTypeK", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[14].UpdatePosition(new Vector2(168, 120));
 
-            MapRooms[15] = new StaticSprite(Game, "MapRoomTypeA", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[15].Layer = 1f;
-            MapRooms[15].TotalFrames = 1;
+            MapRooms[15] = new StaticSprite(Game, "MapRoomTypeA", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[15].UpdatePosition(new Vector2(176, 120));
 
-            MapRooms[16] = new StaticSprite(Game, "MapRoomTypeI", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[16].Layer = 1f;
-            MapRooms[16].TotalFrames = 1;
+            MapRooms[16] = new StaticSprite(Game, "MapRoomTypeI", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Colour = Color.White,
+                Layer = 0.93f,
+                TotalFrames = 1
+            };
             MapRooms[16].UpdatePosition(new Vector2(144, 112));
 
-            MapRooms[17] = new StaticSprite(Game, "MapRoomTypeC", Vector2.Zero, inventoryExtras, Game.spriteBatch);
-            MapRooms[17].Layer = 1f;
-            MapRooms[17].TotalFrames = 1;
+            MapRooms[17] = new StaticSprite(Game, "MapRoomTypeC", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            {
+                Layer = 0.93f,
+                TotalFrames = 1,
+                Colour = Color.White
+            };
             MapRooms[17].UpdatePosition(new Vector2(152, 112));
         }
     }
