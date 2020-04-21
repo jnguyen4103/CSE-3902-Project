@@ -55,8 +55,8 @@ namespace Sprint03
             MainInventory.DrawSprite();
             MiniMap.UpdatePosition(new Vector2(initialCameraPosition.X / Game.ScreenScale, ((initialCameraPosition.Y + ((Size.Y - offset) * Game.ScreenScale)) / Game.ScreenScale) ));
             MiniMap.DrawSprite();
-            WeaponA.UpdatePosition(new Vector2(location.X + 152f, location.Y + 208f));
-            WeaponA.DrawSprite();
+            //WeaponA.UpdatePosition(new Vector2(location.X + 152f, location.Y + 208f));
+            //WeaponA.DrawSprite();
 
             // Item Draw and Update loop
             for (int i = 0; i < Rupees.Length; i++)
@@ -196,9 +196,9 @@ namespace Sprint03
             MiniMap.Layer = .96f;
             MiniMap.Colour = Color.Black;
 
-            WeaponA = new StaticSprite(Game, "RedLightsaber", Vector2.Zero, Game.EffectSpriteSheet, Game.spriteBatch);
-            WeaponA.Layer = 1f;
-            WeaponA.TotalFrames = 1;
+            //WeaponA = new StaticSprite(Game, "RedLightsaber", Vector2.Zero, Game.EffectSpriteSheet, Game.spriteBatch);
+            //WeaponA.Layer = 1f;
+            //WeaponA.TotalFrames = 1;
 
             LifeBar = new StaticSprite[16];
             for(int i = 0; i < LifeBar.Length; i++)

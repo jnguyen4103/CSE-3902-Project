@@ -118,9 +118,13 @@ namespace Sprint03
                                 //keyMappings[k].Execute();
                             }
                         }
-                        else if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X )
+                        else if (k == Keys.R || k == Keys.E || k == Keys.X )
                         {
                            // keyMappings[k].Execute();
+                        }
+                        else if (k == Keys.Q)
+                        {
+                            keyMappings[k].Execute();
                         }
                         else if (k == Keys.Enter && Timer == InventoryMenuSwitchDelay)
                         {
