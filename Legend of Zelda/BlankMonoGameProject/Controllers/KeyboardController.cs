@@ -131,7 +131,17 @@ namespace Sprint03
                             keyMappings[k].Execute();
                         }
                         */
-                        keyMappings[k].Execute();
+                        if (k == Keys.Enter && Timer == InventoryMenuSwitchDelay)
+                        {
+                            Timer = 0;
+                            Game.CurrentGameState = Game.PlayingState;
+                            Game.GameEnumState = States.GameState.GamePlayingState;
+                            Game.CurrentGameState.TransitionToState();
+                        }
+                        else
+                        {
+                            keyMappings[k].Execute();
+                        }
                     }
                 }
             }

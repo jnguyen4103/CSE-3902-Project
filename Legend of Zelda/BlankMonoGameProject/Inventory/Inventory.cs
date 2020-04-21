@@ -31,6 +31,7 @@ namespace Sprint03
         public StaticSprite LevelNumber;
 
         public StaticSprite[] MapRooms = new StaticSprite[18];
+        Vector2 updatedMapRoomPos;
 
         public Inventory(Game1 game)
         {
@@ -92,7 +93,6 @@ namespace Sprint03
             }
 
             // Inventory Map Draw and Update loop
-            Vector2 updatedMapRoomPos;
             for (int i = 0; i < Game.roomsExplored.Length; i++)
             {
                 if (Game.roomsExplored[i] == 1)
