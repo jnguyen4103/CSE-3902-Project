@@ -106,32 +106,23 @@ namespace Sprint03
                 {
                     if (keyMappings.ContainsKey(k) && Timer == InventoryMenuSwitchDelay)
                     {
-                        /*
+                        
                         if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D))
                         {
                             if (k == Keys.W || k == Keys.S)
                             {
-                                keyMappings[k].Execute();
+                                //keyMappings[k].Execute();
                             }
                             else if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.S))
                             {
-                                keyMappings[k].Execute();
+                                //keyMappings[k].Execute();
                             }
                         }
-
-                        if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X )
+                        else if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X )
                         {
-                            keyMappings[k].Execute();
-
+                           // keyMappings[k].Execute();
                         }
-
-                        if (keyState.IsKeyDown(Keys.Enter) && !InventoryTriggered)
-                        {
-                            InventoryTriggered = true;
-                            keyMappings[k].Execute();
-                        }
-                        */
-                        if (k == Keys.Enter && Timer == InventoryMenuSwitchDelay)
+                        else if (k == Keys.Enter && Timer == InventoryMenuSwitchDelay)
                         {
                             Timer = 0;
                             Game.CurrentGameState = Game.PlayingState;
