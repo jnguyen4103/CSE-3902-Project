@@ -1,5 +1,5 @@
 ## CSE 3902
-## Sprint 04 README FILE
+## README FILE
 ## Team Ocarina
 ### This is a group project completed for CSE 3902 project course, during the process, each sprite project is making effort towards the complete game. 
 ### Our group members are: Xueying Liang, Nicholas Negrete, Grant Gabel, Youssef Moosa and John Nguyen.
@@ -74,6 +74,8 @@ Or if you like using donald LinkSpriteSheet = Content.Load<Texture2D>("Donald Tr
 The HUD takes count of the keys, bombs and rupees Link collects as well as his healthand the map. <br/>
 Not all of the HUD is implemented but some of it to allow use for the pickups.<br/>
  
+## Sprint 5 Ideas:
+
 ## Tools Used:
 ### For Burndown Chart:
 Used as the basis for Sprint reflection.<br/>
