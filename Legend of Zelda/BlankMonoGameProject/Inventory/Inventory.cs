@@ -17,7 +17,7 @@ namespace Sprint03
 
         private float offset = 12;
         private float miniMapOffsetX = 64;
-        private float miniMapOffsetY = 240-51;
+        private float miniMapOffsetY = 240 - 51;
         private Vector2 mainMapRoomOffset;
         private Vector2 initialCameraPosition;
 
@@ -32,6 +32,9 @@ namespace Sprint03
         public StaticSprite[] Keys;
         public StaticSprite[] Bombs;
         public StaticSprite LevelNumber;
+        public StaticSprite LinkLocationIndicator;
+        private int linkLocationIndicatorOffsetFromMapRoom = 2;
+        private int linkRoomLocation;
 
         public StaticSprite[] MapRooms = new StaticSprite[18];
         private Vector2[] MapRoomPositions = new Vector2[18];
@@ -42,6 +45,7 @@ namespace Sprint03
             Game = game;
             inventoryScreen = Game.Content.Load<Texture2D>("HUD");
             inventoryExtras = Game.Content.Load<Texture2D>("HUD Extras");
+
 
             SetupHUDSprites();
             UpdateInventoryCounters();
@@ -101,17 +105,20 @@ namespace Sprint03
             // Inventory Map Draw and Update loop
             for (int i = 0; i < Game.roomsExplored.Length; i++)
             {
+                mainMapRoomOffset = MapRoomPositions[i];
+                updatedMapRoomPos = new Vector2((initialCameraPosition.X + (mainMapRoomOffset.X * Game.ScreenScale)) / Game.ScreenScale, (initialCameraPosition.Y + (mainMapRoomOffset.Y * Game.ScreenScale)) / Game.ScreenScale);
+                MapRooms[i].UpdatePosition(updatedMapRoomPos);
+                MapRooms[i].Colour = Color.White;
 
                 if (Game.roomsExplored[i] == 1)
-                {
-                    mainMapRoomOffset = MapRoomPositions[i];
-                    updatedMapRoomPos = new Vector2((initialCameraPosition.X + (mainMapRoomOffset.X * Game.ScreenScale)) / Game.ScreenScale, (initialCameraPosition.Y + (mainMapRoomOffset.Y * Game.ScreenScale)) / Game.ScreenScale);
-                    MapRooms[i].UpdatePosition(updatedMapRoomPos);
-                    MapRooms[i].Colour = Color.White;
+                { 
                     MapRooms[i].DrawSprite();
                 }
-                
             }
+            linkRoomLocation = int.Parse(Game.CurrDungeon.ActiveRoom.Name.Substring(Game.CurrDungeon.ActiveRoom.Name.Length - 1));
+            LinkLocationIndicator.UpdatePosition(new Vector2(MapRooms[linkRoomLocation].Position.X + linkLocationIndicatorOffsetFromMapRoom , MapRooms[linkRoomLocation].Position.Y + linkLocationIndicatorOffsetFromMapRoom));
+            LinkLocationIndicator.Colour = Color.White;
+            LinkLocationIndicator.DrawSprite();
         }
 
         public void UpdateInventoryCounters()
@@ -256,11 +263,14 @@ namespace Sprint03
             LevelNumber = new StaticSprite(Game, "1", Vector2.Zero, inventoryExtras, Game.spriteBatch);
             LevelNumber.Layer = 0.93f;
 
+            LinkLocationIndicator = new StaticSprite(Game, "LinkLocationMap", Vector2.Zero, inventoryExtras, Game.spriteBatch);
+            LinkLocationIndicator.Layer = 0.94f;
+
             //this is actually room 17 in accordance with group numbering standard, all others as are they say
             MapRooms[0] = new StaticSprite(Game, "MapRoomTypeC", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
                 Colour = Color.White,
-                Layer = 1f,
+                Layer = 0.93f,
                 TotalFrames = 1
             };
             MapRoomPositions[0] = new Vector2(152, 112);
@@ -268,7 +278,7 @@ namespace Sprint03
             MapRooms[1] = new StaticSprite(Game, "MapRoomTypeI", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
                 Colour = Color.White,
-                Layer = 0.95f,
+                Layer = 0.93f,
                 TotalFrames = 1
             };
             MapRoomPositions[1] = new Vector2(144, 152);
@@ -276,7 +286,7 @@ namespace Sprint03
             MapRooms[2] = new StaticSprite(Game, "MapRoomTypeE", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
                 Colour = Color.White,
-                Layer = 0.95f,
+                Layer = 0.93f,
                 TotalFrames = 1
             };
             MapRoomPositions[2] = new Vector2(152, 152);

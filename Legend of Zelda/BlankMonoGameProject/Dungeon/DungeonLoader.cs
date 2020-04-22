@@ -70,8 +70,7 @@ namespace Sprint03
                 game.Camera.Transition(level.Rooms[newRoom.Name].Position);
             }
 
-            int roomNum = int.Parse(newRoom.Name.Substring(newRoom.Name.Length - 1));
-            game.roomsExplored[roomNum] = 1;
+            game.roomsExplored[int.Parse(newRoom.Name.Substring(newRoom.Name.Length - 1))] = 1;
         }
 
         public static void ResetLevel(Game1 game, Dungeon level)
