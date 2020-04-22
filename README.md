@@ -2,9 +2,9 @@
 ## README FILE
 ## Team Ocarina
 ### This is a group project completed for CSE 3902 project course, during the process, each sprite project is making effort towards the complete game. 
-### Our group members are: Xueying Liang, Nicholas Negrete, Grant Gabel, Youssef Moosa and John Nguyen.
+### Our group members are: Xueying Liang, Nicholas Negrete, John Nguyen, Grant Gabel, and Youssef Moosa.
 
-## General Information
+### General Information
 The taskboard for Sprint #5 can be found under the "Projects" tab. 
 
 ### Program Controls
