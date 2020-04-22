@@ -50,14 +50,18 @@ namespace Sprint03
         {
             initialCameraPosition = Game.Camera.Position;
             Vector2 location = new Vector2(initialCameraPosition.X / Game.ScreenScale, (initialCameraPosition.Y -  offset  ) / Game.ScreenScale);
+
             MainInventory.UpdatePosition(location);
             MainInventory.DrawSprite();
+
             MiniMap.UpdatePosition(new Vector2((initialCameraPosition.X + miniMapOffsetX) / Game.ScreenScale, ((initialCameraPosition.Y + (miniMapOffsetY * Game.ScreenScale)) / Game.ScreenScale) ));
             MiniMap.DrawSprite();
             MiniMap.Colour = Color.White;
-            //WeaponA.UpdatePosition(new Vector2(location.X + 152f, location.Y + 208f));
-            //WeaponA.DrawSprite();
+
             UpdateInventoryCounters();
+
+            LevelNumber.UpdatePosition(new Vector2(location.X + 64, location.Y + 184));
+            LevelNumber.DrawSprite();
 
             // Item Draw and Update loop
             for (int i = 0; i < Rupees.Length; i++)
@@ -107,6 +111,14 @@ namespace Sprint03
             }
         }
 
+        public void UpdateInventoryCounters()
+        {
+            UpdateCurrentHealth(Game.Link.HP);
+            UpdateKeyCounter(Game.KeyCounter);
+            UpdateRupeeCounter(Game.RupeeCounter);
+            UpdateBombCounter(Game.BombCounter);
+        }
+
         public void UpdateRupeeCounter(int totalRupees)
         {
             if (totalRupees > 9)
@@ -124,13 +136,6 @@ namespace Sprint03
             }
         }
 
-        public void UpdateInventoryCounters()
-        {
-            UpdateCurrentHealth(Game.Link.HP);
-            UpdateKeyCounter(Game.KeyCounter);
-            UpdateRupeeCounter(Game.RupeeCounter);
-            UpdateBombCounter(Game.BombCounter);
-        }
 
         public void UpdateBombCounter(int totalBombs)
         {
@@ -206,10 +211,6 @@ namespace Sprint03
             MiniMap.Layer = 0.91f;
             MiniMap.Colour = Color.Black;
 
-            //WeaponA = new StaticSprite(Game, "RedLightsaber", Vector2.Zero, Game.EffectSpriteSheet, Game.spriteBatch);
-            //WeaponA.Layer = 1f;
-            //WeaponA.TotalFrames = 1;
-
             LifeBar = new StaticSprite[16];
             for(int i = 0; i < LifeBar.Length; i++)
             {
@@ -248,6 +249,9 @@ namespace Sprint03
             Bombs[1] = new StaticSprite(Game, "0", Vector2.Zero, inventoryExtras, Game.spriteBatch);
             Bombs[1].Colour = Color.Black;
             Bombs[1].Layer = 0.93f;
+
+            LevelNumber = new StaticSprite(Game, "1", Vector2.Zero, inventoryExtras, Game.spriteBatch);
+            LevelNumber.Layer = 0.93f;
 
 
             MapRooms[0] = new StaticSprite(Game, "MapRoomTypeO", Vector2.Zero, inventoryExtras, Game.spriteBatch)
