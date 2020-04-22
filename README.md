@@ -5,7 +5,7 @@
 ### Our group members are: Xueying Liang, Nicholas Negrete, Grant Gabel, Youssef Moosa and John Nguyen.
 
 ## General Information
-The taskboard for Sprint #4 can be found under the "Projects" tab.
+The taskboard for Sprint #5 can be found under the "Projects" tab. 
 
 ### Program Controls
 Keybindings<br/>
@@ -39,9 +39,10 @@ Stalfos: The skeleton which takes 2 hits to die.<br/>
 Goriya: Will move and throw boomerangs, can damage link by either running into him or hitting him  with a boomerang.<br/>
 Aquamentus: The green dragon which only faces one direction. Fires 3 fire balls at link. <br/>
 Gel: Moves and deals 1 damage.<br/>
-Blade Traps: when link is detected above/below or left/right of the trap the trap activates and pursues closes the distance. <br/>
-DoDongo: Walks left, right, up, and down. Will charge link if he detects him
-Rope: Moves left and right
+Blade Traps: When link is detected above/below or left/right of the trap the trap activates and pursues closes the distance. <br/>
+DoDongo: Walks left, right, up, and down. Will charge link if he detects him.
+Rope: Moves left and right.
+
 ### Custom Monsters:
 Zol: Explodes on death or when it gets near Link.<br/>
 Lynel: Throws a sword beam at Link or charges him if he gets close.<br/>
