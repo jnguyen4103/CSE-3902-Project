@@ -105,6 +105,7 @@
     <Compile Include="GameState\GameLoseState.cs" />
     <Compile Include="GameState\GameWinState.cs" />
     <Compile Include="GameState\IGameState.cs" />
+    <Compile Include="Inventory\CodeFile1.cs" />
     <Compile Include="Inventory\Inventory.cs" />
     <Compile Include="HUD\HUD.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\DarknutSM.cs" />

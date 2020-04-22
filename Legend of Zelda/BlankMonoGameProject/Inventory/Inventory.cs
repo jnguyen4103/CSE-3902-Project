@@ -102,12 +102,14 @@ namespace Sprint03
             for (int i = 0; i < Game.roomsExplored.Length; i++)
             {
 
-                //think problem is that we take position and then update it? like position updated too quickly and too often and changed
-                mainMapRoomOffset = MapRoomPositions[i];
-                updatedMapRoomPos = new Vector2( ( initialCameraPosition.X + (mainMapRoomOffset.X * Game.ScreenScale) ) / Game.ScreenScale, (initialCameraPosition.Y + (mainMapRoomOffset.Y * Game.ScreenScale)) / Game.ScreenScale);
-                MapRooms[i].UpdatePosition(updatedMapRoomPos);
-                MapRooms[i].Colour = Color.White;
-                MapRooms[i].DrawSprite();
+                if (Game.roomsExplored[i] == 1)
+                {
+                    mainMapRoomOffset = MapRoomPositions[i];
+                    updatedMapRoomPos = new Vector2((initialCameraPosition.X + (mainMapRoomOffset.X * Game.ScreenScale)) / Game.ScreenScale, (initialCameraPosition.Y + (mainMapRoomOffset.Y * Game.ScreenScale)) / Game.ScreenScale);
+                    MapRooms[i].UpdatePosition(updatedMapRoomPos);
+                    MapRooms[i].Colour = Color.White;
+                    MapRooms[i].DrawSprite();
+                }
                 
             }
         }

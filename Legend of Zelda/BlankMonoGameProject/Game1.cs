@@ -41,7 +41,7 @@ namespace Sprint03
 
         // Inventory
         public Inventory inv;
-        public int[] roomsExplored = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+        public int[] roomsExplored = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
         // Link Object & Sprite
         public ILink Link;
