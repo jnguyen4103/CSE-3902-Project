@@ -52,7 +52,13 @@ namespace  Sprint03
         }
         public void changeDungeon3()
         {
-
+            Game.LinkSpawn = new Vector2(812, 515);
+            Game.Link.StateMachine.IdleState();
+            Game.DungeonMain = Game.Content.Load<Texture2D>("Dungeon3_Main");
+            Game.TileSpriteSheet = Game.Content.Load<Texture2D>("Dungeon2_Tiles");
+            Game.Camera.Transition(Game.CurrDungeon.Rooms["Room0"].Position);
+            Game.DungeonDoorFrames = Game.Content.Load<Texture2D>("Dungeon3_DoorFrames");
+            Game.CurrDungeon = new Dungeon(Game, "../../../../Dungeon/Dungeon3/Dungeon03.txt");
         }
     }
 }

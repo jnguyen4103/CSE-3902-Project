@@ -167,6 +167,12 @@
     <Content Include="Dungeon\Dungeon2\Room15.xml" />
     <Content Include="Dungeon\Dungeon2\Room16.xml" />
     <Content Include="Dungeon\Dungeon2\Room17.xml" />
+    <Content Include="Dungeon\Dungeon3\Dungeon03.txt" />
+    <Content Include="Dungeon\Dungeon3\Room0.xml" />
+    <Content Include="Dungeon\Dungeon3\Room01.xml" />
+    <Content Include="Dungeon\Dungeon3\Room02.xml" />
+    <Content Include="Dungeon\Dungeon3\Room03.xml" />
+    <Content Include="Dungeon\Dungeon3\Room04.xml" />
     <Content Include="Sprite Sheets\Background.png" />
     <Content Include="Sprite Sheets\Dungeon1.png" />
     <Content Include="Sprite Sheets\Effects Sprite Sheet.png" />

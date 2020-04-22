@@ -103,6 +103,30 @@
 /processorParam:Quality=Best
 /build:Dungeon2Song.mp3
 
+#begin Dungeon3_DoorFrames.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dungeon3_DoorFrames.png
+
+#begin Dungeon3_Main.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dungeon3_Main.png
+
 #begin Dungeon3Song.mp3
 /importer:Mp3Importer
 /processor:SongProcessor

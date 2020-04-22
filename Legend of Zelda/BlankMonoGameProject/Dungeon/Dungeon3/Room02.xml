@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RoomData>
+
+	<!--Location -->
+	-<Location Point="2 1048" />
+	
+	<!--Walls -->
+	-<Wall Point="3 1048" Size="256 32" />
+  -<Wall Point="3 1048" Size="32 256" />
+  -<Wall Point="3 1191" Size="256 32" />
+	-<Wall Point="226 1144" Size="32 80" />
+	-<Wall Point="226 1048" Size="32 80" />
+
+
+
+	<!--Blocks -->
+  
+	<!--Monsters -->
+  <!-- Items -->
+
+
+
+	<!-- Doors -->
+
+
+  <!-- Transitions -->
+
+  -<ScreenTransition Point="270 1134" Size="16 16" LeadsTo="Room03" />
+  
+</RoomData>

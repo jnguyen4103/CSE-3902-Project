@@ -100,7 +100,7 @@ namespace Sprint03
                 gameChanger.changeSong3();
                 r.Execute();
                 RemoveDecorator();
-                gameChanger.changeDungeon2();
+                gameChanger.changeDungeon3();
             }
 
         }

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RoomData>
+
+	<!--Location -->
+	-<Location Point="260 1048" />
+	
+	<!--Walls -->
+  -<Wall Point="285 1048" Size="256 32" />
+  
+  -<Wall Point="258 1048" Size="32 80" />
+  -<Wall Point="258 1146" Size="32 80" />
+
+  -<Wall Point="258 1191" Size="110 32" />
+  -<Wall Point="397 1191" Size="110 32" />
+
+  -<Wall Point="482 1048" Size="32 80" />
+  -<Wall Point="482 1146" Size="32 80" />
+
+	<!--Blocks -->
+	-<Block Point="322 1095" Size="18 18" />
+	-<Block Point="322 1159" Size="18 18" />
+
+  -<Block Point="434 1095" Size="18 18" />
+  -<Block Point="434 1159" Size="18 18" />
+
+  <!--Monsters -->
+  -<Monster Name="DoDongo" Spawn="371 1120" />
+
+  <!-- Items -->
+
+  <!-- Doors -->
+  -<ClosedDoor Point="257 1119" Side="Left" ConnectsTo="Room02"/>
+
+
+  <!-- Transitions -->
+  -<ScreenTransition Point="243 1135" Size="16 16" LeadsTo="Room02" />
+  -<ScreenTransition Point="528 1135" Size="16 16" LeadsTo="Room04" />
+
+
+</RoomData>
