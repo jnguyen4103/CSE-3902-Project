@@ -34,6 +34,7 @@ namespace Sprint03
         public StaticSprite LevelNumber;
 
         public StaticSprite[] MapRooms = new StaticSprite[18];
+        private Vector2[] MapRoomPositions = new Vector2[18];
         Vector2 updatedMapRoomPos;
 
         public Inventory(Game1 game)
@@ -100,13 +101,13 @@ namespace Sprint03
             // Inventory Map Draw and Update loop
             for (int i = 0; i < Game.roomsExplored.Length; i++)
             {
-                
-                    //think problem is that we take position and then update it? like position updated too quickly and too often and changed
-                    mainMapRoomOffset = MapRooms[i].Position;
-                    updatedMapRoomPos = new Vector2( ( initialCameraPosition.X + (mainMapRoomOffset.X * Game.ScreenScale) ) / Game.ScreenScale, (initialCameraPosition.Y + (mainMapRoomOffset.Y * Game.ScreenScale)) / Game.ScreenScale);
-                    MapRooms[i].UpdatePosition(updatedMapRoomPos);
-                    MapRooms[i].Colour = Color.White;
-                    MapRooms[i].DrawSprite();
+
+                //think problem is that we take position and then update it? like position updated too quickly and too often and changed
+                mainMapRoomOffset = MapRoomPositions[i];
+                updatedMapRoomPos = new Vector2( ( initialCameraPosition.X + (mainMapRoomOffset.X * Game.ScreenScale) ) / Game.ScreenScale, (initialCameraPosition.Y + (mainMapRoomOffset.Y * Game.ScreenScale)) / Game.ScreenScale);
+                MapRooms[i].UpdatePosition(updatedMapRoomPos);
+                MapRooms[i].Colour = Color.White;
+                MapRooms[i].DrawSprite();
                 
             }
         }
@@ -253,14 +254,14 @@ namespace Sprint03
             LevelNumber = new StaticSprite(Game, "1", Vector2.Zero, inventoryExtras, Game.spriteBatch);
             LevelNumber.Layer = 0.93f;
 
-
-            MapRooms[0] = new StaticSprite(Game, "MapRoomTypeO", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            //this is actually room 17 in accordance with group numbering standard, all others as are they say
+            MapRooms[0] = new StaticSprite(Game, "MapRoomTypeC", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
                 Colour = Color.White,
                 Layer = 1f,
                 TotalFrames = 1
             };
-            MapRooms[0].UpdatePosition(new Vector2(152, 160));
+            MapRoomPositions[0] = new Vector2(152, 112);
 
             MapRooms[1] = new StaticSprite(Game, "MapRoomTypeI", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -268,15 +269,16 @@ namespace Sprint03
                 Layer = 0.95f,
                 TotalFrames = 1
             };
-            MapRooms[1].UpdatePosition(new Vector2(144, 152));
+            MapRoomPositions[1] = new Vector2(144, 152);
 
-            MapRooms[2] = new StaticSprite(Game, "MapRoomTypeH", Vector2.Zero, inventoryExtras, Game.spriteBatch)
+            MapRooms[2] = new StaticSprite(Game, "MapRoomTypeE", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
                 Colour = Color.White,
                 Layer = 0.95f,
                 TotalFrames = 1
             };
-            MapRooms[2].UpdatePosition(new Vector2(152, 152));
+            MapRoomPositions[2] = new Vector2(152, 152);
+            
 
             MapRooms[3] = new StaticSprite(Game, "MapRoomTypeA", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -284,7 +286,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[3].UpdatePosition(new Vector2(160, 152));
+            MapRoomPositions[3] = new Vector2(160, 152);
+            
 
             MapRooms[4] = new StaticSprite(Game, "MapRoomTypeN", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -292,7 +295,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[4].UpdatePosition(new Vector2(152, 144));
+            MapRoomPositions[4] = new Vector2(152, 144);
+            
 
             MapRooms[5] = new StaticSprite(Game, "MapRoomTypeJ", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -300,7 +304,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[5].UpdatePosition(new Vector2(144, 136));
+            MapRoomPositions[5] = new Vector2(144, 136);
+
 
             MapRooms[6] = new StaticSprite(Game, "MapRoomTypeH", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -308,7 +313,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[6].UpdatePosition(new Vector2(152, 136));
+            MapRoomPositions[6] = new Vector2(152, 136);
+            
 
             MapRooms[7] = new StaticSprite(Game, "MapRoomTypeD", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -316,7 +322,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[7].UpdatePosition(new Vector2(160, 136));
+            MapRoomPositions[7] = new Vector2(160, 136);
+            
 
             MapRooms[8] = new StaticSprite(Game, "MapRoomTypeI", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -324,7 +331,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[8].UpdatePosition(new Vector2(136, 128));
+            MapRoomPositions[8] = new Vector2(136, 128);
+            
 
             MapRooms[9] = new StaticSprite(Game, "MapRoomTypeF", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -332,7 +340,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[9].UpdatePosition(new Vector2(144, 128));
+            MapRoomPositions[9] = new Vector2(144, 128);
+            
 
             MapRooms[10] = new StaticSprite(Game, "MapRoomTypeH", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -340,7 +349,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[10].UpdatePosition(new Vector2(152, 128));
+            MapRoomPositions[10] = new Vector2(152, 128);
+            
 
             MapRooms[11] = new StaticSprite(Game, "MapRoomTypeF", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -348,7 +358,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[11].UpdatePosition(new Vector2(160, 128));
+            MapRoomPositions[11] = new Vector2(160, 128);
+            
 
             MapRooms[12] = new StaticSprite(Game, "MapRoomTypeD", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -356,7 +367,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[12].UpdatePosition(new Vector2(168, 128));
+            MapRoomPositions[12] = new Vector2(168, 128);
+            
 
             MapRooms[13] = new StaticSprite(Game, "MapRoomTypeN", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -364,7 +376,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[13].UpdatePosition(new Vector2(152, 120));
+            MapRoomPositions[13] = new Vector2(152, 120);
+            
 
             MapRooms[14] = new StaticSprite(Game, "MapRoomTypeK", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -372,7 +385,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[14].UpdatePosition(new Vector2(168, 120));
+            MapRoomPositions[14] = new Vector2(168, 120);
+            
 
             MapRooms[15] = new StaticSprite(Game, "MapRoomTypeA", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -380,7 +394,8 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[15].UpdatePosition(new Vector2(176, 120));
+            MapRoomPositions[15] = new Vector2(176, 120);
+            
 
             MapRooms[16] = new StaticSprite(Game, "MapRoomTypeI", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
@@ -388,15 +403,18 @@ namespace Sprint03
                 Layer = 0.93f,
                 TotalFrames = 1
             };
-            MapRooms[16].UpdatePosition(new Vector2(144, 112));
+            MapRoomPositions[16] = new Vector2(144, 112);
+
 
             MapRooms[17] = new StaticSprite(Game, "MapRoomTypeC", Vector2.Zero, inventoryExtras, Game.spriteBatch)
             {
+                Colour = Color.White,
                 Layer = 0.93f,
                 TotalFrames = 1,
-                Colour = Color.White
+                
             };
-            MapRooms[17].UpdatePosition(new Vector2(152, 112));
+            MapRoomPositions[17] = new Vector2(152, 112);
+            
         }
     }
 }
