@@ -17,7 +17,7 @@ namespace Sprint03
 
         private float offset = 12;
         private float miniMapOffsetX = 64;
-        private float miniMapOffsetY = 51;
+        private float miniMapOffsetY = 240-51;
         private Vector2 mainMapRoomOffset;
         private Vector2 initialCameraPosition;
 
@@ -43,11 +43,7 @@ namespace Sprint03
             inventoryExtras = Game.Content.Load<Texture2D>("HUD Extras");
 
             SetupHUDSprites();
-            UpdateCurrentHealth(Game.Link.HP);
-            UpdateKeyCounter(Game.KeyCounter);
-            UpdateRupeeCounter(Game.RupeeCounter);
-            UpdateBombCounter(Game.BombCounter);
-            UpdateMap();
+            UpdateInventoryCounters();
 
         }
         public void Draw()
@@ -56,11 +52,12 @@ namespace Sprint03
             Vector2 location = new Vector2(initialCameraPosition.X / Game.ScreenScale, (initialCameraPosition.Y -  offset  ) / Game.ScreenScale);
             MainInventory.UpdatePosition(location);
             MainInventory.DrawSprite();
-            miniMapOffsetY = Size.Y - miniMapOffsetY;
             MiniMap.UpdatePosition(new Vector2((initialCameraPosition.X + miniMapOffsetX) / Game.ScreenScale, ((initialCameraPosition.Y + (miniMapOffsetY * Game.ScreenScale)) / Game.ScreenScale) ));
             MiniMap.DrawSprite();
+            MiniMap.Colour = Color.White;
             //WeaponA.UpdatePosition(new Vector2(location.X + 152f, location.Y + 208f));
             //WeaponA.DrawSprite();
+            UpdateInventoryCounters();
 
             // Item Draw and Update loop
             for (int i = 0; i < Rupees.Length; i++)
@@ -100,11 +97,11 @@ namespace Sprint03
             for (int i = 0; i < Game.roomsExplored.Length; i++)
             {
                 
-                
+                    //think problem is that we take position and then update it? like position updated too quickly and too often and changed
                     mainMapRoomOffset = MapRooms[i].Position;
                     updatedMapRoomPos = new Vector2( ( initialCameraPosition.X + (mainMapRoomOffset.X * Game.ScreenScale) ) / Game.ScreenScale, (initialCameraPosition.Y + (mainMapRoomOffset.Y * Game.ScreenScale)) / Game.ScreenScale);
                     MapRooms[i].UpdatePosition(updatedMapRoomPos);
-                MapRooms[i].Colour = Color.White;
+                    MapRooms[i].Colour = Color.White;
                     MapRooms[i].DrawSprite();
                 
             }
@@ -125,6 +122,14 @@ namespace Sprint03
                 Rupees[0].ChangeSpriteAnimation(totalRupees.ToString());
                 Rupees[1].Colour = Color.Black;
             }
+        }
+
+        public void UpdateInventoryCounters()
+        {
+            UpdateCurrentHealth(Game.Link.HP);
+            UpdateKeyCounter(Game.KeyCounter);
+            UpdateRupeeCounter(Game.RupeeCounter);
+            UpdateBombCounter(Game.BombCounter);
         }
 
         public void UpdateBombCounter(int totalBombs)
