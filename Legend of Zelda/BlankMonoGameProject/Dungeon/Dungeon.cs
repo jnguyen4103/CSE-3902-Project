@@ -52,7 +52,7 @@ namespace Sprint03
 
             foreach (Monster monster in Monsters)
             {
-                if (!Game.ClockActivated || monster.State == States.MonsterState.Damaged || monster.State == States.MonsterState.Dead)
+                if (!Game.ClockItemActivated || monster.State == States.MonsterState.Damaged || monster.State == States.MonsterState.Dead)
                 {
                     monster.Update();
                 }
@@ -147,7 +147,7 @@ namespace Sprint03
 
         public void TransitionToRoom(string newRoom)
         {
-            Game.ClockActivated = false;
+            Game.ClockItemActivated = false;
             foreach(Monster monster in Monsters)
             {
                 monster.CanDamage = true;

@@ -27,7 +27,6 @@ namespace Sprint03
         public Rectangle Hitbox { get; set; }
         public Vector2 Position { get; set; }
         public string ConnectsTo { get; set; }
-        private int FrameCount = 0;
 
         public LockedDoor(Game1 game, Room room, string side, string connectsTo, Vector2 position)
         {
@@ -49,18 +48,13 @@ namespace Sprint03
         {
             if (Game.KeyCounter > 0 && obj.Equals("Link"))
             {
-                if (!Sprite.Colour.Equals(Color.Transparent)) { 
-                    Game.KeyCounter--;
-                    Game.soundEffects[5].Play();
-                }
-
+                if (!Sprite.Colour.Equals(Color.Transparent)) { Game.KeyCounter--; }
                 Game.hud.UpdateKeyCounter(Game.KeyCounter);
                 Sprite.Remove();
                 foreach (IDoor door in Room.Level.Rooms[ConnectsTo].Doors)
                 {
                     if (door.ConnectsTo.Equals(Room.Name))
                     {
-                        
                         door.Sprite.Colour = Color.Transparent;
                     }
                 }

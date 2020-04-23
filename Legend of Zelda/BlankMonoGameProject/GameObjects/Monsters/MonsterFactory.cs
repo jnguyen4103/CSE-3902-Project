@@ -150,6 +150,7 @@ namespace Sprint03
             // Creating Sprite for Aquamentus
             MonsterSprite AquamentusSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, Game.spriteBatch);
             AquamentusSprite.FPS = 8;
+
             // Setting up Monster object for Stalfos to hold stats
             Monster Aquamentus = new Monster(AquamentusSprite, spawn, "Aquamentus", Game);
             Aquamentus.BaseSpeed = 0.25f;

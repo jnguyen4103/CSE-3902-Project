@@ -15,7 +15,6 @@ namespace Sprint03
         private int AttackTimer = 180;
         private int AttackDelay = 180;
         private readonly int SpawnDelay = 30;
-        private int DeathDelay = 20;
         private readonly int DamagedDelay = 15;
         private Vector2 Path = new Vector2(0, 0);
         private Vector2 Velocity = new Vector2(0, 0);
@@ -28,7 +27,6 @@ namespace Sprint03
         {
             Game = game;
             Self = Aquamentus;
-            Self.MaxHP = 1;
         }
 
         public void SpawnState()
@@ -37,7 +35,6 @@ namespace Sprint03
             if (Timer == 1)
             {
                 Self.Sprite.FPS = 6;
-                Game.soundEffects[3].Play();
                 Self.Sprite.ChangeSpriteAnimation("SpawningCloud");
             }
             else if (Timer >= SpawnDelay)
@@ -97,7 +94,6 @@ namespace Sprint03
             if (Timer == 1)
             {
                 Self.Sprite.ChangeSpriteAnimation("AquamentusDamaged");
-                Game.soundEffects[7].Play();
             }
             else if (Timer >= DamagedDelay)
             {
@@ -110,19 +106,7 @@ namespace Sprint03
 
         public void DeadState()
         {
-            Timer++;
-            if (Timer == 1)
-            {
-                Self.Sprite.ChangeSpriteAnimation("Death");
-                Game.soundEffects[6].Play();
-                Reset();
-            }
-            else if (Timer > DeathDelay)
-            {
-                Game.IFactory.DropItem(Self.Position);
-                Timer = 0;
-                Self.Sprite.Remove();
-            }
+            Self.Sprite.Remove();
         }
 
 
@@ -184,7 +168,6 @@ namespace Sprint03
 
         private void ShootFireball()
         {
-            Game.soundEffects[4].Play();
             Vector2 fireballVelocity = Vector2.Zero;
             fireballVelocity.X = (Game.Link.Position.X - Self.Position.X) / 60;
             fireballVelocity.Y = (Game.Link.Position.Y - Self.Position.Y) / 60;

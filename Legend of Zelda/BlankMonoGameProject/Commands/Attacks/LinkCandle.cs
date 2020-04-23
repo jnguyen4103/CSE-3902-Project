@@ -13,7 +13,6 @@ namespace Sprint03
         public void Execute()
         {
             Game.Link.SecondaryAttack("BlueCandle");
-            Game.soundEffects[4].Play();
             Game.Link.CanMove = false;
         }
     }

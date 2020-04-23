@@ -1,0 +1,35 @@
+Author of Code Review:                        Youssef Moosa
+Date of Code Review:                          3/6/2020
+Sprint #:                                     3
+Name of .cs File Being Reviewed:              AquamentusSM.cs
+Author of .cs File Being Reviewed:            Grant Gabel
+Number of Minutes Taken to Complete Review:   30 minutes
+
+Specific Comments on Readability:
+
+I think everything is readable, for the most part.
+However, there are things which could improve readability.
+
+* Notice when direction is being referenced, the underlying
+  data changes are usually follows a certain pattern which
+  could be generalized using the Math.Sin and Math.Cos functions
+  (i.e. Up = (Cos(PI/2), Sin(PI/2)), Left = (Cos(PI), Sin(PI)), etc.)
+  so instead of having an MonsterDirection, a Vector2 would be preferred
+  so that the switch-case statement turns into something like
+  
+  self.Sprite.CurrentSpeed.X *= Direction.X, self.Sprite.CurrentSpeed.X *= Direction.Y
+
+  where Direction = (Cos(PI * random(0,4) / 4), Sin(PI * random(0,4) / 4))
+
+  or some similar statement which takes up a few lines and has little decision-making to do.  
+  
+  ** I do know that the IStateMachine class itself relies on the enumeration
+     of direction and some switch-case statements, so this change would
+     be harder to implement.
+
+* Switching from using integer timers to float timers which count in seconds rather
+  than in frames would give a greater intuition on how much time something takes,
+  hence making it a little more readable. Would also remove the need for this
+  FPS variable which is confusing to someone who hasn't been exposed to the code before.
+
+  ** I know the FPS variable was in IStateMachine, which wasn't Grant's responsibility.

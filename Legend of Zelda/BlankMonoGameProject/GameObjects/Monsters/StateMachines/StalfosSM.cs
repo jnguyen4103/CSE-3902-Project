@@ -84,7 +84,6 @@ namespace Sprint03
             if (Timer == 1)
             {
                 Self.Sprite.ChangeSpriteAnimation("StalfosDamaged");
-                Game.soundEffects[7].Play();
                 SetKnockbackVelocity();
             }
             if (Timer < StunDelay)
@@ -107,7 +106,6 @@ namespace Sprint03
             if (Timer == 1)
             {
                 Self.Sprite.ChangeSpriteAnimation("Death");
-                Game.soundEffects[6].Play();
                 Reset();
             }
             else if (Timer > DeathDelay)

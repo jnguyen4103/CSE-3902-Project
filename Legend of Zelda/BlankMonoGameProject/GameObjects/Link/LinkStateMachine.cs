@@ -23,8 +23,6 @@ namespace Sprint03
         public void IdleState()
         {
             // Do nothing, literally
-            Game.Link = new Link(Game,  new LinkSprite(Game, "WalkUp", Game.LinkSpriteSheet, Game.spriteBatch),Game.LinkSpawn);
-
         }
 
         public void AttackState()
@@ -47,14 +45,9 @@ namespace Sprint03
 
         public void DeadState()
         {
-            Game.CurrDungeon.Monsters.Clear();
-            Game.CurrDungeon.Items.Clear();
+            Game.Dungeon01.Monsters.Clear();
+            Game.Dungeon01.Items.Clear();
             Game.Link = new DeadLink(Game, Link);
-        }
-
-        public void PickupState()
-        {
-            Game.Link = new PickupLink(Game, Link);
         }
 
         // Method only here since inventory doesn't exist

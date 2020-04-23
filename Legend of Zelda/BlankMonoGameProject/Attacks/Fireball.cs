@@ -31,7 +31,7 @@ namespace Sprint03
         public void Attack()
         {
             SetupAttack();
-            Game.CurrDungeon.Attacks.Add(this);
+            Game.Dungeon01.Attacks.Add(this);
         }
 
         public void OnHit()

@@ -125,13 +125,11 @@ namespace Sprint03
             if (Timer == 1)
             {
                 Self.Sprite.ChangeSpriteAnimation("Darknut" + direction + "Damaged");
-                Game.soundEffects[7].Play();
                 SetKnockbackVelocity();
             }
             if (Timer < StunDelay)
             {
                 Knockback();
-
             }
 
             if (Timer >= DamagedDelay)
@@ -149,7 +147,6 @@ namespace Sprint03
             if (Timer == 1)
             {
                 Self.Sprite.ChangeSpriteAnimation("Death");
-                Game.soundEffects[6].Play();
                 Reset();
             }
             else if (Timer > DeathDelay)

@@ -40,17 +40,7 @@ namespace Sprint03
             Attacking,
             SecondaryAttack,
             Damaged,
-            Dead,
-            Pickup
-        }
-
-        public enum GameState
-        {
-            GamePlayingState,
-            GamePausedState,
-            GameInventoryState,
-            GameWinState,
-            GameLoseState
+            Dead
         }
 
     }

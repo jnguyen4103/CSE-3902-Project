@@ -41,8 +41,6 @@ namespace Sprint03
             Sprite.Layer = 0.95f;
             CanMove = false;
             Sprite.FPS = 3;
-
-            game.soundEffects[13].Play();
             LinkPepe = game.Content.Load<Texture2D>("Link Pepe");
             YouDied = game.Content.Load<Texture2D>("You Died");
             Timer = 0;
@@ -97,8 +95,8 @@ namespace Sprint03
             Sprite.DrawSprite();
             if(Timer >= DeathScreenDelay)
             {
-                Game.spriteBatch.Draw(YouDied, new Vector2(Game.CurrDungeon.ActiveRoom.Position.X, Game.CurrDungeon.ActiveRoom.Position.Y + 100), null, Color.White * 0.85f, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
-                Game.spriteBatch.Draw(LinkPepe, new Vector2(Game.CurrDungeon.ActiveRoom.Position.X, Game.CurrDungeon.ActiveRoom.Position.Y - 64), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.99f);
+                Game.spriteBatch.Draw(YouDied, new Vector2(Game.Dungeon01.ActiveRoom.Position.X, Game.Dungeon01.ActiveRoom.Position.Y + 100), null, Color.White * 0.85f, 0, Vector2.Zero, 1, SpriteEffects.None, 1f);
+                Game.spriteBatch.Draw(LinkPepe, new Vector2(Game.Dungeon01.ActiveRoom.Position.X, Game.Dungeon01.ActiveRoom.Position.Y - 64), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.99f);
 
             }
         }
@@ -108,13 +106,6 @@ namespace Sprint03
         {
             ICommand reset = new Reset(Game);
             reset.Execute();
-        }
-
-        public void PickupItem()
-        {
-            /*
-             * Cannot PickUPItem  
-            */
         }
     }
 }

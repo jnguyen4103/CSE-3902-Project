@@ -51,12 +51,7 @@ namespace Sprint03
         {
             // Does nothing
         }
-        public void PickupItem()
-        {
-            /*
-             * Cannot PickUPItem  
-            */
-        }
+
         public void SecondaryAttack(string attackName)
         {
             // Does nothing

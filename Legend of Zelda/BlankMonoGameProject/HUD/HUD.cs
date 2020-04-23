@@ -194,7 +194,7 @@ namespace Sprint03
             Map.Layer = 1f;
             Map.Colour = Color.Black;
 
-            WeaponA = new StaticSprite(Game, "SwordSwing", Vector2.Zero, Game.EffectSpriteSheet, Game.spriteBatch);
+            WeaponA = new StaticSprite(Game, "RedLightsaber", Vector2.Zero, Game.EffectSpriteSheet, Game.spriteBatch);
             WeaponA.Layer = 1f;
             WeaponA.TotalFrames = 1;
 

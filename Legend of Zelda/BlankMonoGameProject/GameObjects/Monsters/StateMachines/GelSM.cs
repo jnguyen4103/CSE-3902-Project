@@ -82,14 +82,12 @@ namespace Sprint03
             Self.State = States.MonsterState.Dead;
         }
 
-
         public void DeadState()
         {
             Timer++;
             if (Timer == 1)
             {
                 Self.Sprite.ChangeSpriteAnimation("Death");
-                Game.soundEffects[6].Play();
                 Reset();
             }
             else if (Timer > DeathDelay)

@@ -94,7 +94,6 @@ namespace Sprint03
             if (Timer == 1)
             {
                 Self.Sprite.ChangeSpriteAnimation("Death");
-                Game.soundEffects[6].Play();
                 Reset();
             }
             else if (Timer > DeathDelay)

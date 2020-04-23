@@ -19,7 +19,6 @@ namespace Sprint03
 
         // Most of the Sprites are size 16 by 16, new vectors will be made for special cases
         private readonly Vector2 defaultMonsterSize = new Vector2(16, 16);
-        private readonly Vector2 offSet = new Vector2(0, 4);
 
         // Most effects and items are 8 by 16 size
         private readonly Vector2 defaultItemSize = new Vector2(8, 16);
@@ -139,9 +138,6 @@ namespace Sprint03
             Sprites["LionKey"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(208, 0, 8, 16), defaultItemSize, 1);
             Sprites["Compass"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(224, 0, 16, 16), defaultMonsterSize, 1);
             Sprites["Triforce"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(248, 0, 16, 40), defaultMonsterSize, 2);
-            Sprites["OldMan"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(269, 0, 16, 16), defaultMonsterSize+offSet, 1);
-            Sprites["OldManFire"]= new Tuple<Rectangle, Vector2, int>(new Rectangle(293, 0, 16, 16), defaultMonsterSize + offSet , 2);
-            Sprites["Merchant"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(269, 24, 16, 16), defaultMonsterSize+offSet, 1);
 
             // Initializing all Effects Sprites into the dictionary
             Sprites["Sword"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 16), defaultItemSize, 1);

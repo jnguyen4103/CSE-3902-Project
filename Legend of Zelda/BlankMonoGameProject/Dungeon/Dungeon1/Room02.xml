@@ -32,13 +32,11 @@
 	-<Block Point="720 1024" Size="16 16" />
   
 	<!--Monsters -->
-
   <!-- Items -->
 
-  -<Item Name="Key" Spawn="658 994" />
 
 
-  <!-- Doors -->
+	<!-- Doors -->
   -<LockedDoor Point="640 912" Side="Up" ConnectsTo="Room04"/>
 
 

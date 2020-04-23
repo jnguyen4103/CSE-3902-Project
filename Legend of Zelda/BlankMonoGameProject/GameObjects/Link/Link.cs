@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Media;
 
 namespace Sprint03
 {
@@ -23,7 +22,6 @@ namespace Sprint03
         public int MaxHP { get; set; } = 6;
         public float BaseSpeed { get; set; } = 1f;
         public bool CanMove { get; set; } = true;
-        public int frameCount = 0;
 
         private Game1 Game;
         private string directionName;
@@ -38,15 +36,7 @@ namespace Sprint03
             Sprite.ChangeSpriteAnimation("WalkUp");
             directionName = "Up";
             StateMachine = new LinkStateMachine(game, this);
-            Game.soundEffects[8].Play();
 
-        }
-
-        public void PickupItem()
-        {
-       
-            StateMachine.PickupState();
-            State = States.LinkState.Pickup;
         }
 
         public void TakeDamage(States.Direction directionHit, int damage)
@@ -126,17 +116,10 @@ namespace Sprint03
         public void Update()
         {
             Hitbox = new Rectangle((int)Position.X + 2, (int)Position.Y + 4, (int)Sprite.Size.X - 4, (int)Sprite.Size.Y - 4);
-            frameCount++;
-            if(HP<=3 && frameCount % 48 ==47)
-            {
-                Game.soundEffects[15].Play();
-                frameCount = 0;
-     
-            }
             switch (State)
             {
-                case (States.LinkState.Pickup):
-                    StateMachine.PickupState();
+                case (States.LinkState.Idle):
+                    StateMachine.IdleState();
                     break;
 
                 case (States.LinkState.Attacking):
@@ -170,7 +153,6 @@ namespace Sprint03
         public void Draw()
         {
             Sprite.DrawSprite();
-            
         }
     }
 }

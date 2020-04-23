@@ -18,15 +18,11 @@
 
   <!--Monsters -->
 
-  <!-- Items -->  
-  -<Item Name="OldMan" Spawn="130 460" />
-  -<Item Name="OldManFire" Spawn="82 460" />
-  -<Item Name="OldManFire" Spawn="178 460" />
+  <!-- Items -->
 
 
 
-
-  <!-- Doors -->
+	<!-- Doors -->
   
   <!-- Transitions -->
   -<ScreenTransition Point="280 464" Size="16 16" LeadsTo="Room09" />

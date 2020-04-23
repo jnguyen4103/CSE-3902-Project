@@ -3,7 +3,6 @@
 */
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace Sprint03
 {
@@ -36,7 +35,7 @@ namespace Sprint03
         public void Attack()
         {
             SetupAttack();
-            Game.CurrDungeon.Attacks.Add(this);
+            Game.Dungeon01.Attacks.Add(this);
         }
 
         public void OnHit()

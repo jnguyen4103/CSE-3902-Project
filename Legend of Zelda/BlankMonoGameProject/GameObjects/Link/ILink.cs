@@ -24,6 +24,5 @@ namespace Sprint03
         void SecondaryAttack(string attackName);
         void ChangeDirection(States.Direction direction);
         void Stop();
-        void PickupItem();
     }
 }
