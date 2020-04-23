@@ -68,7 +68,7 @@ The HUD takes count of the keys, bombs and rupees Link collects as well as his h
 Not all of the HUD is implemented but some of it to allow use for the pickups.<br/>
  
 ## Sprint 5 Ideas:
-  1. Zombies that can follow player into the rooms (Charging Zombie, Exploding Zombie and )
+  1. Zombies that can follow player into the rooms (Charging Zombie, Exploding Zombie and Regular Zombie)
   2. 5 extra rooms.
   3. Second dungeon and a blue link corresponding to it. It has transitions and some monsters will destroyable walls. Will populate with locked doors, enemies etc.  Go to dungeon2 by picking up a triforce.
   4. Third dungeon and a black link corresponding to it.  It has walls, blocks and transitions to each room. Go to dugeon3 by picking up either two triforces or the skull.
