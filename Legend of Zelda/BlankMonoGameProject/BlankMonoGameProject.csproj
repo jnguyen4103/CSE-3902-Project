@@ -56,6 +56,7 @@
     <Compile Include="Commands\EnterInventory.cs" />
     <Compile Include="Commands\Pause.cs" />
     <Compile Include="Commands\Quit.cs" />
+    <Compile Include="Controllers\KeyboardCheater.cs" />
     <Compile Include="GameObjects\Items\Fairy.cs" />
     <Compile Include="GameObjects\Items\IItem.cs" />
     <Compile Include="GameObjects\Link\DeadLink.cs" />

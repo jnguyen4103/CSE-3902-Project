@@ -71,6 +71,7 @@ namespace Sprint03
         public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Enter };
         public ICommand[] keyboardCommands = new ICommand[13];
         public KeyboardController keyboardController;
+        public KeyboardCheater keyboardCheater;
         //private MouseController mouseController;
         
         //(32,96). w = 192 H =112
@@ -131,6 +132,7 @@ namespace Sprint03
             keyboardCommands[11] = new Pause(this);
             keyboardCommands[12] = new EnterInventory(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
+            keyboardCheater = new KeyboardCheater(this);
 
             // Starting music
             MediaPlayer.Play(song);
@@ -208,6 +210,7 @@ namespace Sprint03
                 base.Update(gameTime);
             }
             keyboardController.Update();
+            keyboardCheater.Update();
         }
 
         /// <summary>
