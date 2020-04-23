@@ -86,11 +86,10 @@ namespace Sprint03
             Timer++;
             Console.WriteLine(Game.TriforceCounter);
             
-            if (Timer >= wonScreenDelay && (Game.TriforceCounter %48 <2 && Game.SkullCounter ==0))
+            if (Timer >= wonScreenDelay && (Game.TriforceCounter %48 <1 && Game.SkullCounter ==0))
             {
 
                 //    Game.hud.HideHud();
-                r.Execute();
                 RemoveDecorator();
                 gameChanger.changeSong2();
                 gameChanger.changeDungeon2();
@@ -98,7 +97,6 @@ namespace Sprint03
             else if(Timer >= wonScreenDelay&& Game.SkullCounter %48!=1)
             {
                 gameChanger.changeSong3();
-                r.Execute();
                 RemoveDecorator();
                 gameChanger.changeDungeon3();
             }

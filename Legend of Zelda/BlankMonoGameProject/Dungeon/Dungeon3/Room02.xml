@@ -2,19 +2,29 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="2 1048" />
+	-<Location Point="684 262" />
 	
 	<!--Walls -->
-	-<Wall Point="3 1048" Size="256 32" />
-  -<Wall Point="3 1048" Size="32 256" />
-  -<Wall Point="3 1191" Size="256 32" />
-	-<Wall Point="226 1144" Size="32 80" />
-	-<Wall Point="226 1048" Size="32 80" />
+	-<Wall Point="684 262" Size="256 32" />
+  -<Wall Point="684 262" Size="32 256" />
+  -<Wall Point="908 262" Size="32 256" />
+	-<Wall Point="821 406" Size="256 32" />
+	-<Wall Point="684 406" Size="120 32" />
 
 
 
 	<!--Blocks -->
-  
+  -<Block Point="732 310" Size="18 82" />
+  -<Block Point="876 310" Size="18 82" />
+
+  -<Block Point="860 310" Size="15 18" />
+  -<Block Point="860 374" Size="15 18" />
+
+  -<Block Point="796 326" Size="34 18" />
+  -<Block Point="796 374" Size="15 18" />
+
+  -<Block Point="749 310" Size="15 18" />
+  -<Block Point="749 374" Size="15 18" />
 	<!--Monsters -->
   <!-- Items -->
 
@@ -25,6 +35,6 @@
 
   <!-- Transitions -->
 
-  -<ScreenTransition Point="270 1134" Size="16 16" LeadsTo="Room03" />
+  -<ScreenTransition Point="812 452" Size="16 16" LeadsTo="Room0" />
   
 </RoomData>

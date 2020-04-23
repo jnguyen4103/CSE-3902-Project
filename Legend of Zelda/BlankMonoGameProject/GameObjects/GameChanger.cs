@@ -41,6 +41,7 @@ namespace  Sprint03
         }
         public void changeDungeon2()
         {
+            Game.LinkSpriteSheet = Game.Content.Load<Texture2D>("Link Blue Sprite Sheet");
             Game.LinkSpawn = new Vector2(375, 1358);
             Game.Link.StateMachine.IdleState();
             Game.DungeonMain = Game.Content.Load<Texture2D>("Dungeon2_Main");
@@ -52,6 +53,7 @@ namespace  Sprint03
         }
         public void changeDungeon3()
         {
+            Game.LinkSpriteSheet = Game.Content.Load<Texture2D>("Link Black Sprite Sheet");
             Game.LinkSpawn = new Vector2(812, 515);
             Game.Link.StateMachine.IdleState();
             Game.DungeonMain = Game.Content.Load<Texture2D>("Dungeon3_Main");
@@ -59,6 +61,7 @@ namespace  Sprint03
             Game.Camera.Transition(Game.CurrDungeon.Rooms["Room0"].Position);
             Game.DungeonDoorFrames = Game.Content.Load<Texture2D>("Dungeon3_DoorFrames");
             Game.CurrDungeon = new Dungeon(Game, "../../../../Dungeon/Dungeon3/Dungeon03.txt");
+
         }
     }
 }

@@ -5,37 +5,26 @@
 	-<Location Point="684 436" />
 	
 	<!--Walls -->
-	-<Wall Point="258 1224" Size="32 176" />
-  -<Wall Point="258 1224" Size="120 32" />
-  -<Wall Point="395 1224" Size="120 32" />
-  -<Wall Point="482 1224" Size="32 80" />
-  -<Wall Point="482 1318" Size="32 75" />
-  -<Wall Point="258 1370" Size="256 32" />
+	-<Wall Point="684 436" Size="32 80" />
+  -<Wall Point="684 436" Size="120 32" />
+  
+  -<Wall Point="684 533" Size="32 80" />
+  -<Wall Point="684 579" Size="120 32" />
+  
+  -<Wall Point="821 579" Size="120 32" />
+  -<Wall Point="909 533" Size="32 120" />
 
+  -<Wall Point="908 435" Size="32 80" />
+  -<Wall Point="821 436" Size="120 32" />
 
 	<!--Blocks -->
-  -<Block Point="306 1271" Size="16 16" />
-  -<Block Point="306 1303" Size="16 16" />
-  -<Block Point="306 1335" Size="16 16" />
-  
-  -<Block Point="354 1271" Size="16 16" />
-  -<Block Point="354 1303" Size="16 16" />
-  -<Block Point="354 1335" Size="16 16" />
-  
-  -<Block Point="402 1271" Size="16 16" />
-  -<Block Point="402 1303" Size="16 16" />
-  -<Block Point="402 1335" Size="16 16" />
 
-  -<Block Point="450 1271" Size="16 16" />
-  -<Block Point="450 1303" Size="16 16" />
-  -<Block Point="450 1335" Size="16 16" />
   
   <!-- Movable Blocks-->
   <!--Monsters -->
 
 
   <!-- Items -->
-   -<Item Name="Bomb" Spawn="379 1322" />
 
 
   <!-- Traps -->
@@ -44,7 +33,10 @@
   <!-- Doors -->
   
   <!-- Transitions -->
-  -<ScreenTransition Point="379 1207" Size="16 16" LeadsTo="Room03" />
-  -<ScreenTransition Point="528 1310" Size="16 16" LeadsTo="Room01" />
+  -<ScreenTransition Point="672 524" Size="16 16" LeadsTo="Room01" />
+  -<ScreenTransition Point="814 422" Size="16 16" LeadsTo="Room02" />
+  -<ScreenTransition Point="963 524" Size="16 16" LeadsTo="Room03" />
+  -<ScreenTransition Point="814 627" Size="16 16" LeadsTo="Room04" />
+
 
 </RoomData>
