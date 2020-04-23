@@ -180,6 +180,7 @@ namespace Sprint03
                 if(item.Hitbox.Intersects(Game.Link.Hitbox))
                 {
                     item.ActivateItem();
+                    Game.ItemMenuList.Add(item);
                 }
             }
         }

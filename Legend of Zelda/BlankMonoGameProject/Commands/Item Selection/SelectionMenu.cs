@@ -57,10 +57,10 @@ namespace Sprint03
                 new Rectangle(96, 0, 8, 8), Color.White);
             batch.Draw(sqTex, new Rectangle(sSquareX, sSquareY, 48, 48),
                 new Rectangle(TSquareX, TSquareY, 16, 16), Color.White);
-            batch.Draw(itemSprite, new Rectangle(520, 200, 25, 25),
+           /* batch.Draw(itemSprite, new Rectangle(520, 200, 25, 25),
                new Rectangle(140, 0, 8, 8), Color.White);
             batch.Draw(itemSprite, new Rectangle(580, 200, 25, 25),
-               new Rectangle(112, 0, 8, 8), Color.White);
+               new Rectangle(112, 0, 8, 8), Color.White);*/
           
         }
     }

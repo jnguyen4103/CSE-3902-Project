@@ -65,7 +65,10 @@ namespace Sprint03
 
         // Collision Detector
         public CollisionDetection Detection;
-        
+
+        // A list that adds item dynamically to the item selection menu as they are picked up
+        public List<IItem> ItemMenuList = new List<IItem>();
+
         // Controller
         //  TODO: add return/enter button to be assigned to inventory screen transition
         public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Enter };
