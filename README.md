@@ -19,7 +19,7 @@ W : Move Link up<br/>
 A : Move Link left<br/>
 S : Move Link down<br/>
 D : Move Link right<br/>
-Z : Link Swing Sword 
+Z : Link Swing Sword<br/> 
 
 (Also in inventory screen:
 W : Move red rectangle up<br/>
@@ -76,6 +76,13 @@ The HUD takes count of the keys, bombs and rupees Link collects as well as his h
 Not all of the HUD is implemented but some of it to allow use for the pickups.<br/>
  
 ## Sprint 5 Ideas:
+  1. Zombies that can follow player into the rooms (Charging Zombie, Exploding Zombie and Regular Zombie)
+  2. 5 extra rooms.
+  3. Second dungeon and a blue link corresponding to it. It has transitions and some monsters will destroyable walls. Will populate with locked doors, enemies etc.  Go to dungeon2 by picking up a triforce.
+  4. Third dungeon and a black link corresponding to it.  It has walls, blocks and transitions to each room. Go to dugeon3 by picking up either two triforces or the skull.
+  5. Added two new songs. The two songs will correlate to the dungeons that they change to respectively. 
+  6. Implement a gun weapon.
+  7. "CHEATS": cheats to give 50 keys, 50 bombs to the player, restore player health to , and Numpad 0-4 is available for cheatsull, and speed up link/restore original speed. Cheats are accessed using Ctrl+Numpad, and numpad 0-4 is available for cheats.
 
 ## Tools Used:
 ### For Burndown Chart:
