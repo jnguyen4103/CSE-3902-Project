@@ -4,13 +4,9 @@
 ### This is a group project completed for CSE 3902 project course, during the process, each sprite project is making effort towards the complete game. 
 ### Our group members are: Xueying Liang, Nicholas Negrete, John Nguyen, Grant Gabel, and Youssef Moosa.
 
-<<<<<<< HEAD
-## General Information
-=======
 ### General Information
 The taskboard for Sprint #5 can be found under the "Projects" tab. 
 
->>>>>>> a64df090c79a6edf09e3b4755fd28a9b556683cb
 ### Program Controls
 Keybindings<br/>
 Q : Quit the game <br/>
@@ -35,13 +31,9 @@ Stalfos: The skeleton which takes 2 hits to die.<br/>
 Goriya: Will move and throw boomerangs, can damage link by either running into him or hitting him  with a boomerang.<br/>
 Aquamentus: The green dragon which only faces one direction. Fires 3 fire balls at link. <br/>
 Gel: Moves and deals 1 damage.<br/>
-<<<<<<< HEAD
 Blade Traps: when link is detected above/below or left/right of the trap the trap activates and pursues closes the distance. <br/>
-=======
-Blade Traps: When link is detected above/below or left/right of the trap the trap activates and pursues closes the distance. <br/>
 DoDongo: Walks left, right, up, and down. Will charge link if he detects him.
 Rope: Moves left and right.
->>>>>>> a64df090c79a6edf09e3b4755fd28a9b556683cb
 
 ### Custom Monsters:
 Zol: Explodes on death or when it gets near Link.<br/>
@@ -64,10 +56,7 @@ Darknut: Walks to Link's last location and charges Link when he gets close.<br/>
  <li>Inventory screen is not transitioned to - it simply appears. </li>
  <li>Inventory map does not show rooms explored - beleived to be a layering issue.</li>
  <li>Inventory screen command triggers and untriggers itself - sometimes when pressing the enter key to enter the inventory screen you will enter and exit the inventory screen in the same instance.</li>
-<<<<<<< HEAD
-=======
  <li>Item Selection portion did not work properly- believed to be a merge conflict with inventory screenthat intertwined  between each other.</li>
->>>>>>> a64df090c79a6edf09e3b4755fd28a9b556683cb
 </ul>
 
 ### Additional Tools, Processes Used:
@@ -79,6 +68,14 @@ The HUD takes count of the keys, bombs and rupees Link collects as well as his h
 Not all of the HUD is implemented but some of it to allow use for the pickups.<br/>
  
 ## Sprint 5 Ideas:
+  1. Zombies that can follow player into the rooms (Charging Zombie, Exploding Zombie and )
+  2. 5 extra rooms.
+  3. Second dungeon and a blue link corresponding to it. It has transitions and some monsters will destroyable walls. Will populate with locked doors, enemies etc.  Go to dungeon2 by picking up a triforce.
+  4. Third dungeon and a black link corresponding to it.  It has walls, blocks and transitions to each room. Go to dugeon3 by picking up either two triforces or the skull.
+  5. Added two new songs. The two songs will correlate to the dungeons that they change to respectively. 
+  6. Implement a gun weapon.
+  7. "CHEATS": cheats to give 50 keys, 50 bombs to the player, restore player health to , and Numpad 0-4 is available for cheatsull, and speed up link/restore original speed. Cheats are accessed using Ctrl+Numpad, and numpad 0-4 is available for cheats.
+
 
 ## Tools Used:
 ### For Burndown Chart:<br/>
