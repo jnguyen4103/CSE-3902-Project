@@ -43,6 +43,7 @@ namespace Sprint03
                     break;
                 case "Triforce":
                     Sprite.UpdatePosition(new Vector2(Game.Link.Position.X, Game.Link.Position.Y - 16));
+                    Game.TriforceCounter++;
                     break;
                 case "OldMan":
                     CollisionHandler.LinkHitBlock(Game.Link,new Rectangle((int)Position.X, (int)Position.Y, (int)Sprite.Size.X, (int)Sprite.Size.Y));

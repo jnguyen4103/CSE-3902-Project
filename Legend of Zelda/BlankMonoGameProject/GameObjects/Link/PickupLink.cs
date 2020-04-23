@@ -84,9 +84,8 @@ namespace Sprint03
         public void Update()
         {
             Timer++;
-            Console.WriteLine(Game.TriforceCounter);
             
-            if (Timer >= wonScreenDelay && (Game.TriforceCounter %48 <1 && Game.SkullCounter ==0))
+            if (Timer >= wonScreenDelay && (Game.TriforceCounter <96 && Game.SkullCounter ==0))
             {
 
                 //    Game.hud.HideHud();
