@@ -25,6 +25,8 @@
   <!--Monsters -->
 
   -<Monster Name="Stalfos" Spawn="878 595" />
+  -<Monster Name="Stalfos" Spawn="878 595" />
+  -<Monster Name="Stalfos" Spawn="878 595" />
 
 
   <!-- Items -->

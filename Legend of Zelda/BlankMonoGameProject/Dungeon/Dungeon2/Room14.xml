@@ -42,8 +42,11 @@
 
   <!--Monsters -->
 
+
+
+
   <!-- Items -->
-  -<HiddenItem Name="HeartContainer" Spawn="1232 288" />
+  -<HiddenItem Name="HeartContainer" Spawn="638 201" />
 
 
   -<DestroyableWall Point="739 240" Side="Left" ConnectsTo="Room15"/>

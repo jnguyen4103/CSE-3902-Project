@@ -29,7 +29,15 @@
 
   <!--Monsters -->
 
-
+  -<Monster Name="DoDongo" Spawn="494 534" />
+  
+  -<Monster Name="Rope" Spawn="524 459" />  
+  
+  -<Monster Name="Stalfos" Spawn="600 482" />
+  -<Monster Name="Keese" Spawn="474 467" />
+  
+  -<Monster Name="Lynel" Spawn="507 554" />
+  -<Monster Name="Keese" Spawn="542 474" />
 
   <!-- Items -->
 

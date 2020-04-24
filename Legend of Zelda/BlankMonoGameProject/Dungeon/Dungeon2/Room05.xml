@@ -21,7 +21,9 @@
   
 	<!--Monsters -->
 
-  -<Monster Name="Zol" Spawn="336 640" />
+  -<Monster Name="Zol" Spawn="820 1142" />
+  -<Monster Name="Darknut" Spawn="955 1142" />
+  
 
 
 

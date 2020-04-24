@@ -26,6 +26,8 @@
   <!-- Movable Blocks-->
 
   <!--Monsters -->
+  -<Monster Name="Goriyas" Spawn="628 396" />
+  -<Monster Name="Darknut" Spawn="558 409" />
 
 
 

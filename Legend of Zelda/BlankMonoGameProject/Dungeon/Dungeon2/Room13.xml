@@ -25,6 +25,7 @@
   <!--Monsters -->
 
   -<Monster Name="Zol" Spawn="893 416" />
+  -<Monster Name="Zol" Spawn="834 416" />
 
 
   <!-- Items -->

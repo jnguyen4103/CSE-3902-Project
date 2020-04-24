@@ -14,11 +14,13 @@ namespace Sprint03
         private int Timer = 0;
 
         private int SpawnDelay = 120;
-        private int DeathDelay = 20;
+        private int DeathDelay = 10;
         private int StunDelay = 32;
         private int DamagedDelay = 90;
-
+        private int AttackDelay = 40;
+        private int ExplosionDelay = 2;
         private int ResetCounter = 4;
+        private bool canAttack = true;
         private readonly int ResetThreshold = 4;
 
         private Vector2 Path = new Vector2(0, 0);
@@ -45,7 +47,7 @@ namespace Sprint03
                 Timer = 0;
                 Self.Sprite.ChangeSpriteAnimation("BigZombieDown");
                 Reset();
-                Self.Sprite.FPS = 8;
+                Self.Sprite.FPS = 4;
                 Self.State = States.MonsterState.Idle;
             }
         }
@@ -67,61 +69,59 @@ namespace Sprint03
             {
                 Self.Position += Velocity;
                 Self.Sprite.UpdatePosition(Self.Position);
+                if(DetectLink() && canAttack)
+                {
+             
+                    Self.State = States.MonsterState.Attacking;
+                }
             }
+        }
+        private bool DetectLink()
+        {
+            return Math.Abs(Self.Position.X - Game.Link.Position.X) < 40 && Math.Abs(Self.Position.Y - Game.Link.Position.Y) < 40;
+        }
+
+        private void createExplosion()
+        {
+            IAttack explosion = new Explosion(Game, new Vector2(Self.Position.X - 16, Self.Position.Y + Self.Sprite.Size.Y), Self);
+            IAttack explosion2 = new Explosion(Game, new Vector2(Self.Position.X, Self.Position.Y + Self.Sprite.Size.Y), Self);
+            IAttack explosion3 = new Explosion(Game, new Vector2(Self.Position.X + 16, Self.Position.Y+Self.Sprite.Size.Y), Self);
+            IAttack explosion4 = new Explosion(Game, new Vector2(Self.Position.X+32, Self.Position.Y + Self.Sprite.Size.Y), Self);
+            explosion.Attack();
+            explosion2.Attack();
+            explosion3.Attack();
+            explosion4.Attack();
         }
 
         public void AttackState()
         {
-            if (Math.Abs(Self.Position.X - Game.Link.Position.X) < Math.Abs(Self.Position.Y - Game.Link.Position.Y))
+            Timer++;
+            
+            if (Timer  ==1)
             {
-                if (Game.Link.Position.Y < Self.Position.Y)
-                {
-                    Velocity.Y = -2f;
-                    Path.X = Self.Position.X;
-                    Path.Y = Self.Position.Y - 48;
-                    Self.Sprite.ChangeSpriteAnimation("BigZombieUp");
-                    direction = "Up";
-                    Self.Direction = States.Direction.Up;
-                }
-                else if (Game.Link.Position.Y > Self.Position.Y)
-                {
-                    Velocity.Y = 2f;
-                    Path.X = Self.Position.X;
-                    Path.Y = Self.Position.Y + 64;
-                    Self.Sprite.ChangeSpriteAnimation("BigZombieDown");
-                    direction = "Down";
-                    Self.Direction = States.Direction.Down;
-                }
+                
+                Self.Sprite.ChangeSpriteAnimation("BigZombieAttack");
             }
-            else
+            if(Timer == ExplosionDelay)
             {
-                if (Game.Link.Position.X < Self.Position.X)
-                {
-                    Velocity.X = -2f;
-                    Path.X = Self.Position.X - 48;
-                    Path.Y = Self.Position.Y;
-                    Self.Sprite.ChangeSpriteAnimation("BigZombieLeft");
-                    direction = "Left";
-                    Self.Direction = States.Direction.Left;
-                }
-                else if (Game.Link.Position.X > Self.Position.X)
-                {
-                    Velocity.X = 2f;
-                    Path.X = Self.Position.X + 64;
-                    Path.Y = Self.Position.Y;
-                    Self.Sprite.ChangeSpriteAnimation("BigZombieRight");
-                    direction = "Right";
+                createExplosion();
+            }
+            if (Timer >= AttackDelay)
+            {
+                Timer = 0;
+                Self.Sprite.ChangeSpriteAnimation("BigZombie" + direction);
+                Reset();
+                Self.State = States.MonsterState.Idle;
+                canAttack = false;
+            }
 
-                    Self.Direction = States.Direction.Right;
-                }
-            }
-            ResetCounter = 0;
-            Self.State = States.MonsterState.Moving;
+
         }
 
         public void DamagedState()
         {
             Timer++;
+            canAttack = false;
             if (Timer == 1)
             {
                 Self.Sprite.ChangeSpriteAnimation("BigZombie" + direction + "Damaged");
@@ -181,6 +181,7 @@ namespace Sprint03
                     {
                         ResetCounter++;
                         SetPath();
+
                     }
                 }
             }
@@ -189,6 +190,7 @@ namespace Sprint03
         private void Reset()
         {
             Self.CanDamage = true;
+            canAttack = true;
             Velocity.X = 0;
             Velocity.Y = 0;
             Path.X = 0;
@@ -247,16 +249,17 @@ namespace Sprint03
         {
             Path = Vector2.Zero;
 
-            if ((Math.Abs(Self.Position.Y - Game.Link.Position.Y) < 48) && Math.Abs(Self.Position.X - Game.Link.Position.X) < 48)
+            if ((Math.Abs(Self.Position.Y - Game.Link.Position.Y) < 70) && Math.Abs(Self.Position.X - Game.Link.Position.X) < 70)
             {
                 Reset();
                 Self.State = States.MonsterState.Attacking;
+
             }
             else
             {
                 if (Math.Abs(Self.Position.Y - Game.Link.Position.Y) > 16)
                 {
-                    // If Link is above BigZombie
+                    // If Link is above Darknut
                     if (Self.Position.Y > Game.Link.Position.Y)
                     {
                         Self.Direction = States.Direction.Up;
@@ -267,7 +270,7 @@ namespace Sprint03
                         Self.Sprite.ChangeSpriteAnimation("BigZombieUp");
                         direction = "Up";
                     }
-                    // If Link is below BigZombie
+                    // If Link is below Darknut
                     else
                     {
                         Self.Direction = States.Direction.Down;
@@ -281,7 +284,7 @@ namespace Sprint03
                 }
                 else if (Math.Abs(Self.Position.X - Game.Link.Position.X) > 16)
                 {
-                    // If Link is to the left of BigZombie
+                    // If Link is to the left of Darknut
                     if (Self.Position.X > Game.Link.Position.X)
                     {
                         Self.Direction = States.Direction.Left;
@@ -292,7 +295,7 @@ namespace Sprint03
                         Self.Sprite.ChangeSpriteAnimation("BigZombieLeft");
                         direction = "Left";
                     }
-                    // If Link is to the right of BigZombie
+                    // If Link is to the right of Darknut
                     else
                     {
                         Self.Direction = States.Direction.Right;

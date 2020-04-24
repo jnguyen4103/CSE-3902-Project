@@ -21,11 +21,19 @@
   -<Block Point="860 374" Size="15 18" />
 
   -<Block Point="796 326" Size="34 18" />
-  -<Block Point="796 374" Size="15 18" />
+  -<Block Point="796 358" Size="34 18" />
 
   -<Block Point="749 310" Size="15 18" />
   -<Block Point="749 374" Size="15 18" />
 	<!--Monsters -->
+  -<Monster Name="Aquamentus" Spawn="842 342" />
+ 
+  
+  -<Monster Name="Goriyas" Spawn="767 392" />
+  -<Monster Name="Darknut" Spawn="758 346" />
+
+  -<Monster Name="Zol" Spawn="850 348" />
+  -<Monster Name="Stalfos" Spawn="781 304" />
   <!-- Items -->
 
 

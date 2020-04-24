@@ -16,6 +16,10 @@
 	<!--Blocks -->
   
 	<!--Monsters -->
+  -<Monster Name="Keese" Spawn="100 1115" />
+  -<Monster Name="Keese" Spawn="100 1115" />
+  -<Monster Name="Keese" Spawn="100 1115" />
+
   <!-- Items -->
 
 

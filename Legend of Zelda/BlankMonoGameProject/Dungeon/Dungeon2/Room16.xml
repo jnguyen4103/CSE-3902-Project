@@ -21,6 +21,8 @@
 
   <!--Monsters -->
 
+  -<Monster Name="DoDongo" Spawn="570 77" />
+  -<Monster Name="Aquamentus" Spawn="714 77" />
 
   <!-- Items -->
 

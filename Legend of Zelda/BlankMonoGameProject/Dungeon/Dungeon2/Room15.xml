@@ -21,6 +21,9 @@
   <!--Monsters -->
 
   <!-- Items -->
+  -<Item Name="OldMan" Spawn="904 227" />
+  -<Item Name="OldMan" Spawn="920 227" />
+  -<Item Name="OldMan" Spawn="888 227" />
 
 
 

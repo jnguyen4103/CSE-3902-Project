@@ -21,8 +21,13 @@
   
   <!--Monsters -->
 
-
-
+  -<Monster Name="BigZombie" Spawn="720 700" />
+  -<Monster Name="Stalfos" Spawn="865 705" />
+  -<Monster Name="Keese" Spawn="813 744" />
+  -<Monster Name="Rope" Spawn="865 705" />
+  -<Monster Name="Keese" Spawn="813 744" />
+  -<Monster Name="Stalfos" Spawn="865 705" />
+  -<Monster Name="Darknut" Spawn="813 744" />
   <!-- Items -->
 
 

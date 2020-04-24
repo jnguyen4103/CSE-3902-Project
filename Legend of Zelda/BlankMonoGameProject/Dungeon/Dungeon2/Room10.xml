@@ -25,6 +25,10 @@
   <!--Monsters -->
 
   -<Monster Name="Gel" Spawn="626 603" />
+  -<Monster Name="Gel" Spawn="596 585" />
+  -<Monster Name="Gel" Spawn="600 603" />
+  -<Monster Name="Gel" Spawn="576 603" />
+  -<Monster Name="Gel" Spawn="626 603" />
 
 
   <!-- Items -->

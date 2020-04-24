@@ -27,6 +27,8 @@
   -<Block Point="626 951" Size="36 18" />
 
   <!--Monsters -->
+  -<Monster Name="Goriyas" Spawn="670 983" />
+  -<Monster Name="Goriyas" Spawn="626 920" />
 
   <!-- Items -->
   -<HiddenItem Name="Key" Spawn="643 983" />

@@ -22,11 +22,15 @@
   
   <!-- Movable Blocks-->
   <!--Monsters -->
-  -<Monster Name="BigZombie" Spawn="720 500" />
+  
 
 
 
   <!-- Items -->
+  -<Item Name="HeartContainer" Spawn="748 484" />
+  -<Item Name="Heart" Spawn="860 484" />
+  -<Item Name="HeartContainer" Spawn="860 547" />
+  -<Item Name="Heart" Spawn="748 547" />
 
 
   <!-- Traps -->

@@ -23,6 +23,8 @@
   -<Block Point="946 919" Size="18 18" />
 
   <!--Monsters -->
+  -<Monster Name="Gel" Spawn="898 952" />
+  -<Monster Name="Darknut" Spawn="898 952" />
 
 
   <!-- Items -->

@@ -221,13 +221,13 @@ namespace Sprint03
         {
             // Creating Sprite for Lynel
             MonsterSprite BigZombieSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, Game.spriteBatch);
-            BigZombieSprite.FPS = 6;
+            BigZombieSprite.FPS = 2;
 
             // Setting up Monster object for Stalfos to hold stats
-            Monster BigZombie = new Monster(BigZombieSprite, spawn, "DarknutDown", Game);
-            BigZombie.BaseSpeed = 0.5f;
-            BigZombie.HP = 4;
-            BigZombie.MaxHP = 4;
+            Monster BigZombie = new Monster(BigZombieSprite, spawn, "BigZombieRight", Game);
+            BigZombie.BaseSpeed = 0.2f;
+            BigZombie.HP = 8;
+            BigZombie.MaxHP = 8;
             BigZombie.AttackDamage = 1;
             BigZombie.StateMachine = new BigZombieSM(BigZombie, Game);
 

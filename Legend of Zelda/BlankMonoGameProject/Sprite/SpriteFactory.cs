@@ -133,14 +133,14 @@ namespace Sprint03
             Sprites["BigZombieUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(364, 0, 40, 40), bigZombieUP, 3);
             Sprites["BigZombieRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(464, 0, 40, 40), bigZombieLeftRight, 3);
             Sprites["BigZombieLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(505, 0, 40,40), bigZombieLeftRight, 3);
-            Sprites["BigZombieAttack"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(549, 0, 40, 40), bigZombieAttack, 3);
+            Sprites["BigZombieAttack"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(549, 0, 40, 40), bigZombieAttack, 2);
 
 
             Sprites["BigZombieDownDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(414, 170, 40, 40), bigZombieDown, 2);
             Sprites["BigZombieUpDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(364, 170, 40, 40), bigZombieUP, 2);
             Sprites["BigZombieRightDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(464, 170, 40, 40), bigZombieLeftRight, 2);
             Sprites["BigZombieLeftDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(505, 170, 40, 40), bigZombieLeftRight, 2);
-            Sprites["BigZombieAttackDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(549, 170, 40, 4), bigZombieAttack, 3);
+            Sprites["BigZombieAttackDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(549, 170, 40, 4), bigZombieAttack, 2);
 
 
             Sprites["RopeRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 304, 16, 40), defaultMonsterSize, 2);

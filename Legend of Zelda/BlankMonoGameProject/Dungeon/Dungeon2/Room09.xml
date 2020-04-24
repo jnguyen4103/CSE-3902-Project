@@ -29,10 +29,12 @@
   <!-- Movable Blocks-->
 
   <!--Monsters -->
-  -<Monster Name="Gel" Spawn="384 432" />
-  -<Monster Name="Gel" Spawn="432 464" />
-  -<Monster Name="Gel" Spawn="352 496" />
-  -<Monster Name="Zol" Spawn="388 432" />
+  -<Monster Name="Gel" Spawn="859 797" />
+
+  -<Monster Name="Gel" Spawn="878 775" />
+  -<Monster Name="Gel" Spawn="946 780" />
+  -<Monster Name="Gel" Spawn="899 807" />
+
 
 
   <!-- Items -->
