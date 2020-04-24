@@ -2,54 +2,43 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="528 208" />
+	-<Location Point="770 344" />
 	
 	<!--Walls -->
-  -<Wall Point="528 208" Size="32 176" />
-  -<Wall Point="528 208" Size="120 32" />
-  -<Wall Point="664 208" Size="120 32" />
-  -<Wall Point="752 208" Size="32 176" />
-  -<Wall Point="528 352" Size="120 32" />
-  -<Wall Point="664 352" Size="120 32" />
+  -<Wall Point="770 344" Size="121 32" />
+  -<Wall Point="770 344" Size="32 78" />
+
+  -<Wall Point="770 440" Size="32 80" />
+  -<Wall Point="770 487" Size="121 80" />
+
+  -<Wall Point="907 344" Size="120 32" />
+  -<Wall Point="994 344" Size="32 259" />
+
+  -<Wall Point="907 487" Size="256 32" />
 
 
   <!--Blocks -->
-  -<Block Point="560 240" Size="16 32" />
-  -<Block Point="576 240" Size="64 16" />
-  -<Block Point="624 256" Size="16 64" />
-  -<Block Point="640 304" Size="16 16" />
-  
-  -<Block Point="560 304" Size="16 48" />
-  -<Block Point="576 336" Size="64 16" />
-  -<Block Point="592 272" Size="16 64" />
 
-  -<Block Point="656 272" Size="32 16" />
-  -<Block Point="672 288" Size="16 64" />
-  -<Block Point="688 336" Size="64 16" />
-  -<Block Point="736 304" Size="16 32" />
-
-  -<Block Point="672 240" Size="80 16" />
-  -<Block Point="704 256" Size="16 64" />
-  -<Block Point="736 256" Size="16 32" />
 
   <!-- Movable Blocks-->
 
   <!--Monsters -->
-  -<Monster Name="Stalfos" Spawn="720 272" />
-  -<Monster Name="Stalfos" Spawn="640 272" />
-  -<Monster Name="Stalfos" Spawn="608 288" />
-  -<Monster Name="Zol" Spawn="704 320" />
+
+  -<Monster Name="Zol" Spawn="893 416" />
+  -<Monster Name="Zol" Spawn="834 416" />
 
 
   <!-- Items -->
-  -<HiddenItem Name="Key" Spawn="724 272" />
+  -<HiddenItem Name="Bomb" Spawn="893 416" />
 
 
 	<!-- Doors -->
-  -<LockedDoor Point="640 208" Side="Up" ConnectsTo="Room17"/>
+  -<DestroyableWall Point="882 488" Side="Down" ConnectsTo="Room11"/>
 
   <!-- Transitions -->
-  -<ScreenTransition Point="648 392" Size="16 16" LeadsTo="Room10" DoorCoords="648 352"/>
-  -<ScreenTransition Point="648 184" Size="16 16" LeadsTo="Room17" DoorCoords="648 224"/>
+  -<ScreenTransition Point="898 328" Size="16 16" LeadsTo="Room15" DoorCoords="0 0"/>
+  -<ScreenTransition Point="755 431" Size="16 16" LeadsTo="Room12" DoorCoords="0 0"/>
+  -<ScreenTransition Point="898 535"  Size="16 16" LeadsTo="Room11" DoorCoords="0 0"/>
+
 
 </RoomData>

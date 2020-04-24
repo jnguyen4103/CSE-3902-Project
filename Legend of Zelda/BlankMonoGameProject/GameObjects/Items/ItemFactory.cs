@@ -39,6 +39,7 @@ namespace Sprint03
             UseItem["Merchant"] = Merchant;
             UseItem["OldManFire"] = OldManFire;
             UseItem["Gun"] = Gun;
+            UseItem["Skull"] = Skull;
 
 
             DroppableItems["Bomb"] = BombItem;
@@ -99,6 +100,10 @@ namespace Sprint03
             Game.hud.UpdateRupeeCounter(Game.RupeeCounter);
         }
 
+        private void Skull()
+        {
+            Game.SkullCounter++;
+        }
         private void OldMan()
         {
             Console.WriteLine("USED OLDMAN");
@@ -197,9 +202,8 @@ namespace Sprint03
 
         private void Triforce()
         {
-            
-          
-            
+
+
 
         }
 

@@ -2,30 +2,39 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="272 384" />
+	-<Location Point="768 696" />
 	
 	<!--Walls -->
-  -<Wall Point="272 384" Size="256 32" />
-  -<Wall Point="272 384" Size="32 80" />
-  -<Wall Point="496 384" Size="32 80" />
-  -<Wall Point="496 480" Size="32 80" />
-  -<Wall Point="272 480" Size="32 80" />
-  -<Wall Point="240 480" Size="32 80" />
-  -<Wall Point="272 528" Size="120 32" />
-  -<Wall Point="408 528" Size="120 32" />
+  -<Wall Point="907 840" Size="256 32" />
+  -<Wall Point="995 696" Size="32 256" />
+  -<Wall Point="768 840" Size="120 32" />
+  -<Wall Point="907 696" Size="256 32" />
+  -<Wall Point="768 696" Size="123 32" />
+  -<Wall Point="768 696" Size="32 80" />
+  -<Wall Point="768 792" Size="32 80" />
+
+
+
+
+
+
 
 
 
   <!--Blocks -->
-  
+  -<Block Point="803 728" Size="17 17" />
+  -<Block Point="803 823" Size="17 17" />
+  -<Block Point="978 728" Size="17 17" />
+  -<Block Point="978 823" Size="17 17" />
   <!-- Movable Blocks-->
-  -<MovableBlock Point="384 464" Direction="Up" />
 
   <!--Monsters -->
-  -<Monster Name="Gel" Spawn="384 432" />
-  -<Monster Name="Gel" Spawn="432 464" />
-  -<Monster Name="Gel" Spawn="352 496" />
-  -<Monster Name="Zol" Spawn="388 432" />
+  -<Monster Name="Gel" Spawn="859 797" />
+
+  -<Monster Name="Gel" Spawn="878 775" />
+  -<Monster Name="Gel" Spawn="946 780" />
+  -<Monster Name="Gel" Spawn="899 807" />
+
 
 
   <!-- Items -->
@@ -33,11 +42,12 @@
 
 
 	<!-- Doors -->
-  -<BlockDoor Point="272 456" Side="Left" ConnectsTo="Room10"/>
+  -<DestroyableWall Point="891 840" Side="Down" ConnectsTo="Room07"/>
+  -<DestroyableWall Point="883 697" Side="Up" ConnectsTo="Room11"/>
 
   <!-- Transitions -->
-  -<ScreenTransition Point="392 568" Size="16 16" LeadsTo="Room05" DoorCoords="392 528"/>
-  -<ScreenTransition Point="248 464" Size="16 16" LeadsTo="Room08" DoorCoords="288 464"/>
-  -<ScreenTransition Point="536 464" Size="16 16" LeadsTo="Room10" DoorCoords="496 464"/>
+  -<ScreenTransition Point="897 679" Size="16 16" LeadsTo="Room11" DoorCoords="0 0"/>
+  -<ScreenTransition Point="898 888" Size="16 16" LeadsTo="Room07" DoorCoords="0 0"/>
+  -<ScreenTransition Point="755 784" Size="16 16" LeadsTo="Room08" DoorCoords="0 0"/>
 
 </RoomData>

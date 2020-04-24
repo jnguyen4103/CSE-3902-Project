@@ -48,9 +48,11 @@ namespace Sprint03
         public ILink Link;
         public LinkSprite SpriteLink;
         public bool ClockActivated = false;
-        public int RupeeCounter = 11;
-        public int KeyCounter = 12;
-        public int BombCounter = 13;
+        public int RupeeCounter = 0;
+        public int KeyCounter = 0;
+        public int BombCounter = 0;
+        public int TriforceCounter = 0;
+        public int SkullCounter = 0;
         public bool hasGun = false;
 
         // Sprite Sheets
@@ -164,7 +166,7 @@ namespace Sprint03
             base.Initialize();
         }
 
-         void MediaPlayer_MediaStateChanged(object sender, System.
+        public    void MediaPlayer_MediaStateChanged(object sender, System.
                                         EventArgs e)
         {
             // 0.0f is silent, 1.0f is full volume
@@ -253,14 +255,7 @@ namespace Sprint03
             CurrDungeon = new Dungeon(this, DefaultDungeon);
         }
 
-        public void changeSong()
-        {
-            this.song = Content.Load<Song>("winningGameSong");
-            MediaPlayer.Play(song);
-            MediaPlayer.Volume = 0f;
-            MediaPlayer.IsRepeating = true;
-            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
-        }
+
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload

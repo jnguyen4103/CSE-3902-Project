@@ -97,7 +97,7 @@ namespace Sprint03
         public static void ItemPickup(IItem item,ILink link)
         {
             item.ActivateItem();
-            if(item.Sprite.Name == "Triforce")
+            if(item.Sprite.Name == "Triforce" || item.Sprite.Name == "Skull")
                 link.PickupItem();
 
         }
