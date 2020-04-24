@@ -44,6 +44,7 @@ namespace Sprint03
 
         // Small Items & Effects
         private readonly Vector2 smallItemSize = new Vector2(8, 8);
+        private readonly Vector2 tinyItemSize = new Vector2(3, 3);
 
         public SpriteFactory()
         {
@@ -186,6 +187,7 @@ namespace Sprint03
             Sprites["OldMan"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(269, 0, 16, 16), defaultMonsterSize+offSet, 1);
             Sprites["OldManFire"]= new Tuple<Rectangle, Vector2, int>(new Rectangle(293, 0, 16, 16), defaultMonsterSize + offSet , 2);
             Sprites["Merchant"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(269, 24, 16, 16), defaultMonsterSize+offSet, 1);
+            Sprites["Gun"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(107, 27, 17, 10), new Vector2(17, 10), 1);
             Sprites["Skull"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 64, 16, 16), skullSize, 2);
 
             // Initializing all Effects Sprites into the dictionary
@@ -199,6 +201,7 @@ namespace Sprint03
             Sprites["ArrowEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 8, 16), defaultItemSize, 1);
             Sprites["ArrowEffectHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 24, 16, 8), rotatedItemSize, 1);
             Sprites["ProjectileHit"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 8), smallItemSize, 1);
+            Sprites["BulletHit"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(366, 15, 15, 14), new Vector2(15, 14), 1);
             Sprites["ExplosionEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 64), defaultMonsterSize, 3);
             Sprites["RedExplosionEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 72, 16, 64), defaultMonsterSize, 3);
             Sprites["GreyExplosionEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 144, 16, 64), defaultMonsterSize, 3);
@@ -206,6 +209,7 @@ namespace Sprint03
             Sprites["Fireball"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 8, 88), defaultItemSize, 4);
             Sprites["SwordSwing"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 0, 8, 64), defaultItemSize, 3);
             Sprites["SwordSwingHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(176, 0, 16, 40), rotatedItemSize, 3);
+            Sprites["Bullet"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(367, 1, 4, 4), new Vector2(4, 4) , 3);
 
             Sprites["RedLightsaber"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(200, 0, 8, 64), defaultItemSize, 3);
             Sprites["RedLightsaberHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(216, 0, 16, 40), rotatedItemSize, 3);
@@ -269,6 +273,44 @@ namespace Sprint03
             Sprites["8"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(48, 32, 8, 8), smallItemSize, 1);
             Sprites["9"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 32, 8, 8), smallItemSize, 1);
 
+            Sprites["SelectSquare"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 48, 16, 16), defaultItemSize, 1);
+            Sprites["LinkLocationMap"] = new Tuple<Rectangle, Vector2, int> (new Rectangle(24, 48, 3, 3), tinyItemSize, 1);
+            Sprites["LinkLocationMiniMap"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(40, 48, 3, 3), tinyItemSize, 1);
+
+            /* Room Types:
+             * example: left, right, up, down (this is a room with openings on all 4 sides, each direction denotes an opening)
+             * 
+             * a: left
+             * b: left, right
+             * c: left, down
+             * d: left, up
+             * e: left, up, right
+             * f: left, right, down
+             * g: left, up, down
+             * h: left, up, right, down
+             * i: right
+             * j: right, up
+             * k: right, down
+             * l: right, up, down
+             * m: down
+             * n: down, up
+             * o: up
+             */
+            Sprites["MapRoomTypeA"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 32, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeB"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeC"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 0, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeD"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 16, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeE"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 32, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeF"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 16, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeG"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 48, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeH"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 48, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeI"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 16, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeJ"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 0, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeK"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 32, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeL"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 48, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeM"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 16, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeN"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(128, 48, 8, 8), smallItemSize, 1);
+            Sprites["MapRoomTypeO"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(112, 32, 8, 8), smallItemSize, 1);
         }
     }
 }

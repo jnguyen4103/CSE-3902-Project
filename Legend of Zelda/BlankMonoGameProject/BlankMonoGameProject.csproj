@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Attacks\BeamExplosion.cs" />
+    <Compile Include="Attacks\Bullet.cs" />
     <Compile Include="Attacks\Fireball.cs" />
     <Compile Include="Attacks\SwordBeam.cs" />
     <Compile Include="Attacks\Boomerang.cs" />
@@ -48,7 +49,15 @@
     <Compile Include="Attacks\Explosion.cs" />
     <Compile Include="Attacks\IAttack.cs" />
     <Compile Include="Attacks\Sword.cs" />
+    <Compile Include="Bag\VisualBag.cs" />
+    <Compile Include="Commands\Attacks\LinkGun.cs" />
+    <Compile Include="Commands\Camera\CameraUp.cs" />
+    <Compile Include="Commands\ChangeRoom.cs" />
+    <Compile Include="Commands\Item Selection\SelectionMenu.cs" />
+    <Compile Include="Commands\Pass.cs" />
+    <Compile Include="Commands\Pause.cs" />
     <Compile Include="Commands\Quit.cs" />
+    <Compile Include="Controllers\MouseController.cs" />
     <Compile Include="GameObjects\GameChanger.cs" />
     <Compile Include="GameObjects\Items\Fairy.cs" />
     <Compile Include="GameObjects\Items\IItem.cs" />
@@ -98,9 +107,20 @@
     <Compile Include="GameObjects\Monsters\StateMachines\ZolSM.cs" />
     <Compile Include="GameObjects\MovableBlock.cs" />
     <Compile Include="GameObjects\States.cs" />
+    <Compile Include="GameState\GamePausedState.cs" />
+    <Compile Include="GameState\GameInventoryState.cs" />
+    <Compile Include="GameState\GamePlayingState.cs" />
+    <Compile Include="GameState\IGameState.cs" />
+    <Compile Include="Inventory\Inventory.cs" />
     <Compile Include="HUD\HUD.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\DarknutSM.cs" />
     <Compile Include="GameObjects\Traps\ITrap.cs" />
+    <Compile Include="Commands\Item Selection\ISelectionMenu.cs" />
+    <Compile Include="Commands\Item Selection\MenuSelectionChoice.cs" />
+    <Compile Include="Commands\Item Selection\MenuSelectionUp.cs" />
+    <Compile Include="Commands\Item Selection\MenuSelectionDown.cs" />
+    <Compile Include="Commands\Item Selection\MenuSelectionLeft.cs" />
+    <Compile Include="Commands\Item Selection\MenuSelectionRight.cs" />
     <Compile Include="Sprite\MonsterSprite.cs" />
     <Compile Include="GameObjects\Items\Item.cs" />
     <Compile Include="GameObjects\Items\ItemFactory.cs" />

@@ -35,7 +35,7 @@ namespace Sprint03
             }
             else
             {
-                if (!game.Link.CanMove)
+                if (!game.Link.CanMove && game.Paused != true)
                 {
                     game.Link.CanMove = true;
                 }
@@ -69,6 +69,8 @@ namespace Sprint03
                 DynamicLoad(level, newRoom);
                 game.Camera.Transition(level.Rooms[newRoom.Name].Position);
             }
+
+            game.roomsExplored[int.Parse(newRoom.Name.Substring(newRoom.Name.Length - 1))] = 1;
         }
 
         public static void ResetLevel(Game1 game, Dungeon level)

@@ -1,5 +1,6 @@
 ﻿/* Contributors
 * Stephen Hogg
+* Grant Gabel
 */
 using Microsoft.Xna.Framework;
 using System;
@@ -155,6 +156,17 @@ namespace Sprint03
             if (!ActiveRoom.Name.Equals(newRoom))
             {
                 DungeonLoader.TransitionRooms(Game, this, ActiveRoom, Rooms[newRoom]);
+            }
+
+            // updates list of explored rooms every time ethere is a transition to a room
+            if( !newRoom.Equals("Room0") )
+            {
+                int roomNum = int.Parse(newRoom.Substring(4));
+                int explored = Game.roomsExplored[roomNum];
+                if (explored == 0)
+                {
+                    Game.roomsExplored[roomNum] = 1;
+                }
             }
         }
     

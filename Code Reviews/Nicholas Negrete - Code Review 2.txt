@@ -1,11 +1,11 @@
   
-Sprint Number #4
+Sprint Number #5
 Author of the code review: Nicholas Negrete
-File being reviewed: Inventory.cs
-Author of file: Grant Gabel
-Date of the code review: 4/12/2020
+File being reviewed: KeyboardCheater.cs
+Author of file:Youssef Moosa
+Date of the code review: 4/24/2020
 Focus: Readability
 Time to review: 10 minutes
 
 Specific Comments: 
-Some of the variable names seem to be inconsistent with the writing style, some variables seem to start with uppercase letters while others just seem to start off with lower case, sort of a small thing but I beileve it is noticeable and can lead to small annoying complicatiosn later on. Things that need to be together are seperated by two new lines I think this makes it easier to read. Some of the if statements seem to have more new lines that necessary maybe get rid of some of those, and unnecessary comments, the code should be documenting itself with the variable names. Also I feel as though we can combine some of the StaticSprites together and deal with say a list of weapons rather than WeaponA and WeaponB.
+So overall the structure of the class is very good. the keyboard commands are done in the controller and not in the game class so thats great. Some things though about the readability, some of the variable names are not very descriptive like m, whats m I understand that its in a foreach loop so its almost like ofcourse its a monster but its still something to try and be more observant of. The comments while they are nice to see what you are doing in plain english but shouldn't be necessary the code should be describing itself with the variable names and we shouldn't need these comments. Some of the if statments are just {code} and i personally find this harder to read but thats just me. Spacing seems consistent. Other than these smaller things everything looks great! thank you!

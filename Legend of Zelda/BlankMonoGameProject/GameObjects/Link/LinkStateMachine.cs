@@ -75,6 +75,9 @@ namespace Sprint03
                 case ("Boomerang"):
                     secondaryAttack = new Boomerang(Game, Link, Link.Direction);
                     break;
+                case ("Bullet"):
+                    secondaryAttack = new Bullet(Game, Link, Link.Direction);
+                    break;
             }
             return secondaryAttack;
         }

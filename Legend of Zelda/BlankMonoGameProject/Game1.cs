@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BlankMonoGameProject.Commands.Camera;
+using BlankMonoGameProject.GameState;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,14 +15,34 @@ namespace Sprint03
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        public SpriteBatch spriteBatch;
-        public Camera2D Camera;
-        public HUD hud;
-        
 
+        // Required for monogame
+        GraphicsDeviceManager graphics;
+
+        // SpriteBatch & Sprite Factory
+        public SpriteBatch spriteBatch;
         public SpriteFactory SFactory;
         public ItemFactory IFactory;
+
+        // GameState
+        public IGameState CurrentGameState;
+        // Have a game state and game enumstate as some states like death are handled by objects like link and less so by the game so no use for a gamestate
+        public States.GameState GameEnumState;                   
+        public IGameState InventoryState;
+        public IGameState PauseState;
+        public IGameState PlayingState;
+        public IGameState LoseState;
+        public IGameState WinState;
+
+        // Camera
+        public Camera2D Camera;
+
+        // HUD
+        public HUD hud;
+
+        // Inventory
+        public Inventory inv;
+        public int[] roomsExplored = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
         // Link Object & Sprite
         public ILink Link;
@@ -31,6 +53,7 @@ namespace Sprint03
         public int BombCounter = 0;
         public int TriforceCounter = 0;
         public int SkullCounter = 0;
+        public bool hasGun = false;
 
         // Sprite Sheets
         public Texture2D LinkSpriteSheet;
@@ -40,31 +63,44 @@ namespace Sprint03
         public Texture2D TileSpriteSheet;
         public Texture2D DungeonMain;
         public Texture2D DungeonDoorFrames;
+        public Texture2D InventoryScreen;
 
+        // Song
         public Song song;
         public List<SoundEffect> soundEffects;
 
-        // Random for everything
+        // if game is paused or if user is in inventory screen
+        public bool Paused = false;
+
+        // Random number generator variable for game wide use
         public static Random random = new Random();
 
         public Dungeon CurrDungeon;
         public string DefaultDungeon = "../../../../Dungeon/Dungeon1/Dungeon01.txt";
+
+        // Collision Detector
         public CollisionDetection Detection;
-
+        
+        // Controller
+        //  TODO: add return/enter button to be assigned to inventory screen transition
+        public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Enter, Keys.X};
+        public ICommand[] keyboardCommands = new ICommand[14];
+        public KeyboardController keyboardController;
 
         
-        private Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q };
-        public ICommand[] keyboardCommands = new ICommand[12];
-        private KeyboardController keyboardController;
-        //private MouseController mouseController;
-        
+        public ICommand[] mouseCommands = new ICommand[1];
+        public MouseController mouseController; 
         //(32,96). w = 192 H =112
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
         public  Vector2 LinkSpawn = new Vector2(640, 1200);
 
+        // Screen dimensions
         public Vector2 screenDimensions = new Vector2(1024.0f, 960.0f);
         public float ScreenScale = 4.0f;
+
+        public VisualBag vsbag;
+        public SelectionMenu sel;
 
         public Game1()
         {
@@ -74,8 +110,6 @@ namespace Sprint03
             IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = (int)screenDimensions.X;
             graphics.PreferredBackBufferHeight = (int)screenDimensions.Y;
-           
-
         }
 
         /// <summary>
@@ -86,14 +120,17 @@ namespace Sprint03
         /// </summary>
         protected override void Initialize()
         {
+            //Camera
             Camera = new Camera2D(this, GraphicsDevice.Viewport);
+
+            // Factories - item and sprite
             SFactory = new SpriteFactory();
             IFactory = new ItemFactory(this);
+
+            // Collision Detector
             Detection = new CollisionDetection(this);
             soundEffects = new List<SoundEffect>();
 
-
-            
             // Adding all of the commands into the keyboard controller
             keyboardCommands[0] = new LinkWalkUp(this);
             keyboardCommands[1] = new LinkWalkDown(this);
@@ -106,9 +143,26 @@ namespace Sprint03
             keyboardCommands[8] = new LinkBoomerang(this);
             keyboardCommands[9] = new Reset(this);
             keyboardCommands[10] = new Quit(this);
+            keyboardCommands[11] = new Pause(this);
+            keyboardCommands[13] = new LinkGun(this);
+
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
+            mouseCommands[0] = new ChangeRoom(this);
+            mouseController = new MouseController(this, mouseCommands);
+            vsbag = new VisualBag();
 
+            //Game State
+            PlayingState = new GamePlayingState(this);
+            InventoryState = new GameInventoryState(this);
+            PauseState = new GamePausedState(this);
+
+
+
+            CurrentGameState = PlayingState;
+            GameEnumState = States.GameState.GamePlayingState;
+
+            // Game base
             base.Initialize();
         }
 
@@ -127,6 +181,7 @@ namespace Sprint03
 
         protected override void LoadContent()
         {
+            // Sprites
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             LinkSpriteSheet = Content.Load<Texture2D>("Link Sprite Sheet");
@@ -134,6 +189,9 @@ namespace Sprint03
             ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
             TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
+            InventoryScreen = Content.Load<Texture2D>("HUD");
+
+            // Dungeon
             DungeonMain = Content.Load<Texture2D>("Dungeon1_Main");
             DungeonDoorFrames = Content.Load<Texture2D>("Dungeon1_Door_Frames");
 
@@ -158,6 +216,7 @@ namespace Sprint03
              * 16 LOZ_Secret
              * 17 LOZ_Sword_Shoot
              * 18 LOZ_Sword_Slash
+             * 19 LOZ_Gunshot
              */
             soundEffects.Add(Content.Load<SoundEffect>("LOZ_Arrow_Boomerang"));
             soundEffects.Add(Content.Load<SoundEffect>("LOZ_Bomb_Blow"));
@@ -178,13 +237,18 @@ namespace Sprint03
             soundEffects.Add(Content.Load<SoundEffect>("LOZ_Secret"));
             soundEffects.Add(Content.Load<SoundEffect>("LOZ_Sword_Shoot"));
             soundEffects.Add(Content.Load<SoundEffect>("LOZ_Sword_Slash"));
+            soundEffects.Add(Content.Load<SoundEffect>("LOZ_Gunshot"));
+
 
             SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, spriteBatch);
             Link = new Link(this, SpriteLink, LinkSpawn);
             hud = new HUD(this);
+            inv = new Inventory(this);
+            sel = new SelectionMenu(this);
             this.song = Content.Load<Song>("musicForGame");
             MediaPlayer.Play(song);
-            MediaPlayer.Volume = 0.1f;
+            MediaPlayer.Volume = 0f;
+            MediaPlayer.IsMuted = true;
             MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
 
@@ -199,7 +263,6 @@ namespace Sprint03
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
         /// <summary>
@@ -209,13 +272,20 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-
-            Link.Update();
-            Camera.Update();
-            CurrDungeon.Update();
-            Detection.Update();
+            CurrentGameState.Update();
             keyboardController.Update();
+            mouseController.Update();
             base.Update(gameTime);
+
+            //if (!Paused)
+            //{
+            //    Link.Update();
+            //    CurrDungeon.Update();
+            //    Camera.Update();
+            //    Detection.Update();
+            //    base.Update(gameTime);
+            //}
+            //keyboardController.Update();
         }
 
         /// <summary>
@@ -225,17 +295,47 @@ namespace Sprint03
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
-                samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
 
-            spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
-            CurrDungeon.Draw();
-            Link.Draw();
-            spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
-            hud.Draw();
+            CurrentGameState.Draw();
+
             spriteBatch.End();
-
             base.Draw(gameTime);
+
+            //if (!Paused)
+            //{
+            //    GraphicsDevice.Clear(Color.Black);
+            //    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend,
+            //        samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+
+                
+
+            //    spriteBatch.Draw(DungeonMain, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
+            //    CurrDungeon.Draw();
+            //    Link.Draw();
+            //    spriteBatch.Draw(DungeonDoorFrames, new Vector2(0, 0), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
+            //    hud.Draw();
+            //    if (InInventory)
+            //    {
+            //        inv.Draw();
+            //    }
+            //    spriteBatch.End();
+            //    base.Draw(gameTime);
+            //}
+            //if(InInventory)
+            //{
+            //    GraphicsDevice.Clear(Color.Black);
+            //    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Transform);
+            //    inv.Draw();
+            //    spriteBatch.End();
+
+            //    spriteBatch.Begin();
+            //    sel.Draw();
+            //    spriteBatch.End();
+
+            //    base.Draw(gameTime);
+            //}
+
         }
     }
 }

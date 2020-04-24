@@ -1,12 +1,11 @@
-Sprint Number #4
+Sprint Number #5
 Author of the code review: Nicholas Negrete
-File being reviewed: Pause.cs
-Author of file: John Nguyen
-Date of the code review: 4/12/2020
+File being reviewed: GamePlayingState.cs
+Author of file: Grant Gabel
+Date of the code review: 4/24/2020
 Focus: Maintainability
 Time to review: 15 minutes
 
 Specific Comments: 
-This is overall a very simple yet very deceptive class. The functionality of the class is theoretically to stop all of the 
-movement of all sprites in the game, with this current implementation you would have to go throughout every sprite that moves and stop it, 
-in their own class. In order to improve this we could make a PauseHandler class, we would then make a PauseHandler object in the game class and every update tick update the PauseHandler. If the PauseHandler was updated and the game was paused we could just check every GameObject in the class with a foreach loop over a list of Gameobjects and stop their movements this way instead of going through each object and stopping them this way. 
+Very good. There arent many issues that are screaming out to me. It does seem thought that it is too good if that makes sense. When  inspecting your code, yes it is very simple but alot is really going on. Why is it better to have this Update the game rather thant the actual game it seems as though we are making more work but we are actually not. The GameState should be in charge of these things so great job all in all! 
+The only thing that is screaming to me is why does an interface have a field like that? Aren't they only supposed to have method declarations, if you want a field like that maybe make an abstract class instead.
