@@ -65,6 +65,9 @@ Darknut: Walks to Link's last location and charges Link when he gets close.<br/>
  <li>Inventory map does not show rooms explored - beleived to be a layering issue.</li>
  <li>Inventory screen command triggers and untriggers itself - sometimes when pressing the enter key to enter the inventory screen you will enter and exit the inventory screen in the same instance.</li>
  <li>Item Selection portion did not work properly- believed to be a merge conflict with inventory screenthat intertwined  between each other.</li>
+ <li>Link spawns in testing room instead of entrance room. </li>
+ <li>Because link spawns in testing room inventory map if called in testing room shows link in top most room of map, this is the only
+ room where the map shows link in a different room than he is in.</li>
 </ul>
 
 ### Additional Tools, Processes Used:
