@@ -143,6 +143,7 @@ namespace Sprint03
             Sprites["OldMan"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(269, 0, 16, 16), defaultMonsterSize+offSet, 1);
             Sprites["OldManFire"]= new Tuple<Rectangle, Vector2, int>(new Rectangle(293, 0, 16, 16), defaultMonsterSize + offSet , 2);
             Sprites["Merchant"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(269, 24, 16, 16), defaultMonsterSize+offSet, 1);
+            Sprites["Gun"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(107, 27, 17, 10), new Vector2(17, 10), 1);
 
             // Initializing all Effects Sprites into the dictionary
             Sprites["Sword"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 0, 8, 16), defaultItemSize, 1);
@@ -155,6 +156,7 @@ namespace Sprint03
             Sprites["ArrowEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 0, 8, 16), defaultItemSize, 1);
             Sprites["ArrowEffectHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 24, 16, 8), rotatedItemSize, 1);
             Sprites["ProjectileHit"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(80, 0, 8, 8), smallItemSize, 1);
+            Sprites["BulletHit"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(366, 15, 15, 14), new Vector2(15, 14), 1);
             Sprites["ExplosionEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 0, 16, 64), defaultMonsterSize, 3);
             Sprites["RedExplosionEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 72, 16, 64), defaultMonsterSize, 3);
             Sprites["GreyExplosionEffect"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(96, 144, 16, 64), defaultMonsterSize, 3);
@@ -162,6 +164,7 @@ namespace Sprint03
             Sprites["Fireball"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(144, 0, 8, 88), defaultItemSize, 4);
             Sprites["SwordSwing"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(160, 0, 8, 64), defaultItemSize, 3);
             Sprites["SwordSwingHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(176, 0, 16, 40), rotatedItemSize, 3);
+            Sprites["Bullet"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(367, 1, 4, 4), new Vector2(4, 4) , 3);
 
             Sprites["RedLightsaber"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(200, 0, 8, 64), defaultItemSize, 3);
             Sprites["RedLightsaberHorizontal"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(216, 0, 16, 40), rotatedItemSize, 3);

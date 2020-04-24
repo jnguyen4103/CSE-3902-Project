@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Attacks\BeamExplosion.cs" />
+    <Compile Include="Attacks\Bullet.cs" />
     <Compile Include="Attacks\Fireball.cs" />
     <Compile Include="Attacks\SwordBeam.cs" />
     <Compile Include="Attacks\Boomerang.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Attacks\IAttack.cs" />
     <Compile Include="Attacks\Sword.cs" />
     <Compile Include="Bag\VisualBag.cs" />
+    <Compile Include="Commands\Attacks\LinkGun.cs" />
     <Compile Include="Commands\Camera\CameraUp.cs" />
     <Compile Include="Commands\ChangeRoom.cs" />
     <Compile Include="Commands\Item Selection\SelectionMenu.cs" />

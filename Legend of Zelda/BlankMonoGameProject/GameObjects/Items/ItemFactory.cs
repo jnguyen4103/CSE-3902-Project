@@ -38,6 +38,8 @@ namespace Sprint03
             UseItem["OldMan"] = OldMan;
             UseItem["Merchant"] = Merchant;
             UseItem["OldManFire"] = OldManFire;
+            UseItem["Gun"] = Gun;
+
 
             DroppableItems["Bomb"] = BombItem;
             DroppableItems["Heart"] = Heart;
@@ -85,6 +87,10 @@ namespace Sprint03
                     Game.CurrDungeon.Items.Add(new Item(Game, "Clock", "Clock", spawn));
                 }
             }
+        }
+        private void Gun()
+        {
+            Game.hasGun = true;
         }
 
         private void BlueRupee()
