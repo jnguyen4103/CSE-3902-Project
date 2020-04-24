@@ -33,6 +33,7 @@ Attacks:<br/>
 2 - Use Arrow<br/>
 3 - Use Fireball<br/>
 4 - Use Boomerang<br/>
+X - Shoot gun once it has been picked up<br/>
 
 ## Enemies:
 ### Regular Monsters:
