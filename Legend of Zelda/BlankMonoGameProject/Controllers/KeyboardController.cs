@@ -15,8 +15,10 @@ namespace Sprint03
         private bool AttackTriggered = false;
         private bool PauseTriggered = false;
         private int Timer = 60;
+        private int PauseTimer = 10;
         private int SecondaryAttackDelay = 60;
         private int InventoryMenuSwitchDelay = 60;
+        private int PauseDelay = 10;
 
        public KeyboardController(Game1 game, Keys[] keys, ICommand[] commands)
         {
@@ -42,6 +44,7 @@ namespace Sprint03
             if (keyState.IsKeyUp(Keys.P) ) { PauseTriggered = false; }
             if (Timer < SecondaryAttackDelay) { Timer++; }
             if (Timer < InventoryMenuSwitchDelay) { Timer++; }
+            if (PauseTimer < PauseDelay) { PauseTimer++; }
 
             // keep as one if statement with else if statements so don't have to worry about a variable being set and un set in one call
             if (Game.GameEnumState.Equals(States.GameState.GamePlayingState))
@@ -78,21 +81,25 @@ namespace Sprint03
                                 keyMappings[k].Execute();
 
                             }
-                            if ((k == Keys.D1 || k == Keys.D2 || k == Keys.D3 || k == Keys.D4) && Timer == SecondaryAttackDelay)
+                            else if ((k == Keys.D1 || k == Keys.D2 || k == Keys.D3 || k == Keys.D4) && Timer == SecondaryAttackDelay)
                             {
                                 Timer = 0;
                                 keyMappings[k].Execute();
                             }
-                            if (k == Keys.D1 && Game.BombCounter > 0)
+                            else if (k == Keys.D1 && Game.BombCounter > 0)
                             {
                                 keyMappings[k].Execute();
                             }
-                            // TODO: if problems with going in and out of inventory possible add extra condition here
-                            if (k == Keys.Enter && Timer == InventoryMenuSwitchDelay)
+                            else if (k == Keys.Enter && Timer == InventoryMenuSwitchDelay)
                             {
                                 Timer = 0;
                                 Game.CurrentGameState = Game.InventoryState;
-                                Game.GameEnumState = States.GameState.GameInventoryState;
+                                Game.CurrentGameState.TransitionToState();
+                            }
+                            else if (k == Keys.P && PauseTimer == PauseDelay)
+                            {
+                                PauseTimer = 0;
+                                Game.CurrentGameState = Game.PauseState;
                                 Game.CurrentGameState.TransitionToState();
                             }
 
@@ -140,11 +147,21 @@ namespace Sprint03
                     }
                 }
             }
-            else if (keyState.IsKeyDown(Keys.P) && !PauseTriggered)
+            else if (Game.GameEnumState.Equals(States.GameState.GamePausedState) && PauseTimer == PauseDelay)
             {
-                PauseTriggered = true;
-                keyMappings[Keys.P].Execute();
-                
+                foreach(Keys k in pressed)
+                {
+                    if (k == Keys.P)
+                    {
+                        PauseTimer = 0;
+                        Game.CurrentGameState = Game.PlayingState;
+                        Game.GameEnumState = States.GameState.GamePlayingState;
+                        Game.CurrentGameState.TransitionToState();
+                    }else if (k == Keys.Q)
+                    {
+                        keyMappings[k].Execute();
+                    }
+                }
             }
         }
     }

@@ -26,6 +26,7 @@ namespace BlankMonoGameProject.GameState
 
 		public void TransitionToState()
 		{
+			Game.GameEnumState = States.GameState.GameInventoryState;
 		}
 
 		public void Draw()
