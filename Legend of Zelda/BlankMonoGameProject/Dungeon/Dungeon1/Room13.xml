@@ -49,7 +49,7 @@
   -<LockedDoor Point="640 208" Side="Up" ConnectsTo="Room17"/>
 
   <!-- Transitions -->
-  -<ScreenTransition Point="648 392" Size="16 16" LeadsTo="Room10" />
-  -<ScreenTransition Point="648 184" Size="16 16" LeadsTo="Room17" />
+  -<ScreenTransition Point="648 392" Size="16 16" LeadsTo="Room10" DoorCoords="648 352"/>
+  -<ScreenTransition Point="648 184" Size="16 16" LeadsTo="Room17" DoorCoords="648 224"/>
 
 </RoomData>

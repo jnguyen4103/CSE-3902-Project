@@ -50,12 +50,14 @@ namespace Sprint03
     public struct ScreenTransition
     {
         public Rectangle Hitbox { get; set; }
+        public Rectangle doorHitbox { get; set; }
         public string NextRoom;
 
-        public ScreenTransition(Vector2 position, Vector2 size, string nextRoom)
+        public ScreenTransition(Vector2 position, Vector2 size, string nextRoom, Vector2 doorCoords)
         {
             NextRoom = nextRoom;
             Hitbox = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
+            doorHitbox = new Rectangle((int)doorCoords.X, (int)doorCoords.Y, (int)size.X, (int)size.Y);
         }
     }
 }

@@ -158,7 +158,7 @@ namespace Sprint03
                 DungeonLoader.TransitionRooms(Game, this, ActiveRoom, Rooms[newRoom]);
             }
 
-            // updates list of explored rooms every tim ethere is a transition to a room
+            // updates list of explored rooms every time ethere is a transition to a room
             if( !newRoom.Equals("Room0") )
             {
                 int roomNum = int.Parse(newRoom.Substring(4));

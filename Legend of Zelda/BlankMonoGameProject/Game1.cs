@@ -77,8 +77,10 @@ namespace Sprint03
         public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Enter };
         public ICommand[] keyboardCommands = new ICommand[13];
         public KeyboardController keyboardController;
-        //private MouseController mouseController;
+
         
+        public ICommand[] mouseCommands = new ICommand[1];
+        public MouseController mouseController; 
         //(32,96). w = 192 H =112
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
@@ -120,8 +122,6 @@ namespace Sprint03
             Detection = new CollisionDetection(this);
             soundEffects = new List<SoundEffect>();
 
-
-            
             // Adding all of the commands into the keyboard controller
             keyboardCommands[0] = new LinkWalkUp(this);
             keyboardCommands[1] = new LinkWalkDown(this);
@@ -138,7 +138,8 @@ namespace Sprint03
             keyboardCommands[12] = new EnterInventory(this);
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
-
+            mouseCommands[0] = new ChangeRoom(this);
+            mouseController = new MouseController(this, mouseCommands);
             vsbag = new VisualBag();
 
             //Game State
@@ -259,6 +260,7 @@ namespace Sprint03
         {
             CurrentGameState.Update();
             keyboardController.Update();
+            mouseController.Update();
             base.Update(gameTime);
 
             //if (!Paused)
