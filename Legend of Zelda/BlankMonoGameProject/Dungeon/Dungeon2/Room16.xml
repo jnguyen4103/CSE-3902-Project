@@ -31,7 +31,7 @@
 	<!-- Doors -->
   
   <!-- Transitions -->
-  -<ScreenTransition Point="499 80" Size="16 16" LeadsTo="Room17" />
-  -<ScreenTransition Point="642 183" Size="16 16" LeadsTo="Room14" />
+  -<ScreenTransition Point="499 80" Size="16 16" LeadsTo="Room17" DoorCoords="0 0"/>
+  -<ScreenTransition Point="642 183" Size="16 16" LeadsTo="Room14" DoorCoords="0 0"/>
 
 </RoomData>

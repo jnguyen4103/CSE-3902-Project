@@ -36,8 +36,8 @@
   -<DestroyableWall Point="883 1049" Side="Up" ConnectsTo="Room07"/>
   
   <!-- Transitions -->
-  -<ScreenTransition Point="735 1135" Size="16 16" LeadsTo="Room04" />
-  -<ScreenTransition Point="898 1035" Size="16 16" LeadsTo="Room07" />
+  -<ScreenTransition Point="735 1135" Size="16 16" LeadsTo="Room04" DoorCoords="0 0"/>
+  -<ScreenTransition Point="898 1035" Size="16 16" LeadsTo="Room07" DoorCoords="0 0"/>
 
 
 </RoomData>

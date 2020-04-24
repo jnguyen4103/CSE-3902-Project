@@ -39,9 +39,9 @@
   -<LockedDoor Point="1152 384" Side="Up" ConnectsTo="Room14"/>
 
 <!-- Transitions -->
-  -<ScreenTransition Point="641 535" Size="16 16" LeadsTo="Room10" />
-  -<ScreenTransition Point="786 430" Size="16 16" LeadsTo="Room13" />
-  -<ScreenTransition Point="641 328" Size="16 16" LeadsTo="Room14" />
+  -<ScreenTransition Point="641 535" Size="16 16" LeadsTo="Room10" DoorCoords="0 0"/>
+  -<ScreenTransition Point="786 430" Size="16 16" LeadsTo="Room13" DoorCoords="0 0"/>
+  -<ScreenTransition Point="641 328" Size="16 16" LeadsTo="Room14" DoorCoords="0 0"/>
 
 
 </RoomData>

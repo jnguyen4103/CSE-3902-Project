@@ -30,7 +30,7 @@ namespace Sprint03
             Creator = creator;
             Position = Creator.Position;
             Direction = direction;
-            Damage = 1;
+            Damage = 5;
         }
 
         public void Attack()

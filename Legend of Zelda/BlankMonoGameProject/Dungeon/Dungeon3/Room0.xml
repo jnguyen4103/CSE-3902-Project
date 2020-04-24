@@ -31,6 +31,7 @@
   -<Item Name="Heart" Spawn="860 484" />
   -<Item Name="HeartContainer" Spawn="860 547" />
   -<Item Name="Heart" Spawn="748 547" />
+  -<Item Name="Gun" Spawn="718 547" />
 
 
   <!-- Traps -->
@@ -39,10 +40,10 @@
   <!-- Doors -->
   
   <!-- Transitions -->
-  -<ScreenTransition Point="672 524" Size="16 16" LeadsTo="Room01" />
-  -<ScreenTransition Point="814 422" Size="16 16" LeadsTo="Room02" />
-  -<ScreenTransition Point="963 524" Size="16 16" LeadsTo="Room03" />
-  -<ScreenTransition Point="814 627" Size="16 16" LeadsTo="Room04" />
+  -<ScreenTransition Point="672 524" Size="16 16" LeadsTo="Room01" DoorCoords="0 0"/>
+  -<ScreenTransition Point="814 422" Size="16 16" LeadsTo="Room02" DoorCoords="0 0"/>
+  -<ScreenTransition Point="963 524" Size="16 16" LeadsTo="Room03" DoorCoords="0 0"/>
+  -<ScreenTransition Point="814 627" Size="16 16" LeadsTo="Room04" DoorCoords="0 0"/>
 
 
 </RoomData>

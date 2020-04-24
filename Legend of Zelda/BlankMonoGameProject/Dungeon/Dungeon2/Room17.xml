@@ -43,6 +43,6 @@
   <!-- Doors -->
   
   <!-- Transitions -->
-  -<ScreenTransition Point="530 80" Size="16 16" LeadsTo="Room16" />
+  -<ScreenTransition Point="530 80" Size="16 16" LeadsTo="Room16" DoorCoords="0 0"/>
 
 </RoomData>
