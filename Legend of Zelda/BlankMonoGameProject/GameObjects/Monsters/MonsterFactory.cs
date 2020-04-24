@@ -28,6 +28,8 @@ namespace Sprint03
             Monsters["DoDongo"] = SpawnDoDongo;
             Monsters["Rope"] = SpawnRope;
 
+            Monsters["BigZombie"] = SpawnBigZombie;
+
 
 
 
@@ -213,6 +215,24 @@ namespace Sprint03
 
             // Spawning dat boii
             return Dodongo;
+        }
+
+        private Monster SpawnBigZombie(Vector2 spawn)
+        {
+            // Creating Sprite for Lynel
+            MonsterSprite BigZombieSprite = new MonsterSprite(Game, "SpawningCloud", Game.MonsterSpriteSheet, Game.spriteBatch);
+            BigZombieSprite.FPS = 6;
+
+            // Setting up Monster object for Stalfos to hold stats
+            Monster BigZombie = new Monster(BigZombieSprite, spawn, "DarknutDown", Game);
+            BigZombie.BaseSpeed = 0.5f;
+            BigZombie.HP = 4;
+            BigZombie.MaxHP = 4;
+            BigZombie.AttackDamage = 1;
+            BigZombie.StateMachine = new BigZombieSM(BigZombie, Game);
+
+            // Spawning dat boii
+            return BigZombie;
         }
 
     }

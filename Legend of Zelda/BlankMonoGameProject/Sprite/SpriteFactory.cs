@@ -24,6 +24,12 @@ namespace Sprint03
         private readonly Vector2 offSet = new Vector2(0, 4);
         private readonly Vector2 skullSize = new Vector2(12,12);
 
+        private readonly Vector2 bigZombieDown = new Vector2(40,44);
+        private readonly Vector2 bigZombieUP = new Vector2(40,40);
+        private readonly Vector2 bigZombieLeftRight = new Vector2(36,40);
+
+        private readonly Vector2 bigZombieAttack = new Vector2(36,60);
+
         // Most effects and items are 8 by 16 size
         private readonly Vector2 defaultItemSize = new Vector2(8, 16);
         private readonly Vector2 rotatedItemSize = new Vector2(16, 8);
@@ -31,6 +37,8 @@ namespace Sprint03
         // Room Sizes
         private readonly Vector2 doorSize = new Vector2(32, 32);
         private readonly Vector2 floorSize = new Vector2(192, 112);
+
+
 
 
 
@@ -119,6 +127,20 @@ namespace Sprint03
             Sprites["DoDongoUpDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(127, 304, 16, 40), defaultMonsterSize, 2);
             Sprites["DoDongoRightDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(151, 256, 16, 40), dodongoDamage, 2);
             Sprites["DoDongoLeftDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(191, 256, 16, 40), dodongoDamage, 2);
+
+
+            Sprites["BigZombieDown"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(414, 0, 40, 40), bigZombieDown, 3);
+            Sprites["BigZombieUp"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(364, 0, 40, 40), bigZombieUP, 3);
+            Sprites["BigZombieRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(464, 0, 40, 40), bigZombieLeftRight, 3);
+            Sprites["BigZombieLeft"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(505, 0, 40,40), bigZombieLeftRight, 3);
+            Sprites["BigZombieAttack"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(549, 0, 40, 40), bigZombieAttack, 3);
+
+
+            Sprites["BigZombieDownDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(414, 170, 40, 40), bigZombieDown, 2);
+            Sprites["BigZombieUpDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(364, 170, 40, 40), bigZombieUP, 2);
+            Sprites["BigZombieRightDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(464, 170, 40, 40), bigZombieLeftRight, 2);
+            Sprites["BigZombieLeftDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(505, 170, 40, 40), bigZombieLeftRight, 2);
+            Sprites["BigZombieAttackDamaged"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(549, 170, 40, 4), bigZombieAttack, 3);
 
 
             Sprites["RopeRight"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 304, 16, 40), defaultMonsterSize, 2);

@@ -22,7 +22,6 @@
   <!--Monsters -->
 
   <!-- Items -->
-   -<Item Name="Merchant" Spawn="689 1137" />
   -<Item Name="Triforce" Spawn="657 1137" />
   -<Item Name="Skull" Spawn="657 1169" />
 

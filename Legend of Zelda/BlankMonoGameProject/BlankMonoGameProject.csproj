@@ -54,6 +54,7 @@
     <Compile Include="GameObjects\Items\IItem.cs" />
     <Compile Include="GameObjects\Link\DeadLink.cs" />
     <Compile Include="GameObjects\Link\PickupLink.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\BigZombieSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\DodongoSM.cs" />
     <Compile Include="GameObjects\Monsters\StateMachines\RopeSM.cs" />
     <Compile Include="GameObjects\Traps\BladeTrap.cs" />

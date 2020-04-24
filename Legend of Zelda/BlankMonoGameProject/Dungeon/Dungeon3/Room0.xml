@@ -22,6 +22,8 @@
   
   <!-- Movable Blocks-->
   <!--Monsters -->
+  -<Monster Name="BigZombie" Spawn="720 500" />
+
 
 
   <!-- Items -->
