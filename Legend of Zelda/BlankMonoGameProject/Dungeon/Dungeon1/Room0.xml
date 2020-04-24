@@ -23,7 +23,7 @@
 
   <!-- Items -->
    -<Item Name="Merchant" Spawn="689 1137" />
-  -<Item Name="Bomb" Spawn="657 1137" />
+  -<Item Name="Gun" Spawn="657 1137" />
   -<Item Name="Bomb" Spawn="657 1169" />
 
 

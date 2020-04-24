@@ -229,6 +229,12 @@
 /processorParam:Quality=Best
 /build:LOZ_Get_Rupee.wav
 
+#begin LOZ_Gunshot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Gunshot.wav
+
 #begin LOZ_Key_Appear.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
