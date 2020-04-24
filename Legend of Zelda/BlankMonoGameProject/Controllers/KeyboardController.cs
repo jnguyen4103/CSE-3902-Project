@@ -47,7 +47,7 @@ namespace Sprint03
             if (PauseTimer < PauseDelay) { PauseTimer++; }
 
             // keep as one if statement with else if statements so don't have to worry about a variable being set and un set in one call
-            if (Game.GameEnumState.Equals(States.GameState.GamePlayingState))
+            if (Game.GameEnumState.Equals(States.GameState.GamePlayingState) && !Game.Link.State.Equals(States.LinkState.Dead))
             {
                 foreach (Keys k in pressed)
                 {
@@ -105,7 +105,7 @@ namespace Sprint03
                     
                 }
             }
-            else if (Game.GameEnumState.Equals(States.GameState.GameInventoryState) && !Game.CurrentGameState.isTransitioning)
+            else if (Game.GameEnumState.Equals(States.GameState.GameInventoryState) && !Game.CurrentGameState.isTransitioning && !Game.Link.State.Equals(States.LinkState.Dead))
             {
                 foreach (Keys k in pressed)
                 {
@@ -145,7 +145,7 @@ namespace Sprint03
                     }
                 }
             }
-            else if (Game.GameEnumState.Equals(States.GameState.GamePausedState) && PauseTimer == PauseDelay)
+            else if (Game.GameEnumState.Equals(States.GameState.GamePausedState) && PauseTimer == PauseDelay && !Game.Link.State.Equals(States.LinkState.Dead))
             {
                 foreach(Keys k in pressed)
                 {
@@ -156,6 +156,17 @@ namespace Sprint03
                         Game.GameEnumState = States.GameState.GamePlayingState;
                         Game.CurrentGameState.TransitionToState();
                     }else if (k == Keys.Q)
+                    {
+                        keyMappings[k].Execute();
+                    }
+                }
+            }
+            // this allows game to be quit from any state
+            else
+            {
+                foreach(Keys k in pressed)
+                {
+                    if (k == Keys.Q)
                     {
                         keyMappings[k].Execute();
                     }

@@ -46,6 +46,8 @@ namespace Sprint03
             LinkPepe = game.Content.Load<Texture2D>("Link Pepe");
             YouDied = game.Content.Load<Texture2D>("You Died");
             Timer = 0;
+
+            Game.GameEnumState = States.GameState.GameLoseState;
         }
 
         public void TakeDamage(States.Direction directionHit, int damage)
