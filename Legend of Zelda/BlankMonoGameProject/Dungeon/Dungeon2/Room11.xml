@@ -38,8 +38,8 @@
 
 
   <!-- Transitions -->
-  -<ScreenTransition Point="760 464" Size="16 16" LeadsTo="Room10" />
-  -<ScreenTransition Point="904 568" Size="16 16" LeadsTo="Room07" />
-  -<ScreenTransition Point="1048 464" Size="16 16" LeadsTo="Room12" />
+  -<ScreenTransition Point="760 464" Size="16 16" LeadsTo="Room10" DoorCoords="800 464"/>
+  -<ScreenTransition Point="904 568" Size="16 16" LeadsTo="Room07" DoorCoords="904 528"/>
+  -<ScreenTransition Point="1048 464" Size="16 16" LeadsTo="Room12" DoorCoords="1008 464"/>
 
 </RoomData>

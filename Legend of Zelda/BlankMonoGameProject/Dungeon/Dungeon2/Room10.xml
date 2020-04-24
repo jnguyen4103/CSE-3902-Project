@@ -42,9 +42,9 @@
 
 
   <!-- Transitions -->
-  -<ScreenTransition Point="504 464" Size="16 16" LeadsTo="Room09" />
-  -<ScreenTransition Point="648 360" Size="16 16" LeadsTo="Room13" />
-  -<ScreenTransition Point="792 464" Size="16 16" LeadsTo="Room11" />
-  -<ScreenTransition Point="648 568" Size="16 16" LeadsTo="Room06" />
+  -<ScreenTransition Point="504 464" Size="16 16" LeadsTo="Room09" DoorCoords="544 464"/>
+  -<ScreenTransition Point="648 360" Size="16 16" LeadsTo="Room13" DoorCoords="648 400"/>
+  -<ScreenTransition Point="792 464" Size="16 16" LeadsTo="Room11" DoorCoords="752 464"/>
+  -<ScreenTransition Point="648 568" Size="16 16" LeadsTo="Room06" DoorCoords="648 528"/>
 
 </RoomData>

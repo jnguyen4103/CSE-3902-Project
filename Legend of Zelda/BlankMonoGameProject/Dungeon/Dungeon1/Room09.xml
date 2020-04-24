@@ -36,8 +36,8 @@
   -<BlockDoor Point="272 456" Side="Left" ConnectsTo="Room10"/>
 
   <!-- Transitions -->
-  -<ScreenTransition Point="392 568" Size="16 16" LeadsTo="Room05" />
-  -<ScreenTransition Point="248 464" Size="16 16" LeadsTo="Room08" />
-  -<ScreenTransition Point="536 464" Size="16 16" LeadsTo="Room10" />
+  -<ScreenTransition Point="392 568" Size="16 16" LeadsTo="Room05" DoorCoords="392 528"/>
+  -<ScreenTransition Point="248 464" Size="16 16" LeadsTo="Room08" DoorCoords="288 464"/>
+  -<ScreenTransition Point="536 464" Size="16 16" LeadsTo="Room10" DoorCoords="496 464"/>
 
 </RoomData>
