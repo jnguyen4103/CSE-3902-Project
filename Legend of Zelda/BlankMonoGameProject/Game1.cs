@@ -26,7 +26,13 @@ namespace Sprint03
 
         // GameState
         public IGameState CurrentGameState;
-        public States.GameState GameEnumState;                   // theoretically easier to have this than check "CurrentGameState.Equals(...)"
+        // Have a game state and game enumstate as some states like death are handled by objects like link and less so by the game so no use for a gamestate
+        public States.GameState GameEnumState;                   
+        public IGameState InventoryState;
+        public IGameState PauseState;
+        public IGameState PlayingState;
+        public IGameState LoseState;
+        public IGameState WinState;
 
         // Camera
         public Camera2D Camera;
@@ -36,15 +42,15 @@ namespace Sprint03
 
         // Inventory
         public Inventory inv;
-        public int[] roomsExplored = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+        public int[] roomsExplored = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
         // Link Object & Sprite
         public ILink Link;
         public LinkSprite SpriteLink;
         public bool ClockActivated = false;
-        public int RupeeCounter = 0;
-        public int KeyCounter = 0;
-        public int BombCounter = 0;
+        public int RupeeCounter = 11;
+        public int KeyCounter = 12;
+        public int BombCounter = 13;
 
         // Sprite Sheets
         public Texture2D LinkSpriteSheet;
@@ -54,6 +60,7 @@ namespace Sprint03
         public Texture2D TileSpriteSheet;
         public Texture2D DungeonMain;
         public Texture2D DungeonDoorFrames;
+        public Texture2D InventoryScreen;
 
         // Song
         public Song song;
@@ -61,7 +68,6 @@ namespace Sprint03
 
         // if game is paused or if user is in inventory screen
         public bool Paused = false;
-        public bool InInventory = false;
 
         // Random number generator variable for game wide use
         public static Random random = new Random();
@@ -135,7 +141,7 @@ namespace Sprint03
             keyboardCommands[9] = new Reset(this);
             keyboardCommands[10] = new Quit(this);
             keyboardCommands[11] = new Pause(this);
-            keyboardCommands[12] = new EnterInventory(this);
+
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
             mouseCommands[0] = new ChangeRoom(this);
@@ -143,7 +149,13 @@ namespace Sprint03
             vsbag = new VisualBag();
 
             //Game State
-            CurrentGameState = new GamePlayingState(this);
+            PlayingState = new GamePlayingState(this);
+            InventoryState = new GameInventoryState(this);
+            PauseState = new GamePausedState(this);
+
+
+
+            CurrentGameState = PlayingState;
             GameEnumState = States.GameState.GamePlayingState;
 
             // Game base
@@ -173,6 +185,7 @@ namespace Sprint03
             ItemSpriteSheet = Content.Load<Texture2D>("Item Sprite SHeet");
             EffectSpriteSheet = Content.Load<Texture2D>("Effects Sprite Sheet");
             TileSpriteSheet = Content.Load<Texture2D>("Tile Sprite Sheet");
+            InventoryScreen = Content.Load<Texture2D>("HUD");
 
             // Dungeon
             DungeonMain = Content.Load<Texture2D>("Dungeon1_Main");
@@ -227,7 +240,8 @@ namespace Sprint03
             sel = new SelectionMenu(this);
             this.song = Content.Load<Song>("musicForGame");
             MediaPlayer.Play(song);
-            MediaPlayer.Volume = 0.1f;
+            MediaPlayer.Volume = 0f;
+            MediaPlayer.IsMuted = true;
             MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
 
@@ -238,7 +252,7 @@ namespace Sprint03
         {
             this.song = Content.Load<Song>("winningGameSong");
             MediaPlayer.Play(song);
-            MediaPlayer.Volume = 0.8f;
+            MediaPlayer.Volume = 0f;
             MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
         }

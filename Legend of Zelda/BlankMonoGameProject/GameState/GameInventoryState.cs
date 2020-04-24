@@ -14,8 +14,11 @@ namespace BlankMonoGameProject.GameState
 {
 	class GameInventoryState : IGameState
 	{
-		Game1 Game;
+		public Game1 Game;
 
+		public bool isTransitioning { get => isTransition; }
+		private bool isTransition = false;
+		public Vector2 sizeOfInvScreen = new Vector2(256, 240);
 		public GameInventoryState(Game1 game)
 		{
 			Game = game;
@@ -23,17 +26,15 @@ namespace BlankMonoGameProject.GameState
 
 		public void TransitionToState()
 		{
-			// TODO: add camera movement/transition
 			Game.GameEnumState = States.GameState.GameInventoryState;
 		}
 
 		public void Draw()
 		{
 			Game.spriteBatch.Draw(Game.DungeonMain, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
-			Game.CurrDungeon.Draw();
-			Game.Link.Draw();
 			Game.spriteBatch.Draw(Game.DungeonDoorFrames, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.75f);
-			Game.hud.Draw();
+			//Game.hud.Draw();
+			Game.inv.Draw();
 		}
 
 

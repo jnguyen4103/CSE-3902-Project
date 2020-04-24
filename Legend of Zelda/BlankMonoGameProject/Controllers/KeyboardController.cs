@@ -14,9 +14,11 @@ namespace Sprint03
         IDictionary<Keys, ICommand> keyMappings;
         private bool AttackTriggered = false;
         private bool PauseTriggered = false;
-        private bool InventoryTriggered = false;
         private int Timer = 60;
+        private int PauseTimer = 10;
         private int SecondaryAttackDelay = 60;
+        private int InventoryMenuSwitchDelay = 60;
+        private int PauseDelay = 10;
 
        public KeyboardController(Game1 game, Keys[] keys, ICommand[] commands)
         {
@@ -40,10 +42,12 @@ namespace Sprint03
 
             if (keyState.IsKeyUp(Keys.Z)) { AttackTriggered = false; }
             if (keyState.IsKeyUp(Keys.P) ) { PauseTriggered = false; }
-            if (keyState.IsKeyUp(Keys.Enter) && !Game.InInventory) { InventoryTriggered = false; }
             if (Timer < SecondaryAttackDelay) { Timer++; }
+            if (Timer < InventoryMenuSwitchDelay) { Timer++; }
+            if (PauseTimer < PauseDelay) { PauseTimer++; }
 
-            if (!Game.Paused && !Game.InInventory && !InventoryTriggered)
+            // keep as one if statement with else if statements so don't have to worry about a variable being set and un set in one call
+            if (Game.GameEnumState.Equals(States.GameState.GamePlayingState) && !Game.Link.State.Equals(States.LinkState.Dead))
             {
                 foreach (Keys k in pressed)
                 {
@@ -61,8 +65,6 @@ namespace Sprint03
                             }
                             Game.Link.State = States.LinkState.Moving;
                         }
-
-
                         if (k == Keys.Z && !AttackTriggered)
                         {
                             AttackTriggered = true;
@@ -77,65 +79,98 @@ namespace Sprint03
                                 keyMappings[k].Execute();
 
                             }
-                            if ((k == Keys.D2 || k == Keys.D3 || k == Keys.D4) && Timer == SecondaryAttackDelay)
+                            else if ((k == Keys.D1 || k == Keys.D2 || k == Keys.D3 || k == Keys.D4) && Timer == SecondaryAttackDelay)
                             {
                                 Timer = 0;
                                 keyMappings[k].Execute();
                             }
-                            if (k == Keys.D1 && Game.BombCounter > 0)
+                            else if (k == Keys.D1 && Game.BombCounter > 0)
                             {
                                 keyMappings[k].Execute();
                             }
-                            if (k == Keys.Enter && !InventoryTriggered)
+                            else if (k == Keys.Enter && Timer == InventoryMenuSwitchDelay)
                             {
-                                keyMappings[k].Execute();
-                                InventoryTriggered = true;
+                                Timer = 0;
+                                Game.CurrentGameState = Game.InventoryState;
+                                Game.CurrentGameState.TransitionToState();
+                            }
+                            else if (k == Keys.P && PauseTimer == PauseDelay)
+                            {
+                                PauseTimer = 0;
+                                Game.CurrentGameState = Game.PauseState;
+                                Game.CurrentGameState.TransitionToState();
                             }
 
                         }
                     
                 }
-            }else if (Game.InInventory && !InventoryTriggered)
+            }
+            else if (Game.GameEnumState.Equals(States.GameState.GameInventoryState) && !Game.CurrentGameState.isTransitioning && !Game.Link.State.Equals(States.LinkState.Dead))
             {
                 foreach (Keys k in pressed)
                 {
-                    if (keyMappings.ContainsKey(k))
+                    if (keyMappings.ContainsKey(k) && Timer == InventoryMenuSwitchDelay)
                     {
-                        /*
+                        
                         if ((k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D))
                         {
                             if (k == Keys.W || k == Keys.S)
                             {
-                                keyMappings[k].Execute();
+                                //keyMappings[k].Execute();
                             }
                             else if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.S))
                             {
-                                keyMappings[k].Execute();
+                                //keyMappings[k].Execute();
                             }
                         }
-
-                        if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X )
+                        else if (k == Keys.R || k == Keys.E || k == Keys.X )
+                        {
+                           // keyMappings[k].Execute();
+                        }
+                        else if (k == Keys.Q)
                         {
                             keyMappings[k].Execute();
-
                         }
-
-                        if (keyState.IsKeyDown(Keys.Enter) && !InventoryTriggered)
+                        else if (k == Keys.Enter && Timer == InventoryMenuSwitchDelay)
                         {
-                            InventoryTriggered = true;
+                            Timer = 0;
+                            Game.CurrentGameState = Game.PlayingState;
+                            Game.GameEnumState = States.GameState.GamePlayingState;
+                            Game.CurrentGameState.TransitionToState();
+                        }
+                        else
+                        {
                             keyMappings[k].Execute();
                         }
-                        */
+                    }
+                }
+            }
+            else if (Game.GameEnumState.Equals(States.GameState.GamePausedState) && PauseTimer == PauseDelay && !Game.Link.State.Equals(States.LinkState.Dead))
+            {
+                foreach(Keys k in pressed)
+                {
+                    if (k == Keys.P)
+                    {
+                        PauseTimer = 0;
+                        Game.CurrentGameState = Game.PlayingState;
+                        Game.GameEnumState = States.GameState.GamePlayingState;
+                        Game.CurrentGameState.TransitionToState();
+                    }else if (k == Keys.Q)
+                    {
                         keyMappings[k].Execute();
                     }
                 }
             }
-
-            if (keyState.IsKeyDown(Keys.P) && !PauseTriggered)
+            // this allows game to be quit from any state
+            else
             {
-                PauseTriggered = true;
-                keyMappings[Keys.P].Execute();
-                
+                foreach(Keys k in pressed)
+                {
+                    if (k == Keys.Q)
+                    {
+                        keyMappings[k].Execute();
+                    }
+                }
             }
         }
     }

@@ -33,6 +33,7 @@ namespace Sprint03
 
         // Small Items & Effects
         private readonly Vector2 smallItemSize = new Vector2(8, 8);
+        private readonly Vector2 tinyItemSize = new Vector2(3, 3);
 
         public SpriteFactory()
         {
@@ -225,6 +226,8 @@ namespace Sprint03
             Sprites["9"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(64, 32, 8, 8), smallItemSize, 1);
 
             Sprites["SelectSquare"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(0, 48, 16, 16), defaultItemSize, 1);
+            Sprites["LinkLocationMap"] = new Tuple<Rectangle, Vector2, int> (new Rectangle(24, 48, 3, 3), tinyItemSize, 1);
+            Sprites["LinkLocationMiniMap"] = new Tuple<Rectangle, Vector2, int>(new Rectangle(40, 48, 3, 3), tinyItemSize, 1);
 
             /* Room Types:
              * example: left, right, up, down (this is a room with openings on all 4 sides, each direction denotes an opening)

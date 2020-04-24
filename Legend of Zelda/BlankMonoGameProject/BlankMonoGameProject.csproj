@@ -53,8 +53,6 @@
     <Compile Include="Commands\ChangeRoom.cs" />
     <Compile Include="Commands\Item Selection\SelectionMenu.cs" />
     <Compile Include="Commands\Pass.cs" />
-    <Compile Include="Commands\ExitInventory.cs" />
-    <Compile Include="Commands\EnterInventory.cs" />
     <Compile Include="Commands\Pause.cs" />
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="Controllers\MouseController.cs" />
@@ -106,8 +104,6 @@
     <Compile Include="GameState\GamePausedState.cs" />
     <Compile Include="GameState\GameInventoryState.cs" />
     <Compile Include="GameState\GamePlayingState.cs" />
-    <Compile Include="GameState\GameLoseState.cs" />
-    <Compile Include="GameState\GameWinState.cs" />
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="Inventory\Inventory.cs" />
     <Compile Include="HUD\HUD.cs" />
