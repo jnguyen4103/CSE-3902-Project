@@ -52,7 +52,11 @@ namespace Sprint03
 
         public void Draw()
         {
-            
+            foreach (IItem element in menuList)
+            {
+               
+
+            }
             batch.Draw(tileSprite, new Rectangle(500, 200, 350, 120),
                 new Rectangle(96, 0, 8, 8), Color.White);
             batch.Draw(sqTex, new Rectangle(sSquareX, sSquareY, 48, 48),
