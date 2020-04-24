@@ -270,8 +270,8 @@ namespace Sprint03
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            keyboardController.Update();
             CurrentGameState.Update();
+            keyboardController.Update();
             base.Update(gameTime);
 
             //if (!Paused)

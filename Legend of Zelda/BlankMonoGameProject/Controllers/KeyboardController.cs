@@ -65,8 +65,6 @@ namespace Sprint03
                             }
                             Game.Link.State = States.LinkState.Moving;
                         }
-
-
                         if (k == Keys.Z && !AttackTriggered)
                         {
                             AttackTriggered = true;
