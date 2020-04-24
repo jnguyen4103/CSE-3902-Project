@@ -59,6 +59,8 @@ Darknut: Walks to Link's last location and charges Link when he gets close.<br/>
  <li> The fire next to the old man if it kills you, it can cause errors in the code. Still testing to figure out why.
  <li> Slight issue with the bomb count in the HUD not going down properly. (Resolved)
  <li> The interactions between the Merchant and the Old Man have not yet been implemented, however implementation will be completed and functional for spritn05.
+   <li> BigZombie has some issues when running into walls. We believe its because of the size of the Sprite but unsure. 
+
  <li> When the game first start, the keys in the inventory system was showing as 12 instead of 0. (Resolved) 
  <li> When transitioning into the next Dungeon(Dungeon2) no transition or barriers have been implemented yet goal for sprint5 is to have a new dungeon operational functionality as well.</li> 
  <li>Inventory screen is not transitioned to - it simply appears. </li>
