@@ -14,7 +14,7 @@ R : Reset the game<br/>
 P : Pause the game<br/>
 Enter : Enter and exit the inventory screen <br/>
 M : Select an item in the menu<br/>
-Left Mouse Click on a door : Teleport Link to the room behind the door. This will work on locked doors and destroyable walls. <br/>
+Left Mouse Click on a door : Teleport Link to the room behind the door. This will work on locked doors and destroyable walls. Please note that this functionality only works in the first dungeon. <br/>
 
 W : Move Link up<br/>
 A : Move Link left<br/>
