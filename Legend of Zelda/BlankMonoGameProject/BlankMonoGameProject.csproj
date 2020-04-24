@@ -102,8 +102,6 @@
     <Compile Include="GameState\GamePausedState.cs" />
     <Compile Include="GameState\GameInventoryState.cs" />
     <Compile Include="GameState\GamePlayingState.cs" />
-    <Compile Include="GameState\GameLoseState.cs" />
-    <Compile Include="GameState\GameWinState.cs" />
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="Inventory\Inventory.cs" />
     <Compile Include="HUD\HUD.cs" />

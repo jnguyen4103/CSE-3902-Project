@@ -26,7 +26,8 @@ namespace Sprint03
 
         // GameState
         public IGameState CurrentGameState;
-        public States.GameState GameEnumState;                   // theoretically easier to have this than check "CurrentGameState.Equals(...)"
+        // Have a game state and game enumstate as some states like death are handled by objects like link and less so by the game so no use for a gamestate
+        public States.GameState GameEnumState;                   
         public IGameState InventoryState;
         public IGameState PauseState;
         public IGameState PlayingState;
@@ -150,8 +151,8 @@ namespace Sprint03
             PlayingState = new GamePlayingState(this);
             InventoryState = new GameInventoryState(this);
             PauseState = new GamePausedState(this);
-            WinState = new GameWinState(this);
-            LoseState = new GameLoseState(this);
+
+
 
             CurrentGameState = PlayingState;
             GameEnumState = States.GameState.GamePlayingState;
