@@ -32,5 +32,3 @@ as Link is entering different dungeon.
 
 * 5. Avoid deep nesting makes a file more readable. 
 In this file there is no sign of deep nesting and it is readable from this point of view.
-  
-
