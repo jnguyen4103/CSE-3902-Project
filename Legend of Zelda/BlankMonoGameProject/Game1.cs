@@ -48,9 +48,9 @@ namespace Sprint03
         public ILink Link;
         public LinkSprite SpriteLink;
         public bool ClockActivated = false;
-        public int RupeeCounter = 11;
-        public int KeyCounter = 12;
-        public int BombCounter = 13;
+        public int RupeeCounter = 0;
+        public int KeyCounter = 0;
+        public int BombCounter = 0;
 
         // Sprite Sheets
         public Texture2D LinkSpriteSheet;

@@ -21,6 +21,7 @@ namespace Sprint03
         private Vector2 mainMapRoomOffset;
         private Vector2 initialCameraPosition;
 
+
         public StaticSprite MainInventory;
         public StaticSprite MiniMap;
         public StaticSprite Map;

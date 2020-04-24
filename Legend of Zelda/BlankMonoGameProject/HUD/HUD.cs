@@ -13,6 +13,7 @@ namespace Sprint03
         private readonly Texture2D hud;
         private readonly Texture2D hudExtras;
         public Vector2 Size;
+        private Vector2 miniMapPosition;
 
         public StaticSprite MainHUD;
         public StaticSprite Map;
@@ -42,10 +43,17 @@ namespace Sprint03
             Vector2 loc = new Vector2(Game.Camera.Position.X / Game.ScreenScale, (Game.Camera.Position.Y - 176 * Game.ScreenScale) / Game.ScreenScale);
             MainHUD.UpdatePosition(loc);
             MainHUD.DrawSprite();
-            Map.UpdatePosition(new Vector2(Game.Camera.Position.X / Game.ScreenScale + 16, ((Game.Camera.Position.Y - Game.ScreenScale * 176f) / Game.ScreenScale) + 192));
+
+            miniMapPosition = new Vector2(Game.Camera.Position.X / Game.ScreenScale + 16, ((Game.Camera.Position.Y - Game.ScreenScale * 176f) / Game.ScreenScale) + 192);
+            Map.UpdatePosition(miniMapPosition);
             Map.DrawSprite();
+
+
             WeaponA.UpdatePosition(new Vector2(loc.X + 152f, loc.Y + 208f));
             WeaponA.DrawSprite();
+
+            LevelNumber.UpdatePosition(new Vector2(miniMapPosition.X + 48, miniMapPosition.Y - 8));
+            LevelNumber.DrawSprite();
 
             // Item Draw and Update loop
             for (int i = 0; i < Rupees.Length; i++)
@@ -237,6 +245,8 @@ namespace Sprint03
             Bombs[1].Colour = Color.Black;
             Bombs[1].Layer = 1f;
 
+            LevelNumber = new StaticSprite(Game, "1", Vector2.Zero, hudExtras, Game.spriteBatch);
+            LevelNumber.Layer = 1f;
         }
     }
 }
