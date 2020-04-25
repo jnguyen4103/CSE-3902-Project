@@ -51,9 +51,11 @@ namespace Sprint03
         public int RupeeCounter = 0;
         public int KeyCounter = 0;
         public int BombCounter = 0;
+
         public int TriforceCounter = 0;
         public int SkullCounter = 0;
         public bool hasGun = false;
+
 
         // Sprite Sheets
         public Texture2D LinkSpriteSheet;

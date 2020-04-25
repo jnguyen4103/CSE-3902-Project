@@ -13,9 +13,10 @@ namespace Sprint03
         private readonly Texture2D hud;
         private readonly Texture2D hudExtras;
         public Vector2 Size;
+        private Vector2 miniMapPosition;
 
         public StaticSprite MainHUD;
-        public StaticSprite Map;
+        public StaticSprite miniMap;
         public StaticSprite WeaponA;
         public StaticSprite WeaponB;
         public StaticSprite[] LifeBar;
@@ -24,6 +25,11 @@ namespace Sprint03
         public StaticSprite[] Keys;
         public StaticSprite[] Bombs;
         public StaticSprite LevelNumber;
+        public StaticSprite LinkLocationIndicator;
+        private int linkRoomLocation;
+        private int miniMapYOffset = 72;
+
+        private Vector2[] miniMapRoomPositions = new Vector2[17];
 
         public HUD(Game1 game)
         {
@@ -42,10 +48,17 @@ namespace Sprint03
             Vector2 loc = new Vector2(Game.Camera.Position.X / Game.ScreenScale, (Game.Camera.Position.Y - 176 * Game.ScreenScale) / Game.ScreenScale);
             MainHUD.UpdatePosition(loc);
             MainHUD.DrawSprite();
-            Map.UpdatePosition(new Vector2(Game.Camera.Position.X / Game.ScreenScale + 16, ((Game.Camera.Position.Y - Game.ScreenScale * 176f) / Game.ScreenScale) + 192));
-            Map.DrawSprite();
+
+            miniMapPosition = new Vector2(Game.Camera.Position.X / Game.ScreenScale + 16, ((Game.Camera.Position.Y - Game.ScreenScale * 176f) / Game.ScreenScale) + 192);
+            miniMap.UpdatePosition(miniMapPosition);
+            miniMap.DrawSprite();
+
+
             WeaponA.UpdatePosition(new Vector2(loc.X + 152f, loc.Y + 208f));
             WeaponA.DrawSprite();
+
+            LevelNumber.UpdatePosition(new Vector2(miniMapPosition.X + 48, miniMapPosition.Y - 8));
+            LevelNumber.DrawSprite();
 
             // Item Draw and Update loop
             for (int i = 0; i < Rupees.Length; i++)
@@ -79,6 +92,14 @@ namespace Sprint03
                 if (!LifeBar[i].Colour.Equals(Color.Black)) {
                     CurrentLife[i].DrawSprite();
                 }
+            }
+
+            linkRoomLocation = int.Parse(Game.CurrDungeon.ActiveRoom.Name.Substring(Game.CurrDungeon.ActiveRoom.Name.Length - 1)) - 1;
+            if (linkRoomLocation >= 0)
+            {
+                LinkLocationIndicator.UpdatePosition(new Vector2(miniMapPosition.X + miniMapRoomPositions[linkRoomLocation].X, miniMapPosition.Y + (miniMapRoomPositions[linkRoomLocation].Y - miniMapYOffset)));
+                LinkLocationIndicator.Colour = Color.White;
+                LinkLocationIndicator.DrawSprite();
             }
         }
 
@@ -159,16 +180,12 @@ namespace Sprint03
             LifeBar[maxHP / 2 - 1].Colour = Color.White;
         }
 
-        public void UpdateMap()
-        {
-            Map.Colour = Color.White;
-        }
 
         public void HideHud()
         {
             MainHUD.Colour = Color.Transparent;
             WeaponA.Colour = Color.Transparent;
-            Map.Colour = Color.Transparent;
+            miniMap.Colour = Color.Transparent;
 
             for (int i = 0; i < Rupees.Length; i++)
             {
@@ -190,9 +207,9 @@ namespace Sprint03
             MainHUD = new StaticSprite(Game, "HUD", Vector2.Zero, hud, Game.spriteBatch);
             MainHUD.Layer = 0.95f;
 
-            Map = new StaticSprite(Game, "Dungeon01Map", Vector2.Zero, hudExtras, Game.spriteBatch);
-            Map.Layer = 1f;
-            Map.Colour = Color.Black;
+            miniMap = new StaticSprite(Game, "Dungeon01Map", Vector2.Zero, hudExtras, Game.spriteBatch);
+            miniMap.Layer = 1f;
+            miniMap.Colour = Color.White;
 
             WeaponA = new StaticSprite(Game, "SwordSwing", Vector2.Zero, Game.EffectSpriteSheet, Game.spriteBatch);
             WeaponA.Layer = 1f;
@@ -237,6 +254,29 @@ namespace Sprint03
             Bombs[1].Colour = Color.Black;
             Bombs[1].Layer = 1f;
 
+            LevelNumber = new StaticSprite(Game, "1", Vector2.Zero, hudExtras, Game.spriteBatch);
+            LevelNumber.Layer = 1f;
+
+            LinkLocationIndicator = new StaticSprite(Game, "LinkLocationMiniMap", Vector2.Zero, hudExtras, Game.spriteBatch);
+            LinkLocationIndicator.Layer = 1f;
+
+            miniMapRoomPositions[0] = new Vector2(18, 108);
+            miniMapRoomPositions[1] = new Vector2(26, 108);
+            miniMapRoomPositions[2] = new Vector2(34, 108);
+            miniMapRoomPositions[3] = new Vector2(26, 104);
+            miniMapRoomPositions[4] = new Vector2(18, 100);
+            miniMapRoomPositions[5] = new Vector2(26, 100);
+            miniMapRoomPositions[6] = new Vector2(34, 100);
+            miniMapRoomPositions[7] = new Vector2(10, 96);
+            miniMapRoomPositions[8] = new Vector2(18, 96);
+            miniMapRoomPositions[9] = new Vector2(26, 96);
+            miniMapRoomPositions[10] = new Vector2(34, 96);
+            miniMapRoomPositions[11] = new Vector2(42, 96);
+            miniMapRoomPositions[12] = new Vector2(26, 92);
+            miniMapRoomPositions[13] = new Vector2(42, 92);
+            miniMapRoomPositions[14] = new Vector2(50, 92);
+            miniMapRoomPositions[15] = new Vector2(18, 88);
+            miniMapRoomPositions[16] = new Vector2(26, 88);
         }
     }
 }

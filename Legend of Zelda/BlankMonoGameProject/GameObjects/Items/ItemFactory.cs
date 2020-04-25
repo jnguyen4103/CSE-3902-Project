@@ -191,7 +191,7 @@ namespace Sprint03
 
         private void Map()
         {
-            Game.hud.UpdateMap();
+
         }
 
         private void Rupee()

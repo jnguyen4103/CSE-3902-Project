@@ -21,6 +21,7 @@ namespace Sprint03
         private Vector2 mainMapRoomOffset;
         private Vector2 initialCameraPosition;
 
+
         public StaticSprite MainInventory;
         public StaticSprite MiniMap;
         public StaticSprite Map;
@@ -116,9 +117,14 @@ namespace Sprint03
                 }
             }
             linkRoomLocation = int.Parse(Game.CurrDungeon.ActiveRoom.Name.Substring(Game.CurrDungeon.ActiveRoom.Name.Length - 1));
-            LinkLocationIndicator.UpdatePosition(new Vector2(MapRooms[linkRoomLocation].Position.X + linkLocationIndicatorOffsetFromMapRoom , MapRooms[linkRoomLocation].Position.Y + linkLocationIndicatorOffsetFromMapRoom));
-            LinkLocationIndicator.Colour = Color.White;
-            LinkLocationIndicator.DrawSprite();
+            if (linkRoomLocation == 0) { linkRoomLocation = -1; }
+            if (linkRoomLocation == 17) { linkRoomLocation = 0; }
+            if (linkRoomLocation >= 0) 
+            {
+                LinkLocationIndicator.UpdatePosition(new Vector2(MapRooms[linkRoomLocation].Position.X + linkLocationIndicatorOffsetFromMapRoom, MapRooms[linkRoomLocation].Position.Y + linkLocationIndicatorOffsetFromMapRoom));
+                LinkLocationIndicator.Colour = Color.White;
+                LinkLocationIndicator.DrawSprite();
+            }
         }
 
         public void UpdateInventoryCounters()
