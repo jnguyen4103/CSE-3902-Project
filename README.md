@@ -13,7 +13,6 @@ Q : Quit the game <br/>
 R : Reset the game<br/>
 P : Pause the game<br/>
 Enter : Enter and exit the inventory screen <br/>
-M : Select an item in the menu<br/>
 Left Mouse Click on a door : Teleport Link to the room behind the door. This will work on locked doors and destroyable walls. Please note that this functionality only works in the first dungeon. <br/>
 
 W : Move Link up<br/>
@@ -22,7 +21,7 @@ S : Move Link down<br/>
 D : Move Link right<br/>
 Z : Link Swing Sword<br/> 
 
-(Also in inventory screen:
+(Also in item selection menu:
 W : Move red rectangle up<br/>
 A : Move red rectangle left<br/>
 S : Move red rectangle down<br/>
@@ -75,7 +74,7 @@ Darknut: Walks to Link's last location and charges Link when he gets close.<br/>
 </ul>
 
 ### Additional Tools, Processes Used:
-The Link sprint was replaced with a Donald Trump sprite who fights with a red lightsaber.<br/>
+The Link sprite was replaced with a Donald Trump sprite who fights with a red lightsaber.<br/>
 We choose to do this as an extra feature in our game. <br/>
 This can be changed though by the following line LinkSpriteSheet = Content.Load<Texture2D>("Link Sprite Sheet");<br/>
 Or if you like using donald LinkSpriteSheet = Content.Load<Texture2D>("Donald Trump Sprite Sheet");<br/>
