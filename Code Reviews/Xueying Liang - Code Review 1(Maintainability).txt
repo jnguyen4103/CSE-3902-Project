@@ -1,7 +1,7 @@
 Sprint Number #5
 Author of the code review: Xueying Liang
-File being reviewed: 
-Author of file: 
+File being reviewed: Inventory.cs
+Author of file: Grant 
 Date of the code review: 4/23/2020
 Focus: Maintainability(Code quality)
 Time to review: 30 minutes
