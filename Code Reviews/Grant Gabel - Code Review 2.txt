@@ -1,15 +1,21 @@
-Sprint Number: 4
+Sprint Number: 5
 Author of Code Review: Grant Gabel
-File being reviewed: Game1.cs (lines 132 - 148 as they are about the game sound)
-Author of file: Everyone (line author is Nicholas Negrete)
-Date: 4/13/20
+File being reviewed: BigZombieSM.cs
+Author of file: Nico Negrete
+Date: 4/24/20
 Focus: Readability
-Time to review: 10 minutes
+Time to review: 11 minutes (start 42)
 
-I would have liked to see this functionality put into it's own class or file instead of added as another method in the main Game1.cs file
-but I can understand if this was the best way as gamesound is important and should be on the same level as the drawing of object.
 
-I like how the code is self documenting in that just by reading the variable names and calls I can understand what the code is doing. 
+I think this class is very readable and very well done. I know nico had stressed to the group recently about how important self commenting
+code was / is, and I think this class is a great example of that. Just from the names of everything I can tell what that variable or 
+method does. Only exception being the Reset() method, but it's just that it's the method / variable with the name that's the least 
+descriptive I think. Everything else I can read and know almost immediately what it does, but this one I need to read the method in order
+to fully understand what it's doing. Once I read the method I could better understand it. I don't think there's really a better name, 
+this is just nitpicking in order to provide feedback.
 
-It does feel a bit scattered - which is to say I have to hunt a little bit for all the pieces but this is to be expected for something on 
-the same level as Draw() so I don't think it's an actual problem. 
+The only other criticism I can think of is that there are a few magic numbers that could use variable names, but ther'es only a few 
+instances of it and it seems to be heavily related to the math in calculating the pathing so it's probably not the easiest thing to come 
+up with variable names for. The ones that stick out the most are the numbers used in comparison for the Math.abs calls on lines 81 and 252. 
+So I think since it's only two cases of it, it's not as much of a problem as it is in other classes in our project where magic numbers are
+rampant. 
