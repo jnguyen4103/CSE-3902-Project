@@ -34,7 +34,7 @@
   -<ClosedDoor Point="496 632" Side="Right" ConnectsTo="Room06"/>
 
   <!-- Transitions -->
-  -<ScreenTransition Point="536 640" Size="16 16" LeadsTo="Room06" />
-  -<ScreenTransition Point="392 536" Size="16 16" LeadsTo="Room09" />
+  -<ScreenTransition Point="536 640" Size="16 16" LeadsTo="Room06" DoorCoords="496 640"/>
+  -<ScreenTransition Point="392 536" Size="16 16" LeadsTo="Room09" DoorCoords="392 576"/>
 
 </RoomData>

@@ -71,10 +71,15 @@ namespace Sprint03
                             keyMappings[k].Execute();
                         }
 
+                        if (k == Keys.X && Game.hasGun)
+                        {
+                            keyMappings[k].Execute();
+                        }
+
                         if (keyMappings.ContainsKey(k))
                         {
-                            // Without this if statement the game wil allow animation cancelling
-                            if (k == Keys.Q || k == Keys.R || k == Keys.E || k == Keys.X )
+                            // Without this if statement the game will allow animation cancelling
+                            if (k == Keys.Q || k == Keys.R || k == Keys.E)
                             {
                                 keyMappings[k].Execute();
 

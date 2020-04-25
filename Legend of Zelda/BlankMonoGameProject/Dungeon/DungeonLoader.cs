@@ -141,7 +141,6 @@ namespace Sprint03
                 level.Traps.Add(trap);
             }
 
-            Console.WriteLine("Loaded " + room.Name);
         }
 
         private static void DyanmicUnload(Dungeon level, Room currentRoom, Room roomUnloading)
@@ -155,7 +154,6 @@ namespace Sprint03
             roomUnloading.Movables = new List<MovableBlock>(level.Movables.Except(currentRoom.Movables).ToList());
             roomUnloading.RoomTransitions = new List<ScreenTransition>(level.Transitions.Except(currentRoom.RoomTransitions).ToList());
             roomUnloading.Traps = new List<ITrap>(level.Traps.Except(currentRoom.Traps).ToList());
-
             foreach (Monster monster in roomUnloading.AliveMonsters.ToArray())
             {
                 level.Monsters.Remove(monster);

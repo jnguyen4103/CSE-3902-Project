@@ -25,6 +25,7 @@ namespace Sprint03
             Game.BombCounter = 0;
             Game.hud = new HUD(Game);
             DungeonLoader.ResetLevel(Game, Game.CurrDungeon);
+            Game.hasGun = false;
         }
     }
 }

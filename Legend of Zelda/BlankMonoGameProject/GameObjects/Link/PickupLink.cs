@@ -23,13 +23,14 @@ namespace Sprint03
         public bool CanMove { get; set; } = false;
         private Texture2D YOUWON;
         private Texture2D TriForcePepe;
+        private GameChanger gameChanger;
         
 
         private Game1 Game;
         private Link decoratedLink;
         private IAttack SwordAttack;
         private int Timer = 0;
-        private int PickupDuration = 4;
+        private int PickupDuration = 1;
         private Reset r;
         private int wonScreenDelay = 48;
         public PickupLink(Game1 game, Link link)
@@ -37,13 +38,16 @@ namespace Sprint03
             Game = game;
             decoratedLink = link;
             Sprite = decoratedLink.Sprite;
-            Sprite.FPS = 12;
+            Sprite.FPS = 4;
             Hitbox = decoratedLink.Hitbox;
             Position = decoratedLink.Position;
             Direction = decoratedLink.Direction;
             HP = decoratedLink.HP;
             MaxHP = decoratedLink.MaxHP;
             r = new Reset(Game);
+            gameChanger = new GameChanger(Game);
+            Sprite.ChangeSpriteAnimation("Pickup");
+
             /*            TriForcePepe = game.Content.Load<Texture2D>("WinningGame");
                         YOUWON = game.Content.Load<Texture2D>("YOU WON");*/
             // Game.changeSong();
@@ -80,25 +84,20 @@ namespace Sprint03
         public void Update()
         {
             Timer++;
-            if (Timer >= PickupDuration)
-            {
-                Sprite.ChangeSpriteAnimation("Pickup");
-                Console.WriteLine("ope") ;
-                Sprite.FPS = 4;
-            }
-            if (Timer >= wonScreenDelay)
+            
+            if (Timer >= wonScreenDelay && (Game.TriforceCounter <96 && Game.SkullCounter ==0))
             {
 
                 //    Game.hud.HideHud();
-                r.Execute();
                 RemoveDecorator();
-                Game.LinkSpawn = new Vector2(375, 1358);
-                Game.Link.StateMachine.IdleState();
-                Game.CurrDungeon = new Dungeon(Game, "../../../../Dungeon/Dungeon2/Dungeon02.txt");
-                Game.DungeonMain = Game.Content.Load<Texture2D>("Dungeon2_Main");
-                Game.Camera.Transition(Game.CurrDungeon.Rooms["Room0"].Position);
-                Game.DungeonDoorFrames = Game.Content.Load<Texture2D>("Dungeon2_DoorFrames");
-
+                gameChanger.changeSong2();
+                gameChanger.changeDungeon2();
+            }
+            else if(Timer >= wonScreenDelay&& Game.SkullCounter %48!=1)
+            {
+                gameChanger.changeSong3();
+                RemoveDecorator();
+                gameChanger.changeDungeon3();
             }
 
         }

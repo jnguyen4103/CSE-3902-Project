@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RoomData>
+
+	<!--Location -->
+	-<Location Point="944 436" />
+	
+	<!--Walls -->
+  -<Wall Point="944 436" Size="256 36" />
+  
+  -<Wall Point="944 436" Size="40 81" />
+  -<Wall Point="944 533" Size="40 100" />
+
+  -<Wall Point="944 580" Size="256 32" />
+  -<Wall Point="1175 436" Size="32 256" />
+
+
+	<!--Blocks -->
+  -<Block Point="1000 484" Size="16 80" />
+  -<Block Point="1031 484" Size="16 80" />
+
+  -<Block Point="1079 484" Size="16 80" />
+  -<Block Point="1111 484" Size="16 80" />
+  
+  -<Block Point="1144 484" Size="16 80" />
+
+  <!--Monsters -->
+
+  -<Monster Name="DoDongo" Spawn="1059 541" />
+
+  -<Monster Name="Lynel" Spawn="1094 470" />
+  -<Monster Name="Stalfos" Spawn="1060 479" />
+  -<Monster Name="Keese" Spawn="1062 564" />
+  -<Monster Name="Zol" Spawn="1056 562" />
+
+  <!-- Items -->
+
+  <!-- Doors -->
+
+
+  <!-- Transitions -->
+  -<ScreenTransition Point="929 524" Size="16 16" LeadsTo="Room0" DoorCoords="0 0"/>
+
+
+</RoomData>

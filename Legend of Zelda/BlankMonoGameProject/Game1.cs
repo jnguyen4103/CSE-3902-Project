@@ -52,6 +52,11 @@ namespace Sprint03
         public int KeyCounter = 0;
         public int BombCounter = 0;
 
+        public int TriforceCounter = 0;
+        public int SkullCounter = 0;
+        public bool hasGun = false;
+
+
         // Sprite Sheets
         public Texture2D LinkSpriteSheet;
         public Texture2D MonsterSpriteSheet;
@@ -80,11 +85,13 @@ namespace Sprint03
         
         // Controller
         //  TODO: add return/enter button to be assigned to inventory screen transition
-        public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Enter };
-        public ICommand[] keyboardCommands = new ICommand[13];
+        public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Enter, Keys.X};
+        public ICommand[] keyboardCommands = new ICommand[14];
         public KeyboardController keyboardController;
-        //private MouseController mouseController;
+
         
+        public ICommand[] mouseCommands = new ICommand[1];
+        public MouseController mouseController; 
         //(32,96). w = 192 H =112
 
         // Spawn positions of all the items, NPCs and Link so they can be used in the Reset command
@@ -126,8 +133,6 @@ namespace Sprint03
             Detection = new CollisionDetection(this);
             soundEffects = new List<SoundEffect>();
 
-
-            
             // Adding all of the commands into the keyboard controller
             keyboardCommands[0] = new LinkWalkUp(this);
             keyboardCommands[1] = new LinkWalkDown(this);
@@ -141,10 +146,12 @@ namespace Sprint03
             keyboardCommands[9] = new Reset(this);
             keyboardCommands[10] = new Quit(this);
             keyboardCommands[11] = new Pause(this);
+            keyboardCommands[13] = new LinkGun(this);
 
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
 
-
+            mouseCommands[0] = new ChangeRoom(this);
+            mouseController = new MouseController(this, mouseCommands);
             vsbag = new VisualBag();
 
             //Game State
@@ -161,7 +168,7 @@ namespace Sprint03
             base.Initialize();
         }
 
-         void MediaPlayer_MediaStateChanged(object sender, System.
+        public    void MediaPlayer_MediaStateChanged(object sender, System.
                                         EventArgs e)
         {
             // 0.0f is silent, 1.0f is full volume
@@ -211,6 +218,7 @@ namespace Sprint03
              * 16 LOZ_Secret
              * 17 LOZ_Sword_Shoot
              * 18 LOZ_Sword_Slash
+             * 19 LOZ_Gunshot
              */
             soundEffects.Add(Content.Load<SoundEffect>("LOZ_Arrow_Boomerang"));
             soundEffects.Add(Content.Load<SoundEffect>("LOZ_Bomb_Blow"));
@@ -231,6 +239,8 @@ namespace Sprint03
             soundEffects.Add(Content.Load<SoundEffect>("LOZ_Secret"));
             soundEffects.Add(Content.Load<SoundEffect>("LOZ_Sword_Shoot"));
             soundEffects.Add(Content.Load<SoundEffect>("LOZ_Sword_Slash"));
+            soundEffects.Add(Content.Load<SoundEffect>("LOZ_Gunshot"));
+
 
             SpriteLink = new LinkSprite(this, "WalkUp", LinkSpriteSheet, spriteBatch);
             Link = new Link(this, SpriteLink, LinkSpawn);
@@ -247,14 +257,7 @@ namespace Sprint03
             CurrDungeon = new Dungeon(this, DefaultDungeon);
         }
 
-        public void changeSong()
-        {
-            this.song = Content.Load<Song>("winningGameSong");
-            MediaPlayer.Play(song);
-            MediaPlayer.Volume = 0f;
-            MediaPlayer.IsRepeating = true;
-            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
-        }
+
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -273,6 +276,7 @@ namespace Sprint03
         {
             CurrentGameState.Update();
             keyboardController.Update();
+            mouseController.Update();
             base.Update(gameTime);
 
             //if (!Paused)

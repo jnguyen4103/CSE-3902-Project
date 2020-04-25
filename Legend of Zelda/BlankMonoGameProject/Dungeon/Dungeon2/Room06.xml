@@ -2,41 +2,43 @@
 <RoomData>
 
 	<!--Location -->
-	-<Location Point="528 560" />
+	-<Location Point="514 870" />
 	
 	<!--Walls -->
-	-<Wall Point="528 560" Size="120 32" />
-  -<Wall Point="664 560" Size="120 32" />
-  -<Wall Point="528 560" Size="32 80" />
-  -<Wall Point="528 656" Size="32 80" />
-  -<Wall Point="752 560" Size="32 80" />
-  -<Wall Point="752 656" Size="32 80" />
-  -<Wall Point="528 704" Size="120 32" />
-  -<Wall Point="664 704" Size="120 32" />
+	-<Wall Point="514 871" Size="32 256" />
+  
+  
+  -<Wall Point="514 871" Size="120 32" />
+  -<Wall Point="514 1015" Size="120 32" />
+  
+  
+  -<Wall Point="652 1016" Size="120 32" />
+  -<Wall Point="652 871" Size="120 32" />
+  
+  -<Wall Point="738 969" Size="32 80" />
+  -<Wall Point="738 904" Size="32 50" />
+>
 
   <!--Blocks -->
-	-<Block Point="592 624" Size="16 16" />
-  -<Block Point="592 656" Size="16 16" />
-  -<Block Point="704 624" Size="16 16" />
-  -<Block Point="704 656" Size="16 16" />
+	-<Block Point="562 919" Size="36 18" />
+  -<Block Point="562 983" Size="36 18" />
+  -<Block Point="690 983" Size="36 18" />
+  -<Block Point="690 919" Size="36 18" />
+  -<Block Point="626 951" Size="36 18" />
 
   <!--Monsters -->
-  -<Monster Name="Stalfos" Spawn="640 640" />
-  -<Monster Name="Stalfos" Spawn="576 672" />
-  -<Monster Name="Darknut" Spawn="608 624" />
-  -<Monster Name="Darknut" Spawn="688 624" />
-  -<Monster Name="Keese" Spawn="720 656" />
+  -<Monster Name="Goriyas" Spawn="670 983" />
+  -<Monster Name="Goriyas" Spawn="626 920" />
 
   <!-- Items -->
-  -<HiddenItem Name="Key" Spawn="660 608" />
+  -<HiddenItem Name="Key" Spawn="643 983" />
 
   <!-- Doors -->
-  -<DestroyableWall Point="640 560" Side="Up" ConnectsTo="Room10"/>
 
   <!-- Transitions -->
-  -<ScreenTransition Point="504 640" Size="16 16" LeadsTo="Room05" />
-  -<ScreenTransition Point="792 640" Size="16 16" LeadsTo="Room07" />
-  -<ScreenTransition Point="648 744" Size="16 16" LeadsTo="Room04" />
-  -<ScreenTransition Point="648 536" Size="16 16" LeadsTo="Room10" />
+  -<ScreenTransition Point="642 856" Size="16 16" LeadsTo="Room08" DoorCoords="0 0"/>
+  -<ScreenTransition Point="785 958" Size="16 16" LeadsTo="Room07" DoorCoords="0 0"/>
+  -<ScreenTransition Point="642 1062" Size="16 16" LeadsTo="Room04" DoorCoords="0 0"/>
+
 
 </RoomData>

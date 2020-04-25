@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RoomData>
+
+	<!--Location -->
+  -<Location Point="684 614" />
+
+
+  <!--Walls -->
+  -<Wall Point="684 614" Size="121 32" />
+  -<Wall Point="684 614" Size="32 256" />
+  
+  -<Wall Point="684 759" Size="256 32" />
+  -<Wall Point="908 614" Size="32 256" />
+  
+  -<Wall Point="821 614" Size="121 32" />
+
+
+  <!--Blocks -->
+	-<Block Point="796 679" Size="32 50" />
+
+  
+  <!--Monsters -->
+
+  -<Monster Name="BigZombie" Spawn="720 700" />
+  -<Monster Name="Stalfos" Spawn="865 705" />
+  -<Monster Name="Keese" Spawn="813 744" />
+  -<Monster Name="Rope" Spawn="865 705" />
+  -<Monster Name="Keese" Spawn="813 744" />
+  -<Monster Name="Stalfos" Spawn="865 705" />
+  -<Monster Name="Darknut" Spawn="813 744" />
+  <!-- Items -->
+
+
+
+	<!-- Doors -->
+  
+  <!-- Transitions -->
+  -<ScreenTransition Point="812 600" Size="16 16" LeadsTo="Room0" DoorCoords="0 0"/>
+
+
+
+</RoomData>

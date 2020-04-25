@@ -22,9 +22,9 @@
   <!--Monsters -->
 
   <!-- Items -->
-   -<Item Name="Merchant" Spawn="689 1137" />
-  -<Item Name="Bomb" Spawn="657 1137" />
-  -<Item Name="Bomb" Spawn="657 1169" />
+  -<Item Name="Merchant" Spawn="689 1137" />
+  -<Item Name="Triforce" Spawn="657 1137" />
+  -<Item Name="Skull" Spawn="657 1169" />
 
 
 
@@ -34,6 +34,6 @@
   <!-- Doors -->
   
   <!-- Transitions -->
-  -<ScreenTransition Point="648 1064" Size="16 16" LeadsTo="Room02" />
+  -<ScreenTransition Point="648 1064" Size="16 16" LeadsTo="Room02" DoorCoords="648 1104"/>
   
 </RoomData>

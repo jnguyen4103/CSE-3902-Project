@@ -34,9 +34,9 @@
   -<DestroyableWall Point="640 560" Side="Up" ConnectsTo="Room10"/>
 
   <!-- Transitions -->
-  -<ScreenTransition Point="504 640" Size="16 16" LeadsTo="Room05" />
-  -<ScreenTransition Point="792 640" Size="16 16" LeadsTo="Room07" />
-  -<ScreenTransition Point="648 744" Size="16 16" LeadsTo="Room04" />
-  -<ScreenTransition Point="648 536" Size="16 16" LeadsTo="Room10" />
+  -<ScreenTransition Point="504 640" Size="16 16" LeadsTo="Room05" DoorCoords="544 640"/>
+  -<ScreenTransition Point="792 640" Size="16 16" LeadsTo="Room07" DoorCoords="752 640"/>
+  -<ScreenTransition Point="648 744" Size="16 16" LeadsTo="Room04" DoorCoords="648 704"/>
+  -<ScreenTransition Point="648 536" Size="16 16" LeadsTo="Room10" DoorCoords="648 576"/>
 
 </RoomData>

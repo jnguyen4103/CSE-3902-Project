@@ -3,6 +3,7 @@
 * Stephen Hogg
 */
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Xml;
 
@@ -72,7 +73,7 @@ namespace Sprint03
 
                         case "ScreenTransition":
                             room.RoomTransitions.Add(new ScreenTransition(ParseVector2(Reader.GetAttribute("Point")), ParseVector2(Reader.GetAttribute("Size")),
-                                Reader.GetAttribute("LeadsTo")));
+                                Reader.GetAttribute("LeadsTo"), ParseVector2(Reader.GetAttribute("DoorCoords"))));
                             break;
 
                           
@@ -92,7 +93,7 @@ namespace Sprint03
                         case "MovableBlock":
                             room.Movables.Add(new MovableBlock(game, ParseVector2(Reader.GetAttribute("Point")), ParseDirection(Reader.GetAttribute("Direction"))));
                             break;
-
+                            
                         default:
                             break;
                     }

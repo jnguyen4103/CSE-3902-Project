@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RoomData>
+
+	<!--Location -->
+	-<Location Point="684 262" />
+	
+	<!--Walls -->
+	-<Wall Point="684 262" Size="256 32" />
+  -<Wall Point="684 262" Size="32 256" />
+  -<Wall Point="908 262" Size="32 256" />
+	-<Wall Point="821 406" Size="256 32" />
+	-<Wall Point="684 406" Size="120 32" />
+
+
+
+	<!--Blocks -->
+  -<Block Point="732 310" Size="18 82" />
+  -<Block Point="876 310" Size="18 82" />
+
+  -<Block Point="860 310" Size="15 18" />
+  -<Block Point="860 374" Size="15 18" />
+
+  -<Block Point="796 326" Size="34 18" />
+  -<Block Point="796 358" Size="34 18" />
+
+  -<Block Point="749 310" Size="15 18" />
+  -<Block Point="749 374" Size="15 18" />
+	<!--Monsters -->
+  -<Monster Name="Aquamentus" Spawn="842 342" />
+ 
+  
+  -<Monster Name="Goriyas" Spawn="767 392" />
+  -<Monster Name="Darknut" Spawn="758 346" />
+
+  -<Monster Name="Zol" Spawn="850 348" />
+  -<Monster Name="Stalfos" Spawn="781 304" />
+  <!-- Items -->
+
+
+
+	<!-- Doors -->
+
+
+  <!-- Transitions -->
+
+  -<ScreenTransition Point="812 452" Size="16 16" LeadsTo="Room0" DoorCoords="0 0"/>
+  
+</RoomData>

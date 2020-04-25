@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Attacks\BeamExplosion.cs" />
+    <Compile Include="Attacks\Bullet.cs" />
     <Compile Include="Attacks\Fireball.cs" />
     <Compile Include="Attacks\SwordBeam.cs" />
     <Compile Include="Attacks\Boomerang.cs" />
@@ -49,15 +50,22 @@
     <Compile Include="Attacks\IAttack.cs" />
     <Compile Include="Attacks\Sword.cs" />
     <Compile Include="Bag\VisualBag.cs" />
+    <Compile Include="Commands\Attacks\LinkGun.cs" />
     <Compile Include="Commands\Camera\CameraUp.cs" />
+    <Compile Include="Commands\ChangeRoom.cs" />
     <Compile Include="Commands\Item Selection\SelectionMenu.cs" />
     <Compile Include="Commands\Pass.cs" />
     <Compile Include="Commands\Pause.cs" />
     <Compile Include="Commands\Quit.cs" />
+    <Compile Include="Controllers\MouseController.cs" />
+    <Compile Include="GameObjects\GameChanger.cs" />
     <Compile Include="GameObjects\Items\Fairy.cs" />
     <Compile Include="GameObjects\Items\IItem.cs" />
     <Compile Include="GameObjects\Link\DeadLink.cs" />
     <Compile Include="GameObjects\Link\PickupLink.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\BigZombieSM.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\DodongoSM.cs" />
+    <Compile Include="GameObjects\Monsters\StateMachines\RopeSM.cs" />
     <Compile Include="GameObjects\Traps\BladeTrap.cs" />
     <Compile Include="Camera\Camera2D.cs" />
     <Compile Include="Collision\CollisionDetection.cs" />
@@ -180,6 +188,12 @@
     <Content Include="Dungeon\Dungeon2\Room15.xml" />
     <Content Include="Dungeon\Dungeon2\Room16.xml" />
     <Content Include="Dungeon\Dungeon2\Room17.xml" />
+    <Content Include="Dungeon\Dungeon3\Dungeon03.txt" />
+    <Content Include="Dungeon\Dungeon3\Room0.xml" />
+    <Content Include="Dungeon\Dungeon3\Room01.xml" />
+    <Content Include="Dungeon\Dungeon3\Room02.xml" />
+    <Content Include="Dungeon\Dungeon3\Room03.xml" />
+    <Content Include="Dungeon\Dungeon3\Room04.xml" />
     <Content Include="Sprite Sheets\Background.png" />
     <Content Include="Sprite Sheets\Dungeon1.png" />
     <Content Include="Sprite Sheets\Effects Sprite Sheet.png" />

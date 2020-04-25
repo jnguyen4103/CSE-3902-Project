@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RoomData>
+
+	<!--Location -->
+	-<Location Point="684 436" />
+	
+	<!--Walls -->
+	-<Wall Point="684 436" Size="32 80" />
+  -<Wall Point="684 436" Size="120 32" />
+  
+  -<Wall Point="684 533" Size="32 80" />
+  -<Wall Point="684 579" Size="120 32" />
+  
+  -<Wall Point="821 579" Size="120 32" />
+  -<Wall Point="909 533" Size="32 120" />
+
+  -<Wall Point="908 435" Size="32 80" />
+  -<Wall Point="821 436" Size="120 32" />
+
+	<!--Blocks -->
+
+  
+  <!-- Movable Blocks-->
+  <!--Monsters -->
+  
+
+
+
+  <!-- Items -->
+  -<Item Name="HeartContainer" Spawn="748 484" />
+  -<Item Name="Heart" Spawn="860 484" />
+  -<Item Name="HeartContainer" Spawn="860 547" />
+  -<Item Name="Heart" Spawn="748 547" />
+  -<Item Name="Gun" Spawn="718 547" />
+
+
+  <!-- Traps -->
+
+
+  <!-- Doors -->
+  
+  <!-- Transitions -->
+  -<ScreenTransition Point="672 524" Size="16 16" LeadsTo="Room01" DoorCoords="0 0"/>
+  -<ScreenTransition Point="814 422" Size="16 16" LeadsTo="Room02" DoorCoords="0 0"/>
+  -<ScreenTransition Point="963 524" Size="16 16" LeadsTo="Room03" DoorCoords="0 0"/>
+  -<ScreenTransition Point="814 627" Size="16 16" LeadsTo="Room04" DoorCoords="0 0"/>
+
+
+</RoomData>

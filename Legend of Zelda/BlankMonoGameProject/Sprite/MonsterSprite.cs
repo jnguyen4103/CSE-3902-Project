@@ -81,6 +81,7 @@ namespace Sprint03
         public void ChangeSpriteAnimation(string name)
         {
             if (Name != name) { CurrentFrame = 0; }
+            Console.WriteLine(name);
             Name = name;
             Tuple<Rectangle, Vector2, int> spriteInfo = Game.SFactory.Sprites[name];
             Size = spriteInfo.Item2;

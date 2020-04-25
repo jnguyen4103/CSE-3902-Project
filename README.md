@@ -14,6 +14,7 @@ R : Reset the game<br/>
 P : Pause the game<br/>
 Enter : Enter and exit the inventory screen <br/>
 M : Select an item in the menu<br/>
+Left Mouse Click on a door : Teleport Link to the room behind the door. This will work on locked doors and destroyable walls. Please note that this functionality only works in the first dungeon. <br/>
 
 W : Move Link up<br/>
 A : Move Link left<br/>
@@ -32,6 +33,7 @@ Attacks:<br/>
 2 - Use Arrow<br/>
 3 - Use Fireball<br/>
 4 - Use Boomerang<br/>
+X - Shoot gun once it has been picked up<br/>
 
 ## Enemies:
 ### Regular Monsters:
@@ -59,12 +61,17 @@ Darknut: Walks to Link's last location and charges Link when he gets close.<br/>
  <li> The fire next to the old man if it kills you, it can cause errors in the code. Still testing to figure out why.
  <li> Slight issue with the bomb count in the HUD not going down properly. (Resolved)
  <li> The interactions between the Merchant and the Old Man have not yet been implemented, however implementation will be completed and functional for spritn05.
+   <li> BigZombie has some issues when running into walls. We believe its because of the size of the Sprite but unsure. 
+
  <li> When the game first start, the keys in the inventory system was showing as 12 instead of 0. (Resolved) 
  <li> When transitioning into the next Dungeon(Dungeon2) no transition or barriers have been implemented yet goal for sprint5 is to have a new dungeon operational functionality as well.</li> 
  <li>Inventory screen is not transitioned to - it simply appears. </li>
  <li>Inventory map does not show rooms explored - beleived to be a layering issue.</li>
  <li>Inventory screen command triggers and untriggers itself - sometimes when pressing the enter key to enter the inventory screen you will enter and exit the inventory screen in the same instance.</li>
  <li>Item Selection portion did not work properly- believed to be a merge conflict with inventory screenthat intertwined  between each other.</li>
+ <li>Link spawns in testing room instead of entrance room. </li>
+ <li>RESOLVED: Because link spawns in testing room inventory map if called in testing room shows link in top most room of map, this is the only
+ room where the map shows link in a different room than he is in.</li>
 </ul>
 
 ### Additional Tools, Processes Used:
