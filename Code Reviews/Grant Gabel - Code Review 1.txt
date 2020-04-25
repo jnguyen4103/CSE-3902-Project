@@ -1,17 +1,22 @@
-Sprint Number: 4
+Sprint Number: 5
 Author of code review: Grant Gabel
-File being reviewed: Pause.cs
+File being reviewed: MouseController.cs
 Author of file: John Nguyen
-Date: 4/13/20
+Date: 4/24/20
 Focus: Maintainability
-Time to review: 10 minutes
+Time to review: 07 minutes
 
-While the command on it's own is quite maintainable due to the minimilistic nature, because the fuctionality is spread far and
-wide throughout the whole game - with pause functionality appearing in the Update() method in the main game file as well as
-in the keyboard controller even though neither of these are referenced in the pause command. I believe this code is not very maintainable.
-One would have to track down every mention of the word pause in all the game files and figure out if they needed to change it if they
-wanted to change the nature of pause in any way. 
+I think this is a good implementation of the controller interface and I think for what we needed it to do and for the time we had
+to work on this class John implemented it very well and I'm pleased with it.
 
-I would like to see at least comments on where else / what else pause is affecting. Ideally I would love to see it so all the pause
-functionality is handled inside the command - calls and all (even if the calls are something like "monsters.pause()" or "link.pause()".
-But this would require a huge rework of the code as a whole and is probably not a good use of time at this point in the project. 
+If we had more time I think I would like to see this moved more in line with the keyboard controller class for maintainability purposes.
+I think that as it is now it's difficult to maintain this because it is so different from how keyboard operates. Which is to say that much
+of the power and decision making seems to lie with the command called by mousecontroller because the controller class doesn't have 
+anything in it that cares about mouse position it seems which I feel is important for a mouse controller class. 
+
+So I'd like to see more information, like mouse position and game state, used / made available in this class. So that instead of just
+calling a command to teleport, it would teleport to the left room if mouse position is over door and game is in playing state. 
+
+But I do think with the time that was available to work on this class / command, since we as a group didn't do this until the last sprint, 
+that john did a good job. Its easy to read and understand and if I needed one or two more commands I could easily add them. So it does
+have fairly good maintainability for one or two changes but for more long term maintainability is where I think it's lacking. 
