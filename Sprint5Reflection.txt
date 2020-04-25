@@ -1,0 +1,29 @@
+Sprint 5 Reflection
+
+Group: Ocarina
+Class: 9:10
+
+The group performed better this sprint than
+last sprint, though there's still some trouble
+getting some pieces to work at the end.
+
+There were notable improvements to our process this
+sprint. One of those improvements is that we set
+some deadlines for this sprint, which wasn't done
+last sprint. We also ended up using the Discord chat more
+this sprint than last sprint. Another positive is that
+the burndown chart slope is steeper than last sprint,
+though a reason for that is because there's less time to
+work on this sprint.
+
+As noted above, there were issues with some sections of
+the project which still need to be straightened out
+(namely, item selection). Communication regarding those
+areas would have been helpful in getting that solved,
+but that was neglected. Other than that, the finishing
+process has been overall smooth.
+
+No changes made in this sprint compared to last sprint
+were detrimental to the group.
+
+End of reflection

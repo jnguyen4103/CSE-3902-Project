@@ -1,0 +1,20 @@
+Author of Code Review:        Youssef Moosa
+Date of Code Review:          04/24/20
+Sprint #:                     5
+Name of .cs file:             ChangeRoom.cs
+Author of .cs file:           Nico Negrete
+# of minutes:                 5
+
+Specific Comments:
+
+* Good variable names.
+
+* I actually think that in the if statement,
+  it'd be more readable if you put "DoorHitbox.X + DoorHitbox.Width"
+  instead of allocating a new local variable endHitboxX, even though
+  it's more verbose. That's just a picky point, though, and doesn't
+  interfere much with readability.
+
+* I notice that Game.CurrDungeon.ActiveRoom.RoomTransitions is used once,
+  but that Game.CurrDungeon.ActiveRoom is used multiple times. Consider
+  making that a local variable instead of screenTransitions.

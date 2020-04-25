@@ -1,0 +1,25 @@
+Author of Review:             Youssef Moosa
+Date of Review:               04/24/20
+Sprint #:                     5
+Name of .cs file:             IGameState.cs
+Author of .cs file:           Grant Gabel
+
+Specific Comments:
+
+* This is a really nice interface, especially
+  because GameState is such a big thing, and
+  its members can be called mini-programs in their own right.
+
+* The interface looks simple to use and fits well into MonoGame.
+
+* Properies in interfaces are a bit awkward, as properties act
+  a lot like instance variables in those cases.
+
+Specific fixes:
+
+* There are a couple ways to remove the property and attain
+  equivalent functionality. One is to make isTransitioning
+  a function instead, and have a private boolean determine
+  the result. Another way is to have transition states instead
+  of a bool to determine transitions. Both ways are fine, though
+  I prefer the former since it involves less boilerplate.

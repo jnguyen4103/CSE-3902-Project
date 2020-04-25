@@ -88,6 +88,7 @@ namespace Sprint03
         public Keys[] keyboardKeys = { Keys.W, Keys.S, Keys.A, Keys.D, Keys.Z, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.R, Keys.Q, Keys.P, Keys.Enter, Keys.X};
         public ICommand[] keyboardCommands = new ICommand[14];
         public KeyboardController keyboardController;
+        public KeyboardCheater keyboardCheater;
 
         
         public ICommand[] mouseCommands = new ICommand[1];
@@ -149,6 +150,7 @@ namespace Sprint03
             keyboardCommands[13] = new LinkGun(this);
 
             keyboardController = new KeyboardController(this, keyboardKeys, keyboardCommands);
+            keyboardCheater = new KeyboardCheater(this);
 
             mouseCommands[0] = new ChangeRoom(this);
             mouseController = new MouseController(this, mouseCommands);
@@ -276,6 +278,7 @@ namespace Sprint03
         {
             CurrentGameState.Update();
             keyboardController.Update();
+            keyboardCheater.Update();
             mouseController.Update();
             base.Update(gameTime);
 
